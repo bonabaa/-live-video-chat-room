@@ -1,0 +1,1317 @@
+2008-03-10 06:33  rjongbloed
+
+	* [r19706] src/ptlib/common/pluginmgr.cxx:
+	  Moved plug ins directory for Windows Mobile from
+	  "\Windows\Plugins" to "\Program Files\PTLib Plug Ins", as this
+	  that directory is where all user installed stuff should go.
+
+2008-03-10 22:12  dsandras
+
+	* [r19711] include/ptlib/critsec.h:
+	  Fixed atomic integer operation compilation on Solaris thanks
+	  Elaine Xiong
+	  <elaine xiong sun com>. Thanks!
+
+2008-03-11 02:29  csoutheren
+
+	* [r19714] include/ptlib/critsec.h:
+	  Fix compilation on Windows
+
+2008-03-11 02:29  csoutheren
+
+	* [r19715] src/ptlib/msos/sound_win32.cxx:
+	  Trace log for number of sound buffers to assist in debugging
+
+2008-03-11 03:50  csoutheren
+
+	* [r19720] src/ptlib/common/osutils.cxx:
+	  No need to stop a timer that is already stopped
+
+2008-03-11 07:45  csoutheren
+
+	* [r19721] include/ptlib/object.h,
+	  plugins/sound_alsa/sound_alsa.cxx,
+	  plugins/vidinput_v4l/vidinput_v4l.cxx,
+	  plugins/vidinput_v4l2/vidinput_v4l2.cxx, src/ptclib/cypher.cxx,
+	  src/ptclib/httpsvc.cxx, src/ptclib/inetmail.cxx,
+	  src/ptclib/inetprot.cxx, src/ptclib/sockagg.cxx:
+	  Fix warnings and errors with gcc 4.3.0
+
+2008-03-14 02:34  csoutheren
+
+	* [r19743] include/ptlib/object.h:
+	  Fix PTRACE to work cleanly on both Linux and Windows
+
+2008-03-15 15:30  hfriederich
+
+	* [r19752] include/ptlib/unix/ptlib/pmachdep.h,
+	  src/ptclib/pssl.cxx,
+	  src/ptlib/unix/maccoreaudio/circular_buffer.inl,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  fix compilation on Mac OS X 10.5
+
+2008-03-16 11:02  hfriederich
+
+	* [r19753] configure, configure.ac:
+	  fix Darwin OSRELEASE parsing to ensure newer OS versions always
+	  get a higher OSRELEASE value
+
+2008-03-17 02:56  rjongbloed
+
+	* [r19757] include/ptlib/syncthrd.h, src/ptlib/common/osutils.cxx:
+	  Attempt to fix of crash on shut down of OpalMediaPatch described
+	  by Yuriy Cherniavsky.
+
+2008-03-17 04:04  rjongbloed
+
+	* [r19758] src/ptlib/common/osutils.cxx:
+	  Fixed Linux compatibility
+
+2008-03-18 03:00  rjongbloed
+
+	* [r19765] src/ptlib/common/osutils.cxx:
+	  Made PTLib more forgiving if someone forgets to call
+	  PreInitialise() on the PProcess so there is no argv.
+
+2008-03-18 22:58  rjongbloed
+
+	* [r19776] src/ptclib/httpsvc.cxx, src/ptclib/vsdl.cxx,
+	  src/ptlib/common/osutils.cxx, src/ptlib/msos/vfw.cxx:
+	  Changed thread name to use thread ID (in decimal) as this is more
+	  useful for linking up the thread in the debugger with the trace
+	  log lines.
+
+2008-03-18 23:07  rjongbloed
+
+	* [r19779] src/ptlib/common/osutils.cxx:
+	  Fixed unix compatibility in last change
+
+2008-03-19 01:24  rjongbloed
+
+	* [r19785] include/ptclib/pwavfiledev.h,
+	  src/ptclib/pwavfiledev.cxx:
+	  Added ability to resample a WAV file on the fly if require
+	  different sample rate than that which is provided by the file.
+
+2008-03-20 03:16  rjongbloed
+
+	* [r19792] include/ptclib/pwavfiledev.h,
+	  src/ptclib/pwavfiledev.cxx:
+	  Fixed WAV file sound device so correctly handles reads from WAV
+	  files that do not happen to be exactly divisible by the number of
+	  frames of audio needed by a codec, eg 20ms GSM. Returned
+	  insufficient data at the end of file and the codec usually barfs.
+	  This is especially a problem when doing auto-rewind on the WAV
+	  file.
+
+2008-03-25 01:34  rjongbloed
+
+	* [r19795] include/ptlib/thread.h, src/ptclib/httpsvc.cxx,
+	  src/ptclib/pxml.cxx, src/ptclib/snmpserv.cxx,
+	  src/ptclib/sockagg.cxx, src/ptclib/vsdl.cxx, src/ptclib/vxml.cxx,
+	  src/ptclib/xmpp.cxx, src/ptlib/common/osutils.cxx,
+	  src/ptlib/msos/vfw.cxx:
+	  Further improvement to the thread name string. Now displays the
+	  thread ID on all threads, not requiring the caller to put a %u or
+	  %x in it's name. This allows the base code to take into account
+	  the platform to display the thread ID in a format suitable for
+	  the range of values for the platform, e.g. a decimal number for
+	  Win32 and a hex number of Linux.
+
+2008-03-25 01:44  rjongbloed
+
+	* [r19798] src/ptlib/unix/svcproc.cxx:
+	  Fixed bug about relative ini filepath for svcproc instances under
+	  Unix. Thanks Tuyan Ozipek
+
+2008-03-25 04:30  rjongbloed
+
+	* [r19802] include/ptclib/pxml.h:
+	  Applied patch [ 1910897 ] Make PXMLElement.GetParent() a const
+	  method
+
+2008-03-25 13:08  csoutheren
+
+	* [r19807] include/ptlib/thread.h, src/ptlib/common/osutils.cxx:
+	  Add mutex to SetThreadName to avoid crashes on Linux
+
+2008-03-26 00:47  csoutheren
+
+	* [r19811] src/ptlib/common/vconvert.cxx:
+	  Applied patch 1925679 (OpenH323 patch 1923179)
+	  stop pwlib from causing crash when rescaling bayer v4
+	  Thanks to Hans de Goede
+
+2008-03-27 02:59  rjongbloed
+
+	* [r19821] src/ptclib/pwavfiledev.cxx:
+	  Fixed incorrect bytes read being returned when resampling a WAV
+	  file on the fly in the WAV file sound device.
+
+2008-03-27 17:35  dsandras
+
+	* [r19824] plugins/sound_oss/sound_oss.cxx:
+	  Added support for FreeBSD devfs thanks to Matthias Apitz <guru
+	  Sisis de>.
+
+2008-03-28 05:53  rjongbloed
+
+	* [r19833] src/ptlib/common/osutils.cxx:
+	  Closed another mutexing issue around the thread name member
+	  variable.
+
+2008-03-28 06:02  rjongbloed
+
+	* [r19835] src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch for yet another mutex issue for the thread name,
+	  this one under Linux only, thanks Tamas
+
+2008-03-30 08:54  dsandras
+
+	* [r19837] plugins/sound_oss/sound_oss.cxx:
+	  Fixed detection of OSS v4 devices thanks to Rafael Diniz <rafael
+	  riseup net>
+	  Thanks!
+
+2008-03-31 01:10  rjongbloed
+
+	* [r19845] include/ptlib/thread.h, src/ptlib/common/osutils.cxx,
+	  src/ptlib/msos/svcproc.cxx:
+	  Some more changes to the thread name saga, use same format of
+	  thread ID display for threads not created by PTLib. Thanks Yuriy
+	  Cherniavsky.
+
+2008-03-31 04:29  csoutheren
+
+	* [r19848] include/ptlib/object.h, include/ptlib/thread.h,
+	  src/ptlib/common/osutils.cxx, src/ptlib/msos/win32.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Implement portable class for thread-local storage, and use it to
+	  ensure
+	  that PTRACE will work for both PThreads and non-PThreads
+
+2008-03-31 04:35  csoutheren
+
+	* [r19849] include/ptlib/thread.h, src/ptlib/unix/tlibthrd.cxx:
+	  Finish off thread-local-storage implementation for Linux
+
+2008-04-01 07:47  rjongbloed
+
+	* [r19875] src/ptlib/msos/win32.cxx:
+	  Fixed being able to compile No Trace version.
+
+2008-04-01 23:53  rjongbloed
+
+	* [r19883] src/ptlib/msos/ethsock.cxx:
+	  Fixed socket get interfaces function so does not return
+	  interfaces which do not have a bound IP address, this should not
+	  be regarded as an "up" interface.
+
+2008-04-02 03:55  csoutheren
+
+	* [r19889] include/ptlib/msos/ptlib/vidinput_directx.h,
+	  src/ptlib/msos/vidinput_directx.cxx:
+	  Don't use directx unless directsound is also enabled
+
+2008-04-02 04:47  csoutheren
+
+	* [r19891] src/ptlib/common/pglobalstatic.cxx:
+	  Missed a usage of P_DIRECTSHOW
+
+2008-04-04 04:12  rjongbloed
+
+	* [r19915] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Applied patch [ 1933521 ] Constantize pxml.h methods, thanks
+	  Stefano Sabatini
+
+2008-04-06 05:57  rjongbloed
+
+	* [r19924] src/ptclib/psasl.cxx:
+	  Applied patch to fix SASL usage, thanks Clemens Fischer.
+
+2008-04-08 06:25  rjongbloed
+
+	* [r19933] include/ptclib/pnat.h, include/ptclib/pstun.h,
+	  src/ptclib/pstun.cxx:
+	  Changed STUN so can only operate on a single interface. This
+	  avoids problems on multi-homed systems where attempts are made to
+	  use STUN on an interface that the STUN server is inaccessible.
+	  
+	  Added function determine of STUN can be used for a specific local
+	  interface.
+	  
+	  Cleaned up some API names.
+
+2008-04-09 01:04  rjongbloed
+
+	* [r19940] src/ptclib/pstun.cxx:
+	  Fixed STUN issue on Linux after changed to determine the
+	  interface that
+	  the STUN server can be contacted on. Linux has a problem with
+	  even
+	  TRYING to do so on the loopback interface. Can safely ignore the
+	  loopback interface as the STUN server is unlikely to be there!
+
+2008-04-09 01:06  rjongbloed
+
+	* [r19941] include/ptlib/unix/ptlib/contain.h:
+	  Changed the definitions of the "Windows" style types (BYTE, WORD,
+	  DWORD)
+	  so compatible with the ones other systems use, in particular
+	  wxWindows
+	  and the SQL headers.
+
+2008-04-09 04:19  rjongbloed
+
+	* [r19947] include/ptclib/podbc.h,
+	  include/ptlib/unix/ptlib/contain.h, src/ptclib/podbc.cxx:
+	  Fixed problem with sql.h inclusion conflicting on "Windows" style
+	  types.
+	  Better fix than the last one which might cause problems on Linux
+	  64 bit
+	  builds. Primarily included so that we can compile with wxWindows
+	  on
+	  Linux.
+
+2008-04-09 19:45  dsandras
+
+	* [r19952] Makefile.in, configure, configure.ac, ptlib.pc.in:
+	  Added PTLib pkg-config support thanks to Steve Frecinaux
+	  <code istique net>. Thanks a lot!
+
+2008-04-11 20:17  ms30002000
+
+	* [r19976] include/ptlib/pstring.h:
+	  Fix compilation on minGW.
+
+2008-04-11 21:01  dsandras
+
+	* [r19977] src/ptclib/pstun.cxx:
+	  Fixed STUN operating on a single interface.
+
+2008-04-13 14:05  ms30002000
+
+	* [r19984] src/ptclib/delaychan.cxx:
+	  Improve PAdaptiveDelay.
+
+2008-04-14 11:34  rjongbloed
+
+	* [r19986] src/ptclib/pstun.cxx:
+	  Fixed crash if timeout contacting STUN server.
+
+2008-04-14 13:02  rjongbloed
+
+	* [r19988] src/ptclib/url.cxx:
+	  A SIP URL can, in fact, have Query parameters.
+
+2008-04-14 23:52  rjongbloed
+
+	* [r19990] src/ptclib/url.cxx:
+	  Fixed setting of Query vars and parameters via string, should
+	  clear out the old dictionary.
+
+2008-04-17 03:37  rjongbloed
+
+	* [r20004] configure, configure.ac, include/ptlib/pprocess.h,
+	  src/ptlib/unix/assert.cxx, src/ptlib/unix/svcproc.cxx:
+	  Fixed compile without tracing. Now a configure option
+	  --disable-tracing which will disable tracing for PTLib and all
+	  libraries and applications that use it.
+
+2008-04-17 04:09  rjongbloed
+
+	* [r20005] src/ptlib/unix/tlibthrd.cxx:
+	  Fixed compile without tracing. Now a configure option
+	  --disable-tracing
+	  which will disable tracing for PTLib and all libraries and
+	  applications
+	  that use it.
+
+2008-04-17 14:50  csoutheren
+
+	* [r20015] include/ptlib/pfactory.h:
+	  When registering singleton workers, instantiate them immediately
+	  This ensures that any code in the singleton constructor is run
+	  immediately, rather than being deferred until the first time the
+	  singleton is requested
+
+2008-04-21 07:19  csoutheren
+
+	* [r20035] src/ptclib/dtmf.cxx:
+	  Add comments on fax DTMF types to avoid confusion
+
+2008-04-22 08:34  csoutheren
+
+	* [r20061] include/ptlib/thread.h:
+	  Add PThread3Arg
+
+2008-04-22 08:35  csoutheren
+
+	* [r20062] src/ptlib/msos/win32.cxx:
+	  Calling PThread::IsSuspended for the current thread should always
+	  returns false
+
+2008-04-23 04:41  dereksmithies
+
+	* [r20094] include/ptlib/pfactory.h, src/ptlib/unix/tlib.cxx:
+	  Minor changes to keep compiler happy (Thanks Robert for answer on
+	  WorkerBase)
+	  and alter code to track changes in PMemoryHeap::GetState()
+	  changes.
+
+2008-04-24 11:32  rjongbloed
+
+	* [r20105] tools/MergeSym/MergeSym.cxx:
+	  Adjustment to MergeSym so predefined named symbols (i.e. ones
+	  without a NONAME keyword) in the DTF file are not removed from
+	  the DEF file.
+
+2008-04-24 12:56  dsandras
+
+	* [r20109] .cvsignore, include/.cvsignore,
+	  include/ptlib/msos/.cvsignore, make/.cvsignore,
+	  plugins/.cvsignore, plugins/vidinput_dc/.cvsignore,
+	  samples/ThreadSafe/.cvsignore, samples/aggtest/.cvsignore,
+	  samples/audio/.cvsignore, samples/dnstest/.cvsignore,
+	  samples/dtmftest/.cvsignore, samples/emailtest/.cvsignore,
+	  samples/factory/.cvsignore, samples/find_ip/.cvsignore,
+	  samples/hello_world/.cvsignore, samples/ipv6test/.cvsignore,
+	  samples/ldaptest/.cvsignore, samples/netif/.cvsignore,
+	  samples/ptimer/.cvsignore, samples/pxml/.cvsignore,
+	  samples/queue/.cvsignore, samples/safetest/.cvsignore,
+	  samples/sockbundle/.cvsignore, samples/sortedlist/.cvsignore,
+	  samples/stunclient/.cvsignore, samples/thread/.cvsignore,
+	  samples/threadex/.cvsignore, samples/timing/.cvsignore,
+	  samples/vidtest/.cvsignore, samples/vxmltest/.cvsignore,
+	  samples/wavfile/.cvsignore, samples/xmlrpc/.cvsignore,
+	  samples/xmlrpcsrvr/.cvsignore, samples/xmpptest/.cvsignore,
+	  src/ptclib/speex_echo/.cvsignore, src/ptlib/common/.cvsignore,
+	  src/ptlib/msos/.cvsignore, tools/MergeSym/.cvsignore,
+	  tools/Uninstall/.cvsignore, tools/asnparser/.cvsignore,
+	  tools/configure/.cvsignore, tools/msvc6chk/.cvsignore:
+	  Removed cvsignore files.
+
+2008-04-25 06:41  rjongbloed
+
+	* [r20120] include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf:
+	  Update DLL symbols
+
+2008-04-25 07:35  rjongbloed
+
+	* [r20124] include/ptlib/msos/ptlib_2003.dtf,
+	  include/ptlib/msos/ptlibd_2003.dtf,
+	  include/ptlib/msos/ptlibn_2003.dtf:
+	  Updated DLL symbols
+
+2008-04-28 05:18  csoutheren
+
+	* [r20135] include/ptlib/pprocess.h, src/ptlib/common/osutils.cxx:
+	  Fixed problem with (re)starting timers within OnTimeout functions
+
+2008-04-28 23:18  rjongbloed
+
+	* [r20140] include/ptlib/notifier.h:
+	  Updated documentation, thanks Stefano Sabatini
+
+2008-04-30 03:53  csoutheren
+
+	* [r20145] include/ptlib/msos/ptlib/vidinput_app.h,
+	  src/ptlib/msos/vidinput_app.cxx:
+	  Fully implement Windows screen capture device
+
+2008-05-01 05:42  rjongbloed
+
+	* [r20148] include/ptclib/mime.h:
+	  Added default parameter for default string read from MIME
+	  objects. Defaults to empty string.
+
+2008-05-07 02:23  rjongbloed
+
+	* [r20208] include/ptclib/psnmp.h, include/ptclib/snmp.h,
+	  samples/snmptest, samples/snmptest/Makefile,
+	  samples/snmptest/snmptest.cxx, samples/snmptest/snmptest.h,
+	  src/ptclib/psnmp.cxx, src/ptclib/snmp.cxx,
+	  src/ptclib/snmpserv.cxx:
+	  Applied patch [ 1939126 ] snmpserver fixes with sample
+	  application,
+	  thanks Tuyan Zipek
+
+2008-05-07 02:40  ykiryanov
+
+	* [r20210] include/ptlib/msos/ptlib/sound_directsound.h:
+	  Enabled for WM6. Some functions are missing, though.
+
+2008-05-07 02:41  ykiryanov
+
+	* [r20211] src/ptlib/msos/sound_directsound.cxx:
+	  Enabled for WM6. Some functions are missing, though.
+
+2008-05-07 03:07  rjongbloed
+
+	* [r20212] src/ptclib/snmpserv.cxx:
+	  Fixed MSVC warnings.
+
+2008-05-11 04:53  rjongbloed
+
+	* [r20234] include/ptlib/channel.h, include/ptlib/object.h,
+	  include/ptlib/pstring.h, src/ptlib/common/contain.cxx,
+	  src/ptlib/common/object.cxx, src/ptlib/common/pchannel.cxx,
+	  src/ptlib/msos/svcproc.cxx:
+	  Improved compatibility with STL streams and removed support for
+	  non-STL streams.
+
+2008-05-12 09:13  rjongbloed
+
+	* [r20244] include/ptlib/critsec.h:
+	  Fixed support of atomic integer without any OS/library support.
+
+2008-05-12 09:30  rjongbloed
+
+	* [r20245] configure, configure.ac, include/ptlib/critsec.h:
+	  Allow for GNU atomicity to be disabled explicitly by configure.
+
+2008-05-12 13:39  rjongbloed
+
+	* [r20246] include/ptclib/psockbun.h, include/ptlib/channel.h,
+	  include/ptlib/object.h, include/ptlib/pstring.h,
+	  src/ptclib/psockbun.cxx, src/ptlib/common/contain.cxx,
+	  src/ptlib/common/pchannel.cxx:
+	  Applied patches for compatibility with uClibc++, thanks Yaşam
+	  Bingol
+
+2008-05-13 05:13  rjongbloed
+
+	* [r20255] include/ptlib/pipechan.h, src/ptlib/msos/pipe.cxx:
+	  Changed pipe channel execute so returns false if process had
+	  exited before it got that far.
+	  
+	  Clarified some documentation.
+
+2008-05-13 06:10  rjongbloed
+
+	* [r20257] src/ptlib/msos/pipe.cxx:
+	  Fixed reading from PPipeChannel stderr channel without waiting.
+
+2008-05-13 12:07  rjongbloed
+
+	* [r20261] include/ptlib/object.h, src/ptclib/asner.cxx,
+	  src/ptlib/msos/assert.cxx:
+	  More uClibc++ support, deprecating support for very old C++
+	  compilers.
+
+2008-05-13 13:37  rjongbloed
+
+	* [r20265] src/ptlib/unix/socket.cxx:
+	  Another uClibc++ compatibility issue.
+
+2008-05-14 04:41  rjongbloed
+
+	* [r20270] include/ptlib/filepath.h, src/ptlib/msos/win32.cxx,
+	  src/ptlib/unix/osutil.cxx:
+	  Added platform dependent function for determining if a string is
+	  an absolute or relative file path name.
+
+2008-05-18 09:45  rjongbloed
+
+	* [r20280] include/ptclib/pstun.h:
+	  Added access function to get the interface address the STUN
+	  server is detected on.
+
+2008-05-18 09:53  rjongbloed
+
+	* [r20281] src/ptclib/pdns.cxx:
+	  Cleaned up some trace log levels.
+
+2008-05-21 05:40  rjongbloed
+
+	* [r20286] include/ptlib/msos/ptlib/vidinput_app.h,
+	  src/ptclib/url.cxx, src/ptlib/msos/vidinput_app.cxx:
+	  Fixed eol-style property for random files.
+
+2008-05-24 08:08  rjongbloed
+
+	* [r20301] src/ptclib/pstun.cxx:
+	  Changed default STUN timeout/retries to be a little less
+	  aggressive.
+
+2008-05-27 09:48  rjongbloed
+
+	* [r20308] src/ptlib/msos/PTLib_2005.vcproj:
+	  Set default deployment directory for WM5 SmartPhone edition
+
+2008-05-28 08:23  shorne
+
+	* [r20319] include/ptlib/wm/time.h:
+	  Added reference to stdlib.h as t_size is not undefined if
+	  compiling WM < 5
+
+2008-05-28 08:29  shorne
+
+	* [r20320] include/ptclib/pstun.h:
+	  Added default value for IsAvailable in PSTUNClient for better
+	  backwards compatibility
+
+2008-05-30 06:37  shorne
+
+	* [r20346] include/ptbuildopts.h.in, src/ptlib/msos/win32.cxx:
+	  Added WinCE 5+ COM support
+
+2008-05-31 02:55  shorne
+
+	* [r20347] include/ptbuildopts.h.in:
+	  Fix small COM define error
+
+2008-06-02 00:36  csoutheren
+
+	* [r20359] configure, configure.ac, include/ptbuildopts.h.in,
+	  src/ptlib/common/jidctflt.cxx:
+	  Add support for LPIA
+
+2008-06-03 02:23  rjongbloed
+
+	* [r20365] include/ptclib/pnat.h, include/ptclib/psockbun.h,
+	  include/ptclib/pstun.h, src/ptclib/pnat.cxx,
+	  src/ptclib/psockbun.cxx, src/ptclib/pstun.cxx:
+	  Moved a number of STUN functions up into abstract base class
+	  PNatMethod. Cleaned up some of the functions and changed names to
+	  make easier their move to virtual.
+	  
+	  Changed socket bundling code to use NAT method abstract class
+	  rather than STUN concrete class.
+	  
+	  Warning! This may cause some API breakage for direct users of
+	  PNatMethod/PSTUNClient.
+
+2008-06-03 11:18  rjongbloed
+
+	* [r20372] src/ptlib/common/sockets.cxx:
+	  Changed test for loopback address to just looking at 127.x.x.x
+	  rather than explicitly 127.0.0.1 due to some very bizarre systems
+	  out there.
+
+2008-06-04 01:54  rjongbloed
+
+	* [r20375] make/common.mak:
+	  Fixed odd dependency generation if do not have any dependency
+	  files yet.
+
+2008-06-04 10:40  rjongbloed
+
+	* [r20385] include/ptclib/asnber.h, include/ptclib/asner.h,
+	  include/ptclib/asnper.h, include/ptclib/asnxer.h,
+	  include/ptclib/cypher.h, include/ptclib/delaychan.h,
+	  include/ptclib/dtmf.h, include/ptclib/enum.h,
+	  include/ptclib/ftp.h, include/ptclib/guid.h,
+	  include/ptclib/html.h, include/ptclib/http.h,
+	  include/ptclib/httpform.h, include/ptclib/httpsvc.h,
+	  include/ptclib/inetmail.h, include/ptclib/inetprot.h,
+	  include/ptclib/ipacl.h, include/ptclib/memfile.h,
+	  include/ptclib/mime.h, include/ptclib/modem.h,
+	  include/ptclib/paec.h, include/ptclib/pasn.h,
+	  include/ptclib/pdns.h, include/ptclib/pils.h,
+	  include/ptclib/pldap.h, include/ptclib/pnat.h,
+	  include/ptclib/podbc.h, include/ptclib/psasl.h,
+	  include/ptclib/psnmp.h, include/ptclib/psoap.h,
+	  include/ptclib/psockbun.h, include/ptclib/pssl.h,
+	  include/ptclib/pstun.h, include/ptclib/ptts.h,
+	  include/ptclib/pvfiledev.h, include/ptclib/pvidfile.h,
+	  include/ptclib/pwavfile.h, include/ptclib/pwavfiledev.h,
+	  include/ptclib/pxml.h, include/ptclib/pxmlrpc.h,
+	  include/ptclib/pxmlrpcs.h, include/ptclib/qchannel.h,
+	  include/ptclib/random.h, include/ptclib/rfc1155.h,
+	  include/ptclib/shttpsvc.h, include/ptclib/snmp.h,
+	  include/ptclib/sockagg.h, include/ptclib/socks.h,
+	  include/ptclib/telnet.h, include/ptclib/url.h,
+	  include/ptclib/vsdl.h, include/ptclib/vxml.h,
+	  include/ptclib/xmpp.h, include/ptclib/xmpp_c2s.h,
+	  include/ptclib/xmpp_muc.h, include/ptclib/xmpp_roster.h,
+	  include/ptlib.h, include/ptlib/MacMainIf.h,
+	  include/ptlib/Nucleus++/ptlib/NucleusDebstrm.h,
+	  include/ptlib/Nucleus++/ptlib/channel.h,
+	  include/ptlib/Nucleus++/ptlib/conchan.h,
+	  include/ptlib/Nucleus++/ptlib/config.h,
+	  include/ptlib/Nucleus++/ptlib/contain.h,
+	  include/ptlib/Nucleus++/ptlib/dynalink.h,
+	  include/ptlib/Nucleus++/ptlib/ethsock.h,
+	  include/ptlib/Nucleus++/ptlib/file.h,
+	  include/ptlib/Nucleus++/ptlib/filepath.h,
+	  include/ptlib/Nucleus++/ptlib/icmpsock.h,
+	  include/ptlib/Nucleus++/ptlib/ipdsock.h,
+	  include/ptlib/Nucleus++/ptlib/ipsock.h,
+	  include/ptlib/Nucleus++/ptlib/mutex.h,
+	  include/ptlib/Nucleus++/ptlib/pdirect.h,
+	  include/ptlib/Nucleus++/ptlib/pipechan.h,
+	  include/ptlib/Nucleus++/ptlib/pmachdep.h,
+	  include/ptlib/Nucleus++/ptlib/pprocess.h,
+	  include/ptlib/Nucleus++/ptlib/ptime.h,
+	  include/ptlib/Nucleus++/ptlib/remconn.h,
+	  include/ptlib/Nucleus++/ptlib/semaphor.h,
+	  include/ptlib/Nucleus++/ptlib/serchan.h,
+	  include/ptlib/Nucleus++/ptlib/sfile.h,
+	  include/ptlib/Nucleus++/ptlib/socket.h,
+	  include/ptlib/Nucleus++/ptlib/sound.h,
+	  include/ptlib/Nucleus++/ptlib/svcproc.h,
+	  include/ptlib/Nucleus++/ptlib/syncpoint.h,
+	  include/ptlib/Nucleus++/ptlib/tcpsock.h,
+	  include/ptlib/Nucleus++/ptlib/textfile.h,
+	  include/ptlib/Nucleus++/ptlib/thread.h,
+	  include/ptlib/Nucleus++/ptlib/timeint.h,
+	  include/ptlib/Nucleus++/ptlib/timer.h,
+	  include/ptlib/Nucleus++/ptlib/udpsock.h, include/ptlib/args.h,
+	  include/ptlib/array.h, include/ptlib/channel.h,
+	  include/ptlib/conchan.h, include/ptlib/config.h,
+	  include/ptlib/contain.h, include/ptlib/critsec.h,
+	  include/ptlib/devplugin.h, include/ptlib/dict.h,
+	  include/ptlib/dynalink.h, include/ptlib/ethsock.h,
+	  include/ptlib/file.h, include/ptlib/filepath.h,
+	  include/ptlib/icmpsock.h, include/ptlib/indchan.h,
+	  include/ptlib/int64.h, include/ptlib/ipdsock.h,
+	  include/ptlib/ipsock.h, include/ptlib/ipxsock.h,
+	  include/ptlib/lists.h, include/ptlib/mail.h,
+	  include/ptlib/msos/ptlib/PODBC.h,
+	  include/ptlib/msos/ptlib/channel.h,
+	  include/ptlib/msos/ptlib/conchan.h,
+	  include/ptlib/msos/ptlib/config.h,
+	  include/ptlib/msos/ptlib/contain.h,
+	  include/ptlib/msos/ptlib/critsec.h,
+	  include/ptlib/msos/ptlib/debstrm.h,
+	  include/ptlib/msos/ptlib/dynalink.h,
+	  include/ptlib/msos/ptlib/epacket.h,
+	  include/ptlib/msos/ptlib/ethsock.h,
+	  include/ptlib/msos/ptlib/file.h,
+	  include/ptlib/msos/ptlib/filepath.h,
+	  include/ptlib/msos/ptlib/icmpsock.h,
+	  include/ptlib/msos/ptlib/ipdsock.h,
+	  include/ptlib/msos/ptlib/ipsock.h,
+	  include/ptlib/msos/ptlib/ipxsock.h,
+	  include/ptlib/msos/ptlib/mail.h,
+	  include/ptlib/msos/ptlib/mutex.h,
+	  include/ptlib/msos/ptlib/pdirect.h,
+	  include/ptlib/msos/ptlib/pipechan.h,
+	  include/ptlib/msos/ptlib/pprocess.h,
+	  include/ptlib/msos/ptlib/ptime.h,
+	  include/ptlib/msos/ptlib/remconn.h,
+	  include/ptlib/msos/ptlib/semaphor.h,
+	  include/ptlib/msos/ptlib/serchan.h,
+	  include/ptlib/msos/ptlib/sfile.h,
+	  include/ptlib/msos/ptlib/socket.h,
+	  include/ptlib/msos/ptlib/sound.h,
+	  include/ptlib/msos/ptlib/sound_directsound.h,
+	  include/ptlib/msos/ptlib/sound_win32.h,
+	  include/ptlib/msos/ptlib/spxsock.h,
+	  include/ptlib/msos/ptlib/svcproc.h,
+	  include/ptlib/msos/ptlib/syncpoint.h,
+	  include/ptlib/msos/ptlib/tcpsock.h,
+	  include/ptlib/msos/ptlib/textfile.h,
+	  include/ptlib/msos/ptlib/thread.h,
+	  include/ptlib/msos/ptlib/timeint.h,
+	  include/ptlib/msos/ptlib/timer.h,
+	  include/ptlib/msos/ptlib/udpsock.h,
+	  include/ptlib/msos/ptlib/video.h,
+	  include/ptlib/msos/ptlib/videoio.h,
+	  include/ptlib/msos/ptlib/vidinput_app.h,
+	  include/ptlib/msos/ptlib/vidinput_directx.h,
+	  include/ptlib/msos/unistd.h, include/ptlib/mutex.h,
+	  include/ptlib/notifier.h, include/ptlib/notifier_ext.h,
+	  include/ptlib/object.h, include/ptlib/pdirect.h,
+	  include/ptlib/pfactory.h, include/ptlib/pipechan.h,
+	  include/ptlib/plugin.h, include/ptlib/pluginmgr.h,
+	  include/ptlib/pprocess.h, include/ptlib/psharedptr.h,
+	  include/ptlib/pstring.h, include/ptlib/psync.h,
+	  include/ptlib/ptime.h, include/ptlib/qos.h,
+	  include/ptlib/remconn.h, include/ptlib/safecoll.h,
+	  include/ptlib/semaphor.h, include/ptlib/serchan.h,
+	  include/ptlib/sfile.h, include/ptlib/smartptr.h,
+	  include/ptlib/socket.h, include/ptlib/sockets.h,
+	  include/ptlib/sound.h, include/ptlib/spxsock.h,
+	  include/ptlib/svcproc.h, include/ptlib/syncpoint.h,
+	  include/ptlib/syncthrd.h, include/ptlib/tcpsock.h,
+	  include/ptlib/textfile.h, include/ptlib/thread.h,
+	  include/ptlib/timeint.h, include/ptlib/timer.h,
+	  include/ptlib/udpsock.h, include/ptlib/unix/ptlib/beaudio.h,
+	  include/ptlib/unix/ptlib/bevideo.h,
+	  include/ptlib/unix/ptlib/channel.h,
+	  include/ptlib/unix/ptlib/conchan.h,
+	  include/ptlib/unix/ptlib/config.h,
+	  include/ptlib/unix/ptlib/contain.h,
+	  include/ptlib/unix/ptlib/critsec.h,
+	  include/ptlib/unix/ptlib/dynalink.h,
+	  include/ptlib/unix/ptlib/ethsock.h,
+	  include/ptlib/unix/ptlib/file.h,
+	  include/ptlib/unix/ptlib/filepath.h,
+	  include/ptlib/unix/ptlib/icmpsock.h,
+	  include/ptlib/unix/ptlib/ipdsock.h,
+	  include/ptlib/unix/ptlib/ipsock.h,
+	  include/ptlib/unix/ptlib/maccoreaudio.h,
+	  include/ptlib/unix/ptlib/mutex.h,
+	  include/ptlib/unix/ptlib/pdirect.h,
+	  include/ptlib/unix/ptlib/pipechan.h,
+	  include/ptlib/unix/ptlib/pmachdep.h,
+	  include/ptlib/unix/ptlib/pprocess.h,
+	  include/ptlib/unix/ptlib/ptime.h,
+	  include/ptlib/unix/ptlib/remconn.h,
+	  include/ptlib/unix/ptlib/resampler.h,
+	  include/ptlib/unix/ptlib/semaphor.h,
+	  include/ptlib/unix/ptlib/serchan.h,
+	  include/ptlib/unix/ptlib/sfile.h,
+	  include/ptlib/unix/ptlib/shmvideo.h,
+	  include/ptlib/unix/ptlib/socket.h,
+	  include/ptlib/unix/ptlib/sound.h,
+	  include/ptlib/unix/ptlib/svcproc.h,
+	  include/ptlib/unix/ptlib/syncpoint.h,
+	  include/ptlib/unix/ptlib/tcpsock.h,
+	  include/ptlib/unix/ptlib/textfile.h,
+	  include/ptlib/unix/ptlib/thread.h,
+	  include/ptlib/unix/ptlib/timeint.h,
+	  include/ptlib/unix/ptlib/timer.h,
+	  include/ptlib/unix/ptlib/udpsock.h,
+	  include/ptlib/unix/ptlib/video.h,
+	  include/ptlib/unix/ptlib/videoio.h, include/ptlib/vconvert.h,
+	  include/ptlib/video.h, include/ptlib/videoio.h,
+	  include/ptlib/videoio1394dc.h, include/ptlib/wince/alloca.h,
+	  include/ptlib/wince/assert.h, include/ptlib/wince/ceostream.h,
+	  include/ptlib/wince/cevfw.h, include/ptlib/wince/config.h,
+	  include/ptlib/wince/crtdbg.h, include/ptlib/wince/ctype.h,
+	  include/ptlib/wince/direct.h, include/ptlib/wince/errno.h,
+	  include/ptlib/wince/fcntl.h, include/ptlib/wince/imagehlp.h,
+	  include/ptlib/wince/io.h, include/ptlib/wince/iomanip.h,
+	  include/ptlib/wince/ios.h, include/ptlib/wince/iostream.h,
+	  include/ptlib/wince/istream.h, include/ptlib/wince/lisp.h,
+	  include/ptlib/wince/mmsystemx.h, include/ptlib/wince/nspapi.h,
+	  include/ptlib/wince/nucpp.h, include/ptlib/wince/ostream.h,
+	  include/ptlib/wince/process.h, include/ptlib/wince/regexp.h,
+	  include/ptlib/wince/share.h, include/ptlib/wince/signal.h,
+	  include/ptlib/wince/snmp.h, include/ptlib/wince/stdlibx.h,
+	  include/ptlib/wince/streamb.h, include/ptlib/wince/strings.h,
+	  include/ptlib/wince/strstrea.h, include/ptlib/wince/strstream.h,
+	  include/ptlib/wince/svcguid.h, include/ptlib/wince/syntax.h,
+	  include/ptlib/wince/sys/file.h, include/ptlib/wince/sys/param.h,
+	  include/ptlib/wince/sys/socket.h, include/ptlib/wince/sys/stat.h,
+	  include/ptlib/wince/sys/types.h, include/ptlib/wince/time.h,
+	  include/ptlib/wince/wsipx.h, include/ptlib/wince/wsnwlink.h,
+	  include/ptlib/wm/cevfw.h, include/ptlib/wm/crtdbg.h,
+	  include/ptlib/wm/direct.h, include/ptlib/wm/errno.h,
+	  include/ptlib/wm/fcntl.h, include/ptlib/wm/io.h,
+	  include/ptlib/wm/mmsystemx.h, include/ptlib/wm/nspapi.h,
+	  include/ptlib/wm/process.h, include/ptlib/wm/share.h,
+	  include/ptlib/wm/signal.h, include/ptlib/wm/stdlibx.h,
+	  include/ptlib/wm/sys/stat.h, include/ptlib/wm/sys/types.h,
+	  include/ptlib/wm/time.h, include/ptlib/wm/wsipx.h,
+	  include/ptlib/wm/wsnwlink.h, plugins/sound_alsa/sound_alsa.cxx,
+	  plugins/sound_alsa/sound_alsa.h, plugins/sound_esd/sound_esd.cxx,
+	  plugins/sound_esd/sound_esd.h, plugins/sound_oss/sound_oss.cxx,
+	  plugins/sound_oss/sound_oss.h,
+	  plugins/sound_sunaudio/sound_sunaudio.cxx,
+	  plugins/sound_sunaudio/sound_sunaudio.h,
+	  plugins/vidinput_avc/vidinput_avc.cxx,
+	  plugins/vidinput_avc/vidinput_avc.h,
+	  plugins/vidinput_bsd/vidinput_bsd.cxx,
+	  plugins/vidinput_bsd/vidinput_bsd.h,
+	  plugins/vidinput_dc/video4dc1394.cxx,
+	  plugins/vidinput_dc/videoio1394dc.h,
+	  plugins/vidinput_v4l/vidinput_v4l.cxx,
+	  plugins/vidinput_v4l/vidinput_v4l.h,
+	  plugins/vidinput_v4l2/vidinput_names.cxx,
+	  plugins/vidinput_v4l2/vidinput_names.h,
+	  plugins/vidinput_v4l2/vidinput_v4l2.cxx,
+	  plugins/vidinput_v4l2/vidinput_v4l2.h, samples/ODBC/odbctest.cxx,
+	  samples/ThreadSafe/main.cxx, samples/ThreadSafe/main.h,
+	  samples/ThreadSafe/precompile.cxx, samples/address/local.cxx,
+	  samples/aggtest/main.cxx, samples/aggtest/main.h,
+	  samples/aggtest/precompile.cxx, samples/aggtest/precompile.h,
+	  samples/aggtest/version.h, samples/audio/audio.cxx,
+	  samples/audio/audio.h, samples/audio/version.h,
+	  samples/dnstest/main.cxx, samples/dnstest/main.h,
+	  samples/dnstest/precompile.cxx, samples/dtmftest/main.cxx,
+	  samples/dtmftest/main.h, samples/dtmftest/precompile.cxx,
+	  samples/dtmftest/precompile.h, samples/dtmftest/version.h,
+	  samples/emailtest/main.cxx, samples/emailtest/main.h,
+	  samples/emailtest/precompile.cxx, samples/emailtest/precompile.h,
+	  samples/emailtest/version.h, samples/factory/abstract.h,
+	  samples/factory/concrete.cxx, samples/factory/main.cxx,
+	  samples/factory/precompile.cxx, samples/factory/solid.cxx,
+	  samples/find_ip/find_ip.cxx, samples/find_ip/precompile.cxx,
+	  samples/hello_world/hello.cxx, samples/ipv6test/main.cxx,
+	  samples/ipv6test/main.h, samples/ipv6test/precompile.cxx,
+	  samples/ipv6test/precompile.h, samples/ipv6test/version.h,
+	  samples/ldaptest/main.cxx, samples/ldaptest/main.h,
+	  samples/ldaptest/precompile.cxx, samples/ldaptest/precompile.h,
+	  samples/ldaptest/version.h, samples/md5/encrypt.cxx,
+	  samples/netif/netif.cxx, samples/ptimer/main.cxx,
+	  samples/ptimer/main.h, samples/ptimer/precompile.cxx,
+	  samples/ptimer/precompile.h, samples/ptimer/version.h,
+	  samples/pxml/main.cxx, samples/pxml/main.h,
+	  samples/pxml/precompile.cxx, samples/queue/main.cxx,
+	  samples/queue/main.h, samples/queue/precompile.cxx,
+	  samples/queue/precompile.h, samples/queue/version.h,
+	  samples/safetest/main.cxx, samples/safetest/main.h,
+	  samples/safetest/overview.cxx, samples/safetest/precompile.cxx,
+	  samples/safetest/precompile.h, samples/safetest/version.h,
+	  samples/serial/serial.cxx, samples/snmptest/snmptest.cxx,
+	  samples/snmptest/snmptest.h, samples/sockbundle/sockbundle.cxx,
+	  samples/sortedlist/SortedListTest.cxx,
+	  samples/sortedlist/SortedListTest.h,
+	  samples/sortedlist/precompile.cxx, samples/strtest/main.cxx,
+	  samples/stunclient/main.cxx, samples/stunclient/main.h,
+	  samples/stunclient/precompile.cxx, samples/stunclient/version.h,
+	  samples/thread/thread.cxx, samples/threadex/main.cxx,
+	  samples/threadex/main.h, samples/threadex/precompile.cxx,
+	  samples/threadex/precompile.h, samples/threadex/version.h,
+	  samples/timing/precompile.cxx, samples/timing/timing.cxx,
+	  samples/vidtest/main.cxx, samples/vidtest/main.h,
+	  samples/vidtest/precompile.cxx, samples/vidtest/precompile.h,
+	  samples/vidtest/version.h, samples/vxmltest/main.cxx,
+	  samples/vxmltest/main.h, samples/vxmltest/precompile.cxx,
+	  samples/wavfile/main.cxx, samples/xmlrpc/main.cxx,
+	  samples/xmlrpc/main.h, samples/xmlrpc/precompile.cxx,
+	  samples/xmlrpcsrvr/custom.cxx, samples/xmlrpcsrvr/custom.h,
+	  samples/xmlrpcsrvr/main.cxx, samples/xmlrpcsrvr/main.h,
+	  samples/xmlrpcsrvr/precompile.cxx, samples/xmppconsole/main.cxx,
+	  samples/xmppconsole/main.h, samples/xmppconsole/precompile.cxx,
+	  samples/xmppconsole/version.h,
+	  samples/xmpptest/ConnectDialog.cxx,
+	  samples/xmpptest/ConnectDialog.h, samples/xmpptest/MainFrame.cxx,
+	  samples/xmpptest/MainFrame.h, samples/xmpptest/main.cxx,
+	  samples/xmpptest/main.h, samples/xmpptest/precompile.cxx,
+	  src/ptclib/asnber.cxx, src/ptclib/asner.cxx,
+	  src/ptclib/asnper.cxx, src/ptclib/asnxer.cxx,
+	  src/ptclib/cypher.cxx, src/ptclib/delaychan.cxx,
+	  src/ptclib/dtmf.cxx, src/ptclib/enum.cxx, src/ptclib/ftp.cxx,
+	  src/ptclib/ftpclnt.cxx, src/ptclib/ftpsrvr.cxx,
+	  src/ptclib/guid.cxx, src/ptclib/html.cxx, src/ptclib/http.cxx,
+	  src/ptclib/httpclnt.cxx, src/ptclib/httpform.cxx,
+	  src/ptclib/httpsrvr.cxx, src/ptclib/httpsvc.cxx,
+	  src/ptclib/inetmail.cxx, src/ptclib/inetprot.cxx,
+	  src/ptclib/ipacl.cxx, src/ptclib/memfile.cxx,
+	  src/ptclib/modem.cxx, src/ptclib/pasn.cxx, src/ptclib/pdns.cxx,
+	  src/ptclib/pils.cxx, src/ptclib/pldap.cxx, src/ptclib/pnat.cxx,
+	  src/ptclib/podbc.cxx, src/ptclib/psasl.cxx, src/ptclib/psnmp.cxx,
+	  src/ptclib/psoap.cxx, src/ptclib/psockbun.cxx,
+	  src/ptclib/pssl.cxx, src/ptclib/pstun.cxx, src/ptclib/ptts.cxx,
+	  src/ptclib/pvfiledev.cxx, src/ptclib/pvidfile.cxx,
+	  src/ptclib/pwavfile.cxx, src/ptclib/pwavfiledev.cxx,
+	  src/ptclib/pxml.cxx, src/ptclib/pxmlrpc.cxx,
+	  src/ptclib/pxmlrpcs.cxx, src/ptclib/qchannel.cxx,
+	  src/ptclib/random.cxx, src/ptclib/rfc1155.cxx,
+	  src/ptclib/shttpsvc.cxx, src/ptclib/snmp.cxx,
+	  src/ptclib/snmpclnt.cxx, src/ptclib/snmpserv.cxx,
+	  src/ptclib/sockagg.cxx, src/ptclib/socks.cxx,
+	  src/ptclib/speex_echo/arch.h, src/ptclib/speex_echo/config.h,
+	  src/ptclib/speex_echo/misc.h, src/ptclib/speex_echo/paec.cxx,
+	  src/ptclib/speex_echo/smallft.h,
+	  src/ptclib/speex_echo/speex_echo.h,
+	  src/ptclib/speex_echo/speex_preprocess.h,
+	  src/ptclib/speex_echo/speex_types.h, src/ptclib/telnet.cxx,
+	  src/ptclib/udp.h, src/ptclib/vsdl.cxx, src/ptclib/vxml.cxx,
+	  src/ptclib/xmpp.cxx, src/ptclib/xmpp_c2s.cxx,
+	  src/ptclib/xmpp_muc.cxx, src/ptclib/xmpp_roster.cxx,
+	  src/ptlib/Nucleus++/NucleusChannel.cxx,
+	  src/ptlib/Nucleus++/NucleusConChan.cxx,
+	  src/ptlib/Nucleus++/NucleusConfig.cxx,
+	  src/ptlib/Nucleus++/NucleusMutex.cxx,
+	  src/ptlib/Nucleus++/NucleusPDirectory.cxx,
+	  src/ptlib/Nucleus++/NucleusPFile.cxx,
+	  src/ptlib/Nucleus++/NucleusPFilePath.cxx,
+	  src/ptlib/Nucleus++/NucleusPTime.cxx,
+	  src/ptlib/Nucleus++/NucleusProcess.cxx,
+	  src/ptlib/Nucleus++/NucleusPtlib.cxx,
+	  src/ptlib/Nucleus++/NucleusSemaphore.cxx,
+	  src/ptlib/Nucleus++/NucleusSoundBite.cxx,
+	  src/ptlib/Nucleus++/NucleusSyncPoint.cxx,
+	  src/ptlib/Nucleus++/NucleusThread.cxx,
+	  src/ptlib/Nucleus++/NucleusTimer.cxx,
+	  src/ptlib/Nucleus++/assert.cxx, src/ptlib/Nucleus++/socket.cxx,
+	  src/ptlib/common/collect.cxx, src/ptlib/common/contain.cxx,
+	  src/ptlib/common/jidctflt.cxx, src/ptlib/common/notifier_ext.cxx,
+	  src/ptlib/common/object.cxx, src/ptlib/common/osutils.cxx,
+	  src/ptlib/common/pchannel.cxx, src/ptlib/common/pconfig.cxx,
+	  src/ptlib/common/pethsock.cxx,
+	  src/ptlib/common/pglobalstatic.cxx,
+	  src/ptlib/common/pipechan.cxx, src/ptlib/common/pluginmgr.cxx,
+	  src/ptlib/common/ptime.cxx, src/ptlib/common/pvidchan.cxx,
+	  src/ptlib/common/qos.cxx, src/ptlib/common/regex/cclass.h,
+	  src/ptlib/common/regex/cname.h, src/ptlib/common/regex/regex.h,
+	  src/ptlib/common/regex/regex2.h, src/ptlib/common/regex/utils.h,
+	  src/ptlib/common/safecoll.cxx, src/ptlib/common/serial.cxx,
+	  src/ptlib/common/sfile.cxx, src/ptlib/common/sockets.cxx,
+	  src/ptlib/common/sound.cxx, src/ptlib/common/tinyjpeg-internal.h,
+	  src/ptlib/common/tinyjpeg.cxx, src/ptlib/common/tinyjpeg.h,
+	  src/ptlib/common/vconvert.cxx, src/ptlib/common/vfakeio.cxx,
+	  src/ptlib/common/videoio.cxx, src/ptlib/msos/assert.cxx,
+	  src/ptlib/msos/dllmain.cxx, src/ptlib/msos/dossock.cxx,
+	  src/ptlib/msos/doswin.cxx, src/ptlib/msos/epacket.h,
+	  src/ptlib/msos/ethsock.cxx, src/ptlib/msos/icmp.cxx,
+	  src/ptlib/msos/mail.cxx, src/ptlib/msos/msdos.cxx,
+	  src/ptlib/msos/mswin.cxx, src/ptlib/msos/pipe.cxx,
+	  src/ptlib/msos/ptlib.cxx, src/ptlib/msos/remconn.cxx,
+	  src/ptlib/msos/sound_directsound.cxx,
+	  src/ptlib/msos/sound_win32.cxx, src/ptlib/msos/svcproc.cxx,
+	  src/ptlib/msos/vfw.cxx, src/ptlib/msos/vidinput_app.cxx,
+	  src/ptlib/msos/vidinput_directx.cxx, src/ptlib/msos/win32.cxx,
+	  src/ptlib/msos/wincfg.cxx, src/ptlib/msos/winserial.cxx,
+	  src/ptlib/msos/winsock.cxx, src/ptlib/unix/assert.cxx,
+	  src/ptlib/unix/beaudio.cxx,
+	  src/ptlib/unix/beaudio/AudioFileWriter.h,
+	  src/ptlib/unix/beaudio/BlockFIFO.cxx,
+	  src/ptlib/unix/beaudio/BlockFIFO.h,
+	  src/ptlib/unix/beaudio/MediaRecorder.cxx,
+	  src/ptlib/unix/beaudio/MediaRecorder.h,
+	  src/ptlib/unix/beaudio/MediaRecorderNode.cxx,
+	  src/ptlib/unix/beaudio/MediaRecorderNode.h,
+	  src/ptlib/unix/beaudio/NodeRelease.h,
+	  src/ptlib/unix/beaudio/Resampler.h, src/ptlib/unix/channel.cxx,
+	  src/ptlib/unix/config.cxx, src/ptlib/unix/dummyaudio.cxx,
+	  src/ptlib/unix/dummyvideo.cxx, src/ptlib/unix/maccoreaudio.cxx,
+	  src/ptlib/unix/macosaudio.cxx,
+	  src/ptlib/unix/macosaudio/MacMain.cxx,
+	  src/ptlib/unix/macosaudio/MacMain.h,
+	  src/ptlib/unix/macosaudio/SequenceGrabber.cxx,
+	  src/ptlib/unix/macosaudio/SequenceGrabber.h,
+	  src/ptlib/unix/macosaudio/SoundMangler.cxx,
+	  src/ptlib/unix/macosaudio/SoundMangler.h,
+	  src/ptlib/unix/macosaudio/ringbuffer.cxx,
+	  src/ptlib/unix/macosaudio/ringbuffer.h,
+	  src/ptlib/unix/ossaix.cxx, src/ptlib/unix/osutil.cxx,
+	  src/ptlib/unix/pipechan.cxx, src/ptlib/unix/qsa.cxx,
+	  src/ptlib/unix/remconn.cxx, src/ptlib/unix/serchan.cxx,
+	  src/ptlib/unix/shmvideo.cxx, src/ptlib/unix/socket.cxx,
+	  src/ptlib/unix/sunaudio.cxx, src/ptlib/unix/svcproc.cxx,
+	  src/ptlib/unix/switch.cxx, src/ptlib/unix/tlib.cxx,
+	  src/ptlib/unix/tlibbe.cxx, src/ptlib/unix/tlibmpthrd.cxx,
+	  src/ptlib/unix/tlibthrd.cxx, src/ptlib/unix/tlibvx.cxx,
+	  src/ptlib/unix/udll.cxx, src/ptlib/unix/uerror.h,
+	  src/ptlib/unix/uicmp.cxx, src/ptlib/unix/video4beos.cxx,
+	  src/ptlib/unix/vxaudio.cxx,
+	  src/ptlib/wince/ConsoleCE/ceostream.cpp,
+	  src/ptlib/wince/ConsoleCE/cevfw.cpp,
+	  src/ptlib/wince/ConsoleCE/getdate_tab.cpp,
+	  src/ptlib/wince/ConsoleCE/ios.cpp,
+	  src/ptlib/wince/ConsoleCE/iostream.cpp,
+	  src/ptlib/wince/ConsoleCE/istream.cpp,
+	  src/ptlib/wince/ConsoleCE/mmsystemx.cxx,
+	  src/ptlib/wince/ConsoleCE/ostream.cpp,
+	  src/ptlib/wince/ConsoleCE/snmpdummy.cpp,
+	  src/ptlib/wince/ConsoleCE/stdlibx.cpp,
+	  src/ptlib/wince/ConsoleCE/streamb.cpp,
+	  src/ptlib/wince/ConsoleCE/time.cpp, src/ptlib/wm/cevfw.cpp,
+	  src/ptlib/wm/mmsystemx.cxx, src/ptlib/wm/stdlibx.cpp,
+	  src/ptlib/wm/time.cpp, tools/MergeSym/MergeSym.cxx,
+	  tools/StringTest/main.cxx, tools/StringTest/main.h,
+	  tools/StringTest/version.h, tools/Uninstall/resource.h,
+	  tools/asnparser/main.cxx, tools/asnparser/main.h,
+	  tools/asnparser/precompile.cpp, tools/msvc6chk/msvc6chk.cpp,
+	  tools/plugintest/main.cxx, tools/plugintest/main.h, version.h:
+	  Assured properties for line ending and keywords are correct for
+	  all source files.
+
+2008-06-04 11:35  rjongbloed
+
+	* [r20386] configure, configure.ac:
+	  Fixed configure so --enable-tracing actually enables it and
+	  doesn't
+	  disable it, which is a tad confusing.
+
+2008-06-05 06:10  rjongbloed
+
+	* [r20405] include/ptlib/ipsock.h, src/ptclib/pstun.cxx,
+	  src/ptlib/common/sockets.cxx:
+	  Due to some particularly bizarre behaviour by Windows Mobile, the
+	  gethostbyname() call was changed to use getaddrinfo().
+	  Documentation says gethostbyname() is deprecated and should not
+	  be used. It appears so as get phantom NO_DATA errors from it when
+	  the DNS name well and truly exists.
+	  
+	  Also improved some error logging.
+
+2008-06-05 08:46  rjongbloed
+
+	* [r20409] include/ptclib/podbc.h, src/ptclib/podbc.cxx:
+	  Attempted fix for bug [ 1966564 ] ptlib trunk fails to compile on
+	  64bit debian architectures from Schoinobates Volans
+
+2008-06-06 02:09  rjongbloed
+
+	* [r20414] src/ptlib/common/contain.cxx:
+	  Fixed subtle bug with reading strings from streams. A call to
+	  get() that returns EOF also sets the "bad" bit in the stream
+	  when, at least for strings, the read was not actually bad.
+	  Changed so now only returns the eof bit which is what you would
+	  expect.
+
+2008-06-07 05:15  rjongbloed
+
+	* [r20418] include/ptlib/msos/ptlib/thread.h,
+	  src/ptlib/msos/win32.cxx:
+	  Fixed for PThread::Restart under Windows, thanks Stefano Picerno.
+
+2008-06-08 00:56  ykiryanov
+
+	* [r20420] src/ptlib/msos/Console_2005.vcproj,
+	  src/ptlib/msos/svcproc.cxx, src/ptlib/wm/stdlibx.cpp:
+	  Enabled HTTP service code for Windows Mobile + made wchar_t type
+	  not treated as built-in type.
+
+2008-06-10 00:23  rjongbloed
+
+	* [r20422] src/ptlib/msos/sound_win32.cxx:
+	  Fixed correct calculation of WAV file block alignment for stereo
+	  files, thanks Giorgio Alfarano.
+
+2008-06-10 04:09  csoutheren
+
+	* [r20423] src/ptclib/podbc.cxx:
+	  Fix warning on gcc 4.3.1
+
+2008-06-10 07:01  rjongbloed
+
+	* [r20424] src/ptlib/common/ptime.cxx:
+	  Fixed missing leading zeros in decimal part when printing
+	  PTimeInterval in SecondsOnly mode.
+
+2008-06-10 11:59  rjongbloed
+
+	* [r20428] include/ptlib/channel.h, include/ptlib/pstring.h,
+	  src/ptlib/common/contain.cxx, src/ptlib/common/pchannel.cxx:
+	  Fixed uCLibc++ compatibility with its definition of
+	  std::streambuf.
+
+2008-06-13 04:12  rjongbloed
+
+	* [r20438] src/ptlib/msos/PTLib_2005.vcproj:
+	  Fixed deployment directory for MobileOPAL
+
+2008-06-18 22:17  shorne
+
+	* [r20466] include/ptbuildopts.h.in:
+	  Fix for WM if _CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA already
+	  defined
+
+2008-06-18 22:30  shorne
+
+	* [r20467] include/ptclib/podbc.h, src/ptclib/podbc.cxx:
+	  ODBC is not supported on WinCE
+
+2008-06-19 02:40  rjongbloed
+
+	* [r20471] include/ptlib/msos/ptlib/sound_directsound.h,
+	  src/ptlib/common/pluginmgr.cxx,
+	  src/ptlib/msos/sound_directsound.cxx,
+	  src/ptlib/msos/sound_win32.cxx:
+	  Fixed issue with WindowMultimedia and DirectSound device names
+	  not being identical, which as they are the same device they
+	  should be. Making them identical means they then get the driver
+	  type prefix making it easier (possible) for a user to distinguish
+	  between them.
+	  
+	  Also cleaned up the enumeration code in DirectSound.
+
+2008-06-20 03:34  csoutheren
+
+	* [r20475] configure, configure.ac:
+	  Ensure configure uses standard file extension for trial compiles
+
+2008-06-24 01:00  rjongbloed
+
+	* [r20485] configure, configure.ac:
+	  Small change to improve the linux cross compile compatibility.
+
+2008-06-24 04:32  csoutheren
+
+	* [r20486] src/ptlib/msos/sound_win32.cxx:
+	  Remove race conditions when closing down sound channel
+
+2008-06-24 23:36  rjongbloed
+
+	* [r20492] include/ptlib/object.h, include/ptlib/thread.h:
+	  Applied documentation patches:
+	  [ 1991717 ] Fix doxygenation for object.h
+	  [ 1992151 ] Fix doxygenation for threads.h
+	  Thanks Stefano Sabatini
+
+2008-06-26 01:01  shorne
+
+	* [r20497] include/ptlib/wm/cegps.h, src/ptlib/wm/cegps.cxx:
+	  Added WM GPS support using the Microsoft intermediate driver
+
+2008-06-26 01:05  shorne
+
+	* [r20498] include/ptlib/videoio.h, src/ptlib/common/videoio.cxx:
+	  Added Video PTZ (Pan/Tilt/Zoom) support (including Capability
+	  Querying)
+
+2008-06-26 12:52  shorne
+
+	* [r20503] include/ptclib/pldap.h, src/ptclib/pldap.cxx:
+	  Changed PList to PArray to fix break in H.350 code in h323plus
+
+2008-06-28 03:19  shorne
+
+	* [r20510] src/ptlib/unix/config.cxx:
+	  Applied Patch 1699798 (OpenH323) zvision to fix issue with
+	  PConfig Dictionary not removing a config prior to applying new
+	  config resulting in the old config still being used.
+
+2008-07-03 09:08  rjongbloed
+
+	* [r20531] src/ptlib/msos/sound_win32.cxx:
+	  Put back the actual waveOutClose()/waveInClose() of the windows
+	  multimedia sound device handle. Got lost in previous check in
+	  somehow.
+
+2008-07-04 05:21  rjongbloed
+
+	* [r20535] samples/vidtest/main.cxx:
+	  Fixed PTLib video test program compile.
+
+2008-07-10 05:57  rjongbloed
+
+	* [r20560] src/ptlib/common/osutils.cxx,
+	  src/ptlib/common/pchannel.cxx:
+	  Fixed some Windows Mobile compatibility issues with logging, no
+	  "text" mode on files, not properly cleaned up and the big one
+	  where the standard C open() function can return a negative number
+	  as a valid file handle. Have to explicitly look for os_handle ==
+	  -1 rather than os_handle < 0 for error.
+
+2008-07-11 09:19  rjongbloed
+
+	* [r20565] include/ptlib/sound.h,
+	  src/ptlib/msos/sound_directsound.cxx,
+	  src/ptlib/msos/sound_win32.cxx:
+	  Clarified the operation of the PSoundChannel::SetVolume function
+	  and made sure WinMM and DirectSound implementations are the same.
+
+2008-07-14 16:22  dsandras
+
+	* [r20574] src/ptlib/common/sockets.cxx:
+	  More build fixes.
+
+2008-07-22 07:02  shorne
+
+	* [r20602] src/ptlib/msos/sound_win32.cxx:
+	  Removed compile warning on VS2005 compile
+
+2008-07-22 11:02  dsandras
+
+	* [r20607] ptlib.pc.in:
+	  Fixed pkg-config support.
+
+2008-07-24 07:26  rjongbloed
+
+	* [r20613] src/ptlib/msos/sound_win32.cxx:
+	  Reversed revision 20602, and fixed MSVC compiler warning,
+	  correctly.
+
+2008-07-25 08:35  rjongbloed
+
+	* [r20618] src/ptlib/common/pluginmgr.cxx:
+	  Include current directory in Windows Mobile plug in directory
+	  search.
+
+2008-07-25 11:31  rjongbloed
+
+	* [r20621] configure.ac:
+	  Improved search for Windows SDK
+
+2008-07-25 11:37  rjongbloed
+
+	* [r20622] src/ptlib/msos/vidinput_directx.cxx:
+	  Fixed formatting and removed some redundant code for converting
+	  UNICODE to C strings.
+
+2008-07-25 23:56  rjongbloed
+
+	* [r20624] include/ptlib/array.h, include/ptlib/ipdsock.h,
+	  include/ptlib/socket.h, include/ptlib/udpsock.h:
+	  Applied patches:
+	  [ 2019403 ] Fix doxygenation for array.h
+	  [ 2020391 ] Add a missing include in udpsock.h
+	  [ 2020453 ] Add a missing include in ipdsock.h
+	  [ 2020477 ] Fix doxugenation for socket.h
+	  
+	  Thanks Stefano Sabatini
+
+2008-07-29 18:35  dsandras
+
+	* [r20635] plugins/configure, plugins/configure.in,
+	  plugins/vidinput_v4l2/Makefile,
+	  plugins/vidinput_v4l2/Makefile.in,
+	  plugins/vidinput_v4l2/vidinput_v4l2.cxx:
+	  Added patch from Hans de Goede for libv4l support. (Ekiga
+	  bug report #545108).
+	  Added autoconf support with autodetection and use of libv4l
+	  when available.
+
+2008-08-08 04:00  rjongbloed
+
+	* [r20644] src/ptlib/common/sound.cxx:
+	  Added ability to specify driver type when opening sound channel.
+
+2008-08-10 19:49  dsandras
+
+	* [r20649] plugins/vidinput_dc/video4dc1394.cxx:
+	  Fixed comments thanks to Eugen Dedu <eugen dedu pu-pm univ-fcomte
+	  fr>.
+
+2008-08-11 12:24  rjongbloed
+
+	* [r20655] include/ptlib/critsec.h:
+	  Added pre/post increment versions of operator for PAtomicInteger.
+
+2008-08-13 00:46  rjongbloed
+
+	* [r20658] src/ptlib/msos/sound_directsound.cxx:
+	  Fixed direct sound GetVolume function returning false if it does
+	  not actually get the volume.
+
+2008-08-13 20:05  dsandras
+
+	* [r20665] src/ptlib/common/jidctflt.cxx,
+	  src/ptlib/common/tinyjpeg-internal.h:
+	  LPIA fixes thanks to Eugen Dedu.
+
+2008-08-14 07:33  dsandras
+
+	* [r20666] src/ptlib/common/jidctflt.cxx:
+	  Fixed AMD64 build thanks to Yannick Defais.
+
+2008-08-15 05:26  rjongbloed
+
+	* [r20667] ., configure.ac, configure.exe,
+	  tools/configure/configure.cpp:
+	  Added support for converting AC_CONFIG_FILES() under Windows.
+
+2008-08-17 11:55  dsandras
+
+	* [r20673] configure, configure.ac, src/ptlib/msos/Makefile,
+	  src/ptlib/msos/vfw.cxx:
+	  Small build fixes thanks to Mr M.
+
+2008-08-18 01:05  rjongbloed
+
+	* [r20674] version.h:
+	  Update release version number to 2.1.3
+
+2008-08-18 01:05  rjongbloed
+
+	* [r20675] version.h:
+	  Update version number for beta v2.1.4
+
+2008-08-18 01:09  rjongbloed
+
+	* [r20676] version.h:
+	  Revert accidental version number change
+
+2008-08-18 01:14  rjongbloed
+
+	* [r20677] version.h:
+	  Update release version number to 2.3.0
+

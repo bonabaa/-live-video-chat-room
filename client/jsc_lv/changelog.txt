@@ -1,0 +1,12 @@
+  ///UDT::setsockopt(fhandle, 0, UDT_SNDTIMEO,  &n ,4);
+  ///UDT::setsockopt(fhandle, 0, UDT_RCVTIMEO,  &n ,4);
+打开会视频延迟 
+
+升级到2010，必须用time_t32
+core 
+UDT
+chanel.cpp
+ 
+if (yyRes==-1/*&& size==0*/){
+}
+去掉 in call session

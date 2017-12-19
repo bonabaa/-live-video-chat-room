@@ -1,0 +1,52 @@
+mcc_session table
+send_invitation 在线人数
+company_id room所属group id
+max_video_in_conf 最大room people
+password 房间头像
+user_info table
+ 
+<?xml version='1.0'?><r image="gift.png"  L_1="1" L_2="1" L_3="1" admin="1"></r>
+usercomment 用户头像(l_1="1" l_2="1" l_3="1")
+
+main panel 
+estable后，get 房间名，room memberlist member info
+当大家进入房间后默认不发送video audio，要靠点排麦来决定谁先拥有表演者位置 
+@@@
+@@@main server存放 
+	房间列表，
+	以及每个房间列表中的人员列表, 列表用json 取下来 ok
+	每个房房间正在表演的人员列表 
+	房间内管理员
+	人员权限值放到main server上 
+	阻止私聊可以用黑名单的方式	
+
+@@@logic 排麦放麦
+当用户点击排麦，---> 发送消息到main server（main server add it to 排排队列，当表演队列不足3人时，自动加入表演队列(notify show)）
+当用户点击放麦，---> 发送消息到main server(main server remove it from 排麦队列和表演队列，这个时候检查表演队列是否有3个人，
+如果表演队列不足3人就去get一个最近的排麦人员 notify show
+用户offline的时候 ，相当于处理用户点击放麦logic
+
+@@@进入和退出房间逻辑 OK
+ 当用户连接了 room， send who came to main server , it  write it to db, and notify all member who come int，
+@@@when client establish , it will get all member list and member info from the php call	，OK
+ 当用户disconnection  end who came to main server , it will remove it to db,and notify all member who left ,在useoffline的那里需要删除 自己在room中的状态
+	用户掉线的情况，需要清除排序和online的人 （这个可以在排序的时候检查）
+1 如果是表演者连接，更新当前表演者情况，并移除麦序
+@@@MCU 处理逻辑
+
+当用户断开--〉如果是video 用户断开，进入到排麦---〉发送用户断开消息到mainserver ，main server notify next people in micro list to send video and audio to mcu. 
+if people conected, main server remove the 排麦队列中的此人。
+@@@关于如何发送start send video的逻辑， 点排序的时候 和 userdisconnected的时候，当video用户连接上来后，就移除排序队列和添加到online show队列
+
+未完成：排序的人物列表没有list下来
+
+
+////
+房间
+左下角是房间管理按钮，普通用户进来时灰色的
+进入方将后 先提示进入者的状态，然后提示房间公告，
+房间管理
+	房间内容设置
+	成员设置
+	公告设置
+	室主管理

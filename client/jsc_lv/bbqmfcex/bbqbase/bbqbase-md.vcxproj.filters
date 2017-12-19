@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{85ace49e-5764-44da-8e07-f7d3221fa1a3}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\bzip2">
+      <UniqueIdentifier>{d44c3742-0ce8-4bd7-a817-d2df88e1fd67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{95c12307-e4f5-45f0-b61c-d11d878a6626}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Document">
+      <UniqueIdentifier>{a8f52765-a7c3-441f-ba10-2de6cfae4207}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bbqauthgw.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqclient.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqdatabase.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\czlibexe\bbqhttpsvr_main.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqidmsg.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqproxy.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqsvruser.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqswitch.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbqtree.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="byteblock.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bytepack.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cert_rsa_aes.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ip2country.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="msgconnection.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="msgterminal.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thread.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="yasocket.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\blocksort.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\bzlib.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\compress.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\crctable.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\decompress.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\huffman.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+    <ClCompile Include="bzip2\randtable.c">
+      <Filter>Source Files\bzip2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bbqauthgw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqbase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqclient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqdatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\czlibexe\bbqhttpsvr_main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqidfilerecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqidmsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqidrecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqmcc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqproxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqsvr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqsvruser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqswitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbqtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbquserinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="byteblock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bytepack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bzip2\bzlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bzip2\bzlib_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cert_rsa_aes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ip2country.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="msgconnection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="msgterminal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="os_related.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rwlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfidmsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="useridlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yasocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ChangeLog.txt">
+      <Filter>Document</Filter>
+    </None>
+    <None Include="TODO.txt">
+      <Filter>Document</Filter>
+    </None>
+    <None Include="Makefile" />
+  </ItemGroup>
+</Project>

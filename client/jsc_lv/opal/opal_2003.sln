@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OPAL Static", "src\win32\opal_lib.vcproj", "{0C3AF508-06FF-47EF-BE5A-F72F41759246}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PTLib Static", "..\ptlib\src\ptlib\msos\Console.vcproj", "{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		No Trace = No Trace
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{0C3AF508-06FF-47EF-BE5A-F72F41759246}.Debug.ActiveCfg = Debug|Win32
+		{0C3AF508-06FF-47EF-BE5A-F72F41759246}.Debug.Build.0 = Debug|Win32
+		{0C3AF508-06FF-47EF-BE5A-F72F41759246}.No Trace.ActiveCfg = No Trace|Win32
+		{0C3AF508-06FF-47EF-BE5A-F72F41759246}.No Trace.Build.0 = No Trace|Win32
+		{0C3AF508-06FF-47EF-BE5A-F72F41759246}.Release.ActiveCfg = Release|Win32
+		{0C3AF508-06FF-47EF-BE5A-F72F41759246}.Release.Build.0 = Release|Win32
+		{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}.Debug.ActiveCfg = Debug|Win32
+		{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}.Debug.Build.0 = Debug|Win32
+		{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}.No Trace.ActiveCfg = Release|Win32
+		{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}.No Trace.Build.0 = Release|Win32
+		{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}.Release.ActiveCfg = Release|Win32
+		{E61B4DFB-0CAB-46DD-BB02-1AFFD61DB7F5}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

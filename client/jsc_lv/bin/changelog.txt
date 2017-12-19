@@ -1,0 +1,17 @@
+2011-12-21
+UI::Login,支持自动登录，如果选择记住密码，密码框显示为8位
+2011-12-22
+跟换login界面
+价格热键 ctrl+alt+X 显示主界面
+修改主menubug
+2011-12-27
+welcome界面更新
+垂直排列remote video 改为水平排列
+2011-1-11
+login界面改版
+解决createmeeting bug
+加入新contact图标
+解决 订阅问题
+2011-4-24
+修改proxy问题，当datachan是relay后面的video默认也是relay
+增加YDT::break函数

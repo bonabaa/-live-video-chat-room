@@ -1,0 +1,188 @@
+
+#include "bbqbase.h"
+
+void PLog::Output( int level, const char * msg ) 
+{
+	time_t t = time(NULL);
+	tm * tt = localtime( & t );
+	fprintf( stderr, "%s: %d-%02d-%02d %d:%02d:%02d, %s\r\n", 
+		ToString(level),
+		1900 + tt->tm_year, 1 + tt->tm_mon, tt->tm_mday,
+		tt->tm_hour, tt->tm_min, tt->tm_sec,
+		msg	);
+}
+
+// ---------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <sys/types.h>
+
+bool PFileLog::TouchFile( const char * path )
+{
+	int ret = utime( path, NULL );
+	if( ret == 0 ) {
+		return true;
+	} else {
+		switch( errno ) {
+			case EACCES: break;
+			case EINVAL: break;
+			case EMFILE: break;
+			case ENOENT: 
+				{
+					FILE * fp = fopen( path, "a" ); 
+					if( fp ) {
+						fclose( fp );
+						return true;
+					}
+				} 
+				break;
+		}
+	}
+
+	return false;
+}
+
+
+
+void PFileLog::Close( void ) 
+{
+	LockIt safe( m_mutexLog );
+
+	if( fpLog ) { 
+		Output( Info, "-------------- Log End -----------------" );
+		fclose( fpLog ); 
+		fpLog = NULL; 
+	}
+}
+
+void PFileLog::Backup( void ) 
+{
+	LockIt safe( m_mutexLog );
+
+	if( fpLog ) {
+		// never output here, cause it will call backup again in a dead loop
+		fclose( fpLog );
+
+		PString strBak = m_strPath + ".bak";
+
+		// archive the old bak file
+		time_t t = time(NULL);
+		struct tm *d = localtime(&t);
+		PString strArchiveBak = m_strPath + PString( PString::Printf, ".%04d%02d%2d_%02d%02d%02d.bak", 
+			d->tm_year +1900, d->tm_mon +1, d->tm_mday,
+			d->tm_hour, d->tm_min, d->tm_sec );
+		rename( strBak, strArchiveBak );
+
+		//unlink( strBak );
+		rename( m_strPath, strBak );
+
+		unlink( m_strPath ); // unlink if rename fail, we must make sure the file is a new file
+
+		fpLog = fopen( m_strPath, "a+" );
+	}
+}
+
+PFileLog::PFileLog() 
+{ 
+	fpLog = NULL; 
+
+	nMaxSize = SIZE_MB_1; /* 1 MB */ 
+
+	nMaxBakFiles = 1;
+}
+
+PFileLog::~PFileLog() 
+{ 
+	Close(); 
+}
+
+bool PFileLog::Open( const char * path, int maxsize, int maxbak ) 
+{
+	LockIt safe( m_mutexLog );
+
+	if( fpLog ) { 
+		fclose( fpLog ); 
+		fpLog = NULL; 
+	}
+
+	fpLog = fopen( path, "a+" );
+	if( fpLog ) {
+		m_strPath = path;
+		nMaxSize = maxsize;
+		nMaxBakFiles = maxbak;
+
+		Output( Info, "-------------- Log Begin -----------------" );
+		return true;
+	}
+
+	return false;
+}
+
+PString PFileLog::GetPath( void ) 
+{
+	LockIt safe( m_mutexLog );
+
+	return m_strPath;
+}
+
+int PFileLog::GetSize( void )
+{
+	LockIt safe( m_mutexLog );
+
+	return fpLog ? ftell(fpLog) : 0;
+}
+
+int PFileLog::GetTailText( char * lpBuf, int nBytes /* 10 KB */ ) 
+{
+	LockIt safe( m_mutexLog );
+
+	if( fpLog ) {
+		if( nBytes >= SIZE_KB_100 ) nBytes = SIZE_KB_100; // no more than 100 KB 
+
+		long nPos = ftell( fpLog );
+		if( nPos <= nBytes ) nBytes = nPos;
+		fseek( fpLog, - nBytes, SEEK_CUR );
+
+		return fread( lpBuf, sizeof(char), nBytes, fpLog );
+	}
+
+	return 0;
+}
+
+void PFileLog::Clear( void ) 
+{
+	LockIt safe( m_mutexLog );
+
+	if( fpLog ) {
+		fclose( fpLog );
+		unlink( m_strPath );
+
+		PString strBak = m_strPath + ".bak";
+		unlink( strBak );
+
+		fpLog = fopen( m_strPath, "a+" );
+		Output( Info, "-------------- Log Cleared -----------------" );
+	}
+}
+
+void PFileLog::Output( int level, const char * msg ) 
+{
+	LockIt safe( m_mutexLog );
+
+	if( fpLog ) {
+		PTime now;
+		PString strNow = now.AsString(": yyyy/MM/dd hh:mm:ss.uuu, ", PTime::Local);
+		if (fprintf( fpLog, ToString(level) + strNow + msg + "\r\n" )!=-1)
+      fflush(fpLog);
+		//time_t t = time(NULL);
+		//tm * tt = localtime( & t );
+		//fprintf( fpLog, "%s: %d-%02d-%02d %d:%02d:%02d, %s\r\n", 
+		//	ToString(level),
+		//	1900 + tt->tm_year, 1 + tt->tm_mon, tt->tm_mday,
+		//	tt->tm_hour, tt->tm_min, tt->tm_sec,
+		//	msg	);
+
+		if( ftell( fpLog ) >= nMaxSize ) Backup();
+	}
+}

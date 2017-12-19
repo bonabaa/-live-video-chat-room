@@ -1,0 +1,256 @@
+2008-09-22 16:33  ms30002000
+
+	* [r21133] Makefile.in, configure, configure.ac, opal.m4,
+	  opal_defs.mak.in, plugins/configure:
+	  Fix system speex detection.
+
+2008-09-22 16:52  ms30002000
+
+	* [r21135] configure, configure.ac, opal.m4, plugins/configure:
+	  Simplify setting of LIBS and CFLAGS.
+
+2008-09-22 19:28  ms30002000
+
+	* [r21138] plugins/video/H.261-vic/vic/bsd-endian.h:
+	  Fix H.261 on solaris.
+	  Thanks to Elaine Xiong from SUN.
+
+2008-09-23 13:58  rjongbloed
+
+	* [r21142] include/h224/h323h224.h:
+	  Comment out header for H.224 as implementation currently
+	  commented out
+	  too. Thanks Vyacheslav Frolov.
+
+2008-09-24 00:12  rjongbloed
+
+	* [r21144] src/h323/h323.cxx:
+	  Fixed inclusion of RFC2833 (DTMF) capability in H.323 calls,
+	  thanks Hannes Friederich
+
+2008-09-24 00:15  rjongbloed
+
+	* [r21145] ., src/java/OpalParamSetUserData.java,
+	  src/java/OpalSilenceDetectMode.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_q_const__char_p_void_p_void_int__int.java,
+	  src/java/SWIGTYPE_p_void.java, src/java/java_msvc_wrapper.c:
+	  Fixed line endings.
+
+2008-09-24 01:58  rjongbloed
+
+	* [r21149] ., plugins/LID/CAPI/CAPI_2008.vcproj,
+	  plugins/LID/CM_HID/cm_hid_2008.vcproj,
+	  plugins/LID/IxJ/IxJ_2008.vcproj,
+	  plugins/LID/TigerJet/TJ_2008.vcproj,
+	  plugins/LID/VPB/VPB_2008.vcproj,
+	  plugins/LID/WinXP_HID/winxp_hid_2008.vcproj,
+	  plugins/LID/WinXP_HID/winxp_train_2008.vcproj,
+	  plugins/audio/EasyCodec/EasyG7231_2008.vcproj,
+	  plugins/audio/EasyCodec/EasyG728_2008.vcproj,
+	  plugins/audio/EasyCodec/EasyG729A_2008.vcproj,
+	  plugins/audio/G726/G726_2008.vcproj,
+	  plugins/audio/GSM0610/gsm0610_2008.vcproj,
+	  plugins/audio/IMA_ADPCM/IMA_ADPCM_2008.vcproj,
+	  plugins/audio/LPC_10/LPC_10_2008.vcproj,
+	  plugins/audio/Speex/Speex_2008.vcproj,
+	  plugins/audio/VoiceAgeG729/VoiceAgeG729_2008.vcproj,
+	  plugins/audio/gsm-amr/gsmamr_2008.vcproj,
+	  plugins/audio/iLBC/ilbccodec_2008.vcproj,
+	  plugins/plugins_2008.sln,
+	  plugins/video/H.261-vic/h261vic_2008.vcproj,
+	  plugins/video/H.263-ffmpeg/h263ffmpeg_2008.vcproj,
+	  samples/c_api/c_api_2003.vcproj, samples/c_api/c_api_2005.vcproj,
+	  samples/c_api/c_api_2008.vcproj,
+	  samples/callgen/callgen_2003.vcproj,
+	  samples/callgen/callgen_2005.vcproj,
+	  samples/callgen/callgen_2008.vcproj,
+	  samples/codectest/codectest_2003.vcproj,
+	  samples/codectest/codectest_2005.vcproj,
+	  samples/codectest/codectest_2008.vcproj,
+	  samples/mfc/mfc_2008.vcproj, samples/opalgw/opalgw.vcproj,
+	  samples/opalgw/opalgw_2005.vcproj,
+	  samples/opalgw/opalgw_2008.vcproj,
+	  samples/openphone/OpenPhone.vcproj,
+	  samples/openphone/OpenPhone_2005.sln,
+	  samples/openphone/OpenPhone_2005.vcproj,
+	  samples/openphone/OpenPhone_2008.vcproj,
+	  samples/openphone/Uninstall.bat,
+	  samples/playrtp/playrtp_2003.vcproj,
+	  samples/playrtp/playrtp_2005.vcproj,
+	  samples/playrtp/playrtp_2008.vcproj,
+	  samples/playyuv/playyuv_2005.vcproj,
+	  samples/simple/simple.vcproj, samples/simple/simpleDLL.vcproj,
+	  samples/simple/simpleDLL_2005.vcproj,
+	  samples/simple/simpleDLL_2008.vcproj,
+	  samples/simple/simple_2005.vcproj,
+	  samples/simple/simple_2008.vcproj, src/win32/CopyDTF_2003.bat,
+	  src/win32/CopyDTF_2005.bat, src/win32/opal_dll.vcproj,
+	  src/win32/opal_dll_2005.vcproj, src/win32/opal_dll_2008.vcproj,
+	  src/win32/opal_lib.vcproj, src/win32/opal_lib_2005.vcproj,
+	  src/win32/opal_lib_2008.vcproj:
+	  Fixed line endings.
+
+2008-09-25 01:09  rjongbloed
+
+	* [r21153] ., src/sip/sipcon.cxx:
+	  Fixed SIP INVITE loop detection, forked INVITE request arriving
+	  over multiple paths.
+
+2008-09-25 01:12  rjongbloed
+
+	* [r21154] ., src/opal/opal_c.cxx:
+	  Fixed bug in "C" API when message callback function is used
+	  instead of the normal message queue. Thanks Yuriy Cherniavsky
+
+2008-09-25 01:32  rjongbloed
+
+	* [r21156] ., src/h323/h323.cxx:
+	  Applied patch:
+	  
+	  [ 2119085 ] "userinput" disables "fax" for H.323
+	  
+	  Thanks Vyacheslav Frolov
+
+2008-09-25 02:38  csoutheren
+
+	* [r21157] include/codec/vidcodec.h, src/codec/opalpluginmgr.cxx,
+	  src/codec/vidcodec.cxx:
+	  Allow access to decoded IFrame flag
+
+2008-09-25 03:12  rjongbloed
+
+	* [r21159] ., include/h323/h323caps.h, include/opal/mediafmt.h,
+	  include/opal/mediatype.h, samples/codectest/main.cxx,
+	  samples/opalcodecinfo/main.cxx, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/playrtp/main.cxx,
+	  samples/simple/main.cxx, src/codec/opalpluginmgr.cxx,
+	  src/codec/rfc2833.cxx, src/h323/gkclient.cxx, src/h323/h323.cxx,
+	  src/h323/h323caps.cxx, src/h323/h323rtp.cxx, src/lids/lidep.cxx,
+	  src/opal/call.cxx, src/opal/connection.cxx, src/opal/ivr.cxx,
+	  src/opal/mediatype.cxx, src/opal/opal_c.cxx, src/opal/pcss.cxx,
+	  src/opal/rtpconn.cxx, src/sip/sipcon.cxx, src/t38/sipt38.cxx:
+	  Removed last vestiges of numerical media types (e.g.
+	  OpalMediaFormat::DefaultAudioSessionID) and replaced with
+	  OpalMediaType class.
+	  
+	  Note some parts of H.323 still use the numerical form as it is
+	  fundamental to the protocol so H323Capability has acquired the
+	  DefaultAudioSessionID etc enumeration.
+
+2008-09-25 04:36  rjongbloed
+
+	* [r21162] samples/callgen/main.cxx, samples/codectest/main.cxx,
+	  samples/faxopal/main.cxx, samples/playrtp/main.cxx,
+	  samples/simple/main.cxx:
+	  USe correct executable name in demonstration application "usage"
+	  help.
+
+2008-09-25 06:36  rjongbloed
+
+	* [r21163] include/opal/ivr.h, opal_samples_2005.sln,
+	  samples/ivropal, samples/ivropal/IvrOPAL_2003.vcproj,
+	  samples/ivropal/IvrOPAL_2005.vcproj,
+	  samples/ivropal/IvrOPAL_2008.vcproj, samples/ivropal/Makefile,
+	  samples/ivropal/main.cxx, samples/ivropal/main.h,
+	  samples/ivropal/precompile.cxx, samples/ivropal/precompile.h,
+	  src/opal/call.cxx, src/opal/ivr.cxx:
+	  Added IVR sample application.
+	  
+	  Fixed IVR media format list being altered by
+	  OpalCall::OpenSourceMediaStreams() due to container class
+	  referencing single instance.
+	  
+	  Fixed release of the call when audio channel ends. IVR cannot
+	  continue when no more audio being sent.
+	  
+	  Fixed local party URL so does not use a username (meaningless),
+	  but uses the VXML reference as the part after the "ivr:".
+
+2008-09-25 07:12  rjongbloed
+
+	* [r21165] src/sip/sipep.cxx:
+	  Fixed being able to use default username in
+	  SIPEndPoint::Register() function.
+
+2008-09-25 08:04  rjongbloed
+
+	* [r21168] samples/ivropal/main.cxx:
+	  Added parameter to ivropal set the SIP or H.323 listening
+	  interfaces
+
+2008-09-27 11:38  ms30002000
+
+	* [r21171] plugins/video/H.264/gpl/Makefile.in:
+	  Fixed x264 static complilation.
+
+2008-09-28 10:17  ms30002000
+
+	* [r21179] plugins/video/H.264/h264pipe_win32.cxx:
+	  Fix H.264 helper filename on windows.
+
+2008-09-29 06:25  rjongbloed
+
+	* [r21186] ., include/h323/h323trans.h, include/opal/endpoint.h,
+	  include/opal/transports.h, include/sip/handlers.h,
+	  include/sip/sippdu.h, src/h323/h323trans.cxx,
+	  src/opal/endpoint.cxx, src/opal/transports.cxx,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Fixed several SIP compliance issues:
+	  
+	  Mechanism for forking (over multiple interfaces) the register was
+	  incorrect, The specification is typically vague on the subject as
+	  it only goes in to detail on forking with respect to INVITE.
+	  However the new technique is believed to be compliant by me at
+	  least!
+	  
+	  When registering, should include all possible interfaces.
+	  Especially UDP and TCP should both be registered.
+	  
+	  When registering should also do the appropriate STUN handling,
+	  depending on if registrar is "inside" or "outside".
+	  
+	  Parsing of a URI that is quoted by <> but has no "" based display
+	  name was incorrect and would the URI as display name.
+	  
+	  Parsing of sips URI when quoted by <> would fail completely.
+	  
+	  Creation of a sips URI from username and transport address was
+	  broken as well. When fixing this also prevented default transport
+	  from being included in URI.
+	  
+	  Added mutex when writing simultaneous transactions to same
+	  transport, could sometimes cause packet to go out incorrect
+	  interface.
+
+2008-09-29 09:43  rjongbloed
+
+	* [r21189] ., src/lids/lidep.cxx:
+	  Fixed incorrect LID caller line ID field being used for display
+	  name.
+
+2008-09-30 04:00  rjongbloed
+
+	* [r21193] src/h323/channels.cxx, src/h323/h323.cxx:
+	  Fixed crash if H.323 OLC opens codec that fails to be createad
+	  late in the process.
+
+2008-09-30 05:37  rjongbloed
+
+	* [r21195] samples/codectest/main.cxx:
+	  Added command line argument to codec tester so can adjust any
+	  media option on the encoder.
+
+2008-10-01 02:03  rjongbloed
+
+	* [r21196] include/opal/mediafmt.h, src/opal/mediafmt.cxx:
+	  Fixed test for media format being transportable to include well
+	  known RTp payload types that do not have an encoding name. This
+	  allows for some backward compatibility with H.323 only codecs
+	  that do not need the encoding name.
+
+2008-10-01 02:04  rjongbloed
+
+	* [r21197] samples/openphone/main.cxx, samples/openphone/main.h:
+	  Fixed illegal string pointer usage for OpenPhone GUI display of
+	  codec "source protocol".
+

@@ -1,0 +1,9 @@
+; YYSpriteX-2.def : Declares the module parameters.
+
+LIBRARY      "YYSpriteX-2.OCX"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE

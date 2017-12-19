@@ -1,0 +1,3165 @@
+2009-08-03 20:54  rjongbloed
+
+	* [r23201] version.h:
+	  Update version number for beta v3.7.1
+
+2009-08-11 06:41  csoutheren
+
+	* [r23202] plugins/configure.ac:
+	  Make sure configure displays correct string when ffmpeg codecs
+	  are
+	  not available
+
+2009-08-11 06:44  csoutheren
+
+	* [r23203] src/opal/mediastrm.cxx:
+	  Add extra checks for closed streams
+	  Extend logging information
+
+2009-08-11 06:50  csoutheren
+
+	* [r23204] samples/opalecho/main.cxx:
+	  Fix mediastream handling. Again
+
+2009-08-11 06:56  csoutheren
+
+	* [r23205] plugins/configure:
+	  Update
+
+2009-08-20 03:10  rjongbloed
+
+	* [r23217] src/h323/h323.cxx:
+	  Fixed many typos in comment
+
+2009-08-20 03:24  rjongbloed
+
+	* [r23218] src/opal/patch.cxx:
+	  Fix for two stage audio transcoding, thanks Yuriy Cherniavsky
+
+2009-08-20 04:26  rjongbloed
+
+	* [r23224] src/h323/h323ep.cxx:
+	  Fixed shut down of H.323 endpoint correctly unregistering from
+	  gatekeeper, thanks jwu from Avistar.
+
+2009-08-20 04:53  rjongbloed
+
+	* [r23226] include/h323/h323pdu.h, src/h323/h323.cxx,
+	  src/h323/h323pdu.cxx:
+	  Fixed order of generic parameters in H.239 messages, also fixed
+	  inclusion of semantically mandatory but syntactically optional
+	  fields (subMessageidentifier and messageContent) in generic
+	  response message, thanks Viji from Avistar.
+
+2009-08-20 05:49  rjongbloed
+
+	* [r23228] src/sip/sipcon.cxx:
+	  Fixed possibility of accessing NULL pointer in SIP when using
+	  media bypass.
+
+2009-08-20 08:51  rjongbloed
+
+	* [r23230] src/sip/sippdu.cxx:
+	  Fixed bug ID: 2831204 "Invalid request-uri in BYE request",
+	  reported anonymously.
+	  
+	  The problem was nothing to do with the BYE message though this
+	  was the symptom observed. The actual issue was the incorrect
+	  parsing of quoted URI header values which might contain angle
+	  brackets in a double quoted the field parameter, e.g. "2003"
+	  <sip:2003@172.19.240.80:5060;transport=udp>;+sip.instance="<urn:uuid:00000000-0000-1000-8000-00085D19E033>"
+	  
+	  This confused the parser and ended up with an incorrect Contact
+	  field which propagated through to the BYE message.
+
+2009-08-21 00:00  rjongbloed
+
+	* [r23233] src/sip/sippdu.cxx:
+	  Fixed bug ID: 2837056 "Segfault (0-Pointer Access) when receiving
+	  NOTIFY", reported anonymously.
+	  
+	  Caused when event package name has an id field on one side but
+	  not the other.
+
+2009-08-21 00:34  rjongbloed
+
+	* [r23237] src/codec/ratectl.cxx:
+	  Fixed bug ID: 2834785 "OpalBitRateCalculator limits bitrates",
+	  reported by Lukas Hohl
+	  
+	  Apparent 32 bit integer wraparound problem.
+
+2009-08-21 05:57  rjongbloed
+
+	* [r23246] include/sip/handlers.h, include/sip/sipep.h,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx:
+	  Fixed problem with REGISTER IntervalTooBrief response handling
+	  not using correct interface for new transaction.
+	  
+	  Make sure the multiple interface forked transactions for all
+	  REGISTER/SUBSCRIBE/etc is collapsed when any response is
+	  received.
+	  
+	  Cleaned up the handling of non-connection related SIP responses,
+	  don't break them out in the endpoint, do so in the handler where
+	  it is more useful.
+
+2009-08-22 01:23  rjongbloed
+
+	* [r23247] include/sip/handlers.h, include/sip/sipep.h,
+	  samples/opalgw/main.cxx, samples/simple/main.cxx,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx:
+	  Changes so that when dealing with SIP
+	  registrations/subscriptions, address-of-record and target-host
+	  URI's are handled consistently.
+	  
+	  Specifically, if you go sipEP->Register("me", "there.org"); twice
+	  the second call will no longer create a second registration but
+	  find the first one and just update it.
+	  
+	  Deprecated old Register() function that does not return the
+	  calculated AOR, which must be used in
+	  IsRegistered()/Unregister().
+	  
+	  Also removed some compiler warnings.
+
+2009-08-22 04:24  rjongbloed
+
+	* [r23250] src/sip/handlers.cxx:
+	  Make sure the insertion and search for SIP handlers use exactly
+	  the same method for constructing the index key.
+
+2009-08-22 04:24  rjongbloed
+
+	* [r23251] src/sip/sipep.cxx:
+	  Fixed catastrophic typo for registrar host name field.
+
+2009-08-22 04:27  rjongbloed
+
+	* [r23252] ., src/sip/handlers.cxx:
+	  Change to not use PTimer in handler state activation as it can
+	  deadlock when the timer is destroyed, which will happen as it is
+	  a local variable. Not sure exactly how this is deadlocking, it
+	  seems to be quite a chain of locks, for the moment we just avoid
+	  it.
+
+2009-08-22 04:54  rjongbloed
+
+	* [r23253] include/codec/opalplugin.h,
+	  include/codec/opalpluginmgr.h, src/codec/opalpluginmgr.cxx:
+	  Added ability for video decoder plug in to indicate that the
+	  output buffer needs to be resized. Useful for things like H.263
+	  where it could change from QCIF to CIF on the fly and require a
+	  larger YUV frame.
+	  
+	  Optimised the video output to re-use the previously allocated
+	  output frame. As video frames can be large, when the heap gets a
+	  bit fragmented it slows the system down substantially to search
+	  for a large enough free memory block, so as we don't have to make
+	  a new one every time, let's not.
+
+2009-08-24 05:46  rjongbloed
+
+	* [r23255] src/sip/handlers.cxx:
+	  Fixed failure to clean out register/subscribe handlers URL index
+	  table when handler is removed. Causes confusion when
+	  unregistering and then re-registering using the same credentials.
+
+2009-08-24 09:50  rjongbloed
+
+	* [r23259] src/opal/transcoders.cxx:
+	  Fixed integer overflow error with RTP timestamps. Also optimised
+	  slightly as calculation is only required in the very rare
+	  occasions where audio physical clock rate is different from
+	  logical clock rate (e.g. G.722)
+
+2009-08-25 01:25  rjongbloed
+
+	* [r23265] plugins/audio/G722/g722codec.c:
+	  Added compile time option for experimental media format for G.722
+	  that advertises in SDP that it is 16000Hz rather than the RFC
+	  mandated 8000Hz.
+
+2009-08-25 05:35  rjongbloed
+
+	* [r23267] include/opal.h, src/java/OpalMediaTiming.java,
+	  src/java/OpalParamGeneral.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c, src/opal/opal_c.cxx:
+	  Added ability to select synchronous/asynchronous timing for the
+	  media call back functions in "C" API.
+
+2009-08-25 08:37  rjongbloed
+
+	* [r23268] include/h224/h224handler.h, include/opal/connection.h,
+	  include/opal/ivr.h, include/opal/manager.h,
+	  include/opal/mediastrm.h, include/opal/patch.h,
+	  include/t38/t38proto.h, src/h224/h224.cxx,
+	  src/opal/connection.cxx, src/opal/ivr.cxx, src/opal/manager.cxx,
+	  src/opal/mediastrm.cxx, src/opal/patch.cxx, src/t38/t38proto.cxx:
+	  Cleaned up API associated with call back functions on a media
+	  patch thread start/stop. Very inconsistent and worse the call
+	  back from OpalConnection was not calling the callback on the
+	  OpalManager, causing a break in the chain. Now all functions are
+	  consistently named and parametered.
+
+2009-08-26 00:14  rjongbloed
+
+	* [r23269] src/sip/sipep.cxx:
+	  Do not pre-emptively remove failed SIP register handler if
+	  REGISTER fails. Must be garbage collected later or causes crash
+	  due to transactions needing the transport contained in the
+	  handler instance.
+
+2009-08-27 00:19  rjongbloed
+
+	* [r23272] plugins/fax/fax_spandsp/ReadMe.txt:
+	  Updated readme file on which version of spandsp to use.
+
+2009-08-27 05:34  rjongbloed
+
+	* [r23273] samples/opalecho/main.cxx, samples/opalgw/main.cxx:
+	  Removed piece of ancient history that no longer applies. PTRACE
+	  levels are now equivalent to Ssystem Log levels.
+
+2009-08-27 07:16  rjongbloed
+
+	* [r23274] samples/openphone/main.cxx, samples/openphone/main.h:
+	  Added error GUI message if cannot open sound devices.
+
+2009-08-27 07:17  rjongbloed
+
+	* [r23275] include/lids/lidep.h, include/opal/manager.h,
+	  include/opal/mediastrm.h, include/opal/opalmixer.h,
+	  include/opal/rtpep.h, src/lids/lidep.cxx, src/opal/manager.cxx,
+	  src/opal/mediastrm.cxx, src/opal/opalmixer.cxx,
+	  src/opal/rtpep.cxx:
+	  Added detection of "hair pinned" connection where both ends of
+	  the RTP media session are in the same process. Under some
+	  circumstances the application can make optimisations for the flow
+	  of media, not requiring media patch threads, RTP sockets, codecs
+	  etc.
+	  
+	  Also cleaned up some documentation and usage for media stream
+	  RequiresPatchThread() function.
+
+2009-08-27 07:48  csoutheren
+
+	* [r23277] src/sip/handlers.cxx, src/sip/sippdu.cxx:
+	  Add calls to AdjustToDNS so we use correct DNS lookup instead of
+	  hostname
+
+2009-08-27 07:49  csoutheren
+
+	* [r23278] include/opal/mediafmt.h:
+	  Fix valgrind warning
+
+2009-08-27 08:07  csoutheren
+
+	* [r23279] Makefile.in, include/opal/pres_ent.h,
+	  include/sip/sippres.h, samples/testpresent,
+	  samples/testpresent/Makefile, src/opal/pres_ent.cxx,
+	  src/sip/sippres.cxx:
+	  Cross-port current presentity work and add Linux compilation
+
+2009-08-27 11:43  rjongbloed
+
+	* [r23281] include/opal/rtpep.h, src/opal/rtpep.cxx:
+	  Changes so new OnLocalRTP() function is only called once on open
+	  and once one close, per pair of RTP sessions.
+
+2009-08-28 01:42  rjongbloed
+
+	* [r23288] ., include/sip/handlers.h, src/sip/handlers.cxx:
+	  Changed SIP register/subscribe etc so if get a "480 Temporarily
+	  Unavailable" error we retry after a period of time, either that
+	  indicated in the response or using a default.
+
+2009-08-28 06:38  rjongbloed
+
+	* [r23295] ., include/iax2/ies.h, src/iax2/callprocessor.cxx,
+	  src/iax2/iax2con.cxx, src/iax2/regprocessor.cxx,
+	  src/lids/lidep.cxx, src/opal/manager.cxx,
+	  src/opal/transports.cxx:
+	  Adjusted some PTRACE log levels.
+
+2009-08-31 05:29  csoutheren
+
+	* [r23301] src/sip/handlers.cxx:
+	  Fix typo
+
+2009-08-31 05:33  csoutheren
+
+	* [r23302] src/sip/handlers.cxx:
+	  Fix problem with doing DNS lookup when using explicit proxy or
+	  presence agent
+	  Fix problem with PUBLISH using wrong expiry after Interval Too
+	  Brief error
+
+2009-08-31 05:36  csoutheren
+
+	* [r23303] src/sip/sippdu.cxx:
+	  Fix problem with incorrectly using empty peer address for sending
+	  some PDUs
+
+2009-08-31 05:38  csoutheren
+
+	* [r23304] src/sip/handlers.cxx:
+	  Fix typo in last fix
+
+2009-08-31 05:53  csoutheren
+
+	* [r23306] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sipcon.cxx, src/sip/sippdu.cxx:
+	  Move RFC2617 Basic and Digest authentication to PTLib
+
+2009-09-01 04:13  rjongbloed
+
+	* [r23314] include/sip/handlers.h, include/sip/sipep.h,
+	  include/sip/sippdu.h, src/sip/handlers.cxx, src/sip/sipep.cxx,
+	  src/sip/sippdu.cxx:
+	  Support multiple registration/subscription to the same
+	  address-of-record, using a local identity as a discriminator.
+	  Allows third party registrations and needed for various presence
+	  functions.
+
+2009-09-01 07:47  rjongbloed
+
+	* [r23315] src/sip/handlers.cxx:
+	  Fixed crash on SUBSCRIBE caused by previous change.
+
+2009-09-01 09:50  rjongbloed
+
+	* [r23316] src/sip/handlers.cxx, src/sip/sippdu.cxx:
+	  Further tweaks with SUBSCRIBE handling, repairing some damage
+	  from previous check in for multiple AOR access.
+	  
+	  Prevent leakage of internal URI parameters.
+
+2009-09-02 06:21  rjongbloed
+
+	* [r23317] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed SUBSCRIBE when explicit host for agent specified.
+
+2009-09-02 06:48  rjongbloed
+
+	* [r23318] src/sip/sippdu.cxx:
+	  Fixed bogus trace log message if first message in dialog (e.g.
+	  NOTIFY) does not start at sequence number 1.
+
+2009-09-03 11:05  rjongbloed
+
+	* [r23321] include/rtp/jitter.h, samples/jester/main.h,
+	  src/codec/opalpluginmgr.cxx, src/rtp/jitter.cxx, src/rtp/rtp.cxx:
+	  Some memory usage optimisations in the media path, trying to do
+	  heap allocations as little as possible.
+
+2009-09-04 05:05  csoutheren
+
+	* [r23328] include/opal/pres_ent.h, include/sip/sippdu.h,
+	  include/sip/sippres.h, src/opal/pres_ent.cxx,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx, src/sip/sippres.cxx:
+	  First chunk of presentity code
+	  Basic SIP/XCAP operations now working
+	  More callbacks to be filled in and more presentity
+	  functions to be fleshed out
+
+2009-09-05 00:14  rjongbloed
+
+	* [r23335] src/opal/localep.cxx:
+	  Applied patch ID: 2846099 "Add DTMF conditional in LocalEP",
+	  thanks Anonymous
+
+2009-09-05 05:26  rjongbloed
+
+	* [r23342] ., include/sip/sippdu.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc, src/sip/handlers.cxx:
+	  Changed the "hack" to limit SIP registration Contact fields
+	  ("%LIMITED" string as contact) to an enum of various
+	  "compatibility modes". This is a little more "self documenting"
+	  and also allows for the more strict registrars that do not like
+	  other perfectly legal formats.
+
+2009-09-05 15:17  dsandras
+
+	* [r23348] src/sip/sipep.cxx:
+	  Do not assume we have found authentication settings if what we
+	  found contains
+	  no password.
+
+2009-09-05 15:26  dsandras
+
+	* [r23350] src/sip/handlers.cxx:
+	  If we find no authentication information when subscribing, keep
+	  trying as it
+	  could become available at a later stage.
+
+2009-09-07 07:32  csoutheren
+
+	* [r23351] include/opal/pres_ent.h, include/sip/sippres.h,
+	  src/opal/pres_ent.cxx, src/sip/sippres.cxx:
+	  More implementation of SIP presence
+
+2009-09-07 07:33  csoutheren
+
+	* [r23352] configure.ac, include/im/im.h,
+	  include/opal/buildopts.h.in, src/im/msrp.cxx, src/sip/sdp.cxx:
+	  Re-enable MSRP in default builds
+
+2009-09-07 07:43  csoutheren
+
+	* [r23353] src/sip/sippres.cxx:
+	  Fix gcc compile warnings
+
+2009-09-07 11:56  rjongbloed
+
+	* [r23357] src/sip/sdp.cxx:
+	  Changed so does not put both global and media specific connection
+	  addresses in SDP if they are the same. Due to a mindbogglingly
+	  stupid system that doesn't work when you do!
+
+2009-09-07 12:27  rjongbloed
+
+	* [r23359] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Fixed support for unusual SIP "start with hold", that is an
+	  initial offer INVITE with a connection address of 0.0.0.0.
+
+2009-09-07 12:29  rjongbloed
+
+	* [r23360] samples/openphone/main.cxx:
+	  Fixed possible NULL pointer access in OpenPhone
+
+2009-09-08 01:49  csoutheren
+
+	* [r23365] samples/sipim/main.cxx:
+	  Fix routing and default media so incoming calls will be accepted
+
+2009-09-08 02:08  csoutheren
+
+	* [r23366] src/opal/rtpconn.cxx:
+	  Allow use of non-RTP media sessions when answering a call
+
+2009-09-08 03:53  csoutheren
+
+	* [r23367] src/sip/sipcon.cxx:
+	  Use MSRP media session for IM if present in call
+
+2009-09-08 03:54  csoutheren
+
+	* [r23368] include/im/msrp.h, src/im/msrp.cxx:
+	  Open MSRP media session
+
+2009-09-08 04:12  rjongbloed
+
+	* [r23372] ., src/h323/h323pdu.cxx:
+	  Fixed missing H.245 GenericMessage sub-identifier optional field
+	  being included in PDU, thanks vbondar from Avistar
+
+2009-09-08 04:22  csoutheren
+
+	* [r23373] include/im/msrp.h, src/im/msrp.cxx, src/sip/sipcon.cxx:
+	  Add extra MSRP logging and allow access to remote and local URLs
+
+2009-09-08 07:32  csoutheren
+
+	* [r23375] include/im/msrp.h, src/im/msrp.cxx:
+	  More MSRP implementation
+
+2009-09-08 07:46  rjongbloed
+
+	* [r23376] ., include/h323/h323con.h, src/h323/h323.cxx:
+	  Fixed issue with incorrect destCallSignalAddress field being used
+	  in SETUP when routeCallToGatekeeper facility redirect message is
+	  received.
+
+2009-09-08 07:52  csoutheren
+
+	* [r23377] include/im/msrp.h, src/im/msrp.cxx:
+	  Fix problem with getting URL of reverse channel
+
+2009-09-08 09:02  rjongbloed
+
+	* [r23380] src/sip/handlers.cxx:
+	  Fixed failure to retry (after a suitable period)
+	  REGISTER/SUBSCRIBE if get transport level timeout.
+
+2009-09-08 11:55  rjongbloed
+
+	* [r23384] include/sip/sipcon.h, include/sip/sippdu.h,
+	  src/sip/sipcon.cxx, src/sip/sippdu.cxx:
+	  Fixed two issues with overlapping re-INVITEs. We think it is
+	  overlapping when it isn't if a re-INVITE happens hard on the
+	  hammer of the ACK for the initial INVITE. And second if two media
+	  streams are opened or closed in quick succession we send two
+	  INVITEs at the same time.
+
+2009-09-08 14:23  csoutheren
+
+	* [r23388] include/im/msrp.h, src/im/im_mf.cxx, src/im/msrp.cxx:
+	  Still more MSRP implementation
+
+2009-09-08 15:14  csoutheren
+
+	* [r23389] src/im/msrp.cxx:
+	  Add extra logging
+	  Fix incorrect conditional preventing MSRP reception
+	  When receiving call, do not try to send MSRP until incoming SEND
+	  received
+
+2009-09-08 15:44  csoutheren
+
+	* [r23390] include/im/msrp.h, src/im/msrp.cxx:
+	  Fix binding of receiving MSRP packets for called parties
+
+2009-09-08 16:07  csoutheren
+
+	* [r23392] src/im/msrp.cxx:
+	  More logging
+
+2009-09-08 16:17  csoutheren
+
+	* [r23393] src/sip/sipcon.cxx:
+	  Fix compilation without MSRP
+
+2009-09-09 08:29  rjongbloed
+
+	* [r23395] src/sip/sipcon.cxx:
+	  Fix compiler warnings
+
+2009-09-09 12:18  csoutheren
+
+	* [r23397] include/im/msrp.h, src/im/msrp.cxx:
+	  Fix problem with calculating byte ranges for MSRP messages
+
+2009-09-09 12:25  csoutheren
+
+	* [r23398] include/im/im.h, include/im/msrp.h, src/im/im_mf.cxx,
+	  src/im/msrp.cxx, src/opal/connection.cxx, src/opal/pcss.cxx:
+	  Connect session and non-session messaging, and propagate content
+	  type
+	  using media format
+
+2009-09-09 14:45  csoutheren
+
+	* [r23399] src/im/msrp.cxx:
+	  Fix format of SEND messages
+
+2009-09-09 16:42  csoutheren
+
+	* [r23400] include/im/t140.h, src/im/msrp.cxx, src/im/t140.cxx:
+	  Added T140String::AsString for getting ASCII version of UTF-8
+
+2009-09-09 17:36  csoutheren
+
+	* [r23401] src/im/msrp.cxx, src/opal/connection.cxx:
+	  Fix fencepost error in MSRP byte ranges
+	  Use new T140 conversion routines for converting stream IM to page
+	  IM
+
+2009-09-09 19:36  csoutheren
+
+	* [r23403] include/im/msrp.h, src/im/msrp.cxx:
+	  Implement MSRP REPORT and responses
+
+2009-09-09 20:35  csoutheren
+
+	* [r23404] src/im/msrp.cxx:
+	  MSRP has the weirdest rules....
+
+2009-09-09 20:48  csoutheren
+
+	* [r23405] src/im/msrp.cxx:
+	  Fix logging
+
+2009-09-09 20:53  csoutheren
+
+	* [r23406] samples/sipim/main.cxx:
+	  Set content type of IM messages
+
+2009-09-10 08:53  rjongbloed
+
+	* [r23414] ., include/h323/h323con.h, include/iax2/iax2con.h,
+	  include/opal/connection.h, include/sip/sipcon.h,
+	  src/h323/h323.cxx, src/iax2/iax2con.cxx, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Changed function for determining a connection is on hold so can
+	  distinguish between we were put on hold by remote, or we put the
+	  remote on hold.
+	  
+	  The call IsOnHold() function now indicates both local and remote
+	  holds.
+	  
+	  Changed OpenSourceMediaStreams so does not try and open media
+	  while we are on hold.
+
+2009-09-10 09:48  rjongbloed
+
+	* [r23416] ., include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Handle another strange SIP case where the remote, on responding
+	  to our offer, immediately puts us on hold in the 200 OK.
+	  
+	  Fixed sending of queue re-INVITE, don't do it on 1xx responses,
+	  previous request has not finished yet!
+	  
+	  Fixed further issue with overlapping INVITE, this time it is
+	  trying to send a re-INVITE while we are processing a received
+	  re-INVITE.
+
+2009-09-11 01:46  rjongbloed
+
+	* [r23421] src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Fixed consistency of usage of translated strings in URL
+	  parameters, the PURL class does it, and double translations do
+	  not work.
+	  
+	  Some code tidying.
+
+2009-09-11 06:57  rjongbloed
+
+	* [r23422] samples/testpresent, samples/testpresent/Makefile,
+	  samples/testpresent/main.cxx,
+	  samples/testpresent/testpresent.vcproj,
+	  samples/testpresent/testpresent_2005.vcproj:
+	  Fix end of line and other SVN tags.
+
+2009-09-14 02:26  rjongbloed
+
+	* [r23426] include/im/msrp.h, include/opal/pres_ent.h,
+	  include/sip/sipep.h, include/sip/sippdu.h, include/sip/sippres.h,
+	  opal_samples_2005.sln, samples/testpresent/main.cxx,
+	  samples/testpresent/testpresent_2005.vcproj, src/im/msrp.cxx,
+	  src/opal/pres_ent.cxx, src/sip/handlers.cxx, src/sip/sippres.cxx,
+	  src/win32/opal_lib_2005.vcproj:
+	  Further enhanced the notifier system, after it's recent change to
+	  use templates, so we get fully type safe function calls and no
+	  need to static casts in use applications.
+	  
+	  Major rehash of the presentity command mechanism to use a class
+	  factory for commands and not use "magic numbers" for command
+	  identification.
+	  
+	  Added presentity test program to build system.
+
+2009-09-14 03:08  rjongbloed
+
+	* [r23427] ., src/sip/sipcon.cxx:
+	  Fix problem with retrieve from putting remote on hold, media does
+	  not open again.
+
+2009-09-15 00:36  rjongbloed
+
+	* [r23436] include/sip/sippres.h, src/sip/sippres.cxx:
+	  Fixed GNU compiler compatibility
+
+2009-09-15 01:00  dereksmithies
+
+	* [r23438] Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:01  dereksmithies
+
+	* [r23439] plugins/fax/fax_spandsp/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:06  dereksmithies
+
+	* [r23440] plugins/video/MPEG4-ffmpeg/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:09  dereksmithies
+
+	* [r23441] plugins/video/THEORA/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:10  dereksmithies
+
+	* [r23442] plugins/video/H.263-1998/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:12  dereksmithies
+
+	* [r23443] plugins/video/H.264/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:14  dereksmithies
+
+	* [r23444] plugins/video/H.264/gpl/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:15  dereksmithies
+
+	* [r23445] plugins/video/H.261-vic/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:18  dereksmithies
+
+	* [r23446] plugins/audio/SBC/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:19  dereksmithies
+
+	* [r23447] plugins/audio/GSM0610/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:20  dereksmithies
+
+	* [r23448] plugins/audio/G726/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:23  dereksmithies
+
+	* [r23449] plugins/audio/iLBC/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:26  dereksmithies
+
+	* [r23450] plugins/audio/gsm-amr/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:27  dereksmithies
+
+	* [r23451] plugins/audio/LPC_10/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:31  dereksmithies
+
+	* [r23452] plugins/audio/Speex/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:33  dereksmithies
+
+	* [r23453] plugins/audio/IMA_ADPCM/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:37  dereksmithies
+
+	* [r23454] plugins/audio/G722/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:39  dereksmithies
+
+	* [r23455] plugins/LID/IxJ/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:40  dereksmithies
+
+	* [r23456] plugins/LID/CAPI/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 01:44  dereksmithies
+
+	* [r23457] plugins/LID/VPB/Makefile.in:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-15 02:05  rjongbloed
+
+	* [r23458] src/codec/opalpluginmgr.cxx:
+	  Fix compiler warnings
+
+2009-09-15 04:02  rjongbloed
+
+	* [r23459] src/codec/opalpluginmgr.cxx, src/opal/mediastrm.cxx:
+	  Tweaks to handle video frame grabbing where there is no data yet,
+	  passing of zero payload similar to the way it is done with audio.
+
+2009-09-16 02:49  rjongbloed
+
+	* [r23461] Makefile.in:
+	  Another small addition to the Unix build noise reduction.
+
+2009-09-16 03:03  csoutheren
+
+	* [r23464] Makefile.in, configure, configure.ac,
+	  plugins/LID/CAPI/Makefile.in, plugins/LID/IxJ/Makefile.in,
+	  plugins/LID/VPB/Makefile.in, plugins/audio/G722/Makefile.in,
+	  plugins/audio/G726/Makefile.in,
+	  plugins/audio/GSM0610/Makefile.in,
+	  plugins/audio/IMA_ADPCM/Makefile.in,
+	  plugins/audio/LPC_10/Makefile.in, plugins/audio/SBC/Makefile.in,
+	  plugins/audio/Speex/Makefile.in, plugins/audio/celt/Makefile.in,
+	  plugins/audio/gsm-amr/Makefile.in,
+	  plugins/audio/iLBC/Makefile.in,
+	  plugins/fax/fax_spandsp/Makefile.in,
+	  plugins/video/H.261-vic/Makefile.in,
+	  plugins/video/H.263-1998/Makefile.in,
+	  plugins/video/H.264/Makefile.in,
+	  plugins/video/H.264/gpl/Makefile.in,
+	  plugins/video/MPEG4-ffmpeg/Makefile.in,
+	  plugins/video/THEORA/Makefile.in, samples/sipim/main.cxx:
+	  Clean up and reduce compile output
+
+2009-09-16 07:31  rjongbloed
+
+	* [r23466] ., src/h323/h323.cxx, src/h323/h323pdu.cxx,
+	  src/h323/q931.cxx:
+	  Make sure Q.931 display name is updated just before transmission
+	  as it can have been changed by application logic from defaults.
+	  
+	  Cleaned up code for setting of display name.
+
+2009-09-16 07:59  rjongbloed
+
+	* [r23469] ., include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Fixed further issue with overlapping INVITE, this time sending
+	  queued re-INVITE when ACk is received signalling end of a
+	  received re-INVITE.
+
+2009-09-16 13:10  rjongbloed
+
+	* [r23476] ., src/sip/sipcon.cxx:
+	  Added closing of our local media streams if remote sends a
+	  re-INVITE and leaves out streams (e.g. video) that were there
+	  previously. While this is non-compliant behaviour we shouldn't
+	  fail miserably when it happens.
+	  
+	  Fixed yet another issue with the overlapping re-INVITEs, it
+	  queued redundant outgoing re-INVITEs when handling an incoming
+	  re-INVITE.
+	  
+	  Added some more trace logging for hold/retrieve.
+
+2009-09-16 13:21  rjongbloed
+
+	* [r23480] Makefile.in:
+	  Yet another tiny enhancement to the quite build.
+
+2009-09-17 07:56  rjongbloed
+
+	* [r23486] Makefile.in:
+	  Yet another tiny enhancement to the quiet build.
+
+2009-09-17 08:14  rjongbloed
+
+	* [r23489] Makefile.in:
+	  Show what was updated by svn update in make update
+
+2009-09-18 02:10  rjongbloed
+
+	* [r23490] include/opal/connection.h, src/h323/h323.cxx,
+	  src/h323/h323pdu.cxx, src/opal/connection.cxx:
+	  Added extra call end cause enum to distinguish between gatekeeper
+	  admission request failing and the gatekeeper explicitly
+	  disconnecting the call.
+
+2009-09-19 01:45  rjongbloed
+
+	* [r23492] src/sip/sippdu.cxx:
+	  Fixed "interface forked" INVITE transactions having different
+	  CSEQ numbers, they are all the same dialog invitation so should
+	  have the same CSEQ even if different transaction ID's. That way
+	  the receiver does not think it is a second dialog for the same
+	  call.
+	  
+	  Also fixed double increment of CSEQ numbers on every re-INVITE.
+
+2009-09-21 05:48  csoutheren
+
+	* [r23500] samples/testpresent/main.cxx:
+	  Update to include extra functionality
+
+2009-09-21 06:23  rjongbloed
+
+	* [r23501] include/opal/pres_ent.h, include/sip/sippres.h,
+	  opal_samples_2005.sln, samples/testpresent/main.cxx,
+	  src/opal/pres_ent.cxx, src/sip/sippres.cxx:
+	  Changed some function names for (possible) clarity.
+	  
+	  Added call back for remote presentity state change.
+	  
+	  Added some macros to aid in creating correct type safe notifiers.
+
+2009-09-21 08:12  rjongbloed
+
+	* [r23502] samples/testpresent/testpresent_2005.vcproj:
+	  Tidied VS2005 project for presentity test program.
+
+2009-09-22 00:47  rjongbloed
+
+	* [r23503] src/sip/sipcon.cxx:
+	  Fixed failure to increment CSEQ on second INVITE after an
+	  authorisation request error.
+
+2009-09-24 04:57  rjongbloed
+
+	* [r23520] samples/codectest/main.cxx:
+	  Added output of CPU usage when running codectest.
+
+2009-09-24 05:20  rjongbloed
+
+	* [r23522] ., include/opal/mediastrm.h, include/rtp/jitter.h,
+	  src/opal/mediastrm.cxx, src/rtp/jitter.cxx:
+	  When an RTP source media stream (receiver) is paused (e.g. when
+	  doing a hold) then the jitter buffer must be stopped too, as it
+	  actually has the thread that is reading RTP and possibly trying
+	  to send RTCP packets which can fail (due to it being on hold
+	  remote may not have anything listening on the port) and then hang
+	  up the call.
+
+2009-09-24 05:34  rjongbloed
+
+	* [r23523] ., include/sip/sipcon.h, src/sip/sipcon.cxx,
+	  src/sip/sipep.cxx:
+	  Fixed correct test handling RFC3261/8.2.2.2 merged requests and
+	  other "multi-path" received INVITE requests. In particular a
+	  scenario where if a 302 Moved response is sent that redirects
+	  back to a different address on the same server, and the remote
+	  system re-uses the call-id and from-tag of the original call, we
+	  were not correctly detecting this as a new call.
+
+2009-09-24 05:59  csoutheren
+
+	* [r23524] include/im/msrp.h, src/im/msrp.cxx:
+	  Fix compile warnings
+
+2009-09-24 06:02  csoutheren
+
+	* [r23525] Makefile.in, configure, configure.ac,
+	  include/h323/h323ep.h, include/opal/buildopts.h.in,
+	  include/opal/call.h, include/opal/connection.h,
+	  include/opal/manager.h, include/opal/recording.h,
+	  opal_defs.mak.in, samples/simple/main.cxx,
+	  src/codec/opalpluginmgr.cxx, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/opal/manager.cxx,
+	  src/opal/opal_c.cxx:
+	  Add ability to disable media mixing and recording
+	  Fix incorrect disabling of plugin when LIDs disabled
+	  Disable extra files when H.501, H.450 and H.460 are disabled
+
+2009-09-24 07:16  csoutheren
+
+	* [r23527] Makefile.in, include/opal/buildopts.h.in,
+	  include/opal/connection.h, include/opal/manager.h,
+	  src/opal/connection.cxx, src/opal/opal_c.cxx, src/opal/pcss.cxx:
+	  Allow disabling of AEC
+
+2009-09-24 13:49  csoutheren
+
+	* [r23530] configure.ac:
+	  Disable T.120 in Windows build
+
+2009-09-24 13:50  csoutheren
+
+	* [r23531] src/im/sipim.cxx:
+	  Remove commented out code
+
+2009-09-24 13:52  csoutheren
+
+	* [r23532] include/sip/sipcon.h, include/sip/sippdu.h,
+	  src/sip/sipcon.cxx, src/sip/sippdu.cxx:
+	  Add low level support for Allow-Events
+
+2009-09-25 05:00  csoutheren
+
+	* [r23534] Makefile.in, configure, configure.ac,
+	  include/opal/buildopts.h.in, opal_defs.mak.in,
+	  src/opal/opal_c.cxx:
+	  Add ability to disable PCSS support
+
+2009-09-25 06:32  rjongbloed
+
+	* [r23535] include/opal/mediastrm.h, src/opal/mediastrm.cxx,
+	  src/opal/patch.cxx:
+	  Fixed possible crash (race condition) on stopping media patches.
+
+2009-09-25 12:12  csoutheren
+
+	* [r23540] include/im/rfc4103.h, include/opal/connection.h,
+	  include/sip/sipcon.h, src/im/rfc4103.cxx,
+	  src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Make RFC4103 context available in OpalConnection
+
+2009-09-25 14:38  rjongbloed
+
+	* [r23542] include/sip/handlers.h:
+	  Added access function to SIPRegister handler parameters.
+
+2009-09-28 05:00  rjongbloed
+
+	* [r23544] include/opal/connection.h:
+	  Added backward compatible cast for integer to CallEndReason
+	  codes.
+
+2009-09-28 05:30  csoutheren
+
+	* [r23545] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Add generic support for Allowed-Events and NOTIFYs
+
+2009-09-29 00:42  rjongbloed
+
+	* [r23548] src/h323/h323.cxx:
+	  Fixed H.323 facility redirect so does not include transport
+	  address prefix (e.g.tcp$) into the URL host name. Also made sure
+	  preserves port number if provided.
+
+2009-09-29 13:11  rjongbloed
+
+	* [r23551] include/codec/opalwavfile.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc, src/codec/opalpluginmgr.cxx,
+	  src/codec/opalwavfile.cxx, src/opal/recording.cxx:
+	  Added ability to write to WAV files compressed audio based on
+	  what codecs are available as a plug ins.
+
+2009-09-29 13:34  rjongbloed
+
+	* [r23552] include/opal.h, src/java/OpalParamRecording.java,
+	  src/java/OpalVideoRecordMixMode.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c, src/opal/opal_c.cxx:
+	  Added "C" API interface for extra call recording functionality.
+
+2009-09-30 04:18  rjongbloed
+
+	* [r23554] ., include/sip/handlers.h, src/sip/handlers.cxx,
+	  src/sip/sipcon.cxx:
+	  Fixed locating correct authorisation credentials for INVITE when
+	  AOR user is different from authorisation ID.
+	  
+	  Big code tidy up of SIP handler index maps.
+
+2009-09-30 07:15  csoutheren
+
+	* [r23555] include/im/msrp.h, src/im/msrp.cxx:
+	  Ensure SDP for MSRP use interface-specific addresses
+
+2009-09-30 07:25  rjongbloed
+
+	* [r23556] src/codec/opalwavfile.cxx:
+	  Fixed posix compatibility
+
+2009-09-30 07:34  csoutheren
+
+	* [r23557] src/codec/opalwavfile.cxx:
+	  Remove error on Linux
+
+2009-09-30 07:50  rjongbloed
+
+	* [r23558] samples/openphone/main.cxx:
+	  Fixed possible deadlock in fax switching as tries to shut down
+	  media streams from the media patch thread when RFC2833 detection
+	  is enabled.
+
+2009-09-30 09:02  rjongbloed
+
+	* [r23559] src/sip/handlers.cxx:
+	  Fixed possible double deletion if SIP handler indexes
+
+2009-10-01 02:15  rjongbloed
+
+	* [r23564] ., src/h323/h323.cxx:
+	  USe correct remote address function for conversion to URL, thanks
+	  Viswanathan
+
+2009-10-01 03:58  rjongbloed
+
+	* [r23565] configure, configure.ac:
+	  Updated PTLib dependency version
+
+2009-10-01 06:06  rjongbloed
+
+	* [r23566] include/im/im.h, include/opal/mediatype.h,
+	  include/t38/t38proto.h, src/h224/h224.cxx, src/h323/h323.cxx,
+	  src/h323/h323caps.cxx, src/im/msrp.cxx, src/im/sipim.cxx,
+	  src/im/t140.cxx, src/opal/mediatype.cxx, src/t38/t38mf.cxx,
+	  src/t38/t38proto.cxx:
+	  Fixed various issues with T.38 fax in H.323
+	  
+	  Clean up of the default session ID code in OpalMediaType
+	  subsystem, assume the only ones that have fixed numbers are audio
+	  (1), video (2) and t38fax (3).
+
+2009-10-01 06:20  rjongbloed
+
+	* [r23567] src/h323/h323neg.cxx:
+	  Fixed numerous deadlocks that suddenly appeared in H.245
+	  negotiators.
+
+2009-10-01 06:23  rjongbloed
+
+	* [r23568] samples/openphone/main.cxx:
+	  Changed default internal routes for t38 and G.711 fax to t38 (or
+	  838) and fax (or 329) in both SIP and H.323 style destination
+	  addresses.
+
+2009-10-01 07:28  csoutheren
+
+	* [r23569] src/opal/connection.cxx:
+	  When calling legacy IM functions, get the remote identification
+	  from the other connection, rather than the local connection
+
+2009-10-01 07:32  csoutheren
+
+	* [r23570] src/opal/rtpconn.cxx:
+	  Replaced assert with error message when unable to create a media
+	  stream
+	  using an existing non-RTP media session, as this can occur
+	  legitimately
+	  i.e. when the media session created OK but a subsequent error
+	  prevented
+	  the actual creation of a media stream.
+	  This was found when debugging MSRP - when making a call, and the
+	  remote
+	  is not listening on it's advertised port, the media session opens
+	  but the media stream fails.
+
+2009-10-01 09:17  rjongbloed
+
+	* [r23571] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Added T.30 logging
+
+2009-10-01 09:40  rjongbloed
+
+	* [r23572] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Fixed race condition where file to send/receive gets overwritten
+	  with empty string.
+
+2009-10-01 09:41  rjongbloed
+
+	* [r23573] include/t38/t38proto.h:
+	  Added access function for TIFF filename
+
+2009-10-02 09:05  rjongbloed
+
+	* [r23578] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Fixed incorrect pointer calculation, PCM mode does not include
+	  RTP header.
+
+2009-10-02 09:06  rjongbloed
+
+	* [r23579] src/codec/opalpluginmgr.cxx:
+	  Fixed correct translation of "L16" to "PCM-16" when loading fax
+	  plug in.
+
+2009-10-02 09:07  rjongbloed
+
+	* [r23580] src/t38/t38proto.cxx:
+	  Fixed correct (immediate!) switching to PCM mode if T.38 disabled
+	  in fax connection.
+
+2009-10-02 09:08  rjongbloed
+
+	* [r23581] src/opal/call.cxx:
+	  Added ability for connections to get in and adjust media formats
+	  during OPenSourceMediaStreams execution.
+
+2009-10-03 01:58  rjongbloed
+
+	* [r23582] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Fixed encode/decode function around wrong way for PCM <->
+	  TIFF_PCM
+	  Fixed correct data buffer size
+
+2009-10-03 02:01  rjongbloed
+
+	* [r23583] src/t38/t38proto.cxx:
+	  Fixed spurious opening of extra audio channel in G.711 fax mode.
+
+2009-10-03 03:07  rjongbloed
+
+	* [r23584] src/t38/t38proto.cxx:
+	  Fixed incorrect inclusion of T.38 when in G.711 fax mode.
+	  
+	  Fixed timing issues with PCM flow to SpanDSP.
+
+2009-10-03 04:20  rjongbloed
+
+	* [r23585] include/opal/mediastrm.h, src/opal/mediastrm.cxx,
+	  src/t38/t38proto.cxx:
+	  Need to distinguish between "synchronous" mode and "requires
+	  patch thread" in OpalNullMediaStream.
+
+2009-10-05 00:31  rjongbloed
+
+	* [r23586] src/codec/opalpluginmgr.cxx:
+	  Fixed correct adjustment of payload size in fax plug in depending
+	  on if passing in RTP header or not.
+
+2009-10-05 00:33  rjongbloed
+
+	* [r23587] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Fixed SpanDSP option so sends silence PCM data.
+
+2009-10-06 03:40  rjongbloed
+
+	* [r23591] src/t38/t38proto.cxx:
+	  Fixed correct filtering of media formats at the various stages of
+	  the call, transitioning from audio to fax.
+
+2009-10-06 04:01  rjongbloed
+
+	* [r23592] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Changed internal re-INVITE flag, really should only affects an
+	  offer so code changed to reflect that. Fixes fax switching
+	  issues.
+
+2009-10-06 06:23  csoutheren
+
+	* [r23593] include/im/msrp.h, src/im/msrp.cxx:
+	  Fix problem with dangling references to MSRPConnections
+
+2009-10-07 04:39  rjongbloed
+
+	* [r23599] samples/openphone/OpenPhoneInstaller_2005.vdproj,
+	  samples/openphone/OpenPhone_2005.sln:
+	  Added fax to installer
+
+2009-10-07 07:48  rjongbloed
+
+	* [r23600] src/opal/endpoint.cxx:
+	  Fixed address translation of REGISTER contact fields when STUN is
+	  not being used, but a fixed translation address is.
+
+2009-10-07 12:04  rjongbloed
+
+	* [r23603] src/h323/h323.cxx:
+	  Added protection for request mode for the current mode, that is
+	  it does not actually change anything and we should leave all the
+	  channel running as they are.
+
+2009-10-07 23:18  rjongbloed
+
+	* [r23604] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Fixed fax T38FaxUdpEC enum values around the wrong way, thanks
+	  Vyacheslav Frolov
+
+2009-10-07 23:22  rjongbloed
+
+	* [r23605] src/t38/t38proto.cxx:
+	  Removed confusing trace log in fax G.711 mode.
+
+2009-10-07 23:24  rjongbloed
+
+	* [r23606] samples/playrtp/main.cxx:
+	  DO not abort playing RTP on payload type changing in mid RTP
+	  stream. This actually happens regularly with RFC3389 comfort
+	  noise.
+
+2009-10-08 01:13  rjongbloed
+
+	* [r23608] ., src/opal/mediastrm.cxx, src/rtp/rtp.cxx:
+	  Fixed bizarre error where under a particular condition we clear
+	  call due to absent remote RTP port errors, when error is
+	  transient.
+
+2009-10-08 05:48  csoutheren
+
+	* [r23609] include/im/im.h, include/im/rfc4103.h,
+	  include/opal/connection.h, include/sip/sipcon.h,
+	  src/im/im_mf.cxx, src/im/msrp.cxx, src/im/rfc4103.cxx,
+	  src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Use internal RTP format for IM that includes Content-Type as an
+	  extension
+
+2009-10-08 05:57  csoutheren
+
+	* [r23610] samples/sipim/main.cxx:
+	  Changed to use RTP_IMFrame
+
+2009-10-08 07:41  csoutheren
+
+	* [r23611] samples/sipim/main.cxx, src/im/im_mf.cxx,
+	  src/im/msrp.cxx, src/im/rfc4103.cxx:
+	  Fix handling of IM content type
+
+2009-10-08 07:57  csoutheren
+
+	* [r23612] include/rtp/rtp.h:
+	  Added extra documentation on RTP extension functions
+
+2009-10-08 07:59  csoutheren
+
+	* [r23613] src/im/t140.cxx:
+	  Fix warning on Linux
+
+2009-10-08 08:00  csoutheren
+
+	* [r23614] src/im/msrp.cxx:
+	  Change logging message
+
+2009-10-08 08:11  csoutheren
+
+	* [r23617] include/rtp/rtp.h, src/im/im_mf.cxx, src/rtp/rtp.cxx:
+	  Change names of RTP functions relating to extensions as
+	  they have been changed to use DWORDS consistently
+	  
+
+2009-10-08 12:03  csoutheren
+
+	* [r23619] src/im/msrp.cxx:
+	  Fix compilation on 64 bit Linux. Thanks to Yuriy Cherniavsky
+
+2009-10-08 22:21  rjongbloed
+
+	* [r23620] src/h323/h323.cxx:
+	  Fixed incorrect condition in H.323 request mode, thanks
+	  Vyacheslav Frolov
+
+2009-10-09 00:09  rjongbloed
+
+	* [r23622] include/sip/sippdu.h, src/sip/sippdu.cxx:
+	  Improved logging output for REGISTER and SUBSCRIBE parameters.
+
+2009-10-09 00:46  rjongbloed
+
+	* [r23623] include/sip/handlers.h, src/sip/handlers.cxx:
+	  Removed redundant AOR index for SIP handlers, doesn't work for
+	  SUSBCRIBE which has multiple events of the same AOR.
+
+2009-10-09 01:40  rjongbloed
+
+	* [r23624] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Fixed authentication issue when can get to SIP server via two
+	  interfaces. Strictly speaking the server should return a 482 Loop
+	  Detect for the second INVITE transaction with the same CSEQ, but
+	  it appears some return a 401 Unauthorised instead confusing OPAL.
+
+2009-10-09 02:08  rjongbloed
+
+	* [r23626] src/sip/sipcon.cxx:
+	  Fixed SIP REFER completion on receiving NOTIFY with id parameter,
+	  thanks Martin Hillmeier.
+
+2009-10-09 02:14  rjongbloed
+
+	* [r23628] src/sip/handlers.cxx, src/sip/sipep.cxx:
+	  Added extra bulletproofing for race condition if user starts a
+	  new REGISTER/SUBSCRIBE just as the old one had become
+	  Unsubscribed, and is thus marked for removal. The
+	  registration/subscription would mysteriously disappear.
+
+2009-10-09 02:39  rjongbloed
+
+	* [r23629] src/sip/handlers.cxx:
+	  Fixed double authorisation failure leaving SIP handler in the
+	  wrong state, should move to Unavailable but with no timer to
+	  retry.
+
+2009-10-09 06:02  csoutheren
+
+	* [r23632] src/iax2/callprocessor.cxx, src/im/rfc4103.cxx,
+	  src/sip/sipcon.cxx:
+	  Remove couts
+
+2009-10-09 08:44  rjongbloed
+
+	* [r23633] src/h323/h323.cxx:
+	  Fixed subtle problem that prevented H.323 opening outgoing
+	  logical channel with immediate answer endpoint types such as
+	  fax/T.38.
+	  
+	  Also fixed double execution of AnsweringCall() in intrusion and
+	  consultation calls.
+
+2009-10-09 12:12  rjongbloed
+
+	* [r23634] src/sip/handlers.cxx:
+	  Changed authentication failure to be fatal and SIP handler
+	  removed. Credentials that are bad are unlikely to magically start
+	  working without user providing a new registration data so may as
+	  well register from scratch. Makes certain other logic simpler.
+
+2009-10-13 03:03  rjongbloed
+
+	* [r23638] src/win32/opal_lib_2005.vcproj:
+	  Remove global search of whole disk in Win32 configure as it
+	  causes more problems than it fixes.
+
+2009-10-13 03:07  rjongbloed
+
+	* [r23640] configure.ac:
+	  Fixed typo causing MSRP not to display correctly on Win32
+	  configure
+
+2009-10-13 03:08  rjongbloed
+
+	* [r23641] samples/testpresent/testpresent_2005.vcproj:
+	  Fixed Release build
+
+2009-10-13 06:36  rjongbloed
+
+	* [r23643] src/sip/sipcon.cxx:
+	  Fixed being able to use ";OPAL-Proxy" parameter on call
+
+2009-10-13 06:52  rjongbloed
+
+	* [r23644] src/sip/sippdu.cxx:
+	  Fixed incorrect Contact field user name being used under some
+	  circumstances.
+
+2009-10-13 06:52  csoutheren
+
+	* [r23645] include/opal/endpoint.h, include/opal/manager.h,
+	  src/opal/connection.cxx, src/opal/endpoint.cxx,
+	  src/opal/manager.cxx, src/sip/sipcon.cxx, src/sip/sipep.cxx:
+	  Normalised API for sending messages within a call
+
+2009-10-13 07:37  csoutheren
+
+	* [r23646] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/sipim/main.cxx, samples/testpresent/main.cxx:
+	  Fix for new API
+
+2009-10-13 08:07  csoutheren
+
+	* [r23647] samples/openphone/main.cxx:
+	  Add include of pwavfile.h
+
+2009-10-13 08:32  rjongbloed
+
+	* [r23648] samples/sipim/main.h:
+	  Fixed compile issue after API change.
+
+2009-10-13 14:26  csoutheren
+
+	* [r23650] src/im/msrp.cxx:
+	  Fix missing initialisation of MSRP connection member
+	  Reduce locking contention
+
+2009-10-13 14:33  csoutheren
+
+	* [r23651] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc:
+	  Add command to send IM within a call
+
+2009-10-14 00:02  rjongbloed
+
+	* [r23654] include/opal/pres_ent.h, include/sip/sippres.h,
+	  samples/testpresent/main.cxx, src/opal/pres_ent.cxx,
+	  src/sip/sippres.cxx:
+	  Further implementation of XCAP support for presence.
+
+2009-10-14 02:37  rjongbloed
+
+	* [r23656] src/opal/mediafmt.cxx:
+	  Fixed incorrect test for transportable media formats.
+
+2009-10-14 04:27  csoutheren
+
+	* [r23657] src/im/msrp.cxx:
+	  MSRP messages without Content-Type are "pings"
+
+2009-10-14 04:28  csoutheren
+
+	* [r23658] samples/openphone/main.cxx:
+	  Set correct content type for transmitted messages
+
+2009-10-14 05:17  csoutheren
+
+	* [r23659] src/rtp/jitter.cxx:
+	  Ensure jitter buffer does not restart when it should be closing
+	  down
+
+2009-10-14 05:44  rjongbloed
+
+	* [r23660] include/sip/handlers.h, include/sip/sippdu.h,
+	  samples/openphone/main.cxx, src/sip/sipcon.cxx,
+	  src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Prevent accidental use of string constructor in SIP event package
+	  class when using enum with bitwise or of Watcher.
+
+2009-10-14 05:47  rjongbloed
+
+	* [r23661] include/sip/sippres.h, samples/testpresent/main.cxx,
+	  src/sip/sippres.cxx:
+	  Fixed issues with crashing during presence unsubscribe on exit.
+
+2009-10-14 11:36  rjongbloed
+
+	* [r23663] include/sip/handlers.h, src/sip/handlers.cxx:
+	  Fixed issue with SIP handler indexes, if never got inserted then
+	  do not try and remove.
+
+2009-10-14 11:39  rjongbloed
+
+	* [r23664] include/sip/sipep.h, src/sip/sipep.cxx:
+	  Added ability to get GUID for subscriptions, rather than AOR.
+
+2009-10-14 11:40  rjongbloed
+
+	* [r23665] src/sip/handlers.cxx:
+	  Prevent redundant extra transmission of various SIP commands
+	  (e.g. MESSAGE) that do not need an unsubscribe when shutting down
+	  handler.
+
+2009-10-14 11:41  rjongbloed
+
+	* [r23666] include/sip/sippres.h, samples/testpresent/main.cxx,
+	  src/sip/sippres.cxx:
+	  Further changes to fix shutting down the presence system.
+
+2009-10-14 11:53  rjongbloed
+
+	* [r23667] src/codec/opalpluginmgr.cxx:
+	  Fixed various codec plug in flags being incorrectly decoded,
+	  thanks Vyacheslav Frolov
+
+2009-10-14 11:58  rjongbloed
+
+	* [r23668] src/sip/sippdu.cxx:
+	  Fixed GNU compilation
+
+2009-10-15 01:03  rjongbloed
+
+	* [r23670] ., src/sip/handlers.cxx, src/sip/sippdu.cxx:
+	  Fixed missing call of OnRegistrationStatus() if unregistering AOR
+	  with bad domain name.
+	  
+	  Fixed incorrect OnRegistrationStatus() parameters for 100 trying
+	  call when unsubscribing.
+	  
+	  Added human readable text for local time-out error.
+
+2009-10-16 03:15  rjongbloed
+
+	* [r23676] configure.ac:
+	  Fixed human readable name for PCSS option.
+
+2009-10-16 07:20  rjongbloed
+
+	* [r23678] src/opal/call.cxx, src/opal/mediafmt.cxx,
+	  src/t38/t38proto.cxx:
+	  Fixed G.711 fax on H.323 where remote closes and re-opens logical
+	  channel.
+	  
+	  Improved various bits of logging for the above.
+
+2009-10-19 01:33  rjongbloed
+
+	* [r23679] samples/sipim/main.cxx:
+	  Fixed tiny memory leak in sipim sample.
+
+2009-10-19 01:40  rjongbloed
+
+	* [r23680] include/t38/t38proto.h, src/t38/t38proto.cxx:
+	  Removed the call to OnFaxCompleted() in OnStopMediaPatch() unless
+	  it is explicitly a T.38 media channel being stopped. Prevents
+	  phantom, incorrect calls caused by various request modes that
+	  happen in pass through mode, not a strict G.711 -> T.38 -> G.711
+	  sequence.
+
+2009-10-19 08:37  rjongbloed
+
+	* [r23683] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Fixed incorrect media format list passed to
+	  PreviewPeerMediaFormats()
+
+2009-10-20 04:05  rjongbloed
+
+	* [r23684] src/codec/opalpluginmgr.cxx:
+	  Applied patch to fix various fax plug in issues, thanks
+	  Vyacheslav Frolov
+
+2009-10-20 04:14  rjongbloed
+
+	* [r23685] include/opal/opalmixer.h, src/opal/opalmixer.cxx:
+	  Applied patch ID: 2849404 "OpalMixer endpoint independence",
+	  thanks ted szoczei
+
+2009-10-20 04:19  rjongbloed
+
+	* [r23686] include/opal/manager.h, src/opal/manager.cxx,
+	  src/opal/mediatype.cxx:
+	  Applied patch ID: 2881887 "Method to create RTP_UDP subclasses",
+	  thanks ted szoczei.
+
+2009-10-20 04:56  rjongbloed
+
+	* [r23688] samples/opalmcu/main.cxx:
+	  Fixed MCU sample program after API change.
+
+2009-10-21 00:24  rjongbloed
+
+	* [r23690] samples/c_api/c_api_2005.vcproj:
+	  Fixed dependency so does not keep rebuilding "C" API sample
+	  program.
+
+2009-10-21 01:53  rjongbloed
+
+	* [r23691] src/sip/sippres.cxx:
+	  Fixed presence publication address, must include port!
+
+2009-10-21 02:02  rjongbloed
+
+	* [r23692] include/sip/handlers.h, src/sip/handlers.cxx:
+	  Fixed PUBLISH presence status XML tweaking AOR scheme, lave up to
+	  caller. Also simplified generation of tuple ID, plus allow caller
+	  to know what it is, or set it.
+	  
+	  Fixed handling of unsubscription getting trailing NOTIFY
+	  requests.
+
+2009-10-21 07:28  rjongbloed
+
+	* [r23693] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Fixed Content-Type for presence PUBLILSH, got lost somewhere.
+	  
+	  Fixed presence status XML, broken in last check in.
+	  
+	  Added escaping of data in "note field of presence status XML.
+
+2009-10-21 08:02  rjongbloed
+
+	* [r23694] samples/testpresent/main.cxx:
+	  Added ability to set unavailable/busy in presence test program.
+
+2009-10-22 03:21  rjongbloed
+
+	* [r23695] include/opal/buildopts.h.in, include/opal/call.h,
+	  include/opal/recording.h, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/opal/opal_c.cxx, src/sip/sdp.cxx:
+	  Fixed ability to compile with video enabled.
+
+2009-10-22 05:56  rjongbloed
+
+	* [r23696] include/opal/buildopts.h.in, samples/openphone/main.cxx,
+	  samples/sipim/main.cxx:
+	  Fixed ability to compile with video enabled, part 2.
+
+2009-10-22 05:58  rjongbloed
+
+	* [r23697] src/sip/sipcon.cxx:
+	  Prevent clearing call if re-INVITE fails.
+
+2009-10-22 06:35  rjongbloed
+
+	* [r23698] include/opal/connection.h, include/sip/sipcon.h,
+	  src/h323/h323.cxx, src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Added callback function, OnSwitchedFaxMediaStreams(), to indicate
+	  if the request to switch fax (T.38) mode succeeded or failed.
+
+2009-10-22 11:41  rjongbloed
+
+	* [r23699] include/opal/pres_ent.h, include/sip/handlers.h,
+	  src/sip/handlers.cxx, src/sip/sippres.cxx:
+	  Small clean up of some presence enums
+
+2009-10-22 12:22  rjongbloed
+
+	* [r23700] opal.m4, plugins/aclocal.m4, plugins/configure,
+	  plugins/configure.ac, plugins/fax/fax_spandsp/Makefile.in:
+	  Fixed some issue with SpanDSP fax detection
+
+2009-10-24 02:38  rjongbloed
+
+	* [r23701] plugins/fax/fax_spandsp/ReadMe.txt:
+	  Update spandsp fax plug in build instructions for a common error.
+
+2009-10-27 04:48  rjongbloed
+
+	* [r23703] Makefile.in:
+	  Fixed bug ID 2886055 "Require echocancel with external speex
+	  library", thanks Michael Rickmann
+
+2009-10-27 05:03  rjongbloed
+
+	* [r23704] include/sip/sipcon.h, include/sip/sippdu.h,
+	  src/sip/handlers.cxx, src/sip/sipcon.cxx, src/sip/sipep.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed Route header being included in INVITE. The RFC is a bit
+	  contradictory on if the Route header is to be included or not for
+	  a "pre-existing route" e.g. when outbound proxy used. Due to
+	  interop issues, we are now interpreting it to be included for
+	  non-INVITE requests and to not be included for INVITE requests.
+	  
+	  Did a code clean up of the PDU construction and header setting
+	  functions.
+
+2009-10-27 05:27  rjongbloed
+
+	* [r23705] samples/openphone/main.cxx:
+	  Monor fixes for OpenPhone config dialog
+
+2009-10-27 05:39  rjongbloed
+
+	* [r23706] src/sip/sippdu.cxx:
+	  Fixed breakage from previous check in, restore correct sequence
+	  number for INVITE.
+
+2009-10-27 21:29  rjongbloed
+
+	* [r23707] include/opal/connection.h, src/opal/connection.cxx:
+	  Fixed further issue with compiling without video, thanks Yuriy
+	  Cherniavsky
+
+2009-10-27 22:23  rjongbloed
+
+	* [r23709] include/opal/connection.h, include/t38/t38proto.h,
+	  src/iax2/iax2con.cxx, src/opal/call.cxx, src/opal/connection.cxx,
+	  src/t38/t38proto.cxx:
+	  Added extra parameter to OpalConnection::AdjustMediaFormats() to
+	  allow finer grained control over media format selection.
+
+2009-10-27 22:38  rjongbloed
+
+	* [r23710] src/sip/sippdu.cxx:
+	  Fixed accidental breakage of SIP calls without outbound proxy.
+
+2009-10-28 11:38  rjongbloed
+
+	* [r23718] src/sip/handlers.cxx:
+	  Fixed SUBSCRIBE handler making call back when un-subscribing.
+
+2009-10-28 11:39  rjongbloed
+
+	* [r23719] src/sip/sippdu.cxx:
+	  Removed tiny bit of redundant code.
+
+2009-10-28 11:42  rjongbloed
+
+	* [r23720] samples/testpresent/main.cxx:
+	  Fixed warning in presence authorisation command
+
+2009-10-28 11:47  rjongbloed
+
+	* [r23721] samples/testpresent/main.cxx:
+	  Added deny/deny-politely to authorisation command.
+
+2009-10-28 12:02  rjongbloed
+
+	* [r23722] include/opal/pres_ent.h, include/sip/sippres.h,
+	  src/sip/sippres.cxx:
+	  Further work on presence authorisation through XCAP.
+	  
+	  Fixed crash on shutting down presence system.
+
+2009-10-29 03:12  rjongbloed
+
+	* [r23726] ., src/opal/connection.cxx:
+	  If detect in-band DTMF indicate it's duration, zero was totally
+	  wrong as it fails to be propagated to other connections in the
+	  call.
+
+2009-10-29 23:19  rjongbloed
+
+	* [r23727] src/opal/mediastrm.cxx:
+	  Fixed extraneous and continuous resetting of jitter buffer when
+	  un-pausing, thanks Vyacheslav Frolov
+
+2009-10-29 23:42  rjongbloed
+
+	* [r23728] include/h323/h323con.h, src/h323/h323.cxx:
+	  Fixed incorrect change to AlertingPhase when have not actually
+	  got alerting packet, thanks Demetrius Cassidy
+
+2009-10-30 05:34  rjongbloed
+
+	* [r23732] include/opal/pres_ent.h, include/sip/handlers.h,
+	  include/sip/sippres.h, samples/openphone/main.cxx,
+	  src/opal/pres_ent.cxx, src/sip/handlers.cxx, src/sip/sipep.cxx,
+	  src/sip/sippres.cxx:
+	  Cleaned up redundant member variables on SIPPresenceInfo class,
+	  m_address and m_entity are the same thing.
+	  
+	  More work on XCAP, now can get/set authentication rules by node
+	  and not have to download alter and upload whole file.
+	  
+	  Added ability to have synonyms for OpalPresentity factory from
+	  scheme name. More flexibility generally but in particular ability
+	  for "sip" to be mapped to "sip-local", "sip-xcap" or "sip-oma"
+	  variants.
+
+2009-10-31 02:06  rjongbloed
+
+	* [r23734] include/opal/pres_ent.h, include/sip/sippres.h,
+	  samples/testpresent/main.cxx, src/opal/pres_ent.cxx,
+	  src/sip/sippres.cxx:
+	  Added first cut of buddy list handling for XCAP presence.
+
+2009-10-31 02:20  rjongbloed
+
+	* [r23735] include/codec/silencedetect.h,
+	  samples/openphone/main.cxx, src/codec/silencedetect.cxx,
+	  src/opal/connection.cxx:
+	  Applied patch for ID 2889600 "Silence detector timing
+	  adjustment", thanks ted szoczei
+
+2009-10-31 17:35  dsandras
+
+	* [r23736] src/sip/handlers.cxx:
+	  Allow Append to work even if the handler is already in the list.
+	  
+	  It allows calling it to update the index maps.
+
+2009-10-31 17:37  dsandras
+
+	* [r23737] src/sip/sipep.cxx:
+	  Update index maps when authentication is done.
+	  
+	  It allows registering first without specifying the realm. It is
+	  then
+	  correctly updated when authenticating the first REGISTER request.
+
+2009-11-02 01:23  rjongbloed
+
+	* [r23739] src/sip/sippres.cxx:
+	  Fixed GNU compiler warning
+
+2009-11-02 02:13  rjongbloed
+
+	* [r23740] src/opal/recording.cxx:
+	  Fixed being able to compile without OPAL_HAS_MIXER set.
+
+2009-11-02 02:27  rjongbloed
+
+	* [r23741] include/opal/pcss.h, src/opal/pcss.cxx:
+	  Fixed being able to compile without OPAL_HAS_PCSS set.
+
+2009-11-02 12:18  rjongbloed
+
+	* [r23745] ., src/sip/sippdu.cxx:
+	  Fixed removal of field parameters in URI sanitisation function.
+
+2009-11-03 04:01  rjongbloed
+
+	* [r23746] src/t38/t38proto.cxx:
+	  Removed now redundant setting of the report time interval in the
+	  T.38 fax code. Can be done via the WaitForPDU() function without
+	  onerous side effects when switching back to audio.
+
+2009-11-04 00:16  rjongbloed
+
+	* [r23749] ., src/sip/sipcon.cxx:
+	  Disable in-band DTMF detect as soon as we receive a SIP INFO
+	  message for DTMF. There apparently no standard way to indicate if
+	  a gateway is going to send INFO or not (there is for RFC2833) so
+	  you don;t know if you need to do in-band DTMF decode until the
+	  first DTMF is sent. Note that there is an inherent race condition
+	  there, so unless the gateway suppresses the DTMF in the audio
+	  stream it is possible for the first digit to be doubled.
+
+2009-11-04 00:39  rjongbloed
+
+	* [r23750] ., include/sip/handlers.h, include/sip/sipep.h,
+	  src/sip/sipcon.cxx, src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Make sure if associated registrar is via proxy, calls (INVITEs)
+	  are via the same proxy.
+
+2009-11-05 05:19  rjongbloed
+
+	* [r23754] src/sip/sippdu.cxx:
+	  Fixed backward compatibility, if
+	  SIPRegister::Params::m_registrarAddress is just an address/host
+	  (no '@') then it is assumed to be a proxy for the registrar and
+	  handled accordingly.
+
+2009-11-05 05:59  rjongbloed
+
+	* [r23756] ., include/opal/connection.h, src/opal/connection.cxx,
+	  src/opal/patch.cxx, src/sip/sipcon.cxx:
+	  Really disable in-band DTMF detect as soon as we receive a SIP
+	  INFO message for DTMF.
+
+2009-11-05 06:40  rjongbloed
+
+	* [r23757] ., src/sip/sipcon.cxx:
+	  Fixed being able to send REFER that requires authentication.
+
+2009-11-05 08:20  rjongbloed
+
+	* [r23759] ., include/sip/sipcon.h, src/sip/sipcon.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed being able to send BYE that requires authentication. This
+	  has the added requirement that ANY transaction that depends on
+	  the SIPConnection, must be waited for in OnReleased() and the
+	  transactions may change from the member variables we are tracking
+	  due to a new one being created by the authorisation system. So
+	  need a catch all list.
+
+2009-11-05 08:47  rjongbloed
+
+	* [r23760] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Changed REFER transaction pointer to a bool as that was how it
+	  was being used!
+
+2009-11-11 18:30  rjongbloed
+
+	* [r23763] include/opal/manager.h, include/opal/pres_ent.h,
+	  include/sip/handlers.h, include/sip/sippres.h,
+	  samples/openphone/main.cxx, samples/testpresent/main.cxx,
+	  src/opal/manager.cxx, src/opal/pres_ent.cxx,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx, src/sip/sippres.cxx:
+	  Added presentity instance management to OpalManager.
+	  
+	  Abstracted SIP specific presence status info (SIPPresenceInfo
+	  class) to more generic OpalPresenceInfo class.
+
+2009-11-11 22:52  csoutheren
+
+	* [r23764] include/opal/pres_ent.h:
+	  Fix compilation on older gcc
+
+2009-11-13 04:58  rjongbloed
+
+	* [r23765] src/sip/sipcon.cxx:
+	  Fixed being able to compile with fax disabled, thanks Ted Szoczei
+
+2009-11-14 18:55  rjongbloed
+
+	* [r23768] src/win32/opal_lib_2005.vcproj,
+	  src/win32/opal_lib_2008.vcproj:
+	  Added missing files to VS projects
+
+2009-11-15 05:30  rjongbloed
+
+	* [r23769] src/opal/mediastrm.cxx:
+	  Added extra trace log for media patch replacement.
+
+2009-11-17 01:24  rjongbloed
+
+	* [r23771] ., src/h323/gkclient.cxx:
+	  Fixed problem with gatekeeper re-discovery on interface drop and
+	  re-establish, reported by Richard Quan, Avistar Communications
+
+2009-11-17 02:39  rjongbloed
+
+	* [r23772] include/opal/mediastrm.h, src/opal/mediastrm.cxx:
+	  Fixed possible NULL pointer access in new trace log line.
+	  
+	  Fixed possible media patch thread not doing orderly exit when
+	  media patch for a source stream is replaced.
+
+2009-11-18 07:46  rjongbloed
+
+	* [r23775] include/im/im.h, include/opal/pres_ent.h,
+	  include/sip/handlers.h, include/sip/sippdu.h,
+	  include/sip/sippres.h, samples/testpresent/main.cxx,
+	  src/opal/manager.cxx, src/opal/pres_ent.cxx,
+	  src/sip/handlers.cxx, src/sip/sipcon.cxx, src/sip/sippdu.cxx,
+	  src/sip/sippres.cxx:
+	  Fixed presence change NOTIFY messages being parsed and passed on
+	  to OpalPresentity call back.
+	  
+	  Fixed use of proxy for PUBLISH command.
+	  
+	  Fixed crash in OpalManager shut down when presence subscribed.
+	  
+	  Various other minor optimisations are re-organisation of presence
+	  code.
+
+2009-11-19 11:35  csoutheren
+
+	* [r23779] src/sip/sippres.cxx:
+	  Remove warnings on Linux
+
+2009-11-20 05:40  rjongbloed
+
+	* [r23781] ., include/sip/handlers.h, src/sip/handlers.cxx:
+	  Change to only unregister those contact addresses we successfully
+	  registered, instead of using global '*'.
+	  
+	  Removed some redundant code.
+
+2009-11-20 06:48  rjongbloed
+
+	* [r23784] include/opal/pres_ent.h, src/sip/sippres.cxx:
+	  Fixed factory instantiation.
+
+2009-11-20 07:22  rjongbloed
+
+	* [r23786] include/codec/opalplugin.h,
+	  plugins/fax/fax_spandsp/spandsp_fax.cpp,
+	  src/codec/opalpluginmgr.cxx, src/t38/t38proto.cxx:
+	  Applied patch ID: 2893458 "T.38 transfer status" for trunk,
+	  thanks Alessandro
+
+2009-11-20 07:31  rjongbloed
+
+	* [r23787] include/opal/endpoint.h, include/opal/manager.h,
+	  src/opal/endpoint.cxx, src/opal/manager.cxx, src/sip/sipcon.cxx:
+	  Applied patch ID: 2897476 "IM Conditionals", thanks
+	  ted szoczei
+
+2009-11-23 05:43  rjongbloed
+
+	* [r23789] ., include/sip/sippdu.h, src/sip/sipcon.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed transmission of 200 OK instead of 202 Accepted in NOTIFY
+	  that completed an incoming REFER (transfer) operation.
+	  
+	  Fixed incorrect referred-to header field when sending a REFER.
+	  
+	  Fixed SIP URL Sanitise() to remove display name for Request URI.
+
+2009-11-24 07:26  csoutheren
+
+	* [r23792] include/sip/sipep.h, src/sip/sipep.cxx:
+	  Add notifier for receiving connectionless SIP MESSAGE
+
+2009-11-24 07:32  csoutheren
+
+	* [r23793] src/sip/handlers.cxx:
+	  Change to use new XML escaping routing
+
+2009-11-24 07:44  csoutheren
+
+	* [r23794] include/sip/sipep.h, src/sip/sippdu.cxx:
+	  Fix compile warnings on Linux
+
+2009-11-24 08:22  rjongbloed
+
+	* [r23796] include/sip/sippres.h, src/sip/sippres.cxx:
+	  Changed presence XCAP rules to align with OMA recommendations.
+
+2009-11-26 05:35  rjongbloed
+
+	* [r23801] src/sip/sipcon.cxx:
+	  Add abort of pending re-INVITE's queued up but did not manage to
+	  get out before the call was ended.
+
+2009-11-26 05:45  rjongbloed
+
+	* [r23802] src/sip/sipcon.cxx:
+	  Prevent double re-INVITE when switching to T.38 mode.
+
+2009-11-26 07:41  csoutheren
+
+	* [r23803] include/opal/pres_ent.h, opal_samples_2005.sln,
+	  samples/testpresent/testpresent_2005.vcproj,
+	  src/opal/pres_ent.cxx, src/sip/handlers.cxx, src/sip/sippres.cxx:
+	  Add extra states for SIP presence to indicate additional error
+	  states
+	  Fix problem with sending connectionless MESSAGEs using zero
+	  expiry
+
+2009-11-27 03:56  rjongbloed
+
+	* [r23804] opal_samples_2005.sln,
+	  samples/testpresent/testpresent_2005.vcproj:
+	  Reversed out accidental changes to VS2005 projects from VS2008
+
+2009-11-27 03:59  rjongbloed
+
+	* [r23805] src/h323/h323.cxx:
+	  Changes to avoid a race condition in H.323 Request Mode for T.38,
+	  thanks Vyacheslav Frolov
+
+2009-11-27 07:01  rjongbloed
+
+	* [r23807] include/sip/handlers.h, include/sip/sippdu.h,
+	  include/sip/sippres.h, samples/testpresent/main.cxx,
+	  src/im/msrp.cxx, src/sip/handlers.cxx, src/sip/sippdu.cxx,
+	  src/sip/sippres.cxx:
+	  Added support for multipart MIME in SIP packets.
+	  
+	  Added RFC4662 “SIP Event Notification Extension for Resource
+	  Lists” support to presence system.
+
+2009-11-28 02:01  csoutheren
+
+	* [r23809] src/sip/handlers.cxx:
+	  PXML::EscapeSpecialChars is available even when expat is not
+	  installed
+
+2009-11-28 02:43  csoutheren
+
+	* [r23810] src/im/msrp.cxx:
+	  Fix for recent changes to PHTTP/PMIMEInfo
+
+2009-11-30 04:02  rjongbloed
+
+	* [r23816] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sipcon.cxx, src/sip/sippdu.cxx, src/sip/sippres.cxx:
+	  Fixed correct Via field when TCP transport is being used.
+	  
+	  Changed SIP SubscriptionState function to be a "complex" MIME
+	  field supporting ';' parameters and <> quoting.
+	  
+	  Use TCP transport for presence subscriptions as with lists and
+	  XML they can get too big for UDP which then gets fragmentation
+	  issues.
+
+2009-11-30 04:22  rjongbloed
+
+	* [r23817] include/sip/sippdu.h:
+	  Fixed GNU warning.
+
+2009-11-30 06:40  rjongbloed
+
+	* [r23819] src/sip/sipcon.cxx:
+	  Fixed race condition in emitting delayed re-INVITEs. Caused a
+	  transaction to be started when it already was, which asserts.
+	  
+	  Fixed missing reset of fax switching flag, so should now be able
+	  to return to audio mode after fax is complete, or if fax is
+	  rejected.
+
+2009-11-30 07:16  rjongbloed
+
+	* [r23822] include/opal/pres_ent.h, src/sip/handlers.cxx:
+	  Fixed being able to compile without Expat.
+
+2009-12-01 03:08  rjongbloed
+
+	* [r23825] plugins/fax/fax_spandsp/ReadMe.txt,
+	  plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Applied patch ID: 2905849 "spandsp_fax.cpp enhancements", thanks
+	  Vyacheslav Frolov
+
+2009-12-01 04:43  rjongbloed
+
+	* [r23826] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Fixed double re-INVITE when changing symmetric media streams,
+	  e.g. switching to or from T.38 fax mode.
+
+2009-12-03 06:10  rjongbloed
+
+	* [r23830] ., configure, opal.m4:
+	  Added PKG_CONFIG_PATH to PTlib version check when explicitly
+	  saying
+	  where PTLib is via PTLIBDIR environment variables. Should not be
+	  needed
+	  but some distros seem to stuff around pkg-config so
+	  PKG_CONFIG_LIBDIR
+	  isn't enough. Go figure.
+
+2009-12-03 10:21  rjongbloed
+
+	* [r23831] include/sip/sdp.h, src/h224/h224.cxx, src/im/msrp.cxx,
+	  src/im/sipim.cxx, src/im/t140.cxx, src/sip/sdp.cxx,
+	  src/t38/sipt38.cxx:
+	  Make sure media type is set correctly for SDPMediaDescription
+	  instances. In particular fixes correct detection of a T.38
+	  fallback.
+
+2009-12-03 10:42  rjongbloed
+
+	* [r23832] src/sip/sipcon.cxx:
+	  Fixed calling of OnSwitchedFaxMediaStreams() function when after
+	  offering T.38, we get a 200 OK that does not have T.38 media in
+	  it. Even though this is illegal, it should send a 488 response,
+	  some UA's do it, so we have to allow for it.
+
+2009-12-04 05:04  csoutheren
+
+	* [r23834] include/opal/pres_ent.h, include/sip/handlers.h,
+	  include/sip/sippres.h, src/opal/pres_ent.cxx,
+	  src/sip/handlers.cxx, src/sip/sippres.cxx:
+	  Numerous changes to SIP presence code
+	  - add full support for namespaces used in presence messages
+	  - add ability to unsubscribe from buddy lists
+	  - normalise handling of extended presence status and strings
+
+2009-12-04 06:21  csoutheren
+
+	* [r23835] include/opal/pres_ent.h:
+	  Add default for second arg to OpalPresentity::SubscribeToPresence
+
+2009-12-04 07:23  rjongbloed
+
+	* [r23837] include/opal/pres_ent.h, include/sip/handlers.h,
+	  samples/testpresent/main.cxx, src/sip/handlers.cxx,
+	  src/sip/sippres.cxx:
+	  Added ability to remove an authorisation, not the same as denying
+	  it.
+	  
+	  Add default ctor for SIPPresenceInfo, for backward compatibility.
+	  Also make sure person XML is not send if do not have ID for
+	  person.
+
+2009-12-04 07:53  csoutheren
+
+	* [r23839] src/sip/sippres.cxx:
+	  Force presence.winfo to use TCP so as to avoid problems with
+	  uplifting SIP connections from UDP to TCP
+
+2009-12-06 03:00  rjongbloed
+
+	* [r23841] src/sip/handlers.cxx:
+	  Fixed possible race condition when accessing SIP handler
+	  immediately after it is deleted.
+
+2009-12-07 19:49  dsandras
+
+	* [r23842] src/sip/handlers.cxx:
+	  Added check for null pointer.
+
+2009-12-07 20:01  dsandras
+
+	* [r23843] include/sip/sippdu.h:
+	  Fixed linux warnings.
+
+2009-12-08 05:08  rjongbloed
+
+	* [r23846] include/opal/connection.h, include/t38/t38proto.h,
+	  plugins/fax/fax_spandsp/spandsp_fax.cpp,
+	  samples/openphone/main.cxx, samples/openphone/main.h,
+	  src/h323/h323.cxx, src/opal/connection.cxx, src/opal/manager.cxx,
+	  src/sip/sipcon.cxx, src/t38/t38proto.cxx:
+	  Fixed numerous issues with fax negotiation. Now OPAL to OPAL
+	  works in all 6 modes: T.38, G.711 & T.38 with G.711 fall back for
+	  both SIP and H.323.
+	  
+	  In process had to:
+	  
+	  Fix statistics in spandsp plug in, did not make distinction
+	  between final and intermediate values.
+	  
+	  Add the ability to control the RFC2833 capability inclusion and
+	  options. It was always added, but now must be in the connections
+	  media format list. This will be automatic unless the users
+	  application explicitly removes it via the media format mask in
+	  OpalManager.
+	  
+	  Fixed fall back in H.323 if the Mode Request is rejected.
+	  
+	  Fixed OpenPhone display of fax statistics when in G.711 mode.
+
+2009-12-08 08:24  rjongbloed
+
+	* [r23849] ., src/sip/sippdu.cxx:
+	  Cannot add transaction to connection->m_pendingTransactions until
+	  Start() is called, or could be accessing deleted object.
+
+2009-12-08 08:47  rjongbloed
+
+	* [r23851] ., src/opal/rtpconn.cxx:
+	  Added more information to trace log if could not open RTP
+	  sockets.
+
+2009-12-09 01:46  rjongbloed
+
+	* [r23853] src/sip/sipcon.cxx:
+	  Removed some redundant locks and improved logging.
+
+2009-12-09 06:25  rjongbloed
+
+	* [r23858] ., include/sip/handlers.h, include/sip/sipep.h,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx:
+	  Change SIP handlers so multiple state requests are queued instead
+	  of getting an error and the action not taking place. In
+	  particular an un-REGISTER while a REGISTER is in progress does
+	  not get lost, or block for a long time.
+	  
+	  Also fixed attempts to send unsubscribe packets when er never had
+	  a response from anything, usually due to bad host address.
+
+2009-12-09 06:30  rjongbloed
+
+	* [r23859] src/sip/sippdu.cxx:
+	  Extra logging.
+
+2009-12-10 01:18  rjongbloed
+
+	* [r23860] src/sip/sipcon.cxx:
+	  Fixed failure to send BYE at end of call, caused by previous fix
+	  a crash.
+
+2009-12-10 01:35  rjongbloed
+
+	* [r23862] include/codec/rfc2833.h, src/codec/rfc2833.cxx,
+	  src/sip/sipcon.cxx:
+	  More changes to control RFC2833 capability encoding, getting
+	  correct FMTP params from remote into media format. Obeying
+	  desired transmit options as well as the restrictions from the
+	  remote.
+
+2009-12-10 02:42  rjongbloed
+
+	* [r23863] src/codec/rfc2833.cxx, src/sip/sipcon.cxx:
+	  Fixed last check in, changes to control RFC2833 capability
+	  encoding.
+
+2009-12-10 05:07  rjongbloed
+
+	* [r23864] src/opal/mediastrm.cxx:
+	  Changed assert so string generation is only done when the assert
+	  condition occurs and not every time.
+
+2009-12-10 06:01  rjongbloed
+
+	* [r23865] include/t38/t38proto.h, samples/faxopal/main.cxx,
+	  samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc,
+	  src/t38/t38proto.cxx:
+	  Fixed getting the statistics on a fax call. Still issue with
+	  getting correct final status on transmission.
+	  
+	  Changed API to use GetStatistics on the fax connection object as
+	  determining the correct media stream to get the statistics from
+	  is not trivial.
+	  
+	  Also added display of final fax statistics to OpenPhone.
+
+2009-12-11 04:27  rjongbloed
+
+	* [r23867] include/codec/opalplugin.h,
+	  include/codec/opalpluginmgr.h, include/opal/mediacmd.h,
+	  plugins/fax/fax_spandsp/spandsp_fax.cpp,
+	  src/codec/opalpluginmgr.cxx, src/t38/t38proto.cxx:
+	  Added ability to have an OpalMediaCommand passed automatically to
+	  a plug in codec function of the same name.
+	  
+	  Utilised above mechanism to indicate that a fax is to be
+	  terminated due to remote hang up. The orderly disconnect then
+	  means get accurate statistics on fax.
+
+2009-12-11 05:11  rjongbloed
+
+	* [r23868] plugins/fax/fax_spandsp/spandsp_fax.cpp,
+	  samples/openphone/main.cxx:
+	  Small change to the fax statistics so can tell if we are
+	  transmitting or receiving by a negative number of the page count.
+
+2009-12-11 06:33  rjongbloed
+
+	* [r23869] include/rtp/rtp.h,
+	  plugins/fax/fax_spandsp/spandsp_fax.cpp,
+	  samples/openphone/main.cxx, src/codec/opalpluginmgr.cxx,
+	  src/rtp/rtp.cxx:
+	  Changed mechanism by which fax statistics are moved from plug in
+	  to OPAL. Instead of using a binary structure, converts to string
+	  and parses it back out. While less efficient, this guarantees
+	  future compatibility across the non-normalised structures. If one
+	  gets changed and the other doesn't, it would be bad.
+	  
+	  Added text version of error codes in fax statistics.
+
+2009-12-11 22:40  rjongbloed
+
+	* [r23870] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Fixed some issues (mutex, trace logs) with recent change to
+	  statistics passing, thanks Vyacheslav Frolov
+
+2009-12-12 01:26  rjongbloed
+
+	* [r23871] src/sip/sipep.cxx:
+	  Possible fix for asserting in NATBindingRefresh code. On shut
+	  down wait for that operation to complete.
+
+2009-12-14 00:16  rjongbloed
+
+	* [r23872] src/sip/sipcon.cxx:
+	  Removed assumption that remote always does RFC2833. If remote
+	  does not include a telephone-event audio "codec" then we send
+	  DTMF in-band.
+
+2009-12-14 22:49  rjongbloed
+
+	* [r23876] src/sip/sipcon.cxx:
+	  Another try at getting fax CNG to be sent via in-band if remote
+	  does not indicate support for RFC2833 at all.
+
+2009-12-17 03:05  rjongbloed
+
+	* [r23879] opal_2005.sln, samples/mobileopal/MobileOPAL.vcproj,
+	  samples/simple/simpleDLL_2005.vcproj,
+	  samples/simple/simple_2005.vcproj,
+	  src/win32/opal_dll_2005.vcproj, src/win32/opal_lib_2005.vcproj:
+	  Fixed issues with WM build.
+
+2009-12-17 03:40  rjongbloed
+
+	* [r23880] src/win32/opal_2005.dtf, src/win32/opal_2005_wm.dtf,
+	  src/win32/opal_2005_wm6.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2005.dtf, src/win32/opaln_2005_wm.dtf,
+	  src/win32/opaln_2005_wm6.dtf:
+	  Update symbols.
+
+2009-12-18 07:54  rjongbloed
+
+	* [r23881] src/opal/opal_c.cxx:
+	  Added to "C" API a mechanism for getting all the current media
+	  formats and format options.
+
+2009-12-18 07:57  rjongbloed
+
+	* [r23882] samples/mobileopal/InstallMobileOPAL.vddproj,
+	  samples/mobileopal/MobileOPAL.sln,
+	  samples/mobileopal/MobileOPAL.vcproj,
+	  samples/mobileopal/MobileOPALppc.rc,
+	  samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/MobileOpalDlg.h,
+	  samples/mobileopal/OptionsCodecs.cpp,
+	  samples/mobileopal/OptionsCodecs.h,
+	  samples/mobileopal/OptionsGeneral.cpp,
+	  samples/mobileopal/OptionsGeneral.h,
+	  samples/mobileopal/resourceppc.h:
+	  Added to Mobile OPAL sample program, codec options editing
+	  dialog. Still have drag and drop for ordering to do.
+	  
+	  Added CAB file installer for Mobile OPAL.
+
+2009-12-21 04:05  rjongbloed
+
+	* [r23883] samples/codectest/codectest_2005.vcproj:
+	  Minor improvement to build so if directories in typical layout,
+	  do not have to have VisualStudio configuration.
+
+2009-12-21 04:39  rjongbloed
+
+	* [r23884] samples/mobileopal/MobileOPALppc.rc,
+	  samples/mobileopal/OptionsCodecs.cpp,
+	  samples/mobileopal/OptionsCodecs.h:
+	  Added ability to reorder and enable/disable codecs in Windows
+	  Mobile demo application.
+
+2009-12-21 05:45  csoutheren
+
+	* [r23885] include/sip/handlers.h, include/sip/sippdu.h,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Change SIPMessage and SIPMessageHandler to use a SIPParameters
+	  block
+	  so that we can add new features without changing function
+	  parameter lists
+	  Allow setting the From address in connectionless MESSAGE pdus
+
+2009-12-21 09:21  rjongbloed
+
+	* [r23886] Makefile.in, configure.ac, include/opal/buildopts.h.in,
+	  src/Ruby, src/Ruby/opal.i, src/Ruby/ruby_msvc_wrapper.c,
+	  src/Ruby/ruby_swig_wrapper.c, src/java/OPAL.java,
+	  src/java/OPALConstants.java, src/java/OPALJNI.java,
+	  src/java/OpalCallEndReason.java,
+	  src/java/OpalEchoCancelMode.java,
+	  src/java/OpalLineAppearanceStates.java,
+	  src/java/OpalMediaDataType.java, src/java/OpalMediaStates.java,
+	  src/java/OpalMediaTiming.java, src/java/OpalMessage.java,
+	  src/java/OpalMessageType.java, src/java/OpalMessage_m_param.java,
+	  src/java/OpalParamCallCleared.java,
+	  src/java/OpalParamGeneral.java, src/java/OpalParamProtocol.java,
+	  src/java/OpalParamRecording.java,
+	  src/java/OpalParamRegistration.java,
+	  src/java/OpalParamSetUpCall.java,
+	  src/java/OpalParamSetUserData.java,
+	  src/java/OpalProductDescription.java,
+	  src/java/OpalRegistrationStates.java,
+	  src/java/OpalSilenceDetectMode.java,
+	  src/java/OpalStatusCallCleared.java,
+	  src/java/OpalStatusIncomingCall.java,
+	  src/java/OpalStatusLineAppearance.java,
+	  src/java/OpalStatusMediaStream.java,
+	  src/java/OpalStatusMessageWaiting.java,
+	  src/java/OpalStatusRegistration.java,
+	  src/java/OpalStatusUserInput.java,
+	  src/java/OpalVideoRecordMixMode.java,
+	  src/java/SWIGTYPE_p_OpalHandleStruct.java,
+	  src/java/SWIGTYPE_p_OpalMessage.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_q_const__char_p_void_p_void_int__int.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__struct_OpalMessage__int.java,
+	  src/java/SWIGTYPE_p_void.java, src/java/example.java,
+	  src/java/exampleConstants.java, src/java/exampleJNI.java,
+	  src/java/java_msvc_wrapper.c, src/java/java_swig_wrapper.c,
+	  src/java/opal.i, src/win32/Private.def,
+	  src/win32/opal_lib_2005.vcproj:
+	  Added Ruby support via swig.
+	  Updated Java support to latest swig.
+
+2009-12-21 09:31  rjongbloed
+
+	* [r23887] configure:
+	  Update configure from configure.ac
+
+2009-12-21 23:42  rjongbloed
+
+	* [r23888] Makefile.in:
+	  Fixed build broken by previous Riby check in
+
+2009-12-21 23:44  rjongbloed
+
+	* [r23889] plugins:
+	  Ignorance
+
+2009-12-22 07:56  rjongbloed
+
+	* [r23890] src/win32/opal_dll_2005.vcproj,
+	  src/win32/opal_lib_2005.vcproj:
+	  Fixed some compatibility issues with compiling sources that
+	  include files that do not exist in Windows Mobile.
+
+2009-12-22 23:08  rjongbloed
+
+	* [r23892] configure.ac, include/opal/buildopts.h.in,
+	  src/Ruby/ruby_msvc_wrapper.c, src/win32/dllmain.cxx:
+	  Changed Ruby interface to version 1.9.1 directory structure.
+	  
+	  Fixed not actually including Ruby interface in DLL.
+
+2009-12-22 23:21  rjongbloed
+
+	* [r23893] include/opal/buildopts.h.in:
+	  Fixed incorrect Ruby library directory
+
+2009-12-23 05:48  rjongbloed
+
+	* [r23894] include/opal.h, src/Ruby/opal.i,
+	  src/Ruby/ruby_msvc_wrapper.c, src/Ruby/ruby_msvc_wrapper.cxx,
+	  src/Ruby/ruby_swig_wrapper.c, src/Ruby/ruby_swig_wrapper.cxx,
+	  src/java/OPAL.java, src/java/OPALJNI.java,
+	  src/java/OpalContext.java, src/java/OpalMessagePtr.java,
+	  src/java/OpalParamGeneral.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__OpalMessage__int.java,
+	  src/java/SWIGTYPE_p_unsigned_int.java,
+	  src/java/java_msvc_wrapper.c, src/java/java_msvc_wrapper.cxx,
+	  src/java/java_swig_wrapper.c, src/java/java_swig_wrapper.cxx,
+	  src/java/opal.i, src/opal/opal_c.cxx,
+	  src/win32/opal_lib_2005.vcproj:
+	  Added C++ wrapper classes around "C" API.
+	  
+	  It may seem odd to have a C++ wrapper around a "C" API which is
+	  itself a wrapper around a C++ API, but sometimes a C++ programmer
+	  may wish to access the OPAL system via this simplified API
+	  instead of the quite complex one in the base OPAL library. It is
+	  also easier to use secondary languages such as Java and Ruby
+	  using this abstraction than the pure "C" one.
+
+2009-12-23 06:09  rjongbloed
+
+	* [r23895] include/opal.h, src/Ruby/opal.i,
+	  src/Ruby/ruby_swig_wrapper.cxx, src/java/OPALJNI.java,
+	  src/java/OpalContext.java, src/java/java_swig_wrapper.cxx,
+	  src/opal/opal_c.cxx, src/win32/dllmain.cxx:
+	  Require lower case for Ruby module.
+	  
+	  Adjust new OpalContext::Initialise() to avoid unsigned reference,
+	  make the usage in Ruby/Java tidier.
+
+2009-12-23 22:49  rjongbloed
+
+	* [r23896] samples/mobileopal/MobileOpalDlg.cpp:
+	  Fixed compile of MobileOPAL
+
+2009-12-24 01:57  rjongbloed
+
+	* [r23898] ., Makefile.in, include/lids/lid.h,
+	  include/lids/lidpluginmgr.h, include/opal.h,
+	  include/opal/connection.h, include/opal/manager.h, opal.dxy,
+	  opal_cfg.dxy.in:
+	  Fix various doxygen incompatibilities
+
+2009-12-25 10:44  rjongbloed
+
+	* [r23899] src/sip/sipcon.cxx:
+	  Added missing call to set string options on incoming SIP call,
+	  thanks Vyacheslav Frolov
+
+2010-01-04 04:43  rjongbloed
+
+	* [r23900] src/win32/opal_lib_2005.vcproj:
+	  Fixed incorrect path for new ruby interface files.
+
+2010-01-06 00:23  rjongbloed
+
+	* [r23901] include/rtp/jitter.h, src/opal/opalmixer.cxx,
+	  src/rtp/jitter.cxx, src/rtp/rtp.cxx:
+	  Fixed issues with shutting down the jitter buffer and it's
+	  associated thread. This has had "quick fixes" a couple of times
+	  and made very unstable. Should be correct now.
+
+2010-01-07 00:33  rjongbloed
+
+	* [r23903] src/t38/t38proto.cxx:
+	  Change so T.38 mode fax can be used on servers that do not
+	  support G.711
+
+2010-01-08 03:47  rjongbloed
+
+	* [r23905] src/opal/call.cxx, src/opal/connection.cxx,
+	  src/opal/manager.cxx:
+	  Fixed issue with ignoring incoming SIP offer codec preference
+	  order.
+
+2010-01-08 05:04  csoutheren
+
+	* [r23906] src/sip/sipcon.cxx:
+	  Allow short form of picture_fast_update inside SIP video fast
+	  update request
+
+2010-01-08 05:57  rjongbloed
+
+	* [r23907] include/opal.h, src/Ruby/ruby_swig_wrapper.cxx,
+	  src/java/OPALJNI.java, src/java/OpalContext.java,
+	  src/java/java_swig_wrapper.cxx, src/opal/opal_c.cxx:
+	  Added IsInitialised function to super simplified C++ API.
+	  Fixed multiple calls to Initialise() crashing.
+
+2010-01-08 07:04  rjongbloed
+
+	* [r23908] include/opal.h:
+	  Fixed portability issue in "C" API include file.
+
+2010-01-09 04:32  rjongbloed
+
+	* [r23910] include/opal/manager.h, src/opal/manager.cxx:
+	  Fixed strange issue with Visual Studio auto-expanding a variable
+	  in the debugger, simply changing it's name fixes it!
+
+2010-01-11 00:19  rjongbloed
+
+	* [r23912] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Assure Phase E is entered when completing TIFF<->PCM mode fax,
+	  thanks Dmitry
+
+2010-01-11 01:46  rjongbloed
+
+	* [r23913] include/opal/mediafmt.h, include/sip/sdp.h,
+	  src/opal/mediafmt.cxx, src/sip/sdp.cxx:
+	  Applied modified version of patch ID: 2928911 "SIP G729 Codec
+	  Negotiation Improvement", thanks ted szoczei.
+	  
+	  Note to submitters: please, please, please use the code
+	  formatting rules that are in place, 2 space tabs, capitalisation,
+	  etc. The code base would become an unintelligible nightmare if
+	  every author just went their own way!
+
+2010-01-11 02:25  rjongbloed
+
+	* [r23914] src/sip/sippdu.cxx:
+	  Applied part of patch ID: 2919843 "SIP Contact Handling", thanks
+	  ted szoczei.
+	  
+	  The second half was not added as the test could prevent legal
+	  entries from being included, eg sip:fred@blogs:5010 would prevent
+	  sip:fred@blogs:50101 from being included. A better solution is
+	  required.
+
+2010-01-11 03:19  rjongbloed
+
+	* [r23916] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed issue where bad registrars can return multiple identical
+	  entries in the Contact field after doing stupid things like
+	  removing the transport address or port number from our proposal.
+	  Reported by ted szoczei
+	  
+	  Also improved the parsing of the Contact field so if had a
+	  display name that looked like "Bloggs, Fred" the comma inside a
+	  quote would not confuse it.
+	  
+	  Finally, again to work around bad registrars, if the registrar
+	  does not put a port number in the returned Contact URI, even
+	  though we supplied one, we explicitly add it. THis is due to the
+	  rules for URI comparison are that no port supplied is different
+	  from using the default port. Which in turn is due to a port-less
+	  URI meaning a DNS SRV record look up. However, that sort of look
+	  up should never occur in a URI from a Contact field, which should
+	  always be an explicit location to avoid circular references. So
+	  if port absent, we add the default.
+
+2010-01-11 23:35  rjongbloed
+
+	* [r23919] src/opal/call.cxx:
+	  Allow user defined AdjustMediaFormats on connection instance to
+	  change media format list order.
+
+2010-01-11 23:44  rjongbloed
+
+	* [r23920] plugins/fax/fax_spandsp/spandsp_fax.cpp:
+	  Applied Assure Phase E is entered when completing TIFF<->T.38
+	  mode fax, thanks Dmitry
+
+2010-01-11 23:59  rjongbloed
+
+	* [r23921] src/sip/sdp.cxx:
+	  Fixed bug in new G.729 (actually multiple OpalMediaFormat per SDP
+	  encoding name) fixes, does not get correct secondary formats.
+	  Note the bug is mine not Teds!
+
+2010-01-12 00:08  rjongbloed
+
+	* [r23922] src/sip/sdp.cxx:
+	  Fix stupid compile error.
+
+2010-01-12 01:49  rjongbloed
+
+	* [r23923] include/h323/h323pdu.h, include/h323/q931.h,
+	  include/opal/connection.h, src/h323/h323pdu.cxx,
+	  src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Added ability to set "presentation block" for outgoing connection
+	  to network. Only fully implemented for H.323/Q.931 at present.
+	  For SIP it just changes the display name to "Anonymous", full
+	  RFC3323 compliance is for a later time.
+
+2010-01-12 06:44  rjongbloed
+
+	* [r23924] samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc:
+	  Fixed broken "Hold" function in OpenPhone
+
+2010-01-12 07:06  rjongbloed
+
+	* [r23925] include/rtp/rtp.h, src/rtp/jitter.cxx, src/rtp/rtp.cxx:
+	  Fixed race condition when shutting down media that can sometimes
+	  cause an assert about the media thread not stopping.
+
+2010-01-13 00:44  rjongbloed
+
+	* [r23926] include/opal/connection.h, include/opal/endpoint.h,
+	  include/opal/manager.h, include/t38/t38proto.h,
+	  src/iax2/iax2con.cxx, src/opal/call.cxx, src/opal/connection.cxx,
+	  src/opal/endpoint.cxx, src/opal/manager.cxx,
+	  src/t38/t38proto.cxx:
+	  More issues with assuring correct media ordering, user defined
+	  override of AdjustMediaFormats() must know if the media format
+	  list is what we are offering or what the remote offered us, so it
+	  does not unwittingly change format order. Necessary API change.
+
+2010-01-13 05:19  rjongbloed
+
+	* [r23927] src/sip/sippdu.cxx:
+	  Fixed user defined port being accidentally overwritten in SIP
+	  From/To fields.
+
+2010-01-13 06:12  rjongbloed
+
+	* [r23928] samples/callgen/main.cxx, samples/callgen/main.h:
+	  Some bits and pieces on callgen sample app:
+	  fixed outgoing message file handling, changes elsewhere to file
+	  URL broke it, unless parameter was partial file URL. Now is
+	  any URL supported by the VXML system.
+	  prevent call from ending early of OGM is shorter than delay time
+	  display the various delay time parameters when starting
+	  changed gatekeeper so default does not search for one
+
+2010-01-13 06:19  rjongbloed
+
+	* [r23929] samples/callgen/main.cxx:
+	  Fixed accidental check in
+
+2010-01-13 06:50  rjongbloed
+
+	* [r23930] include/opal/connection.h, include/opal/manager.h,
+	  include/opal/opalmixer.h, include/opal/patch.h,
+	  samples/opalmcu/main.cxx, src/opal/connection.cxx,
+	  src/opal/manager.cxx, src/opal/mediastrm.cxx,
+	  src/opal/opalmixer.cxx, src/opal/patch.cxx:
+	  Added ability to set a bypass of internal media handling, passing
+	  RTP data directly from one call to another.
+	  
+	  This can be useful for back to back calls that happen to be the
+	  same media format and you wish to avoid double decoding and
+	  encoding of media. Note this scenario is not the same as two
+	  OpalConnections within the same OpalCall, but two completely
+	  independent OpalCall where one connection is to be bypassed. For
+	  example, two OpalCall instances might have two SIPConnection
+	  instances and two OpalMixerConnection instances connected via a
+	  single OpalMixerNode. Now while there are ONLY two calls in the
+	  node, it is a waste to decode the audio, add to mixer and
+	  re-encode it again. In practice this is identical to just
+	  bypassing the mixer node completely, until a third party is
+	  added, then we need to switch back to normal (non-bypassed)
+	  operation.
+
+2010-01-13 23:43  rjongbloed
+
+	* [r23932] include/sip/sipcon.h:
+	  Added missing virtual on OnAllowedEventNotify() call back
+	  function.
+	  
+	  Also tidied some formatting and added some comments.
+
+2010-01-14 00:47  rjongbloed
+
+	* [r23934] include/codec/opalpluginmgr.h,
+	  src/codec/opalpluginmgr.cxx, src/h323/gkserver.cxx,
+	  src/h323/h235auth.cxx:
+	  Improved platform independence, removing direct calls to time()
+	  function.
+
+2010-01-14 05:06  rjongbloed
+
+	* [r23938] include/opal/manager.h, include/opal/mediatype.h,
+	  src/h323/h323.cxx, src/opal/connection.cxx, src/opal/opal_c.cxx:
+	  Added to "C" API ability to enable/disable any media type, not
+	  just audio/video.
+	  
+	  Added some extra stuff for manipulating media type auto start
+	  modes.
+
+2010-01-14 22:54  rjongbloed
+
+	* [r23939] src/sip/sipcon.cxx:
+	  Fixed issue with re-INVITE switching codecs, thanks Vyacheslav
+	  Frolov
+
+2010-01-15 23:42  rjongbloed
+
+	* [r23940] include/opal/connection.h:
+	  Fixed typo, thanks Yuriy Cherniavsky
+
+2010-01-16 02:52  rjongbloed
+
+	* [r23941] plugins/audio/G.722.2, plugins/audio/G.722.2/AMR-WB,
+	  plugins/audio/G.722.2/AMR-WB/dec.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_acelp.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_acelp.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_dtx.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_dtx.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_gain.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_gain.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_if.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_if.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_lpc.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_lpc.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_main.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_main.h,
+	  plugins/audio/G.722.2/AMR-WB/dec_rom.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_util.c,
+	  plugins/audio/G.722.2/AMR-WB/dec_util.h,
+	  plugins/audio/G.722.2/AMR-WB/enc.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_acelp.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_acelp.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_dtx.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_dtx.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_gain.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_gain.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_if.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_if.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_lpc.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_lpc.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_main.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_main.h,
+	  plugins/audio/G.722.2/AMR-WB/enc_rom.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_util.c,
+	  plugins/audio/G.722.2/AMR-WB/enc_util.h,
+	  plugins/audio/G.722.2/AMR-WB/if_rom.c,
+	  plugins/audio/G.722.2/AMR-WB/if_rom.h,
+	  plugins/audio/G.722.2/AMR-WB/typedef.h,
+	  plugins/audio/G.722.2/G.722.2_2005.vcproj,
+	  plugins/audio/G.722.2/G.722.2_2008.vcproj,
+	  plugins/audio/G.722.2/G7222Codec.cpp, plugins/plugins_2005.sln,
+	  plugins/plugins_2008.sln:
+	  Added G.722.2 (aka GSM-AMR Wide Band) codec plug in, thanks Ted
+	  Szoczei
+
+2010-01-16 03:43  rjongbloed
+
+	* [r23942] plugins/audio/G.722.2/G7222Codec.cpp:
+	  Harmonised new G.722.2 codec plug in media options with
+	  IPP-CODECS version. Most options do not actually do anything ...
+	  yet.
+
+2010-01-18 01:22  rjongbloed
+
+	* [r23943] include/h323/channels.h, src/h323/channels.cxx:
+	  Fixed possible race condition in closing H.323 logical channels
+	  under heavy load. The Close() function could be called by
+	  multiple threads, need to make sure is idempotent.
+
+2010-01-18 10:13  rjongbloed
+
+	* [r23944] include/sip/sdp.h, include/sip/sipcon.h,
+	  src/sip/sdp.cxx, src/sip/sipcon.cxx:
+	  Fixed log standing issue with changing codecs in SIP. Centres
+	  around the fact that there are no "capabilities" as such, so if
+	  we initiated the call, we need to assume the other side can do
+	  everything, so set the "remote capabilities" to the same as our
+	  local capabilities. Brought to a head due to some issues with fax
+	  switching.
+
+2010-01-18 22:46  rjongbloed
+
+	* [r23945] src/h323/channels.cxx:
+	  Fixed stupid mistake in previous check in to fix race condition.
+
+2010-01-18 23:09  rjongbloed
+
+	* [r23946] include/opal/connection.h, src/h323/h323.cxx,
+	  src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Removed apparently redundant function, whatever needed it can
+	  simply use GetOtherConnection()->GetMediaFormats() in their
+	  SetUpConnection() function.
+
+2010-01-19 07:13  rjongbloed
+
+	* [r23948] include/opal/opalmixer.h, src/opal/opalmixer.cxx:
+	  Fixed some backward compatibility issues with mixer classes.
+
+2010-01-20 02:07  rjongbloed
+
+	* [r23949] src/sip/sipcon.cxx:
+	  Fixed issue (again) with re-INVITE switching codecs.
+
+2010-01-20 07:21  rjongbloed
+
+	* [r23952] include/opal/opalmixer.h, src/opal/opalmixer.cxx:
+	  Fixed mistake in previous check in for mixer code.
+
+2010-01-20 08:08  rjongbloed
+
+	* [r23953] include/opal/connection.h, include/opal/opalmixer.h,
+	  src/opal/connection.cxx, src/opal/opalmixer.cxx:
+	  Added GetBoolean() and GetInteger() functions to
+	  OpalConnection::StringOptions class for convenience.
+
+2010-01-20 23:11  rjongbloed
+
+	* [r23954] src/opal/connection.cxx:
+	  Changed the OpalConnection::StringOptions::GetBoolean() so if the
+	  option is present but empty, then that corresponds to a "true"
+	  value. Suggested by Vyacheslav Frolov.
+
+2010-01-21 02:40  rjongbloed
+
+	* [r23955] include/rtp/rtp.h, samples/openphone/main.cxx,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc,
+	  src/opal/mediastrm.cxx, src/rtp/rtp.cxx:
+	  Added packets lost and jitter statistics for our transmitted RTP
+	  data, obtained from remote RTCP receiver reports.
+	  
+	  Added packets too late to receiver reports packets lost, they may
+	  as well be if they were not played.
+	  
+	  Fixed decoding of receiver report data from RTCP SR packet.
+	  
+	  Removed assumption that audio is 8kHz for jitter calculation.
+
+2010-01-21 07:36  rjongbloed
+
+	* [r23957] src/opal/ivr.cxx, src/opal/opalmixer.cxx:
+	  Fixed user input support when SIP is used with IVR or mixer
+	  endpoints.
+
+2010-01-21 07:54  rjongbloed
+
+	* [r23958] include/opal/call.h, include/opal/manager.h,
+	  src/opal/call.cxx:
+	  Fixed memory leak and exit lock up when get a (very unusual) call
+	  creation failure where the "party A" endpoint prefix exists but
+	  it does not create the connection due to an internal error.
+
+2010-01-21 09:37  rjongbloed
+
+	* [r23961] Makefile.in, samples/callgen/main.cxx:
+	  Fixed compiltaion without Expat on Unix.
+
+2010-01-22 04:40  rjongbloed
+
+	* [r23963] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc:
+	  Added menu to OpenPhone to restore video windows position after
+	  they go walkabout (e.g. on a screen that no longer exists)
+
+2010-01-22 05:02  rjongbloed
+
+	* [r23964] include/opal/patch.h, src/codec/opalpluginmgr.cxx,
+	  src/opal/patch.cxx:
+	  Fixed synchronisation of media bypass when video is use, have to
+	  wait until teh next Intra frame arrives before we switch to
+	  bypass mode.
+
+2010-01-22 07:50  rjongbloed
+
+	* [r23965] samples/openphone/main.cxx, samples/openphone/main.h:
+	  Fixed problem with OpenPhone sometimes not being able to send
+	  User Input (DTMF) due to multiple sources of the media format and
+	  recent requirement that it be in the capability list for
+	  inclusion in SIP commands. In process removed now redundant
+	  indication of the subsystem that is supplying the particular
+	  media format (pc/ivr etc) as does not really mean anything.
+
+2010-01-22 08:22  rjongbloed
+
+	* [r23966] include/sip/sdp.h, src/sip/sdp.cxx:
+	  Fixed handling of FMTP strings (getting them to the
+	  OpalMediaOptions) broken in recent change to support multiple
+	  media formats with same encoding name.
+
+2010-01-22 08:25  rjongbloed
+
+	* [r23967] src/opal/transcoders.cxx, src/sip/sipcon.cxx:
+	  Cleaned up some extraneous messages and chunks of redundant
+	  execution of code.
+
+2010-01-22 09:12  rjongbloed
+
+	* [r23968] src/opal/transcoders.cxx:
+	  Fixed breakage from previous check in, line lose by accident.
+
+2010-01-23 00:16  rjongbloed
+
+	* [r23969] samples/openphone/main.cxx:
+	  Added media type to global list of media formats in OpenPhone.
+
+2010-01-23 00:28  rjongbloed
+
+	* [r23970] src/codec/opalpluginmgr.cxx:
+	  Restore old code for video encoder loop, no idea why the new
+	  memory optimised code doesn't always work, but there are
+	  complaints of video working fine before this change and not
+	  working after it. Oh well, I suppose allocating the RTP packets
+	  for transmission every time is not THAT big an overhead.
+
+2010-01-23 02:39  rjongbloed
+
+	* [r23972] src/opal/call.cxx:
+	  Make sure selected media formats for transmission are clamped to
+	  the global settings for media options.
+
+2010-01-25 00:33  rjongbloed
+
+	* [r23973] include/opal/patch.h, src/opal/patch.cxx,
+	  src/opal/recording.cxx:
+	  Fixed compilation with video disabled.
+
+2010-01-25 00:42  rjongbloed
+
+	* [r23974] src/t38/t38proto.cxx:
+	  Applied patch ID: 2920672 "Switching to T.38 mode fix", thanks
+	  Vyacheslav Frolov
+
+2010-01-25 01:28  rjongbloed
+
+	* [r23978] src/opal/ivr.cxx:
+	  Added a bit more to the logging for IVR file playback
+
+2010-01-25 01:28  rjongbloed
+
+	* [r23979] opal.dxy:
+	  Added reference to simplified API in opal.h
+
+2010-01-25 01:30  rjongbloed
+
+	* [r23980] include/opal.h:
+	  More documatation improvements
+
+2010-01-25 08:12  rjongbloed
+
+	* [r23981] src/opal/mediafmt.cxx:
+	  Make sure default max video output packet size does not interfere
+	  with H.264 media packetization mode zero. While this mode is
+	  broken IMHO, often requiring very large UDP packets with no easy
+	  way to avoid them, we have to support it. Though we draw a line
+	  at 8kb packets, have to have a limit somewhere!
+
+2010-01-26 00:06  rjongbloed
+
+	* [r23984] include/opal/call.h, src/opal/call.cxx:
+	  Added support for consultation transfer (via call token) in
+	  OpalCall::Transfer() function. Updated documentation.
+
+2010-01-28 05:24  rjongbloed
+
+	* [r23985] plugins/audio/G.722.1,
+	  plugins/audio/G.722.1/G.722.1_2005.vcproj,
+	  plugins/audio/G.722.1/G.722.1_2008.vcproj,
+	  plugins/audio/G.722.1/G722-1,
+	  plugins/audio/G.722.1/G722-1/basop32.c,
+	  plugins/audio/G.722.1/G722-1/basop32.h,
+	  plugins/audio/G.722.1/G722-1/coef2sam.c,
+	  plugins/audio/G.722.1/G722-1/common.c,
+	  plugins/audio/G.722.1/G722-1/count.c,
+	  plugins/audio/G.722.1/G722-1/count.h,
+	  plugins/audio/G.722.1/G722-1/dct4_a.c,
+	  plugins/audio/G.722.1/G722-1/dct4_a.h,
+	  plugins/audio/G.722.1/G722-1/dct4_s.c,
+	  plugins/audio/G.722.1/G722-1/dct4_s.h,
+	  plugins/audio/G.722.1/G722-1/decode.c,
+	  plugins/audio/G.722.1/G722-1/decoder.c,
+	  plugins/audio/G.722.1/G722-1/defs.h,
+	  plugins/audio/G.722.1/G722-1/encode.c,
+	  plugins/audio/G.722.1/G722-1/encoder.c,
+	  plugins/audio/G.722.1/G722-1/huff_def.h,
+	  plugins/audio/G.722.1/G722-1/huff_tab.c,
+	  plugins/audio/G.722.1/G722-1/huff_tab.h,
+	  plugins/audio/G.722.1/G722-1/sam2coef.c,
+	  plugins/audio/G.722.1/G722-1/tables.c,
+	  plugins/audio/G.722.1/G722-1/tables.h,
+	  plugins/audio/G.722.1/G722-1/typedef.h,
+	  plugins/audio/G.722.1/G7221Codec.c, plugins/plugins_2005.sln,
+	  plugins/plugins_2008.sln:
+	  Added G.722.1 (aka Siren 7) codec plug in, thanks Ted Szoczei
+
+2010-01-28 05:55  rjongbloed
+
+	* [r23986] plugins/audio/G.722.1/G7221Codec.c, src/sip/sdp.cxx:
+	  Fixed issue where can select an OpalMediaFormat that has a
+	  required FMTP option in the SDP. That is, if the option is
+	  "EqualMerge" and maps to a FMTP parameter, they must match in
+	  value before the OpalMediaFormat is included in the list for the
+	  SDP. Very useful for picking different formats which use the same
+	  "encoding name" and are only distinguished by an FMTP parameter
+	  value.
+	  
+	  Also fixed passing of raw FMTP string value on incoming SDP to a
+	  plug in that defines an option called "FMTP". Worked for
+	  outgoing, but not incoming if that incoming string happened to
+	  have a ';' or '=' sign in it.
+
+2010-01-28 06:09  rjongbloed
+
+	* [r23987] src/sip/sipcon.cxx:
+	  Fixed REFER with "replaces" parameter (used for consultation
+	  transfer) whhere the to-tag and from-tag were swapped, thanks
+	  Samuel Widmer
+
+2010-01-29 01:28  rjongbloed
+
+	* [r23988] include/opal/manager.h:
+	  Added tiny bit more documentation
+
+2010-01-29 01:30  rjongbloed
+
+	* [r23989] include/opal/pres_ent.h, src/opal/pres_ent.cxx:
+	  Added default implementation for OpalPresentity::SendCommand(),
+	  just calls the command synchronously.
+
+2010-01-30 23:14  rjongbloed
+
+	* [r23993] include/opal/pres_ent.h, include/sip/sippres.h,
+	  src/opal/pres_ent.cxx, src/sip/sippres.cxx:
+	  Changed presentity data items from PString to PURL, as they are
+	  always a URI.
+
+2010-01-31 00:05  rjongbloed
+
+	* [r23994] samples/testpresent/main.cxx, src/sip/handlers.cxx:
+	  Fixed GNU compiler compatibility
+
+2010-02-01 00:21  rjongbloed
+
+	* [r24001] plugins/video/H.263-1998/h263_2008.vcproj:
+	  Applied patch ID: 2943314 "Fix wrong output target name in VC2008
+	  h263-1998 proj", thanks Anonymous
+
+2010-02-01 02:59  rjongbloed
+
+	* [r24010] src/win32/opal_2005.dtf, src/win32/opal_2005_wm.dtf,
+	  src/win32/opal_2005_wm6.dtf, src/win32/opal_2008.dtf,
+	  src/win32/opald_2005.dtf, src/win32/opald_2005_wm.dtf,
+	  src/win32/opald_2005_wm6.dtf, src/win32/opald_2008.dtf,
+	  src/win32/opaln_2005.dtf, src/win32/opaln_2005_wm.dtf,
+	  src/win32/opaln_2005_wm6.dtf, src/win32/opaln_2008.dtf:
+	  Update symbols
+

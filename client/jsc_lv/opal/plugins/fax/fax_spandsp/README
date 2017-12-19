@@ -1,0 +1,41 @@
+Requirements
+------------
+
+This plugin requires two external source code projects.
+
+1) spandsp
+
+Spandsp is a GPL library and suite of programs that implement
+a faxmodem. It is available from the following URL:
+
+    http://www.soft-switch.org/downloads/spandsp
+
+This must be compiled and installed.
+
+1) spandsp_util
+
+This is a GPL program that implements a stand-alone fax endpoint
+or T.38 to fax gateway using spandsp. It provides external interfaces
+that use network sockets, and can thus be invoked by non-GPL programs.
+
+Spandsp_util can be downloaded from the CVS at :
+
+    http://sourceforge.net/projects/voxgratia/
+
+This code is assumed to be in the directory ./spandsp_util. 
+
+IMPORTANT NOTE
+--------------
+
+The spandsp_util and spandsp programs are released under the GPL
+license. The spandsp_fax plugin is released under the MPL license.
+This means that distribution of aggregated source code and/or binaries
+is somewhat problematic.
+
+The intent is that spandsp_fax should invoke spandsp_util to perform
+the fax functions, and hence conform to the GPL. Until this is done,
+be careful :)
+
+   Craig Southeren, 
+   craigs@postincrement.com
+

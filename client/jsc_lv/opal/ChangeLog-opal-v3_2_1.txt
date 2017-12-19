@@ -1,0 +1,782 @@
+2008-03-07 07:35  rjongbloed
+
+	* [r19699] version.h:
+	  Update version number for beta v3.2.1
+
+2008-03-09 12:10  rjongbloed
+
+	* [r19700] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc:
+	  Fixed dimming of OpenPhone codec options value dialog label.
+
+2008-03-09 12:11  rjongbloed
+
+	* [r19701] src/opal/mediafmt.cxx:
+	  Fixed reading enum OpalMediaOption type from string/iostream.
+
+2008-03-10 06:24  rjongbloed
+
+	* [r19705] samples/mobileopal/MobileOPALppc.rc,
+	  samples/mobileopal/MobileOPALsp.rc,
+	  samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/Resourcesp.h,
+	  samples/mobileopal/resourceppc.h:
+	  Small improvement of UI on Windows Mobile Demo, indicate when
+	  registering with gk/registrar.
+
+2008-03-10 07:05  rjongbloed
+
+	* [r19708] include/lids/lidep.h, samples/opalgw/main.cxx,
+	  samples/opalgw/main.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/simple/main.cxx,
+	  samples/simple/main.h, src/lids/lidep.cxx, src/opal/opal_c.cxx:
+	  Removed separate OpalPOTSEndPoint and OpalPSTNEndPoint and
+	  combine into a single OpalLineEndPoint class. There are issues
+	  with having the requirement that they be separate. One if which
+	  is if a single driver does both POTS (FXS) and PSTN (FXO) and it
+	  cannot be opened twice, you cannot do both!
+
+2008-03-10 07:53  rjongbloed
+
+	* [r19709] src/lids/lidep.cxx:
+	  Improved error reporting when adding LIDS. Also made
+	  initialisation more tolerant.
+
+2008-03-10 23:13  rjongbloed
+
+	* [r19712] samples/openphone/main.cxx:
+	  Put back accidentally deleted line in OpenPhone.
+
+2008-03-11 02:38  rjongbloed
+
+	* [r19716] src/h323/h323.cxx, src/h323/h323rtp.cxx:
+	  Fixed incorrect OLC reject cause code on various unknown errors,
+	  why was it set to a H.324/H..223 specific code?
+	  
+	  Fixed uninitialised variable when parsing OLC mediaControl
+	  address, gave false positives.
+
+2008-03-11 02:56  rjongbloed
+
+	* [r19718] samples/openphone/main.cxx, samples/openphone/main.h:
+	  Fixed Open Phone Start Video button not being enabled when it
+	  should depending on timing and H.323 fast connect mode options.
+
+2008-03-11 23:57  rjongbloed
+
+	* [r19723] src/codec/opalpluginmgr.cxx:
+	  Fixed correct propagation of timestamp from source to RTP packets
+	  when encoding video using plug in.
+
+2008-03-12 02:14  rjongbloed
+
+	* [r19725] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc:
+	  Fixed message box appearing on every key press when entered
+	  invalid data into media format option value edit box in
+	  OpenPhone.
+
+2008-03-12 03:25  rjongbloed
+
+	* [r19728] include/opal/patch.h, src/opal/patch.cxx:
+	  Changed simple mutex to Read/Write mutex to avoid deadlocks when
+	  media stream based information, (e.g. RFC2833 User Input) has to
+	  be passed to a connection, requiring a lock. Other parts o fthe
+	  system may need to get to transcoders via the opposite direction.
+	  Get classic Lock A/Lock B in one thread with a Lock B/Lock A in
+	  another, deadlock city.
+
+2008-03-12 03:27  rjongbloed
+
+	* [r19730] src/codec/rfc2833.cxx:
+	  Prevent deadlock in RFC2833 when get end packet at exactly the
+	  same time as the timeout.
+
+2008-03-12 12:06  rjongbloed
+
+	* [r19732] include/lids/lid.h, include/lids/lidplugin.h,
+	  include/lids/lidpluginmgr.h, src/lids/lid.cxx,
+	  src/lids/lidep.cxx, src/lids/lidpluginmgr.cxx, src/opal/call.cxx:
+	  Fixed various issues with LID operation:
+	  Trying to trace value of CallProgressTone goes into endless loop.
+	  Empty Tone description string not handled.
+	  Line monitor thread should not keep OpalConnection locked
+	  for writing while collecting DTMF digits.
+	  Improved error messages on setting tones.
+	  Fixed calling tones documentation and improved function names.
+
+2008-03-12 12:21  rjongbloed
+
+	* [r19734] src/lids/lid.cxx:
+	  Incorrect handling of modulated tones in LID.
+
+2008-03-13 22:51  rjongbloed
+
+	* [r19741] src/h323/h323.cxx:
+	  Fix slow start H.323 selecting transmit channel for codec that is
+	  excluded by the media format mask.
+
+2008-03-14 02:53  rjongbloed
+
+	* [r19744] include/lids/lidplugin.h, plugins/LID/IxJ/ixj_unix.cxx,
+	  plugins/LID/IxJ/ixj_win.cpp:
+	  Fixed compile of IxJ LID plug in.
+
+2008-03-14 03:15  rjongbloed
+
+	* [r19746] Makefile.in, include/opal/mediafmt.h,
+	  src/codec/g7231mf.cxx, src/codec/g728mf.cxx,
+	  src/codec/g729mf.cxx, src/codec/gsm0610mf.cxx,
+	  src/codec/gsmamrmf.cxx, src/codec/iLBCmf.cxx,
+	  src/opal/mediafmt.cxx, src/win32/opal_lib.vcproj,
+	  src/win32/opal_lib_2005.vcproj, src/win32/opal_lib_2008.vcproj:
+	  Added iLBC and GSM-AMR to list of "known" codecs, i.e. ones we
+	  have a media format built in.
+	  
+	  Moved various codecs media formats to separate compilation units
+	  so if not used do not get loaded in statically linked
+	  applications.
+
+2008-03-14 06:40  rjongbloed
+
+	* [r19748] include/lids/lid.h, include/lids/lidep.h,
+	  src/lids/lid.cxx, src/lids/lidep.cxx, src/opal/connection.cxx,
+	  src/opal/manager.cxx, src/opal/patch.cxx:
+	  Added ability for a LID to indicate that it supports whole RTP
+	  packets.
+	  Removed strange extra condition for when patching same source and
+	  sink media formats, a transcoder is not required. If ability to
+	  repacketise is required (probabbly reason for code) it needs to
+	  be done differently.
+	  Improved some error reporting trace logs.
+
+2008-03-14 07:35  rjongbloed
+
+	* [r19750] src/codec/gsmamrmf.cxx, src/codec/iLBCmf.cxx:
+	  Added missing FMTP/H.245 generic info to non-plugin GSM-AMR and
+	  iLBC media formats.
+
+2008-03-17 06:30  rjongbloed
+
+	* [r19760] src/opal/mediafmt.cxx:
+	  Improved error reporting for get/set media options values.
+
+2008-03-17 07:27  rjongbloed
+
+	* [r19762] src/opal/call.cxx:
+	  Payload mapping table needs to be reversed for received RTP.
+
+2008-03-18 04:10  rjongbloed
+
+	* [r19766] src/opal/mediastrm.cxx:
+	  Fixed correct initial value for media stream data size, should
+	  include frames per packet in audio. Only happens if there are no
+	  transcoders.
+
+2008-03-18 08:17  rjongbloed
+
+	* [r19768] include/lids/lid.h, include/lids/lidplugin.h,
+	  include/lids/lidpluginmgr.h, src/lids/lid.cxx,
+	  src/lids/lidep.cxx, src/lids/lidpluginmgr.cxx:
+	  Better documented semantics for LID SetCallerID() function.
+	  Removed now redundant SendCallerIDOnCallWaiting() function.
+	  
+	  Removed calling SetCallerID() on an outgoing call, only relevant
+	  for incoming.
+	  
+	  Passed display name as well as number to caller ID.
+
+2008-03-18 08:34  rjongbloed
+
+	* [r19770] include/opal/manager.h, src/h323/h323ep.cxx,
+	  src/lids/lidep.cxx, src/opal/manager.cxx, src/sip/sipep.cxx:
+	  Fixed problem with setting global parameters such as user name
+	  and display name not being propagated through to the attached
+	  endpoints, and thus not to the connections being created by those
+	  endpoints.
+	  
+	  Simplified the endpoint memory management internal to the
+	  OpalManager.
+
+2008-03-18 11:34  rjongbloed
+
+	* [r19772] src/opal/transcoders.cxx:
+	  Fixed usage of reversed RTP payload type mapping table in
+	  transcoder, used to have a double negative but one negative was
+	  removed in revision 19762
+
+2008-03-18 22:58  rjongbloed
+
+	* [r19775] src/h323/gkclient.cxx, src/h323/h323.cxx,
+	  src/h323/h323trans.cxx, src/h323/peclient.cxx,
+	  src/lids/lidep.cxx, src/opal/connection.cxx, src/opal/patch.cxx,
+	  src/opal/transports.cxx, src/rtp/jitter.cxx, src/sip/sipep.cxx:
+	  Changed thread name to use thread ID (in decimal) as this is more
+	  useful for linking up the thread in the debugger with the trace
+	  log lines.
+
+2008-03-18 23:50  rjongbloed
+
+	* [r19780] plugins/LID/CAPI/CAPI.cxx,
+	  plugins/LID/CM_HID/cm_hid_win.cpp, plugins/LID/IxJ/ixj_unix.cxx,
+	  plugins/LID/IxJ/ixj_win.cpp, plugins/LID/TigerJet/tj_win.cpp,
+	  plugins/LID/VPB/vpb.cpp, plugins/LID/WinXP_HID/winxp_hid.cpp:
+	  Better documented semantics for LID SetCallerID() function.
+	  Removed now redundant SendCallerIDOnCallWaiting() function.
+	  
+	  Removed calling SetCallerID() on an outgoing call, only relevant
+	  for incoming.
+	  
+	  Passed display name as well as number to caller ID.
+
+2008-03-19 00:13  rjongbloed
+
+	* [r19782] src/opal/manager.cxx:
+	  Fixed recently introduced memory leak
+
+2008-03-19 06:04  rjongbloed
+
+	* [r19787] include/lids/lid.h, src/lids/lid.cxx,
+	  src/lids/lidep.cxx:
+	  Simplified user naming of LID lines, removed separate description
+	  field and only have the one "token" to identify the line, which
+	  may now be user defined. Incoming calls such as sip:left@addr can
+	  then look for a line with the token "left" to direct calls to a
+	  specific line.
+
+2008-03-25 01:31  rjongbloed
+
+	* [r19794] src/h323/gkclient.cxx, src/h323/gkserver.cxx,
+	  src/h323/h323.cxx, src/h323/h323trans.cxx, src/h323/peclient.cxx,
+	  src/iax2/iax2ep.cxx, src/iax2/processor.cxx,
+	  src/iax2/receiver.cxx, src/iax2/transmit.cxx, src/lids/lidep.cxx,
+	  src/opal/connection.cxx, src/opal/manager.cxx,
+	  src/opal/patch.cxx, src/opal/transports.cxx, src/rtp/jitter.cxx,
+	  src/sip/sipep.cxx:
+	  Further improvement to the thread name string. Now displays the
+	  thread ID on all threads, not requiring the caller to put a %u or
+	  %x in it's name. This allows the base code to take into account
+	  the platform to display the thread ID in a format suitable for
+	  the range of values for the platform, e.g. a decimal number for
+	  Win32 and a hex number of Linux.
+
+2008-03-25 04:21  rjongbloed
+
+	* [r19800] src/sip/sdp.cxx, src/sip/sipcon.cxx:
+	  Fixed problem with assert and call collapse if get a SIP call
+	  hold and have a video channel which was shut down with a zero
+	  port on a prior INVITE. Reported by Stonevoice.
+
+2008-03-25 05:08  rjongbloed
+
+	* [r19804] src/sip/sipep.cxx:
+	  Always check transport before creating connection.
+	  
+	  Move check for bad transport to avoid problem when NULL used to
+	  indicate default.
+
+2008-03-26 01:08  rjongbloed
+
+	* [r19812] src/rtp/jitter.cxx:
+	  Make sure the increase in jitter buffer size can never exceed the
+	  maximum jitter buffer time. Especially by the 49 days it got set
+	  to due to some other issue ....
+
+2008-03-26 02:35  rjongbloed
+
+	* [r19816] samples/simple/main.cxx, samples/simple/main.h:
+	  Added t command to simpleOPAL to test transfer call
+	  functionality.
+
+2008-03-27 22:21  rjongbloed
+
+	* [r19825] include/opal/mediafmt.h, samples/opalcodecinfo/main.cxx,
+	  src/opal/mediafmt.cxx:
+	  Fixed setting of correct OpalMediaOption for MAX frame
+	  width/height, was setting desired options. Changed the parameter
+	  variable names to make it clearer it is a maximum.
+
+2008-03-27 22:24  rjongbloed
+
+	* [r19827] samples/openphone/main.cxx:
+	  Added persistence of speaker/microphone mute status in OpenPhone,
+	  saving to registry like volume levels.
+
+2008-03-28 05:24  rjongbloed
+
+	* [r19830] include/h323/h323caps.h, src/codec/opalpluginmgr.cxx,
+	  src/h323/h323caps.cxx, src/opal/manager.cxx,
+	  src/opal/mediafmt.cxx, src/sip/sdp.cxx:
+	  Moved where ToNormalisedOptions() and ToCustomisedOptions() get
+	  called so they don't get missed, as had happened. They are now as
+	  close to the underlying protocol as possible, i.e. just before
+	  formatting an outgoing PDU or just as we parse an incoming PDU.
+	  Where they were before tended to have gaps.
+	  
+	  Added trace logs if a media format is not used due to a Merge()
+	  error, generally where an option is required to be equal and
+	  isn't. Happens in H.264 NAL Aigned Mode for example.
+
+2008-03-30 21:59  rjongbloed
+
+	* [r19840] include/opal/audiorecord.h, include/opal/call.h,
+	  include/opal/manager.h, src/opal/call.cxx, src/opal/manager.cxx:
+	  Added test for is currently recording.
+
+2008-03-30 22:01  rjongbloed
+
+	* [r19841] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc:
+	  Rearranged and improved menus so can easily add more "actions".
+	  
+	  Removed start video as button and only have it now as a menu.
+	  Buttons are only the most common functions as don;t have much
+	  reasl estate in the InCall Panel.
+	  
+	  Added transfer command.
+
+2008-03-30 23:26  rjongbloed
+
+	* [r19842] include/sip/sippdu.h, src/sip/sippdu.cxx:
+	  Changed REFER command to use "quoted" URI's in the Refer-To and
+	  Referred-By headers
+
+2008-03-31 02:56  rjongbloed
+
+	* [r19846] include/h323/h323ep.h, include/opal/endpoint.h,
+	  include/sip/sipep.h, src/h323/h323ep.cxx, src/opal/endpoint.cxx,
+	  src/opal/manager.cxx, src/sip/sipep.cxx:
+	  Fixed deadlock in H323EndPoint shutting down and removing
+	  gatekeeper. Special case of a general problem addressed by this
+	  change, cannot always shut things down in destructor due to early
+	  deletion of vtable and cannot shut down endpoints with a write
+	  lock, so have to separate shut down from destructor. In response
+	  to bug report by Dan Julius.
+
+2008-03-31 06:13  csoutheren
+
+	* [r19853] include/opal/mediafmt.h, src/rtp/rtp.cxx:
+	  Fix use of initialised variables found by valgrind
+
+2008-03-31 06:18  csoutheren
+
+	* [r19854] src/opal/patch.cxx:
+	  Make sure Comfort Noise packets aren't mistaken for PCM data
+
+2008-04-01 03:43  rjongbloed
+
+	* [r19859] include/rtp/rtp.h, src/rtp/rtp.cxx:
+	  Fixed multi-threading issues with shutting down RTP sessions,
+	  thanks Yuriy Cherniavsky
+
+2008-04-01 03:48  rjongbloed
+
+	* [r19860] include/rtp/rtp.h, src/rtp/rtp.cxx:
+	  Fixed compile error in previous change, must save before checking
+	  in next time.
+
+2008-04-01 07:02  rjongbloed
+
+	* [r19869] samples/openphone/main.cxx:
+	  Fixed start video menu command, broken in previous update.
+
+2008-04-01 21:20  dereksmithies
+
+	* [r19880] include/iax2/ies.h:
+	  Fix silly bug in iax authentication. Thanks to Stefano Picerno.
+
+2008-04-02 01:08  rjongbloed
+
+	* [r19885] samples/openphone/main.cxx:
+	  Fixed sound being muted on call start up in OpenPhone.
+
+2008-04-02 02:37  rjongbloed
+
+	* [r19887] include/opal/mediastrm.h, src/opal/mediastrm.cxx:
+	  Added increment of reference count to RTP session in
+	  OpalRTPMediaStream to prevent a possible access of a deleted RTP
+	  session under particularly pathological conditions, which of
+	  course someone out there has!
+
+2008-04-02 06:34  csoutheren
+
+	* [r19894] src/sip/sipcon.cxx, src/sip/sippdu.cxx:
+	  Use async timer stop, and resolve problem with shortened
+	  transaction timer. From revision 19890 in trunk
+
+2008-04-02 06:40  rjongbloed
+
+	* [r19896] include/sip/sippdu.h, src/sip/sippdu.cxx:
+	  Fixed issue with ACK being sent before response is processed, so
+	  sometimes may not have had all the fields (RequestURI etc)
+	  updated correctly before filling in the ACK headers.
+
+2008-04-03 22:53  rjongbloed
+
+	* [r19902] src/sip/sipep.cxx:
+	  Fixed unregister problem when shutting down SIP endpoint. Must
+	  wait till finished unregistering before removing listeners, which
+	  owns the UDP socket bundle.
+
+2008-04-03 23:29  rjongbloed
+
+	* [r19904] include/sip/sipcon.h, src/sip/sipcon.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed issues with the ACK response to and INVITE, not always
+	  having correct fields.
+	  
+	  To make the rather horrible rewriting of headers that needs to go
+	  on in SIP a little easier to understand, many variable names and
+	  functions had name changes in SIPConnection.
+
+2008-04-04 00:15  dereksmithies
+
+	* [r19906] include/iax2/callprocessor.h, include/iax2/iax2con.h:
+	  Tidy up the handling of calls, and better integrate into the Opal
+	  Call Phases.
+	  Tidy up the comments, to be better formatted.
+	  --
+	  This line, and those below, will be ignored--
+	  
+	  M include/iax2/iax2con.h
+	  M include/iax2/callprocessor.h
+
+2008-04-04 00:16  dereksmithies
+
+	* [r19907] src/iax2/callprocessor.cxx, src/iax2/frame.cxx,
+	  src/iax2/iax2con.cxx, src/iax2/iax2ep.cxx,
+	  src/iax2/iax2medstrm.cxx, src/iax2/processor.cxx,
+	  src/iax2/remote.cxx, src/iax2/transmit.cxx:
+	  Better integrate into the opal call phase model.
+	  Correctly start the media streams when the call moves to
+	  the ConnectedPhase
+	  Remove redundant, or lower trace level, of PTRACE statements
+
+2008-04-04 01:22  rjongbloed
+
+	* [r19909] src/sip/sippdu.cxx:
+	  Added warning trace log when outputting a SIP/UDP packet bigger
+	  than 1500 bytes.
+	  
+	  Fixed the SIP/PDU read so can handle TCP packets bigger than 1500
+	  bytes. Also simplified the reading of UDP packets that do not
+	  have a Content-Length. Finally attempt to continue to read to end
+	  of packet if get a stupid Content-Length (e.g. negative) rather
+	  than ignoring it.
+
+2008-04-04 01:30  rjongbloed
+
+	* [r19911] src/opal/manager.cxx, src/opal/transports.cxx:
+	  Final couple of thread names adjusted, thanks Yuriy Cherniavsky
+
+2008-04-04 03:50  rjongbloed
+
+	* [r19914] src/sip/sipep.cxx:
+	  Remove extra connection lock that could cause deadlocks
+
+2008-04-07 04:19  rjongbloed
+
+	* [r19928] include/opal/transports.h, src/opal/transports.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed read of SIP UDP packets bigger than 1000 bytes, bug
+	  introduced in revision 19909.
+
+2008-04-08 06:25  rjongbloed
+
+	* [r19932] src/rtp/rtp.cxx:
+	  Utilise new functions on STUN client to not try and create RTP
+	  sockets when it is guaranteed to fail, taking several timeouts.
+	  This speeds up things like SIP INVITE on multi interface systems
+	  markedly.
+
+2008-04-08 09:43  rjongbloed
+
+	* [r19935] src/h323/h323caps.cxx, src/opal/mediafmt.cxx:
+	  Fixed issue that caused tx audio frames per packet to always be
+	  zero.
+
+2008-04-09 00:15  rjongbloed
+
+	* [r19938] src/sip/sipcon.cxx:
+	  Fixed Asterisk compatibility on authentication.
+
+2008-04-09 02:38  rjongbloed
+
+	* [r19943] configure, configure.ac:
+	  Fixed inclusion of statistics in Unix version.
+
+2008-04-09 04:13  rjongbloed
+
+	* [r19944] samples/openphone, samples/simple/simpleDLL_2005.vcproj:
+	  Added ignore for Linux build.
+	  Updated simple OPAL DLL build for Windows Mobile.
+
+2008-04-09 07:37  rjongbloed
+
+	* [r19948] samples/mobileopal/MobileOPALppc.rc,
+	  samples/mobileopal/MobileOPALsp.rc,
+	  samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/Resourcesp.h,
+	  samples/mobileopal/resourceppc.h:
+	  Fixed issue in Windows Mobile demo program handling calls hard on
+	  the hammer of a previous call. Confused the GUI state machine.
+
+2008-04-10 00:19  rjongbloed
+
+	* [r19955] src/rtp/rtp.cxx, src/sip/sipcon.cxx:
+	  Fixed incorrect RTP address in SDP when have multiple interfaces
+	  and require authentication on INVITE.
+
+2008-04-11 02:07  rjongbloed
+
+	* [r19961] src/opal/call.cxx:
+	  Fixed issue with (lack of) symmetric codec selection in SIP.
+
+2008-04-11 04:22  rjongbloed
+
+	* [r19963] include/h323/h323con.h, include/h323/h450pdu.h,
+	  include/iax2/iax2con.h, include/opal.h, include/opal/call.h,
+	  include/opal/connection.h, include/opal/endpoint.h,
+	  include/opal/manager.h, include/opal/pcss.h,
+	  include/sip/sipcon.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc, src/h323/h323.cxx,
+	  src/h323/h450pdu.cxx, src/iax2/iax2con.cxx, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/opal/endpoint.cxx,
+	  src/opal/manager.cxx, src/opal/pcss.cxx, src/rtp/jitter.cxx,
+	  src/sip/sipcon.cxx:
+	  First cut of enhancements to support Hold & Switch, as well as
+	  Consultation Transfer.
+
+2008-04-11 05:20  csoutheren
+
+	* [r19970] include/h323/h323con.h, include/h323/h450pdu.h,
+	  include/iax2/iax2con.h, include/opal.h, include/opal/call.h,
+	  include/opal/connection.h, include/opal/endpoint.h,
+	  include/opal/manager.h, include/opal/pcss.h,
+	  include/sip/sipcon.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc, src/h323/h323.cxx,
+	  src/h323/h450pdu.cxx, src/iax2/iax2con.cxx, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/opal/endpoint.cxx,
+	  src/opal/manager.cxx, src/opal/pcss.cxx, src/rtp/jitter.cxx,
+	  src/sip/sipcon.cxx:
+	  Revert Hold/Switch/Consultation Transfer changes
+
+2008-04-13 10:15  rjongbloed
+
+	* [r19981] src/sip/sipcon.cxx:
+	  ReleaseWithNothing when we already sent a response to the INVITE.
+	  Otherwise 2 responses were sent.
+
+2008-04-17 01:52  rjongbloed
+
+	* [r19995] src/opal/manager.cxx:
+	  Fixed problem with not being able to disable jitter buffer.
+
+2008-04-17 01:58  rjongbloed
+
+	* [r19998] src/opal/patch.cxx:
+	  Set initial value of payload type in source frame used by media
+	  patch, so silence frames that appear initially from jitter buffer
+	  have the correct payload type.
+
+2008-04-17 03:26  rjongbloed
+
+	* [r20002] Makefile.in, opal_inc.mak.in:
+	  Fixed compile without tracing. Now a configure option
+	  --disable-tracing
+	  which will disable tracing for PTLib and all libraries and
+	  applications
+	  that use it.
+
+2008-04-18 02:39  rjongbloed
+
+	* [r20019] Makefile.in, include/opal/mediafmt.h,
+	  src/codec/g726mf.cxx, src/win32/opal_lib.vcproj,
+	  src/win32/opal_lib_2005.vcproj, src/win32/opal_lib_2008.vcproj:
+	  Added G.726 media format definitions outside of plug in system.
+
+2008-04-18 05:46  rjongbloed
+
+	* [r20022] include/lids/lid.h, include/lids/lidplugin.h,
+	  include/lids/lidpluginmgr.h, plugins/LID/CAPI/CAPI.cxx,
+	  plugins/LID/CM_HID/cm_hid_win.cpp, plugins/LID/IxJ/ixj_unix.cxx,
+	  plugins/LID/IxJ/ixj_win.cpp, plugins/LID/TigerJet/tj_win.cpp,
+	  plugins/LID/VPB/vpb.cpp, plugins/LID/WinXP_HID/winxp_hid.cpp,
+	  plugins/LID/WinXP_HID/winxp_hid_2005.vcproj, src/lids/lid.cxx,
+	  src/lids/lidep.cxx, src/lids/lidpluginmgr.cxx:
+	  Added test for PSTN line connected, typically indicated via
+	  polarity reversal. Also added complementary set connected
+	  function for POTS ports.
+	  
+	  Fixed incorrect LID plug in function for IsLineDisconnected, was
+	  incorrectly called IsLineConnected even though it was used as a
+	  disconnected test.
+
+2008-04-20 04:38  rjongbloed
+
+	* [r20027] samples/openphone/OpenPhoneInstaller_2005.vdproj:
+	  Fixed missing OpenSSL DLL's in OpenPhone installer.
+
+2008-04-20 04:45  rjongbloed
+
+	* [r20028] opal_inc.mak.in:
+	  Fixed missing extension on OPAL libraries, thanks Yuriy
+	  Cherniavsky
+
+2008-04-21 02:15  rjongbloed
+
+	* [r20031] src/sip/sipcon.cxx:
+	  If remote SDP answer has zero port, make sure we do not process
+	  any media streams for that session, includubg shutting down
+	  existing media streams.
+
+2008-04-23 00:18  rjongbloed
+
+	* [r20074] src/opal/opal_c.cxx:
+	  Added in missing "links" of C interface hold/retrieve/transfer
+	  functions.
+
+2008-04-23 00:48  rjongbloed
+
+	* [r20077] Makefile.in, include/opal/mediafmt.h,
+	  include/t38/t38proto.h, src/t38/t38mf.cxx, src/t38/t38proto.cxx,
+	  src/win32/opal_lib.vcproj, src/win32/opal_lib_2005.vcproj,
+	  src/win32/opal_lib_2008.vcproj:
+	  Pulled T.38 Media Format out of T.38 protocol specific source
+	  files, so if OPAL_T38FAX is disabled, T.38 fax is still available
+	  via external means.
+
+2008-04-23 01:00  rjongbloed
+
+	* [r20080] include/lids/lid.h, src/lids/lid.cxx,
+	  src/lids/lidep.cxx:
+	  Added fax CED tone to LID tone detector list.
+	  
+	  Made sure LID calling tones and hook flashes are passed up as
+	  User Input, not just DTMF.
+
+2008-04-23 01:19  rjongbloed
+
+	* [r20083] src/sip/sippdu.cxx:
+	  Fixed incorrect SIP transaction identification, should use branch
+	  parameter in Via.
+
+2008-04-23 02:10  rjongbloed
+
+	* [r20087] include/sip/sippdu.h, src/sip/sippdu.cxx:
+	  Cached SIP transaction ID once calculated.
+
+2008-04-23 02:38  rjongbloed
+
+	* [r20090] src/lids/lidep.cxx:
+	  Fixed GNU compiler warning.
+
+2008-04-24 08:03  rjongbloed
+
+	* [r20103] src/opal/opal_c.cxx:
+	  Fixed incorrect test in "C" API transfer function where required
+	  an A-party, should only require a B-party.
+
+2008-04-24 11:56  rjongbloed
+
+	* [r20106] include/opal.h, opal_samples_2005.sln, samples/c_api,
+	  samples/c_api/Makefile, samples/c_api/c_api_2003.vcproj,
+	  samples/c_api/c_api_2005.vcproj, samples/c_api/c_api_2008.vcproj,
+	  samples/c_api/main.c, src/win32/opal.dtf,
+	  src/win32/opal_2003.dtf, src/win32/opal_2005.dtf,
+	  src/win32/opal_2005_wm.dtf, src/win32/opal_2005_wm6.dtf,
+	  src/win32/opald.dtf, src/win32/opald_2003.dtf,
+	  src/win32/opald_2005.dtf, src/win32/opald_2005_wm.dtf,
+	  src/win32/opald_2005_wm6.dtf, src/win32/opaln.dtf,
+	  src/win32/opaln_2003.dtf, src/win32/opaln_2005.dtf,
+	  src/win32/opaln_2005_wm.dtf, src/win32/opaln_2005_wm6.dtf:
+	  Fixed problem with "C" API symbols not being properly exported
+	  from DLL.
+	  
+	  Fixed being able to compile opal.h on a "C" compiler.
+	  
+	  Added "C" based demonstration application for "C" API.
+
+2008-04-25 04:01  rjongbloed
+
+	* [r20111] samples/c_api, src/lids/lid.cxx, src/opal/manager.cxx:
+	  Fixed missing text for new CED tone in lid.cxx
+	  
+	  Made sure CNG and CED tones in LID are set correctly for country.
+	  
+	  Added ignorance in new "C" API demonstration application.
+
+2008-04-25 04:41  rjongbloed
+
+	* [r20112] src/opal/connection.cxx:
+	  Fixed GetLocalPartyURL() so does not produce illegal URLs.
+
+2008-04-25 06:11  rjongbloed
+
+	* [r20118] src/win32/opal_2005.dtf, src/win32/opal_2005_wm.dtf,
+	  src/win32/opal_2005_wm6.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2005.dtf, src/win32/opaln_2005_wm.dtf,
+	  src/win32/opaln_2005_wm6.dtf:
+	  Update symbols
+
+2008-04-25 07:02  rjongbloed
+
+	* [r20121] src/win32/opal_2003.dtf, src/win32/opald_2003.dtf,
+	  src/win32/opaln_2003.dtf:
+	  Updated DLL symbols
+
+2008-04-27 07:37  rjongbloed
+
+	* [r20128] include/sip/sdp.h, src/sip/sdp.cxx:
+	  Fixed OpalMediaFormat::ToNormalisedOtions() not being called if
+	  there is no FMTP attribute.
+
+2008-04-30 01:46  rjongbloed
+
+	* [r20142] include/opal.h, samples/c_api/main.c,
+	  samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/MobileOpalDlg.h, src/opal/opal_c.cxx:
+	  Added silence detect and echo cancel options to
+	  OpalCmdSetGeneralParameters command.
+	  
+	  Added API version checking. Added parameter to OpalInitialise()
+	  to force people to specify their API version.
+	  
+	  Allow spaces in trace filename in OpalInitialise() options
+	  string.
+
+2008-05-01 05:54  rjongbloed
+
+	* [r20150] src/sip/sipcon.cxx:
+	  Fixed incorrect test for SIP dialog when get re-INVITE from
+	  remote and we originated call. Caused 472 error.
+
+2008-05-02 05:29  rjongbloed
+
+	* [r20156] opal_2005.sln, samples/mobileopal/MobileOPAL.vcproj,
+	  src/win32/opal_dll_2005.vcproj:
+	  Fixed WINCE deployment directory for release version
+
+2008-05-06 06:59  rjongbloed
+
+	* [r20180] src/opal/opal_c.cxx:
+	  Fixed issue in "C" API where if messages are not taken out of the
+	  queue fast enough, it gets behind and out of sync.
+
+2008-05-06 09:19  rjongbloed
+
+	* [r20183] src/opal/opal_c.cxx:
+	  Some operating systems can't handle large semaphore maximums.
+
+2008-05-07 00:34  rjongbloed
+
+	* [r20200] src/win32/opal_2005.dtf, src/win32/opal_2005_wm.dtf,
+	  src/win32/opal_2005_wm6.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2005.dtf, src/win32/opaln_2005_wm.dtf,
+	  src/win32/opaln_2005_wm6.dtf:
+	  Update DLL symbols
+

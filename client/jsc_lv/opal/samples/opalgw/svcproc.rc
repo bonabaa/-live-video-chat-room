@@ -1,0 +1,4 @@
+LANGUAGE 0x9,0x1
+1 MESSAGETABLE messages.bin
+1 ICON "opalgw.ico" 
+RCINCLUDE custom.cxx 

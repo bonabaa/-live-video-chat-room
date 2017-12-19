@@ -1,0 +1,51 @@
+2007-11-20 08:43  rjongbloed
+
+	* [r18904] version.h:
+	  Update version number for beta
+
+2007-11-29 12:00  rjongbloed
+
+	* [r19017] configure, configure.ac, ptlib_cfg.dxy,
+	  ptlib_cfg.dxy.in:
+	  Fixed version numbers in documentation
+
+2007-12-13 04:20  csoutheren
+
+	* [r19079] configure.exe:
+	  Backport configure.exe from trunk
+
+2007-12-14 05:57  rjongbloed
+
+	* [r19094] include/ptlib/thread.h, src/ptlib/common/osutils.cxx:
+	  Fixed bug 1845862 - nested PTRACE will not show trace message
+	  correctly
+
+2008-01-16 21:28  rjongbloed
+
+	* [r19267] src/ptlib/msos/vfw.cxx:
+	  Fixed possible crash when errors in VfW occurs, thanks Damien
+	  DEOM
+
+2008-01-22 06:29  csoutheren
+
+	* [r19304] include/ptlib/array.h, include/ptlib/contain.inl,
+	  include/ptlib/msos/AUTOEXP.DAT, src/ptlib/common/collect.cxx:
+	  Fixed debugger display of PArray and PStringArray variables in
+	  DevStudio 2005.\nBackport from trunk rev 19266
+
+2008-01-29 01:49  csoutheren
+
+	* [r19353] configure.ac, include/ptbuildopts.h.in,
+	  include/ptclib/httpform.h:
+	  Backports from trunk to improve compilability of Windows version
+
+2008-01-29 06:48  csoutheren
+
+	* [r19354] src/ptclib/pxml.cxx:
+	  Back port compile fixes for win_expat2
+
+2008-03-07 06:24  rjongbloed
+
+	* [r19682] version.h:
+	  Update release version number to 2.0.2
+

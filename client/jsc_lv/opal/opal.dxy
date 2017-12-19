@@ -1,0 +1,652 @@
+/*! \mainpage  OPAL  -  Open Phone Abstraction Library
+ 
+
+
+\section Introduction Open Phone Abstraction Library
+
+        This is a Open Source class library for the development of
+        applications that wish to use the SIP and H.323 protocols for
+        multi-media communications over packet based networks.
+
+
+
+
+Last updated 24 December, 2009
+
+Copyright (C) 1999-2003 Equivalence Pty Ltd, All right reserved 
+
+Portions Copyright (C) 2004 Post Increment, All Rights Reserved
+Portions Copyright (C) 2009 Vox Lucida Pty. Ltd., All Rights Reserved
+
+The documentation has been separated out into smaller pages, which can be
+accessed through the "Related Pages" link at the top of every web page, or
+here. The currently available pages are:
+
+\li \ref pageOpalClasses lists the classes available to the application.
+
+\li A simplified API is available via the opal.h file.
+
+\li \ref pageOpalConnections describes the working of the OpalConnection
+class, and the different stages used in call setup/teardown.
+
+\li \ref pageIAX2Protocol provides information on the working of the IAX2
+component of this library.
+
+\li \ref pageDocumentationTerms attempts to give a non circular description of
+the terms used in this documentation.
+
+\li \ref pageH323Overview contains a somewhat dated description of the Opal architecture (from
+a H.323 perspective). It has been included to give a slightly different
+perspective, that may aid the reader.
+
+\subsection history History
+
+\li 28 February 2005 -  Converted from Doc++ to Doxygen format by Derek Smithies
+
+\li 10 May 2005     - Added some comments to explain data flow in a RTP classes
+
+\li 12 May 2005     - Changed main page to list only the Opal classes.
+
+\li 11 March 2006   - Add link to description of the IAX2 code.
+
+\li 20 March 2008 - Add documentation on the different phases of a call, which
+                     are driven by the OpalConnection class.
+*/
+
+/*! \page pageOpalClasses   Opal Classes 
+Classes in the list immediately below are the most important. They are the
+base classes of the protocol specific classes used:
+
+\li OpalManager 
+\li OpalEndPoint 
+\li OpalCall 
+\li OpalConnection 
+\li OpalMediaFormat
+\li OpalMediaStream
+\li OpalTranscoder 
+\li OpalListener 
+\li OpalTransport
+
+Some of these classes (OpalConnection, OpalEndPoint) will have a descendant
+created for every protocol supported by this library. Other classes
+(OpalManager) will not need a descendant created for each voip protocol
+supported.
+
+
+A simplified API is available via the class:
+
+\li OpalContext
+
+Various other important Opal classes are listed below.
+
+\li OpalTransportAddress 
+\li OpalMediaPatch 
+\li OpalLineInterfaceDevice
+\li OpalMediaOption 
+\li OpalRFC2833Proto
+\li OpalSilenceDetector
+\li OpalVXMLSession 
+\li OpalWAVFile 
+*/
+
+/*! \page pageDocumentationTerms Terms used in the inline documentation
+
+This list of terms is an attempt to provide a non circular list of the names
+and ideas frequently used in the inline documentation. Once you have read and
+understood these terms, the inline documentation will make more sense.
+
+\li manager - supervises the instances of endpoints in a running
+    application. Typically, there is one manager instance in an application,
+    which will maintain the H323EndPoint, SIPEndPoint and IAX2EndPoint
+    class. The application will (almost always) create a descendant of the
+    OpalManager so as to gain access to the event handling and notification
+    methods of Opal. The manager maintains a list of all active calls, with a
+    list of instances of the OpalCall class.
+
+\li endpoint - supervises the handling of all calls with the same
+    protocol. There is (typically) one H323EndPoint class instance that
+    handles all H323 calls.  
+
+    Note that OpalEndPoint is ancestor of all endoint classes. H323EndPoint,
+    SIPEndPoint, IAX2EndPoint are all extensions of the OpalEndPoint class.
+
+\li connection - supervises the call signaling and media control for a protocol.
+    Consequently, the OpalConnection class will manage the "calling" of a peer
+    as well as the negotiation on what form of media is to flow between them.
+    
+    Note that OpalConnection is ancestor of all connection
+    classes. H323Connection, SIPConnection, IAX2Connection are all extensions
+    of the OpalConnection class.
+
+\li OpalCall - this contains information for one voip call. Consequently there
+    is one instance of the OpalCall class for every active voip call. Once a
+    call has completed, this class (and those with some part of running this
+    call) are destroyed. A call always consists of two or more connections.
+
+\li partyA - the name given to the first connection instance created to handle
+    a call. Thus, if we receive an incoming H323 call from a remote endoint,
+    partyA will be assigned to a H323Connection instance.
+
+\li partyB - the name given to the second connection instance created to
+    handle a call. For the example above where partyA is used to make a H323
+    call, and assuming the sound goes to the computer's speaker, partyB will
+    be an instance of the OpalPCSSConnection class.
+
+    The association of party A and party B may be explicit through the
+    OpalManager::SetUpCall() function or implicitly through an internal
+    routing engine. Suppose all incoming phone calls are to be directed out
+    as a H323 call. In this case, partyA will be a OpalLineConnection
+    instance as we needed something to handle the incoming call. The routing
+    engine decides that since all phone calls go out as H323 calls, a
+    H323Connection is created to handle the outgoing side. Consequently,
+    partyB is (for this example) an instance of the  H323Connection class.
+
+\li local - describes the first "inside" of an OpalConnection instance. As noted
+   above, an OpalConnection instance is used to supervise/manage the
+   signaling and media selection of a protocol. Further, it was noted that
+   a call consists of two or more OpalConnection instances. The local side of
+   an OpalConnection refers to the side of the OpalConnection that is internal
+   to Opal.
+
+\li remote - describes the "outside" of an OpalConnection instance. As noted
+   above, an OpalConnection instance is used to supervise/manage the
+   signaling and media selection of a protocol. Further, it was noted that
+   a call consists of two or more OpalConnection instances. The remote side of
+   a H323Connection instance will refer to the person who is "over the wire",
+   and may be on the other side of the world.
+
+   Consequently, a call which has two connections has two each of the remote
+   and local "sides" and can be described as:
+
+   remote<=OpalPCSSConnection=>local|OPAL|local<=H323Connection=>remote.
+
+\li media streams - this abstracts the flow of media (e.g. audio or video) to
+    and from the protocol handled by a connection. The connection will negotiate
+    which media formats are being used and how many media streams are created.
+    The stream then handles how the media is transferred, for example in
+    H323Connection, a media stream would read/write to an RTP session. A second
+    example is the PC Sound System Connection (OpalPCSSConnection) reads/writes
+    to a sound card.
+
+\li OpalMediaPatch - the glue for linking media streams between the local
+    sides of two connections.  This class does the necessary transcoding
+    operations to convert between the media formats that the media streams
+    support. Further, this class takes in RTP packets, and then generates
+    RTP packets on the output side. The input side of this class is described
+    in Opal as the "source". The output side of this class is described in
+    Opal as the "sink". In the examples above of a H323 voip call to a sound
+    card, two instances of the OpalMediaPatch will be required, to transfer
+    data in each direction between the H323Connection and OpalPCSSConnection
+    classes.
+*/
+
+/*! \page pageH323Overview Opal architecture, from a H.323 perspective
+
+    OPAL is a C++ class library for normalising the numerous telephony protocols 
+      into a single integrated call model. The following is a general overview of the 
+      library.
+
+    \image html diagram.gif "Architectural layout" 
+
+    Which is your typical layered approach to a system. The application layer is 
+      presented with a unified model for making calls over whatever underlying 
+      protocol or hardware by the so the calls can be placed and media flow handled 
+      in, as much as possible, an identical manner.
+
+    OpalCall is defined as the connection between two or more Addresses
+      each through an OpalConnection created by an OpalEndpoint The OpalCall 
+      usually has multiple OpalMediaStreams transferring information (eg voice) 
+      of a particular OpalMediaFormat from one OpalEndPoint to another. The data is 
+      copied from a Source Media Stream  to a  Sink Media Stream via 
+      a OpalMediaPatch  thread.
+
+    An application can control the connection between endpoints according to its 
+      own logic. For example all incoming calls are routed to the POTS port.
+
+   \section sVariousTerms Various Terms and Concepts
+
+    \subsection ssProtAbsts Protocol Abstractions
+    
+    A protocol is abstracted into several entities representing aspects of the 
+      call model. These are defined as the  Address<,
+      Endpoint,  Connection,
+      Call, MediaStream.
+
+    \subsection ssAddresses Addresses
+    
+    A call Address is a string consisting of a unique string identifier for
+      the protocol or endpoint type to be used followed by a colon and a
+      string that is dependent on that line for its format. For instance a
+      PSTN line would expect a simple phone number. As it is a text string,
+      the address maximises portability and useability for user
+      interfaces. For example, a call to a number using a PSTN endpoint would
+      <code>pstn:555-1234</code> or <code>pstn:555-1234@line1</code> where
+      <code>line1</code> is the name of a specific instance of a PSTN endpoint. Another
+      example would be <code>h323:phone.quicknet.net</code> or
+      <code>h323:derhart@gk.quicknet.net</code> where the second form
+      indicates a gateway to use for the specified alias.
+
+    \subsection ssEndpoint Endpoint
+    
+    An Endpoint embodies the permanent aspects of a telephone abstraction 
+      for a particular protocol. There is usually one and only one instance of each 
+      specific endpoint class. Its lifetime is usually the duration of the 
+      application. 
+
+    There are two broad types of endpoints, a  Terminal Endpoint  and a  Network 
+        Endpoint.  A terminal endpoint is one where a call usually ends, for 
+      example a POTS port with a phone handset attached. A network endpoint is one 
+      that connects through a network of some form, not necessarily a LAN or 
+      Internet. For example, H.323 protocol stack or a PSTN line. 
+
+    Each endpoint has a set of attributes that can control its default behaviour. 
+      For example whether it is a terminal or network endpoint. An endpoint may 
+      support a single (eg PSTN/POTS), dual (eg ISDN BRI) or many (eg H.323/SIP) 
+      simultaneous connections. An endpoint may only accept incoming calls (SIP 
+      server), only be able to make calls (SIP client, or Net2phone) or both 
+      depending on the semantics of the underlying protocol. All of these attributes 
+      are abstracted for default behaviour that the application can override through 
+      the use of call back functions. 
+
+    The classes H323EndPoint and OpalLIDEndPoint are examples of endpoints. 
+    
+    \subsection ssConnection Connection
+
+    A  Connection  embodies the more ephemeral attributes of the telephone 
+      call when a connection is active from this application using the specified 
+      protocol. This contains all of the state information for maintaining the 
+      connection to whatever the protocol dictates is the remote. 
+
+    For example a call linking a remote H.323 endpoint to a simple telephone 
+      handset would have a H323Connection and an OpalLIDConnection. The 
+      H323Connection contains such things as the sockets to maintain the signalling 
+      and control channels from this host to the remote H.323 host. The 
+      OpalLIDConnection contains a pointer to a OpalLineInterfaceDevice and has such 
+      things as its current state eg ringing, playing engaged tone etc. 
+
+    This objects lifetime is for the duration of the connection and is usually 
+      dictated by external influences, eg picking up the handset and then replacing 
+      it. The  Endpoint  creates and deletes the  Connection  as required, 
+      though the application can get involved in this processing if it needs to, eg 
+      to add extra information on a connection by connection basis. 
+    
+    \subsection ssCall Call
+    A  Call  is the entity that connects two or more connections together. 
+      This is typically created by the application in response to call backs for an 
+      incoming connection on a protocol. The application can decide routing by 
+      whatever means and create a second connection using a protocol of its choice. 
+      Then the call is created with the two connections. 
+
+    The lifetime of the call is controlled by the application, but is typically 
+      for as long as there is at least one connection that attached to it. 
+
+    \subsection ssMediaStreasm Media Streams
+
+    A  Media Stream  embodies a source or sink of data of a particular  Media 
+        Format , eg, audio data (G.711), video data (H.261) or T.120 conferencing 
+      data. 
+
+    Each protocol utilises a particular type of media stream. For example the 
+      H.323 protocol would create media streams that utilise an RTP session. The 
+      Telephone Line protocol creates media streams that use an 
+      OpalLineInterfaceDevice for its I/O. 
+
+    The lifetime of the media stream is highly dependent on the protocol. They may 
+      come and go on demand as dictated by the underlying protocol. For example a 
+      H.323 video media stream is not created immediately on the call beginning, but 
+      later on user request. And when the user closes the video window the video 
+      media stream is then closed and deleted. However, the media streams for a 
+      Telephone Line would be created with its connection and remain for the duration 
+      of the connection as there is always a fixed one to two relationship between a 
+      Telephone Line and its media streams (source and sink). 
+
+    When data is transferred from a source media stream to a sink media stream, 
+      there may be required software conversion of the media format. For example if 
+      an H.323 connection was providing a source media stream that used the G.711 
+      media format, and the sink media stream was a LID connection using a line 
+      interface device that supported G.711 directly, then data may be simply copied 
+      from one to the other. If however, the sink is a sound card then a software 
+      codec, or  Transcoder , is required to convert the G.711 media format to 
+      the PCM-16 media format. If there is no transcoder available then the media 
+      stream fails to open and is removed. 
+
+    \subsection ssManager Manager
+
+    There is one more entity in the OPAL architecture. The OpalManager is 
+      essentially just a target for numerous call back functions that the system can 
+      generate. An application would have a single instance of a descendant of this 
+      class and would typically hang all of its control logic in there. At the very 
+      least handling functions such as OnIncomingConnection and routing this to 
+      another protocol endpoint to complete a call. 
+
+    \section  sCallScenrio Call Scenarios
+
+    Here are some typical scenarios to show how the various entities operate 
+      together. 
+
+    The scenarios here are based on an OpenPhone style application that has 
+      H.323 and LID (PhoneJACK etc) support. 
+    
+    \subsection ssInit Initialisation
+    Upon start up instances of three endpoints are created: one for H.323, one for 
+      a Telephone Line and one for the PC sound system. 
+   
+    The H.323 endpoint creates a background thread to listen for incoming calls. 
+      Typically this is TCP port 1720. As many threads and listeners may be created 
+      for different interfaces, ports or protocol (eg Ipv6). 
+
+    The Telephone Line endpoint creates a background thread that monitors the Line 
+      Interface Device state, eg on or off hook etc. Note that the Telephone Line 
+      endpoint can have multiple LIDs and each LID can have multiple physical lines, 
+      so quite a few Telephone Lines can be monitored by this endpoint. 
+
+    The PC sound system would nor create any background threads as its control 
+      actions (on/off hook equivalent) are all done though call back functions that 
+      interface to the applications user interface threads. For example when a button 
+      is pressed in a make call dialog then a function is called on the OpalPCSSEndpoint 
+      and its internal state is changed to off hook. The thread that controls this 
+      is the user interface thread. 
+
+    \subsection ssEstACall Establishing a call
+    <table>
+      <tr>
+        <td>
+          <b>Call Model</b>
+        </td>
+        <td> 
+          <b>POTS to H.323</b> 
+        </td>
+        <td>
+          <b>H.323 to POTS</b> 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Connection detected. 
+          An endpoint detects a new connection via some means and creates a connection 
+            object. 
+        </td>
+        <td>
+          When the user picks up the handset the Telephone Line Endpoints background 
+            thread detects this and creates a Telephone Line Connection object. The 
+            Telephone Line Endpoint must remember this object as it continues to monitor 
+            the line for the user placing the receiver back on hook. 
+        </td>
+        <td>
+          The background thread of the H.323 endpoint accepts an incoming TCP connection 
+            and after reading the first SETUP PDU it creates a H.323 connection object. The 
+            created H.323 connection creates a new thread to look after the 
+            H.225/Q.931signalling channel, and possibly a second thread to look after the 
+            H.245 control channel if tunnelling is not available. This thread will cause 
+            call back functions on the connection to be called. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Upon creation of the new connection object this is passed to the manager call 
+            back OnIncomingConnection. An application could override this function for any 
+            special treatment, for example getting a account number and PIN code via the 
+            use of the endpoints GetUserIndication function. The default behaviour would 
+            call the connections GetDestinationAddress function
+           
+        </td>
+        <td>
+          The Line connection GetUserIndication gets a DTMF tone from the LID. 
+          The Line connection GetDestinationAddress gathers a sequence of DTMF digits 
+            from the LID. 
+        </td>
+        <td>
+          The H.323 connection GetUserIndication returns the last value received in the 
+            H.245 UserIndication PDU. 
+
+          The H.323 connection GetDestinationAddress looks at the various fields of the 
+            last received SETUP PDU such as destinationAlias to determine a destination 
+            address. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Now the manager's OnRouteConnection is called given the connection a source 
+            address and a destination address. An application would invariably override 
+            this function as the default behaviour can only attempt to route the call to 
+            the first endpoint type that is not the same type. 
+        </td>
+        <td>
+          The OnRouteConnection function looks up speed dial list given the destination 
+            address, which are the digits gathered from the handset. A new H.323 connection 
+            created by the H.323 endpoint and the address looked up from the speed dial 
+            passed to it. 
+
+          The created H.323 connection creates a new thread to look after the 
+            H.225/Q.931signalling channel, and possibly a second thread to look after the 
+            H.245 control channel if tunnelling is not available. This thread will cause 
+            call back functions on the connection to be called. 
+        </td>
+        <td>
+          The Line endpoint is asked to create a new connection object using to the 
+            first POTS line that is not already in use. 
+
+          Note that this is even though the handset is not off hook. The Line endpoint 
+            thread must be aware that the next time the handset is picked up it is in 
+            response to an incoming call rather than initiating a new connection. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Then the manager's OnNewCall function is executed to combine the two 
+            connections. The application may override this function to create its own Call 
+            class descendent if it requires application specific state information for the 
+            call, or to intercept a number of call back functions available on this object. 
+
+          For each connection the AttachCall function is executed to indicate to the 
+            connection the call to be used for some call back functions. 
+          The remainder of the signalling sequence is now executed. 
+        </td>
+        <td>
+          For H.323 connections the AttachCall also involves building the local H.323 
+            capability set and fast start list from a combination of the other connections 
+            GetMediaFormats list and the available transcoders. 
+        </td>
+        <td>
+          For H.323 connections the AttachCall also involves building the local H.323 
+            capability set from the other connections GetMediaFormats list and the 
+            available transcoders. 
+
+          If the SETUP PDU had fast start elements then the audio and video elements to 
+            be initially started are selected. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          The SetUp function on the destination connection is called. 
+        </td>
+        <td>
+          The SetUp function starts the H.323 signalling channel background thread, 
+            which send the SETUP PDU and awaits replies. 
+
+          Note that to support fast start the media stream selection function described 
+            below is done now, creating some media streams but not starting them. 
+        </td>
+        <td>
+          The SetUp function for Line connection begins ringing the handset via the LID. 
+            I then calls the OnAlerting function on the Line connection. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          The new destination connection, which just had the SetUp function called, 
+            detects that the entity it represents has begun alerting its user and calls the 
+            connections OnAlerting function. Which calls the Call objects OnAlerting 
+            function, which in turn calls the source connections DoAlerting function. 
+        </td>
+        <td>
+          When the H.323 signalling thread reads an ALERTING PDU it calls the H.323 
+            connection OnAlerting function. 
+
+          The Line connection DoAlerting function plays the Ring Back tone on the LID. 
+        </td>
+        <td>
+          On a Line connection, the SetUp function called in the previous phase calls 
+            the OnAlerting function. 
+
+          The H.323 connection DoAlerting function sends an ALERTING PDU to the remote 
+            endpoint. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          The destination connection detects that the user has answered the call. It 
+            calls the OnConnected function, which calls the Call objects OnConnected 
+            function, which calls the source connections Connected function. 
+        </td>
+        <td>
+          The H.323 signalling thread then receives the CONNECT PDU which calls the 
+            H.323 connection OnConnected function. 
+
+          The Line connection Connected function just stops the ring back tone on the 
+            LID. 
+        </td>
+        <td>
+          The Line endpoint’s thread then detects the handset go off hook, which calls 
+            the Line connection OnConnected function. 
+          The H..323 Connected function sends the CONNECT PDU to the remote endpoint. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          The SelectMediaStreams function is called on both connections of a call for 
+            them to create all source (transmitter) media streams. 
+        </td>
+        <td>
+          An H.323 connection creates an RTP media stream. If there had been fast start 
+            elements returned from the remote endpoint, the SelectMediaStreams will create 
+            media streams for those media formats. Otherwise it chooses the first entry in 
+            the remote endpoints capability set. 
+
+          For the Line connection a LID media stream is created selected from the first 
+            media format available in the H.323 connections GetMediaFormats list.
+           
+        </td>
+        <td>
+          An H.323 connection creates an RTP media stream. If there had been fast start 
+            elements in the SETUP PDU, the SelectMediaStreams will create media streams for 
+            the media formats that were selected earlier in this sequence. Otherwise it 
+            chooses the first entry in the remote endpoints capability set. 
+
+          For the Line connection a LID media stream is created selected from the first 
+            media format available in the H.323 connections GetMediaFormats list. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          The sink (receiver) media stream are created when the source media stream is 
+            started. The OnPatchMediaStream call back on the other connection object 
+            to the source media stream is called to create the media stream. 
+        </td>
+        <td>
+          An H.323 connection creates an RTP media stream. 
+          For the Line connection a LID media stream is created. 
+        </td>
+        <td>
+          An H.323 connection creates an RTP media stream. 
+          For the Line connection a LID media stream is created. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          At this point we have an established call and the connections OnEstablished 
+            functions as well as the managers OnCallEstablished function is called 
+            completing the call establishment. 
+        </td>
+        <td>
+          &nbsp; 
+        </td>
+        <td>
+          &nbsp; 
+        </td>
+      </tr>
+    </table>
+    
+    \subsection ssClearingACall Clearing a call
+    <table>
+      <tr>
+        <td>
+          <h4>Call Model</h4>
+        </td>
+        <td>
+          <b>POTS</b> 
+        </td>
+        <td>
+          <b>H.323</b> 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          One of the connections detects that the call is to be cleared and call the 
+            connections Clear function. 
+        </td>
+        <td>
+          The Line endpoints thread detects the handset has gone on hook and calls Clear 
+            on the Line connection. 
+        </td>
+        <td>
+          The H.323 connection calls the Clear function when it received a H.245 end 
+            session or a H.225 Release Complete or a gatekeeper DRQ is received or the 
+            signalling and control TCP connections unexpectedly shut down. 
+
+          Then a background thread is signalled to complete the shutting down of the 
+            connection. This cleans up any resources it has used. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          The connection is shut down, closing all media streams that it is associated 
+            with. 
+
+          Closing a source media stream will then wait for its associated thread to 
+            terminate. 
+        </td>
+        <td>
+          Media streams are closed and deleted. 
+        </td>
+        <td>
+          Media streams are closed and deleted when the logical channels are closed. 
+          The signalling and control channels are closed, waiting for its threads to 
+            terminate. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          After the connection is shut down the OnClearedConnection function is executed 
+            on the call object. This allows an application to intercept this event for its 
+            own purposes. The default behaviour is to call Clear on the remaining 
+            connection. 
+        </td>
+        <td>
+          Called from the connections Clear function. 
+        </td>
+        <td>
+          Called from the background thread. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          When the last connection in a call is cleared then the managers OnCallCleared 
+            function is executed. The default behaviour is to delete the call, which in 
+            turn deletes the connections. 
+        </td>
+        <td>
+          &nbsp; 
+        </td>
+        <td>
+          &nbsp; 
+        </td>
+      </tr>
+    </table>
+    &nbsp; 
+
+    \subsection ssEsthCallPostsH323 Establishing a call from POTS to H.323
+    When the user hangs up the handset the Telephone Line Endpoints background 
+      thread detects this and calls the Clear function on the Line connection. 
+
+*/

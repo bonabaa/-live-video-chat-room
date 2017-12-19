@@ -1,0 +1,139 @@
+2007-11-20 08:50  rjongbloed
+
+	* [r18907] version.h:
+	  Update version number for beta
+
+2007-11-22 04:42  csoutheren
+
+	* [r18926] src/codec/opalpluginmgr.cxx:
+	  Fixed problem with not propagating video options on update
+
+2007-11-22 07:10  csoutheren
+
+	* [r18927] src/opal/mediafmt.cxx:
+	  Warn if options cannot be merged
+
+2007-11-23 04:38  csoutheren
+
+	* [r18929] include/h323/h323con.h, include/opal/connection.h,
+	  src/h323/h323.cxx, src/opal/connection.cxx, src/sip/sipcon.cxx:
+	  Add override of GetLocalMediaFormats at OpalConnection level
+
+2007-11-27 04:55  csoutheren
+
+	* [r18966] include/h323/h323caps.h, src/codec/opalpluginmgr.cxx,
+	  src/h323/h323.cxx, src/h323/h323caps.cxx, src/opal/patch.cxx:
+	  Backport fixes from revision v3_0_capfix between 18931 and 18935
+
+2007-11-29 13:27  rjongbloed
+
+	* [r19021] include/codec/opalplugin.h, include/opal/mediafmt.h:
+	  Fixed AndMerge/OrMerge, were around the wrong way.
+
+2007-12-04 03:19  rjongbloed
+
+	* [r19039] src/codec/vidcodec.cxx:
+	  Fixed bug 1838720 -
+	  OpalPluginVideoTranscoder::GetOptimalDataFrameSize failed, thanks
+	  zbyslb
+
+2007-12-04 03:19  rjongbloed
+
+	* [r19040] src/opal/patch.cxx:
+	  Fixed debugging trace log.
+
+2007-12-04 03:22  rjongbloed
+
+	* [r19042] src/codec/opalpluginmgr.cxx:
+	  Fixed bug 1841648 - H323H261PluginCapability::OnReceivedPDU
+	  Process Error, thanks zbyslb
+
+2007-12-04 04:02  rjongbloed
+
+	* [r19043] src/win32/opal_2005.dtf, src/win32/opal_2005_wm.dtf,
+	  src/win32/opal_2005_wm6.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2005.dtf, src/win32/opaln_2005_wm.dtf,
+	  src/win32/opaln_2005_wm6.dtf:
+	  Updated DLL symbols.
+
+2007-12-08 05:40  csoutheren
+
+	* [r19063] src/sip/sippdu.cxx:
+	  backported from trunk
+	  Change SIP digest authentication algorithm name from "md5" to
+	  "MD5" to satisfy
+	  pedantic registrars such such as vbuzzer.
+	  Fixes issue reported by Ari El in the Ekiga forums, and closes
+	  OpalVoip bug 1846649
+
+2007-12-13 04:20  csoutheren
+
+	* [r19080] configure.exe:
+	  Backport configure.exe from trunk
+
+2007-12-13 09:39  csoutheren
+
+	* [r19084] src/codec/opalpluginmgr.cxx, src/opal/mediafmt.cxx,
+	  src/sip/sdp.cxx:
+	  allow media format to specify a protocol for which it is valid
+	  via the media options
+
+2007-12-13 23:15  rjongbloed
+
+	* [r19087] src/opal/connection.cxx, src/sip/sipcon.cxx,
+	  src/sip/sipep.cxx:
+	  Fixed bug 1849711 - SIP call with bad URL causes broadcasts.
+	  
+	  Also fixed return of correct reason code for when the above
+	  happens.
+
+2007-12-31 07:58  csoutheren
+
+	* [r19169] src/sip/sipcon.cxx, src/sip/sippdu.cxx:
+	  Fix problem when blank Content-Length received
+	  Fix problem when no Via in incoming PDU
+	  backported from NewMediaType2 branch
+
+2008-01-01 03:44  csoutheren
+
+	* [r19172] include/opal/transports.h, src/opal/transports.cxx,
+	  src/sip/sippdu.cxx:
+	  Fix problem with adjacent SIP signalling PDUs
+	  being concatenated under some conditions
+	  Backported from NewMediaType2 branch
+
+2008-01-03 01:00  csoutheren
+
+	* [r19184] src/opal/transports.cxx:
+	  Added initialisation of readsPerPDU to all OpalUDPTransport
+	  constructors
+	  Backported from trunk
+	  Thanks to Stephen C Steel
+
+2008-01-08 06:05  csoutheren
+
+	* [r19217] src/sip/sippdu.cxx:
+	  Backported rev 18964 from trunk to fix qop authentication
+
+2008-01-15 10:06  rjongbloed
+
+	* [r19264] plugins/video/H.263-ffmpeg/h263ffmpeg.cxx:
+	  Added bit rate and frame rate media options, thanks Ekaterina
+	  Khrapchenko of Stonevoice
+
+2008-01-22 06:16  csoutheren
+
+	* [r19303] src/h323/h323ep.cxx:
+	  backport rev 19041 from trunk
+
+2008-01-29 07:17  csoutheren
+
+	* [r19355] src/h323/h323ep.cxx:
+	  Fix compile error
+
+2008-03-07 06:32  rjongbloed
+
+	* [r19685] version.h:
+	  Update release version number to 3.0.2
+

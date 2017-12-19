@@ -1,0 +1,129 @@
+2008-05-07 00:46  rjongbloed
+
+	* [r20203] version.h:
+	  Update version number for beta v2.2.2
+
+2008-06-05 06:06  rjongbloed
+
+	* [r20404] include/ptlib/ipsock.h, src/ptclib/pstun.cxx,
+	  src/ptlib/common/sockets.cxx:
+	  Due to some particularly bizarre behaviour by Windows Mobile, the
+	  gethostbyname() call was changed to use getaddrinfo().
+	  Documentation says gethostbyname() is deprecated and should not
+	  be used. It appears so as get phantom NO_DATA errors from it when
+	  the DNS name well and truly exists.
+	  
+	  Also improved some error logging.
+
+2008-06-18 06:09  rjongbloed
+
+	* [r20463] src/ptclib/sockagg.cxx:
+	  Fixed namespace for find function, possible reason for some
+	  compiler issues with it.
+
+2008-06-18 06:10  rjongbloed
+
+	* [r20464] make/unix.mak:
+	  Attempt to make SUSE packager happy making the lib name same as
+	  package
+	  name (both ptlib).
+
+2008-06-19 02:36  rjongbloed
+
+	* [r20468] include/ptlib/msos/ptlib/sound_directsound.h,
+	  src/ptlib/common/pluginmgr.cxx,
+	  src/ptlib/msos/sound_directsound.cxx,
+	  src/ptlib/msos/sound_win32.cxx:
+	  Fixed issue with WindowMultimedia and DirectSound device names
+	  not being identical, which as they are the same device they
+	  should be. Making them identical means they then get the driver
+	  type prefix making it easier (possible) for a user to distinguish
+	  between them.
+	  
+	  Also cleaned up the enumeration code in DirectSound.
+
+2008-06-23 04:14  rjongbloed
+
+	* [r20482] src/ptlib/msos/PTLib_2005.vcproj:
+	  Fixed deployment directory for MobileOPAL
+
+2008-07-10 05:55  rjongbloed
+
+	* [r20559] src/ptlib/common/osutils.cxx,
+	  src/ptlib/common/pchannel.cxx:
+	  Fixed some Windows Mobile compatibility issues with logging, no
+	  "text" mode on files, not properly cleaned up and the big one
+	  where the standard C open() function can return a negative number
+	  as a valid file handle. Have to explicitly look for os_handle ==
+	  -1 rather than os_handle < 0 for error.
+
+2008-07-25 08:34  rjongbloed
+
+	* [r20617] src/ptlib/common/pluginmgr.cxx:
+	  Include current directory in Windows Mobile plug in directory
+	  search.
+
+2008-08-27 10:17  csoutheren
+
+	* [r20742] src/ptclib/cypher.cxx, src/ptclib/httpsvc.cxx,
+	  src/ptclib/inetmail.cxx, src/ptclib/inetprot.cxx,
+	  src/ptclib/podbc.cxx, src/ptclib/sockagg.cxx:
+	  Backport gcc 4.3.1 fixes from head
+
+2008-08-28 02:07  rjongbloed
+
+	* [r20746] src/ptlib/common/safecoll.cxx:
+	  Fixed issue if re-use a PSafePtr using the collection assignment,
+	  e.g. code like:
+	  
+	  PSafePtr<MyObj> ptr;
+	  while ((ptr = myList) != NULL) {
+	  ptr->DoSomething();
+	  myList.Remove(ptr);
+	  }
+
+2008-08-31 06:22  rjongbloed
+
+	* [r20791] src/ptlib/common/osutils.cxx:
+	  Only do synchronous stop of a timer if it was not already
+	  stopped. This avoids some potential deadlocks where timer is
+	  stopped elsewhere by the logic.
+
+2008-09-02 09:06  rjongbloed
+
+	* [r20821] ., include/ptlib/pprocess.h,
+	  src/ptlib/common/osutils.cxx:
+	  Back ported issue r20135 from trunk:
+	  
+	  Fixed problem with (re)starting timers within OnTimeout functions
+
+2008-09-03 01:33  rjongbloed
+
+	* [r20827] src/ptlib/common/osutils.cxx:
+	  Fixed issue in timers where if a timer is started and it has been
+	  a long time since the last time a timer expired, then expires the
+	  new timer early or immediately.
+
+2008-09-03 04:06  rjongbloed
+
+	* [r20835] ., src/ptlib/msos/vfw.cxx:
+	  Fixed incorrect size of initially created video output window. is
+	  correct if window is resized but if never changes does not allow
+	  for title bars and borders so is slightly squashed.
+
+2008-09-15 01:13  rjongbloed
+
+	* [r20964] include/ptlib/msos/ptlib_2003.dtf,
+	  include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd_2003.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2003.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf:
+	  Update symbols
+

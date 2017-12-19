@@ -1,0 +1,212 @@
+
+bbqBase library ChangeLog
+=================================
+
+2006.6.9
+---------------------------------
+*) bugfix: MsgTerminal multithread conflict when encrypt packet before sending. 
+This bug is caused by an invalid thread lock and same buffer used conflictly when encrypt packet. 
+This bug is located in message terminal layer, and will also effect other message to be changed to invalid data accidentally.
+There is minor chance to evoke this bug, but it might be replayed sometimes if the network communication is very busy.
+Now fixed by changing to strict mutex.
+
+2006.2.16
+---------------------------------
+*) bugfix: bbqclient.cxx, if a client login to server using localhost, call from it to another NATed user will fail. fixed by change 127.0.0.1 to server ip before sending CC_CONN message.
+
+2006.2.16
+---------------------------------
+*) ADD: if a user login while a meeting contains him/her is in progress, after client send NOTIFY_READY, the user will be prompt and invited into the meeting immediately;
+
+*) ADD: when a meeting being prepared and started, all the related members will receive a notify message.
+
+*) ADD: when specified MCU is offline when time for meeting reaches, another online MCU will be picked.
+
+*) ADD: when scheduled/free-start meeting begin/end/fail, the record in DB will be updated for web and other purpose.
+
+2006.2.9
+---------------------------------
+*) Bugfix: Some scheduled meeting longer than 10 minutes would be missed because of a bug when accessing DB.
+
+*) ADD: New parameter maxinum persons allow in a conference added to MCU server
+
+2006.1.24
+---------------------------------
+*) bugfix: user's status will not be notified to another one any more if the guy is in block list.
+
+*) ADD: new option on server to allow client on one PC subscribe one or more IDs or not (using hardware id boundle).
+
+2006.1.22
+---------------------------------
+*) Change: After test, rename to version 2.1.0
+
+2006.1.21
+---------------------------------
+*) ADD: add max_bandwidth_per_channel and max_video_size into MCC.
+
+2006.1.20
+---------------------------------
+*) ADD: MCC (multi-point conference control) feature is added.
+Vfon server will load the meeting booking info (those start time in in future 10 minutes) into memory every 5 minutes. 
+When time reaches start time, it will notify MCU to call the persons into the meeting. 
+When time readhes end time, it will notify MCU that the meeting should be ended.
+
+2006.1.17
+---------------------------------
+*) bugfix: fixed a bug of version 2.0.6 that build-in proxy cannot work when vfon server bind specified IP;
+
+2006.1.16
+---------------------------------
+*) ADD: VFON server now can listen to specified IP address;
+
+2006.1.9
+---------------------------------
+*) ADD: optional: id in group tree can be hidden by set "Hide user group tree to client";
+
+2006.1.5
+---------------------------------
+*) Bugfix: fixed a bug that domain id not valid when call between domains via vproxy.
+
+*) Bugfix: fixed a bug that build-in proxy will not work when called party using TCP login.
+
+*) Bugfix: fixed a bug that vfon server with build-in proxy work wrong when config with B type private ip (172.[16-31].x.x).
+
+2005.12.30
+------------------------------
+*) ADD: client can query more bind id by specifying bind type.
+
+2005.12.28
+---------------------------------
+*) Bugfix: fixed a bug that domain id not valid when call between domains via vproxy.
+*) Bugfix: fixed a bug that build-in proxy will not work when called party using TPC login.
+
+2005.12.28
+---------------------------------
+*) bbqclient.cxx, bbqsvr.cxx
+1) after login, domain id of local side can be accessed as BBQClient::m_nServerId;
+2) add call between domains;
+3) when channel setup, the peer domain id can be accessed as BBQ_CHANNEL::info.peerServerId;
+
+2005.12.15
+---------------------------------
+*) bbqsvr.cxx, 
+1) add domain list and chain, 
+2) domains will update the domain info in uplink heartbeat
+3) add locate msg among domains, the msg will be forwarded from one domain to another, still reach the target, the path will be saved in msg as a stack.
+4) locate msg will be responsed along the path stack.
+
+*) bbqclient.cxx, 
+1) Re-implement the LocateEx(...)
+2) in RequestChannel(...), fixed a bug. when TCP login, should always use TCP to request channel. 
+
+2005.12.1
+---------------------------------
+*) bbqsver.cxx
+bugfix: when client request version info, server features (subscribe, CUG, etc) are not reported properly. now fixed.
+
+2005.11.30
+---------------------------------
+*) bbqsvr.h, bbqclient.h
+1) BBQClient::QueryVersionInfo( SIMD_VERSIONINFO * ... ) now will also return more server info, 
+such as: 
+server version info,
+features: disable_subscribe, enable_cug, etc.
+
+*) bbqclient.cxx,
+BBQClient::OnMsgUserMessage(...) is not implemented, and will call virtual function BBQClient::OnUserMessage(...)
+
+2005.11.29
+---------------------------------
+*) bbqsvr.cxx
+1) feedback msg of heartbeat will now also return status of all CUG users and private buddies..
+2) after CUG user login, all users in same tree (except self) will be notified.
+3) privacy "allow friend see contact info" will also allow CUG buddy see the info as well as private buddy.
+
+*) pathpicker.h
+Add new class interface for 3d-grid hypernode picking, will be used in future for vproxy, mcu, gatekeeper select policy.
+3 classes defined: HyperNodePicker, IpToCountryUtility, Grid3dPicker.
+
+*) bbqclient.h, bbqclient.cxx,
+BBQClient::Locate(...) add one more parameter "nFrom", default value is 0.
+bool BBQClient::Locate( SIMD_SC_LOCATE & info, uint32 uid, PIPSocket::Address svrIp = 0, WORD svrPort = SIM_PORT, uint32 nFrom = 0 );
+This is for MCU to decide the call from one user (nFrom) to another (uid) is allowed or not. 
+If the call is not allowed, the Locate call will return false.
+
+2005.11.20
+---------------------------------
+*) Bugfix: A fatal bug was imported in VProxy engine on 2005.10.18 (when adding compatibility to SIP module). 
+The critical bug will cause proxy engine always fail when forwarding data, and all calls through proxy will fail. 
+This error effects all versions built after 2005.10.18 and before this version. Now fixed. 
+
+2005.2.16
+-----------
+*) bool BBQMsgConnection::PickMessageFromBuffer( SIM_MESSAGE * msg ), some message has no body, so only header should also be handled.
+
+2004.1.17
+------------
+bbqsvr.cxx
+*) bug fix to judge the trial & free period;
+
+*) move bbqfiledatabase.h and bbqfiledatabase.cxx to bbqdb project, and change general db object as its parent;
+
+*) when search PCCW_CVG & PCCW_BBI user type, search all user with the email as unique id, 
+this will make the PCCW user can call each other, no matter what group he belongs to.
+
+2004.12.30
+-------------
+bbqsvr.cxx,
+*) add msg to query server status, and proxy status, all include much information, can be used for monitoring;
+*) add msg to switch server type and status;
+*) add interlink thread, between primary and secondary, 
+*) add uplink thread, will uplink to upper server, will be implemented in recent future.
+
+bbqclient.cxx,
+*) add functions to query server status, proxy status;
+*) add function to switch server type and status.
+
+2004.12.29
+-------------
+bbqclient.cxx,
+*) bugfix, now client can request proxy when requesting channel;
+*) new: when requesting channel, after locate peer, do a location confirm using peer's local ip,
+if confirmed, then request directly to the peer instead of sending request to server.
+
+2004.12.28
+-------------
+bbqclient.cxx,
+*) when doing firewall test, if the server address returned by first server is invalid,
+the second test will timeout, so go on with the second test on the first server.
+
+
+2004.05.21
+-----------
+*) add: control user's access limit manually from web admin interface, the limit includes:
+no_login, no_callout, no_callin. Each can be set respectively.
+
+*) add: message broadcast from web admin interface, can specify 1 user by ID.
+
+2004.05.18
+-------------
+*) bugfix: try more sending and wait longer in bbqclient heartbeat;
+
+*) bugfix: in bbqsvr, when client login, do not send replaced message if it's the same ip and port;
+
+*) bugfix: if a user is in blocklist, the server deny request forwarding;
+
+2004.04.27
+-------------
+*) Add: add dongle support to protect valid copy, also add a counter for trial of 3 months.
+
+2004.04.22:
+-------------
+*) modify a little to protocol Locate & RequestChannel, anonymous request is allowed,
+so that cross-domain request and calling is possible without much change, while keeping 
+the protocol compartible to current clients.
+
+2004.03.15:
+-------------
+*) bugfix: Roaming (login with ID & password) is disabled for fixed PC trial users;
+
+
+
+

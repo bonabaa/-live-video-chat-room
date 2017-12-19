@@ -1,0 +1,82 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: YYContainer, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\BAT000001.bat" with contents
+[
+@echo off
+breakpdb.bat
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Performing Pre-Build Event..."
+exit 1
+:VCEnd
+]
+Creating command line "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\BAT000001.bat"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\RSP000002.rsp" with contents
+[
+/Od /I "..\czlibexe" /D "D_LOCAL_PANCEL_CONTAINER" /D "_AFXDLL" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /Zc:wchar_t /Yu"stdafx.h" /Fp"Debug/CCvisionD.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Wp64 /ZI /TP
+.\YYContainerDlg.cpp
+.\YYContainer.cpp
+.\SimpleTray.cpp
+.\SFVideoWnd.cpp
+.\LocalVideoDlg.cpp
+]
+Creating command line "cl.exe @d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\RSP000002.rsp /nologo"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\RSP000003.rsp" with contents
+[
+/Od /I "..\czlibexe" /D "D_LOCAL_PANCEL_CONTAINER" /D "_AFXDLL" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /Zc:wchar_t /Yc"stdafx.h" /Fp"Debug/CCvisionD.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Wp64 /ZI /TP
+.\stdafx.cpp
+]
+Creating command line "cl.exe @d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\RSP000003.rsp /nologo"
+Creating command line "rc.exe /d "_DEBUG" /d "_AFXDLL" /l 0x804 /I "Debug" /fo"Debug/YYContainer.res" .\YYContainer.rc"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\RSP000004.rsp" with contents
+[
+/OUT:"D:\chy\projects\my\eqcores2\YYContainer2\/bin/CCvisionD.exe" /INCREMENTAL /NOLOGO /DEBUG /PDB:"Debug/YYContainer.pdb" /SUBSYSTEM:WINDOWS /MACHINE:X86
+.\Debug\LocalVideoDlg.obj
+.\Debug\SFVideoWnd.obj
+.\Debug\SimpleTray.obj
+.\Debug\stdafx.obj
+.\Debug\YYContainer.obj
+.\Debug\YYContainerDlg.obj
+.\Debug\YYContainer.res
+]
+Creating command line "link.exe @d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\RSP000004.rsp"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Performing Pre-Build Event...
+Compiling...
+stdafx.cpp
+Compiling...
+YYContainerDlg.cpp
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\YYContainerDlg.cpp(20) : warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\YYContainerDlg.cpp(215) : warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\YYContainerDlg.cpp(261) : warning C4311: 'type cast' : pointer truncation from 'HWND' to 'unsigned int'
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\YYContainerDlg.cpp(415) : warning C4806: '|' : unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\YYContainerDlg.cpp(415) : warning C4554: '|' : check operator precedence for possible error; use parentheses to clarify precedence
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\YYContainerDlg.cpp(695) : warning C4244: 'initializing' : conversion from 'INT_PTR' to 'const int', possible loss of data
+YYContainer.cpp
+SimpleTray.cpp
+SFVideoWnd.cpp
+LocalVideoDlg.cpp
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\LocalVideoDlg.cpp(70) : warning C4018: '>=' : signed/unsigned mismatch
+d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\LocalVideoDlg.cpp(654) : warning C4311: 'type cast' : pointer truncation from 'HWND' to 'unsigned int'
+Generating Code...
+Compiling resources...
+Linking...
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Debug\BuildLog.htm"
+YYContainer - 0 error(s), 8 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

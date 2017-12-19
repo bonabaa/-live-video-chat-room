@@ -1,0 +1,73 @@
+2008-05-07 00:54  rjongbloed
+
+	* [r20206] version.h:
+	  Update version number for beta v3.2.2
+
+2008-05-09 01:02  rjongbloed
+
+	* [r20227] include/opal.h, src/opal/opal_c.cxx:
+	  Added ability to set PC sound card buffers in "C" API.
+
+2008-06-05 03:25  rjongbloed
+
+	* [r20394] Makefile.in, include/opal.h, samples/c_api/main.c:
+	  Fixed bug [ 1960493 ] opal 3.2.1 c_api compile error
+
+2008-06-05 03:31  rjongbloed
+
+	* [r20396] samples/lidtest/main.cxx:
+	  Fixed bug [ 1960500 ] opal 3.2.1 lidtest does not compile
+
+2008-06-18 07:16  rjongbloed
+
+	* [r20465] samples/c_api/main.c:
+	  Fixed line endings
+
+2008-06-27 01:18  rjongbloed
+
+	* [r20504] src/sip/sipcon.cxx:
+	  Back ported fixes from trunk: re-INVITE which changes the coedec
+	  or the RTP address must stop and restart media streams.
+
+2008-07-01 01:01  rjongbloed
+
+	* [r20513] src/opal/opal_c.cxx:
+	  Fixed continual addition of listeners if call
+	  OpalCmdSetGeneralParameters multiple times.
+
+2008-07-02 02:02  rjongbloed
+
+	* [r20517] src/sip/sipcon.cxx:
+	  Fixed missing "Display Name" in SIP From header field when
+	  calling a URI that has a registration that does not include the
+	  display name.
+
+2008-07-02 02:48  rjongbloed
+
+	* [r20520] src/sip/sipcon.cxx:
+	  Fixed SIP INVITE on second (and later) network interfaces not
+	  having media enabled. Calls will fail if the remote host cannot
+	  be accessed by the first network interface.
+
+2008-08-28 08:39  rjongbloed
+
+	* [r20753] src/h323/h323.cxx:
+	  Fixed when received TCS=0, incorrectly closing down receiver
+	  channels.
+
+2008-08-28 14:32  rjongbloed
+
+	* [r20758] ., src/sip/sippdu.cxx:
+	  Make sure the response to a CANCEL is not handled as though it
+	  was the response to an INVITE.
+
+2008-09-15 01:14  rjongbloed
+
+	* [r20965] src/win32/opal_2003.dtf, src/win32/opal_2005.dtf,
+	  src/win32/opal_2005_wm.dtf, src/win32/opal_2005_wm6.dtf,
+	  src/win32/opald_2003.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2003.dtf, src/win32/opaln_2005.dtf,
+	  src/win32/opaln_2005_wm.dtf, src/win32/opaln_2005_wm6.dtf:
+	  Update symbols
+

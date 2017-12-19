@@ -1,0 +1,216 @@
+2008-09-15 11:47  rjongbloed
+
+	* [r20985] :
+	  Update version number for beta v3.3.2
+
+2008-09-15 12:32  rjongbloed
+
+	* [r20987] :
+	  Changed enum type name for consistency, pointed out by Yuriy
+	  Cherniavsky
+
+2008-09-15 16:28  hfriederich
+
+	* [r20988] :
+	  Use gatekeeperRequestTimeout and gatekeeperRequestRetries when
+	  doing GK discovery
+	  Do not send GRQ twice on last interface
+	  Remove duplicate retry loop within DiscoverGatekeeper()
+
+2008-09-15 18:17  hfriederich
+
+	* [r20990] :
+	  make DiscoverGatekeeper() virtual
+
+2008-09-15 19:53  hfriederich
+
+	* [r20994] :
+	  Correctly do lightweight RRQs instead of full discovery
+	  (broken since 20864)
+	  Do full discovery if GK unregisters client
+
+2008-09-15 22:06  ms30002000
+
+	* [r20998] :
+	  Sync opal.m4 with autoconf branch.
+
+2008-09-16 07:08  rjongbloed
+
+	* [r21004] :
+	  Migrated new autoconf based rewrite of build system from branch
+	  to trunk.
+	  
+	  Fantastic work by Matthias Schneider!
+
+2008-09-16 09:29  rjongbloed
+
+	* [r21005] :
+	  Added back OPAL library dependency.
+
+2008-09-16 09:32  ms30002000
+
+	* [r21007] :
+	  Dont link libopal.so to the debug lib when installing.
+
+2008-09-16 10:13  rjongbloed
+
+	* [r21008] :
+	  Added "routing" tone for LID between making VoIP call and getting
+	  Alerting back, sometimes can take a while and dead air is a
+	  little disturbing.
+
+2008-09-16 10:18  ms30002000
+
+	* [r21009] :
+	  Also install static lib.
+
+2008-09-16 10:19  ms30002000
+
+	* [r21010] :
+	  Dont create ununsed directory.
+
+2008-09-16 11:35  ms30002000
+
+	* [r21011] :
+	  Also check for objdump executable. Use the found one...
+
+2008-09-16 11:38  ms30002000
+
+	* [r21012] :
+	  Also check for ldd executable before using it.
+
+2008-09-16 12:12  rjongbloed
+
+	* [r21013] :
+	  Fixed problem with starting second audio channel for LIDs.
+
+2008-09-16 12:36  rjongbloed
+
+	* [r21014] :
+	  Changes to trace logging to help debugging
+
+2008-09-16 13:40  ms30002000
+
+	* [r21015] :
+	  Fix libavcodec detection in mingw cross compile.
+
+2008-09-16 14:27  ms30002000
+
+	* [r21016] :
+	  Fix install and uninstall of static lib.
+
+2008-09-16 15:32  ms30002000
+
+	* [r21019] :
+	  Fix permissions of opal.pc.
+
+2008-09-16 16:14  ms30002000
+
+	* [r21020] :
+	  Change once occurance where LIBDIR must really be libdir.
+
+2008-09-16 18:03  ms30002000
+
+	* [r21021] :
+	  Fix detection of ptlib symbols when only debug lib is in
+	  PTLIBDIR.
+
+2008-09-16 18:36  ms30002000
+
+	* [r21022] :
+	  Add check to see if specified ptlib is actually there.
+
+2008-09-16 19:39  ms30002000
+
+	* [r21023] :
+	  Fix docs and graphdocs target.
+
+2008-09-16 19:57  ms30002000
+
+	* [r21024] :
+	  Really fix docs this time.
+
+2008-09-16 21:25  hfriederich
+
+	* [r21025] :
+	  Do full discovery if the interface changes, otherwise rasAddress
+	  in RRQ will be invalid
+
+2008-09-16 23:10  rjongbloed
+
+	* [r21026] :
+	  Improved Java build, thanks Elmar from Teletronics-India!
+
+2008-09-16 23:32  csoutheren
+
+	* [r21028] :
+	  Fix warnings under gcc 4.3.0
+
+2008-09-16 23:58  rjongbloed
+
+	* [r21029] :
+	  More debug trace logs
+
+2008-09-17 05:35  rjongbloed
+
+	* [r21030] :
+	  Added flags to CodecTest to see how a plug in video codec handles
+	  marker bits that are missing, or always set. A common bug in many
+	  systems.
+
+2008-09-17 05:56  csoutheren
+
+	* [r21031] :
+	  Use WX Unicode extensions to allow compilation on standard Linux
+	  distros
+
+2008-09-17 06:23  rjongbloed
+
+	* [r21032] :
+	  Fixed Windows build
+
+2008-09-17 07:02  csoutheren
+
+	* [r21034] :
+	  Another iteration on cross-platform development
+
+2008-09-17 07:57  rjongbloed
+
+	* [r21035] :
+	  Fixed RTP session determining it is audio mode by method other
+	  than being session ID == 1.
+
+2008-09-17 07:59  rjongbloed
+
+	* [r21036] :
+	  Fixed Windows build
+
+2008-09-17 08:02  rjongbloed
+
+	* [r21038] .:
+	  Create Wolf branch
+
+2008-09-17 08:06  rjongbloed
+
+	* [r21040] version.h:
+	  Update version number
+
+2008-09-17 19:43  ms30002000
+
+	* [r21044] plugins/audio/G726/Makefile.in,
+	  plugins/audio/GSM0610/Makefile.in,
+	  plugins/audio/IMA_ADPCM/Makefile.in,
+	  plugins/audio/LPC_10/Makefile.in,
+	  plugins/audio/Speex/Makefile.in,
+	  plugins/audio/gsm-amr/Makefile.in,
+	  plugins/audio/iLBC/Makefile.in, plugins/configure,
+	  plugins/configure.ac, plugins/video/H.261-vic/Makefile.in,
+	  plugins/video/H.263-1998/Makefile.in,
+	  plugins/video/H.263-ffmpeg/Makefile.in,
+	  plugins/video/H.264/Makefile.in,
+	  plugins/video/H.264/gpl/Makefile.in,
+	  plugins/video/MPEG4-ffmpeg/Makefile.in,
+	  plugins/video/THEORA/Makefile.in:
+	  Allow the plugins to be compiled on Solaris.
+	  Thanks to Elaine Xiong from SUN.
+

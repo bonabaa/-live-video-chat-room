@@ -1,0 +1,71 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: x264 H.264 Video Codec no exe new ffmpeg, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\RSP00000B.rsp" with contents
+[
+/Od /I "../../include" /I "D:\chy\projects\my\eqcores2\\opal\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_USRDLL" /D "PLUGIN_CODEC_DLL_EXPORTS" /D "MSWIN_SUPPORT" /D "MPL" /D "FFMPEG_NEW" /D "_MBCS" /FD /EHsc /RTC1 /MTd /GS /GR /Fo"..\..\Debug\h264-x264-noexe-new/" /Fd"d:\chy\projects\my\eqcores2\opal\plugins\Debug\\x264 H.264 Video Codec no exe new ffmpeg.pdb" /W4 /c /Zi /TP
+\chy\projects\my\eqcores2\opal\plugins\video\common\trace.cxx
+.\shared\h264frame.cxx
+".\h264-x264.cxx"
+]
+Creating command line "cl.exe @"d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\RSP00000B.rsp" /nologo"
+Creating temporary file "d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\RSP00000C.rsp" with contents
+[
+/Od /I "../../include" /I "D:\chy\projects\my\eqcores2\\opal\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_USRDLL" /D "PLUGIN_CODEC_DLL_EXPORTS" /D "MSWIN_SUPPORT" /D "MPL" /D "FFMPEG_NEW" /D "_MBCS" /FD /EHsc /RTC1 /MTd /GS /GR /FAs /Fa"..\..\Debug\h264-x264-noexe-new/" /Fo"..\..\Debug\h264-x264-noexe-new/" /Fd"d:\chy\projects\my\eqcores2\opal\plugins\Debug\\x264 H.264 Video Codec no exe new ffmpeg.pdb" /W4 /c /Zi /TP
+".\gpl\enc-ctx.cxx"
+]
+Creating command line "cl.exe @"d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\RSP00000C.rsp" /nologo"
+Creating temporary file "d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\RSP00000D.rsp" with contents
+[
+/OUT:"..\..\Debug/x264 H.264 Video Codec no exe new ffmpeg.lib" /NOLOGO
+"\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\enc-ctx.obj"
+"\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\h264-x264.obj"
+"\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\h264frame.obj"
+"\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\trace.obj"
+]
+Creating command line "lib.exe @"d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\RSP00000D.rsp""
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
+trace.cxx
+h264frame.cxx
+You must include stdint.h or inttypes.h before x264.h
+shared\h264frame.cxx(112) : warning C4244: '=' : conversion from 'int' to 'uint8_t', possible loss of data
+shared\h264frame.cxx(90) : warning C4101: 'vopBufferLen' : unreferenced local variable
+shared\h264frame.cxx(180) : warning C4244: 'argument' : conversion from 'uint64_t' to 'unsigned long', possible loss of data
+shared\h264frame.cxx(233) : warning C4244: '=' : conversion from 'uint32_t' to 'unsigned char', possible loss of data
+shared\h264frame.cxx(234) : warning C4244: '=' : conversion from 'uint32_t' to 'unsigned char', possible loss of data
+shared\h264frame.cxx(249) : warning C4244: 'argument' : conversion from 'uint64_t' to 'unsigned long', possible loss of data
+shared\h264frame.cxx(295) : warning C4244: 'argument' : conversion from 'uint64_t' to 'unsigned long', possible loss of data
+shared\h264frame.cxx(314) : warning C4389: '!=' : signed/unsigned mismatch
+h264-x264.cxx
+You must include stdint.h or inttypes.h before x264.h
+h264-x264.cxx(322) : warning C4127: conditional expression is constant
+h264-x264.cxx(730) : warning C4245: 'initializing' : conversion from 'int' to 'unsigned int', signed/unsigned mismatch
+h264-x264.cxx(734) : warning C4245: 'initializing' : conversion from 'int' to 'unsigned int', signed/unsigned mismatch
+h264-x264.cxx(734) : warning C4245: 'initializing' : conversion from 'int' to 'unsigned int', signed/unsigned mismatch
+Generating Code...
+Compiling...
+enc-ctx.cxx
+You must include stdint.h or inttypes.h before x264.h
+gpl\enc-ctx.cxx(134) : warning C4244: 'argument' : conversion from 'unsigned int' to 'uint16_t', possible loss of data
+gpl\enc-ctx.cxx(184) : warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+gpl\enc-ctx.cxx(43) : warning C4505: 'logCallbackX264' : unreferenced local function has been removed
+d:\chy\projects\my\eqcores2\opal\plugins\video\h.264\gpl\enc-ctx.cxx(346) : warning C4701: local variable 'NALs' may be used without having been initialized
+Creating library...
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://d:\chy\projects\my\eqcores2\opal\plugins\Debug\h264-x264-noexe-new\BuildLog.htm"
+x264 H.264 Video Codec no exe new ffmpeg - 0 error(s), 16 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

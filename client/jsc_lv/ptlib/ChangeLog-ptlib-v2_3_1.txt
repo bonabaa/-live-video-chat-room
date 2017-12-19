@@ -1,0 +1,58 @@
+2008-09-15 02:57  rjongbloed
+
+	* [r20972] include/ptlib/msos/ptlib_2003.dtf,
+	  include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd_2003.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2003.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf:
+	  Update symbols
+
+2008-09-15 05:39  rjongbloed
+
+	* [r20974] .:
+	  Ignorance
+
+2008-09-15 06:51  rjongbloed
+
+	* [r20975] make/common.mak:
+	  Returned application objects directory to include platform
+	  information,
+	  accidentally removed when library build directories changed.
+
+2008-09-15 07:18  rjongbloed
+
+	* [r20976] Makefile.in, configure, configure.ac, ptlib.pc.in,
+	  ptlib_debug.pc.in:
+	  Fixed issues with "local" builds, i.e. ones that are not
+	  installed and
+	  are pointed to by PTLIBDIR. To configure a "local" build now can
+	  either
+	  have PTLIBDIR set before calling configure, or set the install
+	  prefix to
+	  the local directory, e.g. --prefix=`pwd`
+	  
+	  Fixed issues with using pkg-config for debug and static versions
+	  of
+	  library. Now only one .pc file is required and library is
+	  selected via a
+	  "suffix" define that the application can set to _d or _s for
+	  debug and
+	  static builds respectively.
+
+2008-09-15 07:19  rjongbloed
+
+	* [r20977] samples/hello_world:
+	  Ignorance
+
+2008-09-15 08:27  rjongbloed
+
+	* [r20980] version.h:
+	  Update release version number to 2.3.1
+

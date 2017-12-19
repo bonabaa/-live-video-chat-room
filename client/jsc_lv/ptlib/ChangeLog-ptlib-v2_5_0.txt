@@ -1,0 +1,289 @@
+2008-09-18 00:23  csoutheren
+
+	* [r21057] include/ptclib/podbc.h,
+	  include/ptlib/unix/ptlib/contain.h:
+	  Move ODBC specific Unicode definitions into ODBC specific file
+
+2008-09-18 19:56  csoutheren
+
+	* [r21067] src/ptclib/pvfiledev.cxx:
+	  Ensure PVideoFile will accept all file types registered in the
+	  appropriate PFactory
+
+2008-09-18 22:42  rjongbloed
+
+	* [r21068] include/ptlib/thread.h:
+	  Applied patch:
+	  
+	  [ 2118002 ] Fix documentation for PThread::WaitForTermination()
+	  
+	  thanks Stefano Sabatini
+
+2008-09-19 04:17  rjongbloed
+
+	* [r21072] src/ptlib/msos/vidinput_directx.cxx:
+	  Fixed crash in DirectShow camera grabber
+
+2008-09-19 04:31  rjongbloed
+
+	* [r21074] src/ptlib/common/videoio.cxx:
+	  Re-do prioritisation of default video grabbers/players when no
+	  driver/device is specified.
+
+2008-09-21 06:28  rjongbloed
+
+	* [r21087] ., make/common.mak, make/unix.mak:
+	  Tidied the multiple targets (opt/debug/optclean etc etc) so each
+	  sets
+	  appropriate variables and calls the default targets for those
+	  items.
+	  Makes it clearer and removes some strange behaviour.
+
+2008-09-21 07:02  rjongbloed
+
+	* [r21090] src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch to fix unnecesary delay when using time mutex wait
+	  and
+	  pthread_mutex_timedlock is not available or broken, Thanks Nir
+	  Soffer
+
+2008-09-21 10:45  rjongbloed
+
+	* [r21093] include/ptlib/svcproc.h:
+	  Fixed GNU compiler warning
+
+2008-09-21 10:53  rjongbloed
+
+	* [r21095] make/common.mak:
+	  Added optstatic and debugstatic targets as synonyms for
+	  optnoshared and
+	  debugnoshared.
+
+2008-09-21 11:07  rjongbloed
+
+	* [r21096] .:
+	  Merge revision 21094
+
+2008-09-21 12:36  rjongbloed
+
+	* [r21099] src/ptlib/unix/config.cxx:
+	  Fixed flushing of unix configuration file if PConfig isntances
+	  are short
+	  lived and background thread does not have time to write data.
+	  
+	  Also some general code tidying.
+
+2008-09-21 21:36  dsandras
+
+	* [r21109] src/ptlib/common/vconvert.cxx:
+	  Backport from the stable branch.
+
+2008-09-22 16:57  ms30002000
+
+	* [r21137] include/ptlib/ipsock.h, src/ptlib/Nucleus++/socket.cxx,
+	  src/ptlib/common/osutils.cxx, src/ptlib/common/sockets.cxx,
+	  src/ptlib/common/vfakeio.cxx, src/ptlib/unix/assert.cxx,
+	  src/ptlib/unix/remconn.cxx, src/ptlib/unix/shmvideo.cxx,
+	  src/ptlib/unix/socket.cxx, src/ptlib/unix/switch.cxx,
+	  src/ptlib/unix/tlib.cxx:
+	  Use more P_ variables for OSTYPE.
+
+2008-09-23 09:04  rjongbloed
+
+	* [r21140] configure.ac, include/ptbuildopts.h.in:
+	  Fix for Microsoft SAPI moving libraries.
+
+2008-09-23 13:49  rjongbloed
+
+	* [r21141] make/common.mak, make/unix.mak, src/ptlib/msos/Makefile,
+	  src/ptlib/unix/Makefile:
+	  Fixed dependecy generation (not having all the preprocessor flags
+	  needed)
+	  Removed redundent OPTCCFLAGS variable.
+
+2008-09-24 04:20  rjongbloed
+
+	* [r21150] ., include/ptlib/msos/CopyDTF_2003.bat,
+	  include/ptlib/msos/CopyDTF_2005.bat,
+	  include/ptlib/msos/ptlib.dtf, include/ptlib/msos/ptlib_2003.dtf,
+	  include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd.dtf,
+	  include/ptlib/msos/ptlibd_2003.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2003.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf, msvc6_upgrade.bat,
+	  plugins/vidinput_v4l2/Makefile.in, ptlib_2003.sln,
+	  ptlib_2005.sln, ptlib_samples_2003.sln, ptlib_samples_2005.sln,
+	  ptlib_samples_2008.sln, samples/ODBC/odbctest.vcproj,
+	  samples/ODBC/odbctest_2003.sln,
+	  samples/ThreadSafe/ThreadSafe.vcproj,
+	  samples/ThreadSafe/ThreadSafe_2005.vcproj,
+	  samples/ThreadSafe/ThreadSafe_2008.vcproj,
+	  samples/address/address.vcproj, samples/aggtest/aggtest.vcproj,
+	  samples/aggtest/aggtest_2005.vcproj,
+	  samples/aggtest/aggtest_2008.vcproj,
+	  samples/dnstest/dnstest.vcproj,
+	  samples/dnstest/dnstest_2005.vcproj,
+	  samples/dnstest/dnstest_2008.vcproj,
+	  samples/dtmftest/dtmftest.vcproj,
+	  samples/dtmftest/dtmftest_2005.vcproj,
+	  samples/dtmftest/dtmftest_2008.vcproj,
+	  samples/emailtest/emailtest.vcproj,
+	  samples/emailtest/emailtest_2005.vcproj,
+	  samples/emailtest/emailtest_2008.vcproj,
+	  samples/factory/factory.vcproj,
+	  samples/factory/factory_2005.vcproj,
+	  samples/factory/factory_2008.vcproj,
+	  samples/find_ip/find_ip.vcproj,
+	  samples/find_ip/find_ip_2005.vcproj,
+	  samples/find_ip/find_ip_2008.vcproj,
+	  samples/hello_world/hello.vcproj,
+	  samples/hello_world/helloDLL_2003.vcproj,
+	  samples/hello_world/helloDLL_2005.vcproj,
+	  samples/hello_world/helloDLL_2008.vcproj,
+	  samples/hello_world/hello_2005.vcproj,
+	  samples/hello_world/hello_2008.vcproj,
+	  samples/ipv6test/ipv6test.vcproj,
+	  samples/ipv6test/ipv6test_2005.vcproj,
+	  samples/ipv6test/ipv6test_2008.vcproj,
+	  samples/ldaptest/ldaptest.vcproj,
+	  samples/ldaptest/ldaptest_2005.vcproj,
+	  samples/ldaptest/ldaptest_2008.vcproj,
+	  samples/ptimer/ptimer.vcproj, samples/ptimer/ptimer_2005.vcproj,
+	  samples/ptimer/ptimer_2008.vcproj, samples/pxml/PxmlTest.vcproj,
+	  samples/pxml/PxmlTest_2005.vcproj,
+	  samples/pxml/PxmlTest_2008.vcproj, samples/queue/queue.vcproj,
+	  samples/queue/queue_2005.vcproj,
+	  samples/safetest/safetest.vcproj,
+	  samples/safetest/safetest_2005.vcproj,
+	  samples/safetest/safetest_2008.vcproj,
+	  samples/sockbundle/sockbundle.vcproj,
+	  samples/sockbundle/sockbundle_2003.vcproj,
+	  samples/sockbundle/sockbundle_2008.vcproj,
+	  samples/sortedlist/SortedListTest.vcproj,
+	  samples/sortedlist/SortedListTest_2005.vcproj,
+	  samples/sortedlist/SortedListTest_2008.vcproj,
+	  samples/stunclient/stunclient.vcproj,
+	  samples/stunclient/stunclient_2005.vcproj,
+	  samples/stunclient/stunclient_2008.vcproj,
+	  samples/threadex/threadex.vcproj,
+	  samples/threadex/threadex_2005.vcproj,
+	  samples/threadex/threadex_2008.vcproj,
+	  samples/timing/timing.vcproj, samples/timing/timing_2005.vcproj,
+	  samples/timing/timing_2008.vcproj,
+	  samples/vidtest/vidtest.vcproj,
+	  samples/vidtest/vidtest_2005.vcproj,
+	  samples/vidtest/vidtest_2008.vcproj,
+	  samples/vxmltest/vxmltest.vcproj,
+	  samples/vxmltest/vxmltest_2005.vcproj,
+	  samples/vxmltest/vxmltest_2008.vcproj,
+	  samples/wavfile/wavfile.vcproj,
+	  samples/wavfile/wavfile_2005.vcproj,
+	  samples/wavfile/wavfile_2008.vcproj,
+	  samples/xmlrpc/xmlrpc.vcproj, samples/xmlrpc/xmlrpc_2005.vcproj,
+	  samples/xmlrpc/xmlrpc_2008.vcproj,
+	  samples/xmlrpcsrvr/xmlrpcsrvr.vcproj,
+	  samples/xmlrpcsrvr/xmlrpcsrvr_2005.vcproj,
+	  samples/xmlrpcsrvr/xmlrpcsrvr_2008.vcproj,
+	  samples/xmpptest/xmpptest.vcproj,
+	  samples/xmpptest/xmpptest_2005.vcproj,
+	  samples/xmpptest/xmpptest_2008.vcproj,
+	  src/ptclib/speex_echo/PAEC.vcproj,
+	  src/ptclib/speex_echo/PAEC_2005.vcproj,
+	  src/ptclib/speex_echo/PAEC_2008.vcproj,
+	  src/ptlib/msos/Console.vcproj,
+	  src/ptlib/msos/Console_2005.vcproj,
+	  src/ptlib/msos/Console_2008.vcproj, src/ptlib/msos/PTLib.vcproj,
+	  src/ptlib/msos/PTLib_2005.vcproj,
+	  src/ptlib/msos/PTLib_2008.vcproj, tools/MergeSym/MergeSym.vcproj,
+	  tools/MergeSym/MergeSym_2005.vcproj,
+	  tools/MergeSym/MergeSym_2008.vcproj,
+	  tools/MergeSym/run_dumpbin.bat,
+	  tools/StringTest/StringTest.vcproj,
+	  tools/Uninstall/uninstall.def, tools/asnparser/asnparser.vcproj,
+	  tools/asnparser/asnparser_2003.sln,
+	  tools/configure/configure.vcproj,
+	  tools/configure/configure_2005.vcproj,
+	  tools/configure/configure_2008.vcproj,
+	  tools/plugintest/plugintest.vcproj:
+	  Fixed line endings.
+
+2008-09-25 03:25  rjongbloed
+
+	* [r21161] ., include/ptlib/object.h:
+	  Applied patch:
+	  
+	  [ 2118951 ] Misc fixes for object.h doxy
+	  
+	  Thanks Stefano Sabatini
+
+2008-09-25 07:16  rjongbloed
+
+	* [r21166] src/ptclib/vxml.cxx:
+	  Fixed "repeat" count for playing files in VXML.
+
+2008-09-27 16:00  ms30002000
+
+	* [r21173] Makefile.in, include/ptbuildopts.h.in,
+	  make/ptbuildopts.mak.in:
+	  Check if there are plugins to be installed at all.
+	  Add directX build variables for mingw build.
+
+2008-09-27 20:34  ms30002000
+
+	* [r21176] include/ptlib/plugin.h, src/ptlib/common/osutils.cxx,
+	  src/ptlib/common/vfakeio.cxx, src/ptlib/msos/sound_win32.cxx,
+	  src/ptlib/msos/vfw.cxx, src/ptlib/msos/vidinput_directx.cxx,
+	  src/ptlib/unix/maccoreaudio.cxx, src/ptlib/unix/shmvideo.cxx:
+	  Fix linkage of static plugins with mingw.
+
+2008-09-28 11:09  ms30002000
+
+	* [r21181] configure, configure.ac:
+	  Move the defaults so we can overwrite them depending on the
+	  platform.
+
+2008-09-28 11:14  ms30002000
+
+	* [r21183] configure, configure.ac:
+	  Finally fix static and dynamic plugins on mingw
+
+2008-09-29 06:32  rjongbloed
+
+	* [r21187] ., src/ptlib/common/sockets.cxx:
+	  Fixed being able to pass a ip%interface form of address string to
+	  a PIPSocket::Address and it still works correctly, using the ip
+	  part if there.
+
+2008-09-29 18:43  ms30002000
+
+	* [r21190] Makefile.in, src/Makefile, src/ptlib/macos,
+	  src/ptlib/msos/Makefile, src/ptlib/unix/Makefile:
+	  Join the Makefiles for mingw and unix build.
+
+2008-09-30 03:56  rjongbloed
+
+	* [r21192] include/ptlib/msos/ptlib/sound_directsound.h,
+	  src/ptlib/common/sound.cxx, src/ptlib/msos/sound_directsound.cxx:
+	  Applied patch:
+	  
+	  [ 2137373 ] Directsound fixes
+	  
+	  Thank you ted szoczei
+
+2008-10-01 07:11  rjongbloed
+
+	* [r21198] include/ptlib/msos/ptlib/sound_directsound.h,
+	  src/ptlib/msos/sound_directsound.cxx:
+	  Applied patch:
+	  
+	  [ 2138965 ] Directsound fixes completion
+	  
+	  Thanks ted szoczei
+

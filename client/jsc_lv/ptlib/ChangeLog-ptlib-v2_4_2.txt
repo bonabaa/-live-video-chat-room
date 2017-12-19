@@ -1,0 +1,140 @@
+2008-09-27 20:35  ms30002000
+
+	* [r21177] include/ptlib/plugin.h, src/ptlib/common/osutils.cxx,
+	  src/ptlib/common/vfakeio.cxx, src/ptlib/msos/sound_win32.cxx,
+	  src/ptlib/msos/vfw.cxx, src/ptlib/msos/vidinput_directx.cxx,
+	  src/ptlib/unix/maccoreaudio.cxx, src/ptlib/unix/shmvideo.cxx:
+	  Fix static linking for mingw.
+
+2008-09-28 11:08  ms30002000
+
+	* [r21180] configure, configure.ac:
+	  Move the defaults so we can overwrite them depending on the
+	  platform.
+
+2008-09-28 11:13  ms30002000
+
+	* [r21182] configure, configure.ac:
+	  Finally fix static and dynamic plugins on mingw.
+
+2008-09-29 06:24  rjongbloed
+
+	* [r21185] src/ptlib/common/sockets.cxx:
+	  Fixed being able to pass a ip%interface form of address string to
+	  a PIPSocket::Address and it still works correctly, using the ip
+	  part if there.
+
+2008-09-29 18:51  ms30002000
+
+	* [r21191] src/Makefile, src/ptlib/macos:
+	  Add the joined Makefile to the stable branch. Do not use it yet.
+
+2008-10-01 19:16  ms30002000
+
+	* [r21205] make/lib.mak:
+	  Also delete static lib on make clean.
+
+2008-10-03 00:47  rjongbloed
+
+	* [r21226] ., src/ptlib/common/sockets.cxx:
+	  Fixed correct upper/lower case comparisons as per RFC952 for
+	  domain names, which is not locale dependent, remove use of
+	  toupper().
+
+2008-10-03 11:40  ms30002000
+
+	* [r21228] Makefile.in, make/lib.mak:
+	  Killed the ununsed .major and .major.minor symlinks.
+	  The SONAME has always referred to the .major.minor.build lib.
+
+2008-10-06 18:11  ms30002000
+
+	* [r21241] Makefile.in, src/ptlib/msos/Makefile,
+	  src/ptlib/unix/Makefile:
+	  Switch the Makefiles in v2_4 like it was already done in trunk.
+
+2008-10-07 10:11  ms30002000
+
+	* [r21254] src/Makefile:
+	  Removed obsolete comment...
+
+2008-10-08 19:57  dsandras
+
+	* [r21274] plugins/sound_alsa/sound_alsa.cxx:
+	  Fixed gcc warning. Backport from TRUNK.
+
+2008-10-11 01:48  rjongbloed
+
+	* [r21281] configure.ac:
+	  Fixed Windows Speech API search directory to be more flexible.
+
+2008-10-12 09:38  ms30002000
+
+	* [r21287] configure, configure.ac, make/ptbuildopts.mak.in,
+	  src/Makefile:
+	  Make vfw configurable.
+
+2008-10-12 16:56  dsandras
+
+	* [r21291] src/ptclib/pstun.cxx:
+	  STUN was not working with Open NAT.
+
+2008-10-13 00:20  rjongbloed
+
+	* [r21296] src/ptclib/vxml.cxx:
+	  Applied patch for VXML not starting if not yet loaded and then
+	  not being started if later does get loaded. Thanks Antonio
+	  Rivera.
+
+2008-10-13 07:02  rjongbloed
+
+	* [r21305] src/ptclib/psockbun.cxx:
+	  Fixed incorrect port displayed in trace log for STUN, very
+	  confusing.
+
+2008-10-13 17:37  dsandras
+
+	* [r21315] src/ptclib/pstun.cxx:
+	  Make sure CreateSocketPair also works with open nat.
+
+2008-10-14 06:43  rjongbloed
+
+	* [r21322] src/ptlib/common/sockets.cxx:
+	  Fixed problem with "interface only" ip addresses not being parsed
+	  correctly on Windows Mobile systems.
+
+2008-10-14 07:18  rjongbloed
+
+	* [r21325] src/ptlib/msos/Console_2005.vcproj,
+	  src/ptlib/msos/PTLib_2005.vcproj:
+	  Windows Mobile build fixes
+
+2008-10-15 03:52  rjongbloed
+
+	* [r21337] src/ptclib/vxml.cxx:
+	  More fixes to VXML, thank you Antonio Rivera
+
+2008-10-16 00:33  csoutheren
+
+	* [r21353] src/ptlib/common/osutils.cxx, src/ptlib/msos/vfw.cxx:
+	  Ensure Windows video output devices are available when using MSVC
+	  and not just MingW
+	  Backport from trunk
+
+2008-10-16 04:47  csoutheren
+
+	* [r21361] src/ptclib/pvfiledev.cxx:
+	  Allow video file output device to work with new files
+	  Backport from trunk
+
+2008-10-16 05:28  rjongbloed
+
+	* [r21363] include/ptlib/safecoll.h, src/ptlib/common/safecoll.cxx:
+	  Fixed problem with PSafeCollection destructor deleting objects
+	  even if they still have a PSafePtr referencing them.
+
+2008-10-16 19:00  ms30002000
+
+	* [r21373] src/ptlib/common/osutils.cxx:
+	  Fix compilation without vfw.
+

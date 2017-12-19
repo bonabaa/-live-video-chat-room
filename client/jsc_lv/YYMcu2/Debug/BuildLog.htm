@@ -1,0 +1,543 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: YYM, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\chy\projects\my\eqcores2\YYMcu2\Debug\BAT000033.bat" with contents
+[
+@echo off
+breakpdb.bat
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Performing Pre-Build Event..."
+exit 1
+:VCEnd
+]
+Creating command line "d:\chy\projects\my\eqcores2\YYMcu2\Debug\BAT000033.bat"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYMcu2\Debug\RSP000034.rsp" with contents
+[
+/Od /I "D:\chy\projects\my\eqcores2\\opal\include" /I "D:\chy\projects\my\eqcores2\\ptlib\include" /I "..\czlibexe\\" /I "..\bbqmfcex\bbqbase\\" /I "D:\chy\projects\my\eqcores2\\vncviewer" /I "D:\chy\projects\my\eqcores2\\" /I "D:\chy\projects\my\eqcores2\\winvnc" /I "..\ud\udt4\src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "LPN_MULTI_VIDEO" /D "PTRACING=1" /D "LPNSPRITE_EXPORTS" /D "LPN_NOT_EXPORT" /D "LPN_MSWIN_OUTPUT_DEVICE" /D "LPN_MCU" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /GR /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Wp64 /ZI /TP
+\chy\projects\my\eqcores2\czlibexe\main.cxx
+]
+Creating command line "cl.exe @d:\chy\projects\my\eqcores2\YYMcu2\Debug\RSP000034.rsp /nologo"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYMcu2\Debug\RSP000035.rsp" with contents
+[
+/OUT:"../bin/wpf.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\chy\projects\my\eqcores2\\opal\lib" /LIBPATH:"D:\chy\projects\my\eqcores2\\ptlib\lib" /LIBPATH:"c:\tools" /LIBPATH:"..\bin" /NODEFAULTLIB:"LIBCMTD.lib" /NODEFAULTLIB:"libcmt.lib" /NODEFAULTLIB:"nafxcwd.lib" /DEBUG /PDB:"Debug/YYMcu2.pdb" /SUBSYSTEM:WINDOWS /MACHINE:X86 wsock32.lib mpr.lib vfw32.lib dsound.lib theora_static.lib va_g729.lib libogg.lib libeay32.lib ssleay32.lib libjpegD.lib htmlhelp.lib zlibD.lib comctl32.lib libx264_d.lib pthreadVC2.lib ippacemerged.lib ippacmerged.lib ippacmerged_t.lib ippccemerged.lib ippccmerged.lib ippccmerged_t.lib ippchemerged.lib ippchmerged.lib ippchmerged_t.lib ippcorel.lib ippcore_t.lib ippcvemerged.lib ippcvmerged.lib ippcvmerged_t.lib ippdcemerged.lib ippdcmerged.lib ippdcmerged_t.lib ippdiemerged.lib ippdimerged.lib ippdimerged_t.lib ippgenemerged.lib ippgenmerged.lib ippgenmerged_t.lib ippiemerged.lib ippimerged.lib ippimerged_t.lib yImageEngined.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib \chy\projects\my\eqcores2\lib\bbqbasesd.lib \chy\projects\my\eqcores2\bin\udD_MD.lib \chy\projects\my\eqcores2\opal\lib\opalsd.lib
+.\Debug\ExceptionHandler.obj
+.\Debug\LPNCoreMgr.obj
+.\Debug\LPNMgr.obj
+.\Debug\main.obj
+.\Debug\MyClient.obj
+.\Debug\pcss.obj
+.\Debug\precompile.obj
+.\Debug\SFCallsManager.obj
+.\Debug\sfconnection.obj
+.\Debug\sfendpoint.obj
+.\Debug\stdafx.obj
+.\Debug\yConferenceEntry.obj
+.\Debug\yConferenceMediaStream.obj
+.\Debug\yConferencePatch.obj
+.\Debug\yhttpsvr_main.obj
+.\Debug\ymcucustom.obj
+.\Debug\yRDConnection.obj
+.\Debug\yUserToUserTransmitDataMgr.obj
+.\Debug\yViewerEntry.obj
+.\Debug\YYAudioMediaStream.obj
+.\Debug\YYFun.obj
+.\Debug\yypipe_win32.obj
+.\Debug\AboutBox.obj
+.\Debug\BuildTime.obj
+.\Debug\CapsContainer.obj
+.\Debug\ClientConnection.obj
+.\Debug\ClientConnectionClipboard.obj
+.\Debug\ClientConnectionCopyRect.obj
+.\Debug\ClientConnectionCoRRE.obj
+.\Debug\ClientConnectionCursor.obj
+.\Debug\ClientConnectionFile.obj
+.\Debug\ClientConnectionFullScreen.obj
+.\Debug\ClientConnectionHextile.obj
+.\Debug\ClientConnectionRaw.obj
+.\Debug\ClientConnectionRRE.obj
+.\Debug\ClientConnectionTight.obj
+.\Debug\ClientConnectionZlib.obj
+.\Debug\ClientConnectionZlibHex.obj
+.\Debug\ConnectingDialog.obj
+.\Debug\d3des.obj
+.\Debug\Daemon.obj
+.\Debug\Exception.obj
+.\Debug\FileTransfer.obj
+.\Debug\FileTransferItemInfo.obj
+.\Debug\HotKeys.obj
+.\Debug\KeyMap.obj
+.\Debug\Log.obj
+.\Debug\LoginAuthDialog.obj
+.\Debug\PThreadEx.obj
+.\Debug\SessionDialog.obj
+.\Debug\stdhdrs.obj
+.\Debug\vncauth.obj
+.\Debug\VNCHelp.obj
+.\Debug\VNCOptions.obj
+.\Debug\vncviewer.obj
+.\Debug\VNCviewerApp.obj
+.\Debug\VNCviewerApp32.obj
+.\Debug\YYMcu2.res
+]
+Creating command line "link.exe @d:\chy\projects\my\eqcores2\YYMcu2\Debug\RSP000035.rsp"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Performing Pre-Build Event...
+Compiling...
+main.cxx
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(36) : warning C4002: too many actual parameters for macro 'PCREATE_VIDINPUT_PLUGIN'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(225) : warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(259) : warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(1364) : warning C4311: 'type cast' : pointer truncation from 'LPNMgr *' to 'unsigned int'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(1372) : warning C4311: 'type cast' : pointer truncation from 'stDeviceparam *__w64 ' to 'int'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(1806) : warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(2236) : warning C4996: 'SIPEndPoint::Register' was declared deprecated
+        d:\chy\projects\my\eqcores2\opal\include\sip\sipep.h(410) : see declaration of 'SIPEndPoint::Register'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(2403) : warning C4311: 'type cast' : pointer truncation from 'HWND' to 'int'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(2428) : warning C4311: 'type cast' : pointer truncation from 'HWND' to 'int'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(3125) : warning C4996: 'SIPEndPoint::Register' was declared deprecated
+        d:\chy\projects\my\eqcores2\opal\include\sip\sipep.h(410) : see declaration of 'SIPEndPoint::Register'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(3411) : warning C4996: 'SIPEndPoint::Register' was declared deprecated
+        d:\chy\projects\my\eqcores2\opal\include\sip\sipep.h(410) : see declaration of 'SIPEndPoint::Register'
+d:\chy\projects\my\eqcores2\czlibexe\main.cxx(3527) : warning C4244: '=' : conversion from '__w64 unsigned long' to 'unsigned int', possible loss of data
+Linking...
+LINK : warning LNK4076: invalid incremental status file '../bin/wpf.ilk'; linking nonincrementally
+libeay32.lib(cryptlib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(mem.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(mem_dbg.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ex_data.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(o_time.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(md4_dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(md5_dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(sha_dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(sha1dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(sha256.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(sha512.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(mdc2dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(hmac.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(hm_ameth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(hm_pmeth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rmd_dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(set_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecb_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecb3_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cfb64enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cfb64ede.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cfb_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ofb64ede.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ofb64enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(xcbc_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rc2_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rc2_skey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rc2_cbc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rc2cfb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rc2ofb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(i_cbc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(i_cfb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(i_ofb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(i_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(i_skey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bf_skey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bf_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bf_cfb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bf_ofb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_skey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_cfb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_ofb64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(aes_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(aes_cfb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(aes_ofb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(aes_wrap.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cmll_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cmll_ofb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cmll_cfb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(seed.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(seed_ecb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(seed_cbc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(seed_cfb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(seed_ofb.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cbc128.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cfb128.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ofb128.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_add.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_div.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_exp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_ctx.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_mul.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_mod.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_print.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_rand.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_shift.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_word.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_blind.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_kron.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_sqrt.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_gcd.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_prime.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_sqr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_recp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_mont.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_exp2.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_gf2m.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bn_nist.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_eay.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_gen.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_sign.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_saos.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_pk1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_ssl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_none.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_oaep.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_pss.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_x931.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_ameth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rsa_pmeth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_gen.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_vrf.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_sign.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_ossl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_ameth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dsa_pmeth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dso_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dso_openssl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dso_win32.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_gen.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_check.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_ameth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(dh_pmeth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecp_smpl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecp_mont.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecp_nist.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_cvt.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_mult.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_curve.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_print.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec2_smpl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec2_mult.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_ameth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ec_pmeth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(eck_prn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ech_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ech_ossl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ech_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecs_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecs_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecs_ossl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecs_sign.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ecs_vrf.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(buffer.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bio_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bss_mem.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bss_null.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bss_file.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bf_buff.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(b_print.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(b_dump.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(stack.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(lhash.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(md_rand.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rand_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(rand_win.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(err.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(err_prn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(o_names.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(obj_dat.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(obj_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(obj_xref.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(encode.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(digest.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(evp_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(evp_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_des.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_bf.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_idea.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_des3.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_camellia.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_rc4.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_aes.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(names.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_seed.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_xcbc_d.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_rc2.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(e_cast.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_md4.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_md5.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_sha.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_sha1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_wp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_dss.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_dss1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_mdc2.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_ripemd.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_ecdsa.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p_sign.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p_verify.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bio_md.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bio_b64.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bio_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_all.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_allc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(c_alld.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(evp_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(evp_pkey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(evp_pbe.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p5_crpt.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p5_crpt2.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pmeth_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pmeth_fn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pmeth_gn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(m_sigver.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_object.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_bitstr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_utctm.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_gentm.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_time.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_int.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_octet.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_print.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_type.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_set.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_dup.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_d2i_fp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_i2d_fp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_enum.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_utf8.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_sign.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_digest.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_verify.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_mbstr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_strex.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_algor.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_val.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_pubkey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_sig.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_req.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_attrib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_bignum.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_long.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_name.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_x509.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_x509a.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_crl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_info.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_spki.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(nsseq.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(d2i_pr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(i2d_pr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(t_x509.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(t_x509a.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(t_pkey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_new.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_fre.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_dec.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_utl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_typ.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tasn_prn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ameth_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(f_int.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(f_string.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_pkey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_bool.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_exten.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bio_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(bio_ndef.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(asn_mime.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(asn1_gen.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(asn1_par.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(asn1_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_bytes.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(a_strnid.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(evp_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(asn_pack.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p5_pbe.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p5_pbev2.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p8_pkey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_info.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_all.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_x509.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_xaux.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_oth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_pk8.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pem_pkey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_def.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_cmp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_obj.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_req.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_vfy.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509rset.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509name.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_v3.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_ext.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_att.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_lu.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x_all.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_txt.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_trs.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(by_file.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(by_dir.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(x509_vpm.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_bcons.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_bitst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_conf.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_extku.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_ia5.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_prn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_utl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_genn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_alt.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_skey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_akey.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_pku.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_int.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_enum.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_sxnet.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_cpols.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_crld.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_purp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_info.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_ocsp.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_akeya.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_pmaps.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_pcons.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_ncons.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_pcia.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(v3_pci.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pcy_cache.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pcy_node.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pcy_data.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pcy_map.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pcy_tree.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pcy_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_att.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_io.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_sd.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_dd.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_env.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(cms_enc.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(conf_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(conf_api.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(conf_def.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(conf_mod.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pk7_asn1.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pk7_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pk7_doit.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(pk7_attr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_add.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_asn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_crpt.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_decr.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_key.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_utl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_p8d.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(p12_p8e.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(eng_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(eng_list.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(eng_init.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(eng_ctrl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(eng_table.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_rsa.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_dsa.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_ecdsa.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_dh.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_ecdh.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_rand.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_cipher.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_digest.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_pkmeth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(tb_asnmth.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ocsp_asn.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ui_lib.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(ui_openssl.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(wp_dgst.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libeay32.lib(wp_block.obj) : warning LNK4099: PDB 'lib.pdb' was not found with 'D:\chy\projects\my\eqcores2\\ptlib\lib\libeay32.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\lib.pdb'; linking object as if no debug info
+libjpegD.lib(jcapimin.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcapistd.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jccoefct.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jccolor.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcdctmgr.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jchuff.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcinit.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcmainct.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcmarker.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcmaster.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcomapi.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcparam.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcphuff.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcprepct.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jcsample.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdapimin.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdapistd.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdatadst.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdcoefct.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdcolor.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jddctmgr.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdhuff.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdinput.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdmainct.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdmarker.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdmaster.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdmerge.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdphuff.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdpostct.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jdsample.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jerror.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jfdctflt.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jfdctfst.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jfdctint.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jidctflt.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jidctfst.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jidctint.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jidctred.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jmemmgr.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jmemnobs.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jquant1.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jquant2.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libjpegD.lib(jutils.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(adler32.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(infblock.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(infcodes.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(inffast.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(inflate.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(inftrees.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(infutil.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+zlibD.lib(zutil.obj) : warning LNK4204: 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc70.pdb' is missing debugging information for referencing module; linking object as if no debug info
+libexpatMT.lib(xmlparse.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'd:/Program Files (x86)/Expat 2.1.0/bin/libexpatMT.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc100.pdb'; linking object as if no debug info
+libexpatMT.lib(xmlrole.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'd:/Program Files (x86)/Expat 2.1.0/bin/libexpatMT.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc100.pdb'; linking object as if no debug info
+libexpatMT.lib(xmltok.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'd:/Program Files (x86)/Expat 2.1.0/bin/libexpatMT.lib' or at 'd:\chy\projects\my\eqcores2\YYMcu2\Debug\vc100.pdb'; linking object as if no debug info
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://d:\chy\projects\my\eqcores2\YYMcu2\Debug\BuildLog.htm"
+YYM - 0 error(s), 434 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

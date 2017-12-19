@@ -1,0 +1,1130 @@
+2009-08-03 20:53  rjongbloed
+
+	* [r23200] version.h:
+	  Update version number for beta v2.7.1
+
+2009-08-12 04:50  csoutheren
+
+	* [r23206] src/ptlib/common/contain.cxx:
+	  Fix problem with usage of custom allocator
+
+2009-08-12 05:12  csoutheren
+
+	* [r23207] src/ptlib/common/contain.cxx:
+	  Fix reallocate using custom allocators
+
+2009-08-15 07:28  shorne
+
+	* [r23211] include/ptclib/asner.h, src/ptclib/asner.cxx:
+	  Added PASN_BMPString::SetValueRaw
+
+2009-08-20 03:44  rjongbloed
+
+	* [r23219] src/ptclib/pffvdev.cxx:
+	  Honour the frame rate indicated by FFMPEG file, thanks Robert
+	  Peter.
+
+2009-08-20 04:07  rjongbloed
+
+	* [r23220] src/ptlib/unix/config.cxx:
+	  Added saving of comments in unix config files, thanks Oleg
+	  Zabluda from Avistar
+
+2009-08-20 04:19  rjongbloed
+
+	* [r23222] src/ptclib/url.cxx:
+	  Fixed URL parsing where ';' is in username field, thanks jwu at
+	  Avistar
+
+2009-08-21 00:10  rjongbloed
+
+	* [r23235] src/ptlib/msos/win32.cxx:
+	  Applied fix for ID: 2836052 "Ptlib cannot distinguish between
+	  Vista and Win 7", thanks Michael Rickmann
+
+2009-08-21 01:53  rjongbloed
+
+	* [r23240] ., Makefile.in, make/lib.mak:
+	  Applied patch ID: 2835687 "Mingw naming of libpt dll is unusual
+	  for
+	  Windows", thanks Michael Rickmann.
+
+2009-08-21 02:34  rjongbloed
+
+	* [r23241] src/Makefile:
+	  Fxed bug ID: 2820814 "xmlrpc option should depends on httpsvc
+	  instead of
+	  http", reported by Mounir Lamouri
+
+2009-08-21 04:45  shorne
+
+	* [r23242] include/ptlib/videoio.h, src/ptlib/common/videoio.cxx:
+	  Added VideoInputDevice Interaction support ie.
+	  keypress,mousemove,RTCP commands. Added PPLUGIN_STATIC_LOAD to
+	  expressly load directshow video support.
+
+2009-08-22 01:36  rjongbloed
+
+	* [r23248] src/ptlib/msos/sound_win32.cxx:
+	  Applied fix for bug ID: 2841719 "WindowsMultimedia can not get
+	  volume setting", thanks Michael Rickmann
+
+2009-08-24 08:51  rjongbloed
+
+	* [r23257] src/ptclib/pssl.cxx:
+	  Compatibility with later OpenSSL (specifically from BSD) headers,
+	  thanks Thomas Klausner.
+
+2009-08-25 00:09  rjongbloed
+
+	* [r23261] src/ptclib/pssl.cxx:
+	  Better patch for new OPenSSL version compatibility, independently
+	  provided by Peter Robinson & Thomas Klausner
+
+2009-08-25 00:40  rjongbloed
+
+	* [r23263] Makefile.in, src/Makefile:
+	  Applied patch ID: 2843689 "Compilation and installation
+	  bugfixes", thanks Alexey Slynko
+	  
+	  1) Broken install (at least with gmake 3.81)
+	  2) Commited revision 23240. htppsrvr.cxx uses functions from
+	  html.cxx. It doesn't compile at systems, where http is exists and
+	  httpforms is absent
+
+2009-08-27 11:30  rjongbloed
+
+	* [r23280] src/ptlib/msos/sound_win32.cxx:
+	  Applied patch ID: 2845494 "PSoundChannelWin32-SetBuffers", thanks
+	  ted szoczei
+
+2009-08-28 06:13  rjongbloed
+
+	* [r23292] ., src/ptclib/psoap.cxx, src/ptlib/msos/sound_win32.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Adjusted some PTRACE log levels.
+
+2009-08-28 09:43  rjongbloed
+
+	* [r23300] ., src/ptclib/pvfiledev.cxx, src/ptclib/shttpsvc.cxx:
+	  Adjusted some PTRACE log levels.
+
+2009-08-31 05:50  csoutheren
+
+	* [r23305] include/ptclib/http.h, src/ptclib/httpclnt.cxx:
+	  Add PHTTPClient logging
+	  Add support for authenticated PHTTPClient sessions using code
+	  migrated from Opal
+
+2009-08-31 06:08  csoutheren
+
+	* [r23307] src/ptclib/httpclnt.cxx:
+	  Remove compiler warning
+
+2009-08-31 07:53  rjongbloed
+
+	* [r23311] include/ptclib/http.h:
+	  Avoid name space collision somewhere in the bowels of Windows.
+
+2009-09-03 06:15  csoutheren
+
+	* [r23319] src/ptlib/common/contain.cxx:
+	  Fix usage of custom allocators on later compilers
+
+2009-09-03 11:01  rjongbloed
+
+	* [r23320] include/ptlib/contain.h, include/ptlib/dict.h,
+	  include/ptlib/lists.h, include/ptlib/object.h,
+	  src/ptlib/common/collect.cxx, src/ptlib/common/contain.cxx:
+	  Expanded the memory pooling on Linux to include all small
+	  structures in the container/collection classes.
+
+2009-09-03 11:10  rjongbloed
+
+	* [r23323] include/ptlib/object.h:
+	  Fixed GNU compiler symbol.
+
+2009-09-03 14:20  shorne
+
+	* [r23325] configure.ac, include/ptbuildopts.h.in,
+	  include/ptlib/msos/ptlib/vidinput_directx2.h,
+	  include/ptlib/videoio.h, src/ptlib/msos/vidinput_directx2.cxx:
+	  Added vidinput_directx2 which does not rely on ddraw (as with
+	  vidinput_directx) so PTLIB can be compiled with DirectShow and
+	  without DirectSound. Also supports camera controls, auto video
+	  flipping and device capabilities exposure. Only support on Visual
+	  Studio (set as default version in buildopts). Mingw will still
+	  need vidinput_directx. Any issues please contact me.
+
+2009-09-04 04:46  csoutheren
+
+	* [r23327] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Add simple classes to do validation of XML
+	  Would be nice to have a full validator based on expat, but.....
+
+2009-09-04 07:55  csoutheren
+
+	* [r23329] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Add additional XML validation type
+
+2009-09-04 07:57  csoutheren
+
+	* [r23330] include/ptlib/notifier.h:
+	  Convert PNotifier to use template base class so additional
+	  notifier types can be declared with different parameters
+	  Create PNotifier2 that uses "void *" for the parameter,
+	  because sizeof(void *) > sizeof(INT)
+
+2009-09-04 13:36  rjongbloed
+
+	* [r23334] ., include/ptlib/msos/ptlib/ptime.h,
+	  include/ptlib/thread.h, include/ptlib/unix/ptlib/thread.h,
+	  src/ptlib/common/osutils.cxx, src/ptlib/msos/win32.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Added ability to get CPU usage times for threads. Currently
+	  Windows and Linux implemented.
+	  
+	  Moved trace log for displaying completed thread and it's CPU
+	  usage to platform independent code.
+
+2009-09-05 01:21  rjongbloed
+
+	* [r23337] ., include/ptclib/vsdl.h,
+	  include/ptlib/unix/ptlib/contain.h, src/ptclib/vsdl.cxx,
+	  src/ptlib/common/osutils.cxx, src/ptlib/unix/config.cxx,
+	  src/ptlib/unix/tlib.cxx, src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch ID: 2847226 "ptlib2.6.4 FreeBSD compability",
+	  thanks Alexander V. Chernikov
+
+2009-09-05 06:12  rjongbloed
+
+	* [r23344] include/ptlib/pprocess.h, include/ptlib/syncthrd.h,
+	  include/ptlib/unix/ptlib/contain.h, src/ptlib/common/osutils.cxx,
+	  src/ptlib/msos/svcproc.cxx, src/ptlib/msos/win32.cxx,
+	  src/ptlib/unix/svcproc.cxx, src/ptlib/unix/tlib.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Changed internal thread database from PDictionary to std::map, as
+	  a map is an R/B tree rather than a hash table, which is more
+	  efficient for large number of threads.
+
+2009-09-05 06:30  rjongbloed
+
+	* [r23346] include/ptclib/pxml.h:
+	  Fixed GNU compile
+
+2009-09-07 10:36  rjongbloed
+
+	* [r23354] include/ptbuildopts.h.in:
+	  Temporarily disabled the "Directx 2" video grabber until someone
+	  has time to figure out why it doesn't compile. Or figure out what
+	  the correct criteria for selecting the old and the new versions.
+	  Or better yet making sure there is only ONE version!
+
+2009-09-07 10:41  rjongbloed
+
+	* [r23355] src/ptlib/unix/tlibthrd.cxx:
+	  Fixed recently introduced thread map operation being outside of
+	  mutex.
+
+2009-09-07 23:22  rjongbloed
+
+	* [r23363] src/ptlib/unix/tlibthrd.cxx:
+	  Yet another change to the thread map handling to remove the small
+	  chance of accessing a deleting object on a auto-delete thread.
+
+2009-09-08 15:46  csoutheren
+
+	* [r23391] src/ptclib/url.cxx:
+	  Add MSRP URL scheme
+
+2009-09-09 19:36  csoutheren
+
+	* [r23402] include/ptclib/mime.h, src/ptclib/inetprot.cxx:
+	  Provide a way to print PMIMEInfo without the trailing CRLF
+
+2009-09-09 22:31  dereksmithies
+
+	* [r23407] samples/map_dict, samples/map_dict/Makefile,
+	  samples/map_dict/docs.dxy, samples/map_dict/main.cxx,
+	  samples/map_dict/main.h, samples/map_dict/map_dict.dsp,
+	  samples/map_dict/map_dict.dsw, samples/map_dict/map_dict.vcproj,
+	  samples/map_dict/map_dict_2005.vcproj,
+	  samples/map_dict/map_dict_2008.vcproj,
+	  samples/map_dict/precompile.cxx:
+	  Release new code to test the performance of a STL map structure
+	  against
+	  a PDictionary structure.
+	  Results on linux AMD dual core suggest that
+	  *when indexed by an integer, STL map is always faseter
+	  *when indexed by a PString, STL map is faster when there are more
+	  than 1000 elements in the dictionary
+
+2009-09-10 22:23  dereksmithies
+
+	* [r23417] samples/syncpoints, samples/syncpoints/Makefile,
+	  samples/syncpoints/docs.dxy, samples/syncpoints/main.cxx,
+	  samples/syncpoints/main.h, samples/syncpoints/precompile.cxx,
+	  samples/syncpoints/syncpoints.dsp,
+	  samples/syncpoints/syncpoints.dsw,
+	  samples/syncpoints/syncpoints.vcproj,
+	  samples/syncpoints/syncpoints_2005.vcproj,
+	  samples/syncpoints/syncpoints_2008.vcproj:
+	  Commit test program to measure the response time of a PSyncPoint.
+	  
+	  Code uses a STL list, so is an example of constructing and
+	  populating a STL list.
+	  
+	  On linux, the worst response time was 35 microseconds.
+	  
+	  On Windows, the response time is waiting someone to compile it
+	  and report back.
+	  
+	  Full doxygen comments are included, so if you have more data,
+	  please add it to main.h
+
+2009-09-11 00:13  rjongbloed
+
+	* [r23418] samples/map_dict, samples/map_dict/Makefile,
+	  samples/map_dict/docs.dxy, samples/map_dict/main.cxx,
+	  samples/map_dict/main.h, samples/map_dict/map_dict.dsp,
+	  samples/map_dict/map_dict.dsw, samples/map_dict/map_dict.vcproj,
+	  samples/map_dict/map_dict_2005.vcproj,
+	  samples/map_dict/map_dict_2008.vcproj,
+	  samples/map_dict/precompile.cxx, samples/syncpoints,
+	  samples/syncpoints/Makefile, samples/syncpoints/docs.dxy,
+	  samples/syncpoints/main.cxx, samples/syncpoints/main.h,
+	  samples/syncpoints/precompile.cxx,
+	  samples/syncpoints/syncpoints.dsp,
+	  samples/syncpoints/syncpoints.dsw,
+	  samples/syncpoints/syncpoints.vcproj,
+	  samples/syncpoints/syncpoints_2005.vcproj,
+	  samples/syncpoints/syncpoints_2008.vcproj,
+	  src/ptlib/msos/Console_2005.vcproj:
+	  Fixed end of line types, keywords and directory ignore
+	  attributes.
+
+2009-09-11 00:28  rjongbloed
+
+	* [r23419] ptlib_samples_2005.sln, samples/map_dict/map_dict.dsp,
+	  samples/map_dict/map_dict.dsw, samples/map_dict/map_dict.vcproj,
+	  samples/map_dict/map_dict_2005.vcproj,
+	  samples/syncpoints/main.cxx, samples/syncpoints/syncpoints.dsp,
+	  samples/syncpoints/syncpoints.dsw,
+	  samples/syncpoints/syncpoints.vcproj,
+	  samples/syncpoints/syncpoints_2005.vcproj:
+	  Fixed Windows/VS2005 build for new sample applications.
+
+2009-09-11 01:40  rjongbloed
+
+	* [r23420] include/ptclib/url.h, src/ptclib/url.cxx:
+	  Fixed consistency of usage of translated strings in URL
+	  parameters.
+	  
+	  Allowed empty strings to be set in URL parameters.
+	  
+	  Added more documentation.
+
+2009-09-11 08:10  rjongbloed
+
+	* [r23423] configure, configure.ac, make/unix.mak:
+	  Applied patch for kFreeBSD support, thanks Petr Salinger
+
+2009-09-14 02:19  rjongbloed
+
+	* [r23425] include/ptlib/notifier.h:
+	  Further enhanced the notifier system, after it's recent change to
+	  use templates, so we get fully type safe function calls and no
+	  need to static casts in use applications.
+
+2009-09-14 04:50  rjongbloed
+
+	* [r23430] ., Makefile.in, make/common.mak, make/lib.mak,
+	  src/Makefile:
+	  Added "quiter" version of compile. Can get back to "noisy"
+	  version by going make VERBOSE=1
+
+2009-09-14 07:32  rjongbloed
+
+	* [r23432] src/ptlib/unix/udll.cxx:
+	  Fixed return of correct full path when the "full" parameter is
+	  used in PDynaLink::GetName() function.
+
+2009-09-15 00:34  rjongbloed
+
+	* [r23435] include/ptclib/http.h:
+	  Fix compiler warnings
+
+2009-09-15 00:47  dereksmithies
+
+	* [r23437] make/plugins.mak:
+	  Extend Roberts patch to ptlib to get a quieter compile.
+	  Noisy compiles can be achieved by doing
+	  make VERBOSE=1 both
+
+2009-09-16 02:57  csoutheren
+
+	* [r23463] make/common.mak, make/lib.mak, make/plugins.mak,
+	  make/unix.mak, src/Makefile:
+	  Clean up and reduce compile output
+
+2009-09-16 13:16  rjongbloed
+
+	* [r23477] make/common.mak:
+	  Yet another tiny enhancement to the quite build.
+
+2009-09-17 07:54  rjongbloed
+
+	* [r23483] make/common.mak:
+	  Yet another tiny enhancement to the quiet build.
+
+2009-09-22 09:35  rjongbloed
+
+	* [r23508] src/ptlib/common/osutils.cxx:
+	  Fixed percentage display of thread CPU usage out by factor of 10.
+
+2009-09-23 06:48  rjongbloed
+
+	* [r23517] src/ptlib/common/safecoll.cxx:
+	  Fixed issue when during deletion of a safe object from the last
+	  safe pointer, that safe pointer is again set to NULL, causing
+	  recursion and death.
+
+2009-09-24 03:52  csoutheren
+
+	* [r23519] src/ptlib/common/osutils.cxx:
+	  Remove compile warning on Linux
+
+2009-09-25 11:02  dsandras
+
+	* [r23538] plugins/sound_pulse/sound_pulse.cxx:
+	  Set the appropriate environment variable to tag the stream as a
+	  phone call.
+	  
+	  This allows suspending other streams like music while being in a
+	  call.
+
+2009-09-25 12:10  csoutheren
+
+	* [r23539] src/ptclib/pxmlrpc.cxx:
+	  Fix problem with spaces in XML causing incorrect parameter
+	  parsing
+
+2009-09-27 17:24  dsandras
+
+	* [r23543] plugins/sound_pulse/sound_pulse.cxx:
+	  Allow applications using the plugin to override the pulse
+	  application name.
+
+2009-09-29 00:32  rjongbloed
+
+	* [r23547] include/ptclib/dtmf.h, samples/wavfile/main.cxx,
+	  src/ptclib/dtmf.cxx:
+	  Added ability to generate tones (PTones class) at different
+	  sample rates, not just 8kHz.
+	  
+	  Added different sample rates, not just 8kHz, to WAVFile test
+	  program.
+
+2009-09-29 13:08  rjongbloed
+
+	* [r23550] include/ptclib/pwavfile.h, src/ptclib/pwavfile.cxx:
+	  Changed WAV file auto converter to not be factory singleton, as
+	  there is a need to keep state for each file in multi-threaded
+	  apps.
+	  
+	  Changed function to set format by name so indicates if it was
+	  successful or not.
+
+2009-10-01 12:39  csoutheren
+
+	* [r23574] configure, configure.ac:
+	  Added detection of -fstack-protector support
+
+2009-10-02 07:42  csoutheren
+
+	* [r23575] make/unix.mak:
+	  Remove hard codes -fstack-protector
+
+2009-10-06 00:11  rjongbloed
+
+	* [r23589] src/ptclib/ptts.cxx, src/ptlib/unix/pipechan.cxx,
+	  src/ptlib/unix/socket.cxx, src/ptlib/unix/tlibthrd.cxx:
+	  Fixed GNU compiler warnings
+
+2009-10-06 00:29  rjongbloed
+
+	* [r23590] src/ptlib/common/syslog.cxx, src/ptlib/msos/ptlib.cxx,
+	  src/ptlib/wm/stdlibx.cpp:
+	  Fixed some Windows Mobile compilation issues
+
+2009-10-06 23:06  rjongbloed
+
+	* [r23596] ., src/ptlib/common/osutils.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch to fix possible crash when PTLib code accessed by
+	  thread not created by PTlib, thanks Joachim Bauch
+
+2009-10-06 23:14  rjongbloed
+
+	* [r23597] include/ptbuildopts.h.in, include/ptclib/dtmf.h,
+	  src/ptclib/dtmf.cxx:
+	  Fixed bug ID: 2857750 "Undefined symbols related to PTones with
+	  vxml enabled", reported by Mounir Lamouri
+
+2009-10-08 08:09  rjongbloed
+
+	* [r23615] src/ptlib/common/osutils.cxx:
+	  Fixed PArgList where using "options before parameter" mode, make
+	  sure Parse() returns false at end of set of parameters.
+
+2009-10-08 08:11  rjongbloed
+
+	* [r23616] include/ptclib/url.h, src/ptclib/url.cxx:
+	  Added function to add a path segment to ULR, using appropriate
+	  character translations.
+	  
+	  Cleaned up "contents" member for use when URL scheme does not
+	  have a path (e.g. mailto), don't reuse path variables as it is
+	  confusing.
+
+2009-10-08 10:24  rjongbloed
+
+	* [r23618] include/ptlib/object.h:
+	  Fixed compile issue with memory pooling, thanks Vyacheslav Frolov
+
+2009-10-08 23:18  rjongbloed
+
+	* [r23621] include/ptclib/http.h, src/ptclib/httpclnt.cxx,
+	  src/ptclib/vxml.cxx:
+	  Added high level commands for HTTP PUT and DELETE
+	  
+	  Shuffled code around so authentication works for all HTTP
+	  commands, not just GET.
+	  
+	  Cleaned up the "persistent" flag.
+
+2009-10-13 03:02  rjongbloed
+
+	* [r23637] src/ptlib/msos/Console_2005.vcproj:
+	  Remove global search of whole disk in Win32 configure as it
+	  causes more problems than it fixes.
+
+2009-10-13 03:06  rjongbloed
+
+	* [r23639] include/ptclib/http.h, src/ptclib/httpclnt.cxx:
+	  Fixed correct handling of HTTP error responses that have a body
+	  included.
+
+2009-10-13 05:06  rjongbloed
+
+	* [r23642] include/ptlib/msos/AUTOEXP.DAT:
+	  Fixed PSafePtr display in Visual Studio debugger.
+
+2009-10-13 08:56  rjongbloed
+
+	* [r23649] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Added simple functions for setting/adding data to XML elements.
+
+2009-10-13 23:41  rjongbloed
+
+	* [r23652] src/ptclib/httpclnt.cxx:
+	  Fixed sending of HTTP data body, if string then assume is UTF-8
+	  and use GetLength() not GetSize(). If binary then need to do body
+	  outside of ExecuteCommand()
+
+2009-10-13 23:59  rjongbloed
+
+	* [r23653] src/ptclib/httpclnt.cxx:
+	  Fixed checking for content type in GET, must ignore ';'
+	  parameters.
+
+2009-10-14 01:49  rjongbloed
+
+	* [r23655] include/ptclib/pxml.h:
+	  Change standalone flag return type as is tri-state not boolean.
+
+2009-10-14 07:58  csoutheren
+
+	* [r23662] configure, configure.ac:
+	  Remove stack-protector as it confuses configure compile tests
+
+2009-10-15 02:34  rjongbloed
+
+	* [r23671] src/ptlib/common/contain.cxx:
+	  Reduce confusion about variable or macro name in regex code.
+
+2009-10-15 07:11  rjongbloed
+
+	* [r23675] include/ptlib/msos/AUTOEXP.DAT:
+	  Fixed incorrect member for PTimeInterval in VS debugger
+	  expansion.
+
+2009-10-16 06:00  rjongbloed
+
+	* [r23677] include/ptlib/dynalink.h,
+	  include/ptlib/msos/ptlib/dynalink.h, src/ptlib/msos/win32.cxx,
+	  src/ptlib/unix/udll.cxx:
+	  Added error reporting function for DLL operations.
+
+2009-10-20 04:30  rjongbloed
+
+	* [r23687] make/unix.mak:
+	  Applied patch to fix static linking issue, thanks Yuriy
+	  Cherniavsky
+
+2009-10-27 04:35  rjongbloed
+
+	* [r23702] include/ptlib/object.h, ptlib.pc.in,
+	  src/ptlib/msos/win32.cxx:
+	  Applied patches for:
+	  2885986 MINGW32 random crashes
+	  2886015 Win32 crash from commit 23677
+	  2886022 MINGW32 wish from ptlib.pc.in
+	  thanks Michael Rickmann
+
+2009-10-27 21:41  rjongbloed
+
+	* [r23708] make/common.mak:
+	  Added optnosharedclean debugnosharedclean targets and included
+	  them in the make clean, suggested by Jan Willamowius
+
+2009-10-28 08:45  rjongbloed
+
+	* [r23711] include/ptclib/psoap.h, include/ptclib/pxml.h,
+	  include/ptclib/pxmlrpc.h, src/ptclib/psoap.cxx,
+	  src/ptclib/pxml.cxx, src/ptclib/pxmlrpc.cxx:
+	  Added "fragment only" option to XML to prevent <?xml header
+	  output.
+	  
+	  Major tidy up of the PXML::Options to use enum properly.
+
+2009-10-28 11:10  rjongbloed
+
+	* [r23716] ., src/ptclib/inetprot.cxx:
+	  Fixed including tab character as white space for MIME extension
+	  lines.
+
+2009-10-28 11:11  rjongbloed
+
+	* [r23717] src/ptclib/httpclnt.cxx:
+	  Fixed correct detection of successful HTTP request, not always
+	  200, success is 2xx.
+
+2009-10-29 03:11  rjongbloed
+
+	* [r23725] ., include/ptclib/dtmf.h, src/ptclib/dtmf.cxx:
+	  Exposed DTMF detectors duration of tone before detection.
+	  
+	  Also cleaned up impenetrable variable names.
+
+2009-10-30 03:06  rjongbloed
+
+	* [r23730] include/ptlib/object.h:
+	  Make sure the last step in the PObject::GetClass() chain through
+	  ancestors returns empty string so you can tell when you have
+	  reached the root of the inheritance tree.
+
+2009-10-30 03:32  rjongbloed
+
+	* [r23731] src/ptclib/url.cxx:
+	  Handle URL query parameters if key or value is empty string, a
+	  useful consequence is that an arbitrary query string can be
+	  inserted into the URL via using the "empty string" key in the
+	  queryVars dictionary.
+
+2009-10-31 01:39  rjongbloed
+
+	* [r23733] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Added AsString() function so can get XML fragments
+
+2009-11-02 00:33  rjongbloed
+
+	* [r23738] plugins/Makefile.in, src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch ID: 2887605 "ptlib shm sound plugin", thanks emm
+	  kay
+
+2009-11-04 06:47  rjongbloed
+
+	* [r23751] plugins/sound_shm, plugins/sound_shm/Makefile,
+	  plugins/sound_shm/shm2wav.cpp, plugins/sound_shm/shmif.h,
+	  plugins/sound_shm/sound_shm.cxx:
+	  Applied rest of patch ID: 2887605 "ptlib shm sound plugin",
+	  thanks emm kay
+
+2009-11-04 07:14  rjongbloed
+
+	* [r23752] plugins/sound_shm/Makefile, plugins/sound_shm/shmif.cpp,
+	  plugins/sound_shm/sound_shm.h:
+	  Applied even more of patch ID: 2887605 "ptlib shm sound plugin",
+	  thanks emm kay
+
+2009-11-04 07:45  rjongbloed
+
+	* [r23753] src/ptlib/common/sockets.cxx:
+	  Fixed name space clash
+
+2009-11-05 11:42  rjongbloed
+
+	* [r23761] plugins/sound_shm/Makefile:
+	  Removed unused library in new shm sound plig in
+
+2009-11-13 05:16  rjongbloed
+
+	* [r23766] src/ptclib/httpclnt.cxx:
+	  Add nonce to comparison for digest authentication, pointed out by
+	  Martin Hillmeier
+
+2009-11-18 07:35  rjongbloed
+
+	* [r23774] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Changed PXML validator to be functions on the PXML class rather
+	  than a separate class, reuses "last error" infrastructure and
+	  some better type safing.
+
+2009-11-19 07:20  csoutheren
+
+	* [r23776] include/ptlib/pstring.h, src/ptlib/common/contain.cxx:
+	  Allow PString::FindRegEx to match empty strings
+	  Add PString::MatchesRegEx to simplify matching a string to a
+	  regex
+
+2009-11-19 07:21  csoutheren
+
+	* [r23777] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Add new XML validation methods using regexes
+
+2009-11-19 11:11  csoutheren
+
+	* [r23778] src/ptclib/pxml.cxx:
+	  Remove warnings on linux
+
+2009-11-20 07:06  rjongbloed
+
+	* [r23785] src/ptclib/url.cxx:
+	  Applied patch ID: 2888747 "Add an "rtmp" scheme to PUrl", thanks
+	  Stefano Sabatini
+
+2009-11-24 03:22  shorne
+
+	* [r23790] src/ptlib/unix/tlibthrd.cxx:
+	  Compile Fix: Solaris 10 local variable renamed to avoid conflict.
+
+2009-11-24 07:24  csoutheren
+
+	* [r23791] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Add function to escape XML special characters
+
+2009-11-24 08:15  rjongbloed
+
+	* [r23795] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Added XML function to search for element with a specific
+	  attribute value.
+
+2009-11-25 01:40  shorne
+
+	* [r23797] src/ptlib/unix/config.cxx:
+	  Fix compile issue on OpenBSD
+
+2009-11-25 05:09  rjongbloed
+
+	* [r23798] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Added some XML functions, AddElement() variants, to make it
+	  easier to build structures in memory.
+
+2009-11-25 05:24  rjongbloed
+
+	* [r23799] src/ptclib/cli.cxx:
+	  Extremely small tidy up, adding some spaces to CLI messages.
+
+2009-11-25 07:14  csoutheren
+
+	* [r23800] configure.ac:
+	  Allow discovery of expat in default location for Windows 7 64
+
+2009-11-27 06:59  rjongbloed
+
+	* [r23806] include/ptclib/http.h, include/ptclib/inetmail.h,
+	  include/ptclib/mime.h, src/ptclib/http.cxx,
+	  src/ptclib/httpclnt.cxx, src/ptclib/httpsrvr.cxx,
+	  src/ptclib/inetmail.cxx, src/ptclib/inetprot.cxx:
+	  Shuffled some code around to make the multipart MIME support in
+	  HTTP more general and available to other protocols such as SIP.
+	  
+	  Added extra functions to PMIMEInfo to help with above.
+
+2009-11-28 02:00  csoutheren
+
+	* [r23808] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Ensure PXML::EscapeSpecialChars is available even when expat is
+	  not installed
+
+2009-11-30 01:43  rjongbloed
+
+	* [r23811] src/ptlib/common/contain.cxx:
+	  Fixed correct return value for PStringStream buffer so functions
+	  like tellp() now work.
+
+2009-11-30 01:45  rjongbloed
+
+	* [r23812] src/ptclib/inetprot.cxx:
+	  Fixed parsing of complex MIME field (with ;tag=val sub-fields)
+	  
+	  Fixed multipart MIME decoder so deals with non-binary contents
+	  that are nonetheless marked as binary anyway.
+
+2009-11-30 02:18  rjongbloed
+
+	* [r23813] src/ptlib/common/osutils.cxx:
+	  Fixed possible deadlock caused by destroying a timer that is not
+	  in use.
+
+2009-11-30 03:07  rjongbloed
+
+	* [r23814] include/ptlib/osutil.inl, include/ptlib/timeint.h:
+	  Added division operator for two PTimeInterval instances to yield
+	  an integer.
+
+2009-11-30 03:08  rjongbloed
+
+	* [r23815] include/ptclib/mime.h:
+	  Documentation.
+
+2009-11-30 05:03  rjongbloed
+
+	* [r23818] src/ptlib/common/sockets.cxx:
+	  Fixed GNU compiler warning.
+
+2009-11-30 06:49  rjongbloed
+
+	* [r23820] include/ptlib/object.h:
+	  Fixed a GNU compiler warning. In the process changed a C macro
+	  based set of classes to C++ templates, which should be "better",
+	  at least for compiler error reports!
+
+2009-11-30 07:01  rjongbloed
+
+	* [r23821] src/ptlib/common/sockets.cxx:
+	  Fixed breakage caused by trying to fix a GNU warning.
+
+2009-12-01 01:32  rjongbloed
+
+	* [r23824] ., src/ptlib/unix/tlibthrd.cxx:
+	  Fixed issue with only HighestPriority threads being boosted, now
+	  both HighPriority and HighestPriority threads will use the
+	  SCHED_RR policy and set the sched_priority field accordingly.
+	  
+	  Also sets the SCHED_BATCH scheduling policy for LowPriority and
+	  LowestPriority threads.
+
+2009-12-01 22:48  rjongbloed
+
+	* [r23828] ., src/ptlib/unix/tlibthrd.cxx:
+	  Fixed compatibility with pre 2.6.16 Linux kernels
+
+2009-12-04 05:00  csoutheren
+
+	* [r23833] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Add support for XML namespaces
+	  Add additional validation operations
+
+2009-12-04 07:20  rjongbloed
+
+	* [r23836] include/ptlib/socket.h:
+	  Make sure P_fd_set never does copy ctor or assignment op. It
+	  would be bad.
+
+2009-12-04 07:52  csoutheren
+
+	* [r23838] include/ptclib/pxml.h, src/ptclib/pxml.cxx:
+	  Fix problem with XML namespaces
+
+2009-12-04 22:41  csoutheren
+
+	* [r23840] plugins/sound_oss/sound_oss.cxx:
+	  Fix compile issues
+
+2009-12-08 02:57  shorne
+
+	* [r23844] ptlib_2010.sln,
+	  samples/hello_world/helloDLL_2010.vcxproj,
+	  samples/hello_world/hello_2010.vcxproj,
+	  src/ptlib/msos/Console_2010.vcxproj,
+	  src/ptlib/msos/PTLib_2010.vcxproj,
+	  tools/MergeSym/MergeSym_2010.vcxproj,
+	  tools/configure/configure_2010.vcxproj:
+	  Added VS2010 project files
+
+2009-12-08 03:23  shorne
+
+	* [r23845] include/ptlib/msos/ptlib/ipsock.h, src/ptclib/asner.cxx,
+	  src/ptclib/snmp.cxx, src/ptlib/common/collect.cxx,
+	  src/ptlib/common/contain.cxx, src/ptlib/common/pchannel.cxx,
+	  src/ptlib/common/ptime.cxx, src/ptlib/common/syslog.cxx:
+	  Fixes to remove compiler warning 4244 when compiling with vs2010
+
+2009-12-10 23:31  rjongbloed
+
+	* [r23866] src/ptlib/msos/assert.cxx:
+	  Added PTRACE to asserts when not a PServiceProcess, suggested by
+	  Vyacheslav Frolov
+
+2009-12-14 03:46  rjongbloed
+
+	* [r23875] ., src/ptclib/pwavfile.cxx:
+	  Make sure an error is set on the channel if unsupported WAV file
+	  format used.
+
+2009-12-16 06:13  rjongbloed
+
+	* [r23877] include/ptclib/ptts.h, src/ptlib/msos/win32.cxx:
+	  Fixed WinCE compile issues
+
+2009-12-17 03:04  rjongbloed
+
+	* [r23878] src/ptlib/msos/Console_2005.vcproj,
+	  src/ptlib/msos/PTLib_2005.vcproj:
+	  Fixed issues with WM build.
+
+2009-12-22 07:57  rjongbloed
+
+	* [r23891] include/ptlib/osutil.inl, include/ptlib/wince,
+	  include/ptlib/wm/crtdbg.h, include/ptlib/wm/direct.h,
+	  include/ptlib/wm/fcntl.h, include/ptlib/wm/io.h,
+	  include/ptlib/wm/nspapi.h, include/ptlib/wm/process.h,
+	  include/ptlib/wm/share.h, include/ptlib/wm/signal.h,
+	  include/ptlib/wm/sys/utime.h, include/ptlib/wm/time.h,
+	  include/ptlib/wm/wsipx.h, include/ptlib/wm/wsnwlink.h,
+	  ptlibce.vcp, ptlibce.vcw, src/ptclib/inetmail.cxx,
+	  src/ptclib/random.cxx, src/ptlib/common/vfakeio.cxx,
+	  src/ptlib/msos/Console_2005.vcproj,
+	  src/ptlib/msos/PTLib_2005.vcproj, src/ptlib/wince,
+	  src/ptlib/wm/time.cpp:
+	  Fixed some compatibility issues with compiling sources that
+	  include files that do not exist in Windows Mobile.
+	  
+	  Removed support for Windows CE prior to Windows Mobile 5.0.
+
+2009-12-24 01:02  rjongbloed
+
+	* [r23897] ., Makefile.in, include/ptclib/cypher.h,
+	  include/ptclib/inetmail.h, include/ptclib/inetprot.h,
+	  include/ptclib/mime.h, include/ptclib/modem.h,
+	  include/ptclib/podbc.h, include/ptlib/channel.h,
+	  include/ptlib/config.h, include/ptlib/contain.h,
+	  include/ptlib/file.h, include/ptlib/filepath.h,
+	  include/ptlib/lists.h, include/ptlib/mail.h,
+	  include/ptlib/mutex.h, include/ptlib/notifier.h,
+	  include/ptlib/object.h, include/ptlib/pdirect.h,
+	  include/ptlib/pipechan.h, include/ptlib/pprocess.h,
+	  include/ptlib/pstring.h, include/ptlib/ptime.h,
+	  include/ptlib/smartptr.h, include/ptlib/socket.h,
+	  include/ptlib/sound.h, include/ptlib/syncpoint.h,
+	  include/ptlib/tcpsock.h, include/ptlib/thread.h,
+	  include/ptlib/timeint.h, include/ptlib/timer.h,
+	  include/ptlib/unix/ptlib/mail.h,
+	  include/ptlib/unix/ptlib/timeint.h, ptlib.dxy, ptlib_cfg.dxy.in:
+	  Fix various doxygen incompatibilities
+
+2010-01-07 00:30  rjongbloed
+
+	* [r23902] include/ptclib/mime.h, src/ptclib/inetprot.cxx:
+	  Changed MIME parsing of complex fields to handle even more
+	  complex fields. Ones with comma separated sections or multiple
+	  keys.
+
+2010-01-08 03:07  rjongbloed
+
+	* [r23904] include/ptlib/msos/AUTOEXP.DAT,
+	  samples/sortedlist/SortedListTest.cxx:
+	  Fixed some issues with Visual Studio auto-expanding variables in
+	  the debugger.
+
+2010-01-09 03:49  rjongbloed
+
+	* [r23909] include/ptlib/msos/AUTOEXP.DAT:
+	  Fixed some issues with Visual Studio auto-expanding variables in
+	  the debugger.
+
+2010-01-10 23:42  rjongbloed
+
+	* [r23911] src/ptlib/msos/Console_2008.vcproj:
+	  Removed now absent cevfw as Video for Windows is not supported by
+	  Windows Mobile.
+
+2010-01-11 03:12  rjongbloed
+
+	* [r23915] src/ptclib/url.cxx:
+	  If we explicitly set the port on a URL, then we indicate that
+	  with the portSupplied boolean member.
+
+2010-01-11 03:54  rjongbloed
+
+	* [r23917] src/ptlib/common/osutils.cxx:
+	  Fixed bug ID: 2916337 "Oneshot timers are not being removed from
+	  the timerlist", reported by Alessandro.
+
+2010-01-11 04:03  rjongbloed
+
+	* [r23918] include/ptclib/asner.h, src/ptclib/asner.cxx:
+	  Fixed bug ID: 2911910 "asner.cxx PWCharArray to PASN_BMPString
+	  have a clear bug", thanks Anonymous.
+
+2010-01-13 12:19  rjongbloed
+
+	* [r23931] include/ptclib/psockbun.h, include/ptlib/ipsock.h,
+	  src/ptclib/psockbun.cxx, src/ptlib/msos/ethsock.cxx,
+	  src/ptlib/unix/socket.cxx:
+	  Changed mechanism for handling detection of network interface
+	  up/down yo be compatible with Unix NetLink methods. Main result
+	  is that Linux applications exit much faster.
+
+2010-01-14 00:28  rjongbloed
+
+	* [r23933] src/ptlib/common/sockets.cxx,
+	  src/ptlib/msos/ethsock.cxx:
+	  Fixed warnings when IPv6 not supported, e.g. Windows Mobile.
+
+2010-01-14 00:47  rjongbloed
+
+	* [r23935] include/ptlib/msos/ptlib.ignore,
+	  src/ptlib/msos/Console_2005.vcproj:
+	  Fixed some Windows Mobile compilation warnings.
+
+2010-01-14 02:36  rjongbloed
+
+	* [r23936] src/ptclib/psockbun.cxx, src/ptlib/msos/ethsock.cxx:
+	  Fixed route table change detector so works more than once.
+
+2010-01-14 05:04  rjongbloed
+
+	* [r23937] src/ptlib/common/contain.cxx:
+	  Fixed problem with PStringStream::MakeEmpty(), didn't really make
+	  it empty.
+
+2010-01-19 07:11  rjongbloed
+
+	* [r23947] include/ptlib/ptime.h, src/ptlib/common/ptime.cxx:
+	  Defined and documented a string representation (AsString()) of an
+	  invalid PTime.
+
+2010-01-20 06:21  rjongbloed
+
+	* [r23950] src/ptlib/common/ptime.cxx:
+	  Fixed problem with time parsing when daylight savings time
+	  active. If just put a date in, which implies midnight, it would
+	  subtract an hour and would end up on the previous day.
+
+2010-01-20 06:51  rjongbloed
+
+	* [r23951] include/ptclib/html.h, include/ptclib/httpform.h,
+	  src/ptclib/html.cxx, src/ptclib/httpform.cxx:
+	  Fixed incorrect HTML input field type for numbers.
+	  
+	  Added date HTTP form field type.
+
+2010-01-21 07:34  rjongbloed
+
+	* [r23956] src/ptclib/httpsvc.cxx:
+	  Make the GIF icon on HTTP Service Process forms a link back to
+	  the home page.
+
+2010-01-21 09:18  rjongbloed
+
+	* [r23959] include/ptclib/httpform.h, src/ptclib/httpform.cxx:
+	  Added headers to HTTP form composite field that is not in an
+	  array.
+
+2010-01-21 09:23  rjongbloed
+
+	* [r23960] src/Makefile:
+	  Fixed compiltaion without Expat on Unix.
+
+2010-01-22 04:39  rjongbloed
+
+	* [r23962] include/ptlib/videoio.h, src/ptlib/common/videoio.cxx,
+	  src/ptlib/msos/vfw.cxx:
+	  Added ability to set the position of a video output device (where
+	  applicable)
+
+2010-01-23 02:22  rjongbloed
+
+	* [r23971] include/ptlib/msos/AUTOEXP.DAT:
+	  Added Visual Studio debugger variable expansion for
+	  OpalMediaOption types.
+
+2010-01-25 01:06  rjongbloed
+
+	* [r23975] include/ptclib/psoap.h, src/ptclib/psoap.cxx:
+	  Applied patch ID: 2938950 "Allow setting a SOAP method w/o
+	  namespace prefix", thanks Jan Willamowius
+
+2010-01-25 01:09  rjongbloed
+
+	* [r23976] ptlib_cfg.dxy.in:
+	  Applied patch ID: 2938940 "Predefine feature symbols for
+	  Doxygen", thanks
+	  Jan Willamowius
+
+2010-01-25 01:13  rjongbloed
+
+	* [r23977] src/ptlib/unix/udll.cxx:
+	  Applied patch for ID: 2722408 "Mac OS X configure not working for
+	  plugins", thanks RM Fleming
+
+2010-01-25 13:32  shorne
+
+	* [r23982] src/ptclib/enum.cxx:
+	  NAPTR records from the DNS record on vista are not being cast.
+	  Change works on all versions of windows that support DNS.
+
+2010-01-25 14:05  shorne
+
+	* [r23983] src/ptclib/enum.cxx:
+	  Narrow definition of previous commit. Microsoft documentation is
+	  misleading patch only relevant to Vista/Win7. Existing code does
+	  not resolve NAPTR Record's on vista or win7 correctly. Further
+	  investigation is required.
+
+2010-01-29 06:10  rjongbloed
+
+	* [r23990] src/ptclib/enum.cxx:
+	  Fixed being able to compile after previous check in. According to
+	  the comment this code is only for Vista/Win7, for which WINVER >=
+	  0x600 not 0x501 which is only XP level. Note sure if this works
+	  with 0x502 which is Server 2003 ...
+
+2010-01-30 23:14  rjongbloed
+
+	* [r23992] include/ptclib/url.h:
+	  Added operator to convert PUR to PString so do not have to always
+	  use AsString() function.
+
+2010-01-31 23:57  rjongbloed
+
+	* [r24000] configure, plugins/Makefile.in, plugins/configure.in,
+	  src/ptlib/unix/osutil.cxx:
+	  Applied patch ID: 2941781 "fix ptlib compile on macosx", thanks
+	  Tuyan Ozipek
+
+2010-02-01 01:15  rjongbloed
+
+	* [r24005] src/ptlib/msos/vidinput_app.cxx:
+	  Applied patch ID: 2943315 "Added conditional to scale bitmap to
+	  frame size", thanks Anonymous
+
+2010-02-01 02:36  rjongbloed
+
+	* [r24006] include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlib_2008.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd_2008.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2008.dtf:
+	  Update symbols
+

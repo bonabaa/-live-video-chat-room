@@ -1,0 +1,155 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Console"=..\ptlib\src\ptlib\msos\Console.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "OPAL_dll"=.\src\win32\opal_dll.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name OPAL_lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name PTLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Console Components
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "OPAL_lib"=.\src\win32\opal_lib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Console
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Console Components
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "OpenPhone"=.\samples\openphone\OpenPhone.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name OPAL_lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name PTLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "PTLib"=..\ptlib\src\ptlib\msos\PTLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Console
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "SimpleOPAL"=.\samples\simple\simple.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name OPAL_lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Console
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Console Components
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mfc"=.\samples\mfc\mfc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "opalgw"=.\samples\opalgw\opalgw.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Console Components
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name PTLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name OPAL_dll
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,40 @@
+// Writes a bitmap file
+//  pszFileName:  Output file name.
+//  pBMI:         Bitmap format information (including pallete).
+//  cbBMI:        Size of the BITMAPINFOHEADER, including palette, if present.
+//  pData:        Pointer to the bitmap bits.
+//  cbData        Size of the bitmap, in bytes.
+
+HRESULT WriteBitmap(PCWSTR pszFileName, BITMAPINFOHEADER *pBMI, size_t cbBMI,
+    BYTE *pData, size_t cbData)
+{
+    HANDLE hFile = CreateFile(pszFileName, GENERIC_WRITE, 0, NULL, 
+        CREATE_ALWAYS, 0, NULL);
+    if (hFile == NULL)
+    {
+        return HRESULT_FROM_WIN32(GetLastError());
+    }
+
+    BITMAPFILEHEADER bmf = { };
+
+    bmf.bfType = 'MB';
+    bmf.bfSize = cbBMI+ cbData + sizeof(bmf); 
+    bmf.bfOffBits = sizeof(bmf) + cbBMI; 
+
+    DWORD cbWritten = 0;
+    BOOL result = WriteFile(hFile, &bmf, sizeof(bmf), &cbWritten, NULL);
+    if (result)
+    {
+        result = WriteFile(hFile, pBMI, cbBMI, &cbWritten, NULL);
+    }
+    if (result)
+    {
+        result = WriteFile(hFile, pData, cbData, &cbWritten, NULL);
+    }
+
+    HRESULT hr = result ? S_OK : HRESULT_FROM_WIN32(GetLastError());
+
+    CloseHandle(hFile);
+
+    return hr;
+}

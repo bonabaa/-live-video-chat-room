@@ -1,0 +1,37 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@LIBDIR@
+includedir=@includedir@
+suffix=
+machtype=@MACHTYPE@
+ostype=@OSTYPE@
+objdir=obj_@OSTYPE@_@MACHTYPE@${suffix}
+
+Name: opal
+Description: Open Phone Application Library
+Version: @OPAL_VERSION@
+Requires:@PKG_REQUIRES@
+Libs: -L${libdir} -lopal${suffix} @PKG_LIBS@ 
+Cflags: -I${includedir} -I${includedir}/opal @PKG_CFLAGS@
+
+#Optional OPAL features
+OPAL_H323=@OPAL_H323@
+OPAL_SIP=@OPAL_SIP@
+OPAL_IAX2=@OPAL_IAX2@
+OPAL_VIDEO=@OPAL_VIDEO@
+OPAL_ZRTP=@OPAL_ZRTP@
+OPAL_LID=@OPAL_LID@
+OPAL_IVR=@OPAL_IVR@
+OPAL_HAS_H224=@OPAL_HAS_H224@
+OPAL_HAS_H281=@OPAL_HAS_H281@
+OPAL_H460=@OPAL_H460@
+OPAL_SRTP=@OPAL_SRTP@
+OPAL_RFC4175=@OPAL_RFC4175@
+OPAL_AEC=@OPAL_AEC@
+OPAL_G711PLC=@OPAL_G711PLC@
+OPAL_T38_CAP=@OPAL_T38_CAPABILITY@
+OPAL_FAX=@OPAL_FAX@
+OPAL_JAVA=@OPAL_JAVA@
+OPAL_HAS_MSRP=@OPAL_HAS_MSRP@
+OPAL_HAS_SIPIM=@OPAL_HAS_SIPIM@
+OPAL_HAS_RFC4103=@OPAL_HAS_RFC4103@

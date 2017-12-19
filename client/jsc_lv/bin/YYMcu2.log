@@ -1,0 +1,58 @@
+﻿Build started 2016/3/17 11:41:52.
+     1>Project "D:\chy\projects\my\sqs\eqcores2\YYMcu2\YYMcu2.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "D:\chy\projects\my\sqs\eqcores2\bin\YYM.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       PreBuildEvent:
+         breakpdb.bat
+         :VCEnd
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\chy\projects\my\sqs\eqcores2\\opal\include /ID:\chy\projects\my\sqs\eqcores2\\ptlib\include /I..\czlibexe\ /I..\bbqmfcex\bbqbase\ /ID:\chy\projects\my\sqs\eqcores2\\vncviewer /ID:\chy\projects\my\sqs\eqcores2\ /ID:\chy\projects\my\sqs\eqcores2\\winvnc /I..\ud\udt4\src /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D LPN_MULTI_VIDEO /D PTRACING=1 /D LPNSPRITE_EXPORTS /D LPN_NOT_EXPORT /D LPN_MSWIN_OUTPUT_DEVICE /D LPN_MCU /D _USE_32BIT_TIME_T /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"D:\chy\projects\my\sqs\eqcores2\bin\\" /Fd"D:\chy\projects\my\sqs\eqcores2\bin\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\czlibexe\yConferenceEntry.cpp
+         yConferenceEntry.cpp
+     1>d:\chy\projects\my\sqs\eqcores2\czlibexe\lpnmgr.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+       ResourceCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../bin/wpfd.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\chy\projects\my\sqs\eqcores2\\opal\lib /LIBPATH:D:\chy\projects\my\sqs\eqcores2\\ptlib\lib /LIBPATH:c:\tools /LIBPATH:..\bin wsock32.lib mpr.lib vfw32.lib dsound.lib theora_static.lib va_g729.lib libogg.lib libeay32.lib ssleay32.lib libjpegD.lib htmlhelp.lib zlibD.lib comctl32.lib libx264_d.lib pthreadVC2.lib ippacemerged.lib ippacmerged.lib ippacmerged_t.lib ippccemerged.lib ippccmerged.lib ippccmerged_t.lib ippchemerged.lib ippchmerged.lib ippchmerged_t.lib ippcorel.lib ippcore_t.lib ippcvemerged.lib ippcvmerged.lib ippcvmerged_t.lib ippdcemerged.lib ippdcmerged.lib ippdcmerged_t.lib ippdiemerged.lib ippdimerged.lib ippdimerged_t.lib ippgenemerged.lib ippgenmerged.lib ippgenmerged_t.lib ippiemerged.lib ippimerged.lib ippimerged_t.lib yImageEngined.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMTD.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:nafxcwd.lib /MANIFEST /ManifestFile:"D:\chy\projects\my\sqs\eqcores2\bin\wpfd.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\chy\projects\my\sqs\eqcores2\bin\YYMcu2.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\chy\projects\my\sqs\eqcores2\bin\wpfd.lib" /MACHINE:X86 D:\chy\projects\my\sqs\eqcores2\bin\YYMcu2.res
+         D:\chy\projects\my\sqs\eqcores2\bin\wpfd.exe.embed.manifest.res
+         D:\chy\projects\my\sqs\eqcores2\bin\ExceptionHandler.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\LPNCoreMgr.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\LPNMgr.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\main.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\MyClient.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\pcss.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\precompile.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\SFCallsManager.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\sfconnection.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\sfendpoint.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\stdafx.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yConferenceEntry.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yConferenceMediaStream.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yConferencePatch.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yhttpsvr_main.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\ymcucustom.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yRDConnection.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yUserToUserTransmitDataMgr.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yViewerEntry.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\YYAudioMediaStream.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\YYFun.obj
+         D:\chy\projects\my\sqs\eqcores2\bin\yypipe_win32.obj
+         D:\chy\projects\my\sqs\eqcores2\lib\bbqbasesd.lib
+         D:\chy\projects\my\sqs\eqcores2\ptlib\Lib\ptlibsd.lib
+         D:\chy\projects\my\sqs\eqcores2\opal\lib\opalsd.lib
+         D:\chy\projects\my\sqs\eqcores2\bin\udD_MD.lib
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"D:\chy\projects\my\sqs\eqcores2\bin\wpfd.exe.embed.manifest" /manifest D:\chy\projects\my\sqs\eqcores2\bin\wpfd.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         YYMcu2.vcxproj -> D:\chy\projects\my\sqs\eqcores2\bin\wpfd.exe
+       FinalizeBuildStatus:
+         Deleting file "D:\chy\projects\my\sqs\eqcores2\bin\YYM.unsuccessfulbuild".
+         Touching "D:\chy\projects\my\sqs\eqcores2\bin\YYM.lastbuildstate".
+     1>Done Building Project "D:\chy\projects\my\sqs\eqcores2\YYMcu2\YYMcu2.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:10.09

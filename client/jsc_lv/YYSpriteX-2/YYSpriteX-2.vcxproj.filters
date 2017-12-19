@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\libsprite">
+      <UniqueIdentifier>{a61e0e5f-26a3-4e50-9533-c6e3399d270d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="CaptureScreen">
+      <UniqueIdentifier>{6d795d5e-c842-4c6b-a573-ff5d0d805535}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\czlibexe\BtnST.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chinese.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\ExceptionHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\IncomingDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyHwnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsExDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\src\opal\pcss.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\SFVideoWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLDb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoPanelChildDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoPanelDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\yConferenceVClientPatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\yMediaRecordingMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\yRDConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\yUserToUserTransmitDataMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\YYFun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YYSpriteX-2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YYSpriteX-2Ctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YYSpriteX-2PropPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\LPNCoreMgr.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\LPNMgr.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\main.cxx">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\MyClient.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\RemoteDlg.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\SFCallsManager.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\sfconnection.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\sfendpoint.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\SFSinkMediaStreamForaudio.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\YYAudioMediaStream.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\YYVideoMixer.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\YYVideoOutputDevice.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\czlibexe\YYWin32Thread.cpp">
+      <Filter>Source Files\libsprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CppSQLite3_2\Common\CppSQLite3.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CatchScreenDlg.cpp">
+      <Filter>CaptureScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEdit.cpp">
+      <Filter>CaptureScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTracker.cpp">
+      <Filter>CaptureScreen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\czlibexe\sfendpoint.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\LPNCoreMgr.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\LPNMgr.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\main.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\MyClient.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\RemoteDlg.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\SFCallsManager.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\sfconnection.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\SFSinkMediaStreamForaudio.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\yConferenceEntry.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\yHeader.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\YYAudioMediaStream.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\YYVideoOutputDevice.h">
+      <Filter>Source Files\libsprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\bbqhttpsvr_main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\BtnST.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDocument0.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDocuments.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CppSQLite3_2\Common\CppSQLite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\ExceptionHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\IncomingDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lpMultiPeopleVideo\IncomingDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyHwnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsExDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\SFVideoWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLDb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CppSQLite3_2\Common\sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoPanelChildDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoPanelDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\yConferenceVClientPatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yCoreAudioMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\yMediaRecordingMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\yRDConnection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\yUserToUserTransmitDataMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YYSpriteX-2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YYSpriteX-2Ctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YYSpriteX-2PropPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\YYVideoMixer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\czlibexe\YYWin32Thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CatchScreenDlg.h">
+      <Filter>CaptureScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MyEdit.h">
+      <Filter>CaptureScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTracker.h">
+      <Filter>CaptureScreen</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="YYSpriteX-2.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\accept.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\accept1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\arrow_m.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\audioD.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\audioU.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\back dd.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bitmap_c.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bitmap_m.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bmp00001.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Camera.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Camera2.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\close.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\close2.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="cursor1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="filereload.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="fileup.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="idr_tray.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="incoming.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\minimize.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\minimize2.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\move_r.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="nocursor.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\record_1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\record_2.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\reject.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="remote.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\size1_r.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\size2_r.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\size3_r.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\size4_r.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="smalldot.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="tightvnc.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="tightvnc48.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="vncviewer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\YYContainer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="YYSpriteX-2.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="YYSpriteX-2Ctrl.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Blip.wav" />
+    <None Include="res\call.wav" />
+    <None Include="res\msg.wav" />
+    <None Include="OptionsExDlg.htm" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\ring.wav" />
+    <None Include="res\ringout.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="YYSpriteX-2.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="YYSpriteX-2.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

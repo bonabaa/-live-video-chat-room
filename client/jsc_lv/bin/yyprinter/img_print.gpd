@@ -1,0 +1,456 @@
+*GPDFileName: "img_print.gpd"
+*GPDFileVersion: "1.0"
+*GPDSpecVersion: "1.0"
+*Include: "StdNames.gpd"
+*ModelName: "ImagePrinter YY 1.0.0.0"
+*MasterUnits: PAIR(40800, 117600)
+*ResourceDLL: "unires.dll"
+*PrinterType: PAGE
+*MaxCopies: 99
+*PrintRate: 16
+*PrintRateUnit: PPM
+*PrintRatePPM: 16
+
+*%******************************************************************************************
+*%                                      Orientation
+*%******************************************************************************************
+*Feature: Orientation
+{
+	*rcNameID: =ORIENTATION_DISPLAY
+	*DefaultOption: PORTRAIT
+	*Option: PORTRAIT
+	{
+		*rcNameID: =PORTRAIT_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.6
+			*Cmd: ""
+		}
+	}
+	*Option: LANDSCAPE_CC90
+	{
+		*rcNameID: =LANDSCAPE_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.8
+			*Cmd: ""
+		}
+	}
+}
+
+*%******************************************************************************************
+*%                                      Input Bin
+*%******************************************************************************************
+*Feature: InputBin
+{
+	*rcNameID: =PAPER_SOURCE_DISPLAY
+	*DefaultOption: AUTO
+	*Option: AUTO
+	{
+		*rcNameID: =AUTO_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.11
+			*Cmd: ""
+		}
+	}
+	*Option: UPPER
+	{
+		*rcNameID: =UPPER_TRAY_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.11
+			*Cmd: ""
+		}
+	}
+}
+
+*%******************************************************************************************
+*%                                      Resolution
+*%******************************************************************************************
+*Feature: Resolution
+{
+	*rcNameID: =RESOLUTION_DISPLAY
+	*DefaultOption: Option1
+
+	*Option: Option1
+	{
+		*Name: "96 x 96" =DOTS_PER_INCH
+		*DPI: PAIR(96, 96)
+		*TextDPI: PAIR(96, 96)
+		*MinStripBlankPixels: 32
+		EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED, TRAILING)
+		*SpotDiameter: 100
+		*Command: CmdBeginRaster { *Cmd : "" }
+		*Command: CmdEndRaster { *Cmd : "" }
+		*Command: CmdSendBlockData { *Cmd : "" }
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.7
+			*Cmd: ""
+		}
+	}
+}
+
+*%******************************************************************************************
+*%                                      Paper Size
+*%******************************************************************************************
+*Feature: PaperSize
+{
+	*rcNameID: =PAPER_SIZE_DISPLAY
+	*DefaultOption: A4
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(346800, 1294615)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(346800, 1646400)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: TABLOID
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(447950, 2004565)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: STATEMENT
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(224400, 999600)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: EXECUTIVE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(295800, 1234800)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: A3
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(477071, 1944567)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(337323, 1375087)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: A5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(237732, 972283)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: B4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(401575, 1638992)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(292346, 1189890)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: "A0"
+    {
+        *Name: "A0"
+		*PageDimensions: PAIR(1350898, 5504976)
+        *PrintableArea: PAIR(1350898, 5504976)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: "A1"
+    {
+        *Name: "A1"
+	*PageDimensions: PAIR(954142, 3893764)
+        *PrintableArea: PAIR(954142, 3893764)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: A2
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PrintableArea: PAIR(674646, 2750173)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(600, 600)
+        *MaxSize: PAIR(1350898, 5504976)
+        *MaxPrintableWidth: 1350898
+        *MinLeftMargin: 0
+        *CenterPrintable?: FALSE
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: ""
+        }
+    }
+	
+	
+}
+
+*%******************************************************************************************
+*%                                      Media Type
+*%******************************************************************************************
+*Feature: MediaType
+{
+	*rcNameID: =MEDIA_TYPE_DISPLAY
+	*DefaultOption: PLAIN
+	*Option: PLAIN
+	{
+		*rcNameID: =PLAIN_PAPER_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.15
+			*Cmd: ""
+		}
+	}
+	*Option: TRANSPARENCY
+	{
+		*rcNameID: =TRANSPARENCY_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.15
+			*Cmd: ""
+		}
+	}
+}
+
+*%******************************************************************************************
+*%                                      Color Mode
+*%******************************************************************************************
+*Feature: ColorMode
+{
+	*rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+	*DefaultOption: 24bpp
+    *Option: Mono
+    {
+		*rcNameID: =MONO_DISPLAY
+		*DevNumOfPlanes: 0
+		*DevBPP: 0
+		*IPCallbackID: 1
+		*Color?: FALSE
+    }
+	*Option: 24bpp
+	{
+		*rcNameID: =24BPP_DISPLAY
+		*DevNumOfPlanes: 0
+		*DevBPP: 0
+		*DrvBPP: 24
+		*IPCallbackID: 5
+		*PaletteSize: 256
+		*PaletteProgrammable? : TRUE
+		*Command: CmdEnableDRC { *Cmd : "" }
+		*Command: CmdDefinePaletteEntry { *Cmd : "" }
+		*Command: CmdSelectPaletteEntry { *Cmd : "" }
+		*Command: CmdSetSrcBmpWidth { *Cmd : "" }
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.16
+			*Cmd: ""
+		}
+	}
+}
+
+*%******************************************************************************************
+*%                                      HalfTone
+*%******************************************************************************************
+*Feature: Halftone
+{
+	*rcNameID: =HALFTONING_DISPLAY
+	*DefaultOption: HT_PATSIZE_AUTO
+	*Option: HT_PATSIZE_AUTO
+	{
+		*rcNameID: =HT_AUTO_SELECT_DISPLAY
+	}
+	*Option: HT_PATSIZE_SUPERCELL_M
+	{
+		*rcNameID: =HT_SUPERCELL_DISPLAY
+	}
+	*Option: HT_PATSIZE_6x6_M
+	{
+		*rcNameID: =HT_DITHER6X6_DISPLAY
+	}
+	*Option: HT_PATSIZE_8x8_M
+	{
+		*rcNameID: =HT_DITHER8X8_DISPLAY
+	}
+}
+
+*%******************************************************************************************
+*%                                      Duplex Unit
+*%******************************************************************************************
+*Feature: DuplexUnit
+{
+	*rcNameID: 429
+	*FeatureType: PRINTER_PROPERTY
+	*DefaultOption: FALSE
+	*Option: FALSE
+	{
+		*rcNameID: 444
+		*DisabledFeatures: LIST(Duplex.VERTICAL, Duplex.HORIZONTAL)
+	}
+	*Option: TRUE
+	{
+		*rcNameID: 443
+	}
+}
+
+*%******************************************************************************************
+*%                                      Duplex Type
+*%******************************************************************************************
+*Feature: Duplex
+{
+	*rcNameID: =TWO_SIDED_PRINTING_DISPLAY
+	*DefaultOption: NONE
+	*Option: NONE
+	{
+		*rcNameID: =NONE_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.9
+			*Cmd: ""
+		}
+	}
+	*Option: VERTICAL
+	{
+		*rcNameID: =FLIP_ON_LONG_EDGE_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.9
+			*Cmd: ""
+		}
+	}
+	*Option: HORIZONTAL
+	{
+		*rcNameID: =FLIP_ON_SHORT_EDGE_DISPLAY
+		*Command: CmdSelect
+		{
+			*Order: DOC_SETUP.9
+			*Cmd: ""
+		}
+	}
+}
+
+*%******************************************************************************************
+*%                                      Doc setup commands
+*%******************************************************************************************
+*Command: CmdStartDoc
+{
+	*Order: DOC_SETUP.7
+	*Cmd: ""
+}
+*Command: CmdStartPage
+{
+	*Order: PAGE_SETUP.1
+	*Cmd: ""
+}
+*Command: CmdEndJob
+{
+	*Order: JOB_FINISH.1
+	*Cmd: ""
+}
+*Command: CmdCopies
+{
+	*Order: DOC_SETUP.13
+	*Cmd: ""
+}
+
+*%******************************************************************************************
+*%                                      Cursor and Page Commands
+*%******************************************************************************************
+*RotateCoordinate?: TRUE
+*RotateRaster?: TRUE
+*RotateFont?: TRUE
+*TextCaps: LIST(TC_CR_90,TC_UA_ABLE)
+*MemoryUsage: LIST(FONT, RASTER, VECTOR)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 300
+*YMoveUnit: 300
+*EjectPageWithFF?: TRUE
+*OutputDataFormat: H_BYTE
+*OptimizeLeftBound?: TRUE
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+
+*Command: CmdCR { *Cmd : "" }
+*Command: CmdLF { *Cmd : "" }
+*Command: CmdFF { *Cmd : "" }
+
+

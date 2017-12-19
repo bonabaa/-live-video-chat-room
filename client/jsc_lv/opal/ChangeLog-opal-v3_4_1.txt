@@ -1,0 +1,161 @@
+2008-09-18 07:44  rjongbloed
+
+	* [r21059] ., configure, opal.m4, plugins/configure,
+	  plugins/video/common/dyna.cxx, samples/openphone/main.cxx,
+	  src/h323/gkclient.cxx:
+	  Update bug fixes from trunk.
+
+2008-09-18 07:56  rjongbloed
+
+	* [r21060] src/lids/lidep.cxx:
+	  Fixed bug in LID handling if connection to remote happens
+	  immediately
+	  then the Routing tone should not be played.
+
+2008-09-18 11:41  rjongbloed
+
+	* [r21062] include/sip/sipep.h, src/sip/sipep.cxx:
+	  Added network interface monitor to redo SIP register/subscribe
+	  when interfaces go up/down.
+
+2008-09-18 16:11  ms30002000
+
+	* [r21066] configure, configure.ac:
+	  Fix compilation on solaris.
+
+2008-09-18 23:13  rjongbloed
+
+	* [r21071] src/win32/opal_2003.dtf, src/win32/opal_2005.dtf,
+	  src/win32/opal_2005_wm.dtf, src/win32/opal_2005_wm6.dtf,
+	  src/win32/opald_2003.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2003.dtf, src/win32/opaln_2005.dtf,
+	  src/win32/opaln_2005_wm.dtf, src/win32/opaln_2005_wm6.dtf:
+	  Update symbols
+
+2008-09-19 16:43  ms30002000
+
+	* [r21077] plugins/LID/VPB/Makefile.in:
+	  Fix VPB Makefile:
+	  Platform specific stuff is in configure.ac,
+	  CFLAGS is not defined and should not be used.
+
+2008-09-19 17:50  ms30002000
+
+	* [r21079] plugins/video/H.264/gpl/Makefile.in:
+	  Fix compilation of H.264 helper.
+
+2008-09-20 09:46  ms30002000
+
+	* [r21080] configure, configure.ac:
+	  Fix soname.
+
+2008-09-20 18:36  ms30002000
+
+	* [r21082] samples/simple/Makefile:
+	  Fix "simple" Makefile.
+
+2008-09-21 01:49  rjongbloed
+
+	* [r21084] samples/openphone/version.h:
+	  Align OpenPhone version with PTLib/OPAL version
+
+2008-09-21 06:07  rjongbloed
+
+	* [r21085] src/win32/opal_2005.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opaln_2005.dtf:
+	  Update symbols
+
+2008-09-21 06:30  rjongbloed
+
+	* [r21088] opal_defs.mak.in, opal_inc.mak:
+	  Fixed using debugnoshared target when opal_inc.mak version of
+	  build is
+	  used.
+
+2008-09-21 08:04  rjongbloed
+
+	* [r21091] samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc:
+	  Fixed range limit on OpenPhone gatekeeper time to live dialog
+	  item
+
+2008-09-21 10:39  rjongbloed
+
+	* [r21092] samples/opalgw/main.cxx:
+	  Added ability to disable SSL interface for opalgw server.
+	  Added ability to disable gk client in opalgw server
+
+2008-09-21 11:15  dsandras
+
+	* [r21097] src/sip/sippdu.cxx:
+	  PUBLISH can also have a routeSet.
+
+2008-09-21 13:00  rjongbloed
+
+	* [r21104] ., include/opal/transports.h, src/h323/h323trans.cxx,
+	  src/opal/transports.cxx:
+	  Fixed gatekeeper listener usage of OpalTransportUDP.
+
+2008-09-21 19:14  ms30002000
+
+	* [r21107] opal_defs.mak.in:
+	  Change the order of CFLAGS and CXXFLAGS in order to allow
+	  overwriting
+	  the optimization and debug symbols arguments.
+
+2008-09-21 23:56  rjongbloed
+
+	* [r21110] ., src/opal/connection.cxx:
+	  copy remote product info instead of local one in CopyPartyNames()
+
+2008-09-22 01:32  rjongbloed
+
+	* [r21111] samples/opalgw/gkserv.cxx, samples/opalgw/main.cxx:
+	  Fixed more issues with opalgw so can change SIP/H.323 interfaces
+	  and make it co-exist with other servers like OpenSIPS or Woomera.
+
+2008-09-22 01:51  rjongbloed
+
+	* [r21113] src/h323/gkclient.cxx:
+	  Fixed continuously re-registering to H.323 gatekeeper.
+
+2008-09-22 03:00  rjongbloed
+
+	* [r21115] include/opal/transports.h, src/h323/gkclient.cxx,
+	  src/h323/h323trans.cxx, src/opal/endpoint.cxx,
+	  src/opal/transports.cxx:
+	  Fixed inclusion of external NAT server address (e.g. via STUN) in
+	  H.323 gatekeeper registration signallingAddress list.
+	  
+	  Note that this has the implicit assumption that if STUN is used
+	  then the NAT firewall will also have a port forwarder for
+	  external connections to get back in to the client from outside.
+	  It is deemed that the possibility of a false address is less of a
+	  problem than not advertising the external address at all.
+
+2008-09-22 03:13  rjongbloed
+
+	* [r21117] samples/openphone/version.h:
+	  Align OpenPhone version with PTLib/OPAL version
+
+2008-09-22 04:16  rjongbloed
+
+	* [r21118] src/win32/opal_2003.dtf, src/win32/opal_2005.dtf,
+	  src/win32/opal_2005_wm.dtf, src/win32/opal_2005_wm6.dtf,
+	  src/win32/opald_2003.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2003.dtf, src/win32/opaln_2005.dtf,
+	  src/win32/opaln_2005_wm.dtf, src/win32/opaln_2005_wm6.dtf:
+	  Update symbols
+
+2008-09-22 05:27  rjongbloed
+
+	* [r21119] src/lids/lidep.cxx:
+	  Fix off by one error in counting rings from LID.
+
+2008-09-22 12:23  rjongbloed
+
+	* [r21128] version.h:
+	  Update release version number to 3.4.1
+

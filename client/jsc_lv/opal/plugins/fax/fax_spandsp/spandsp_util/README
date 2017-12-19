@@ -1,0 +1,68 @@
+Building from source
+====================
+
+Requirements
+------------
+
+Two external source code projects are needed in order to build spandsp_util from source
+
+1) libtiff
+
+libtiff is TIFF handling library and is required provides the ability
+to load and save fax image files, which are in TIFF format.
+
+On most Linux systems, this library will be preinstalled. If not, it 
+will almost certainly be available to install via yum/yast etc. 
+
+A pre-compiled Windows version is available from the following URL:
+
+   http://gnuwin32.sourceforge.net/packages/tiff.htm
+
+Downloading and installing the complete package is recommended. 
+
+Don't be tempted to use the Win32 of libtiff. It won't work 
+
+Once installed, add "C:\Program Files\GnuWin32\include" to the Include directory
+list, and "C:\Program Files\GnuWin32\lib" to the Library directory list. The path 
+"C:\Program Files\GnuWin32\bin" must also be added to the PATH environment variable,
+else the libtiff DLL files will not be found at runtime.
+
+2) spandsp
+
+Spandsp is a GPL library and suite of programs that implement
+a faxmodem. 
+
+On most Linux systems, this library will be preinstalled. If not, it 
+can be downloaded from the site below, then compiled and installed as usual.
+
+    http://www.soft-switch.org/downloads/spandsp
+
+You will need to add "C:\Program Files\GnuWin32\include" to the Include directory
+list, and "C:\Program Files\GnuWin32\lib" to the Library directory list
+
+Windows users will need to download and compile the library. A link to a suitably modified 
+version of the library will be included here at a later date.
+
+=========================================================================================
+
+Common problems
+---------------
+
+If you see errors such as the following:
+
+spandsp_if.cpp(912) : error C2664: 't38_core_rx_ifp_packet' : cannot convert parameter 2 from 'const unsigned char *__w64 ' to 'int'
+spandsp_if.cpp(1101) : error C2664: 't38_core_rx_ifp_packet' : cannot convert parameter 2 from 'const unsigned char *__w64 ' to 'int'
+
+then uncomment the line '#define SPANDSP_VER3  1' near the top of spandsp_if.h
+
+
+=========================================================================================
+
+IMPORTANT NOTE
+--------------
+
+Spandsp_util is released under the GPL as this is required by spandsp. This differs
+from the rest of OPAL which is MPL.
+
+   Craig Southeren, 
+   craigs@postincrement.com

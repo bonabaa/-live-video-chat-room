@@ -1,0 +1,118 @@
+// YYSpriteX-2.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (YYSpriteX-2.tlb) that will become a resource in
+// YYSpriteX-2.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(979C0907-D1B5-4830-8703-C65D8D75F44D), version(1.0),
+  helpfile("YYSpriteX-2.hlp"),
+  helpstring("YYSpriteX-2 ActiveX Control module"),
+  control ]
+library YYSpriteX2Lib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CYYSpriteX2Ctrl
+
+	[ uuid(83A7866F-F1E8-4EFD-81B9-34C30D356199),
+	  helpstring("Dispatch interface for YYSpriteX2 Control")]
+	dispinterface _DYYSpriteX2
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1), helpstring("method Login")] BSTR Login(BSTR strURL, BSTR tag);
+			[id(2), helpstring("method MakeCall")] LONG MakeCall(BSTR strURl, BSTR tag);
+			[id(3), helpstring("method Hangup")] LONG Hangup(BSTR strPeer, BSTR tag);
+			[id(4), helpstring("method initialise")] void initialise(BSTR tag);
+			[id(5), helpstring("method GetCameraNames")] BSTR GetCameraNames(void);
+			[id(6), helpstring("method SetCameraName")] LONG SetCameraName(BSTR strName, BSTR tag);
+			[id(7), helpstring("method IsLogin")] LONG IsLogin(void);
+			[id(8), helpstring("method Logout")] void Logout(void);
+			[id(9), helpstring("method ShowUserPanel")] LONG ShowUserPanel(BSTR strUserID, LONG bShow, SHORT left, SHORT top, SHORT width, SHORT hight);
+			[id(10), helpstring("method GetFriendsList")] LONG GetFriendsList(BSTR xfriend);
+			[id(11), helpstring("method AddFriend")] void AddFriend(BSTR strUserID);
+			[id(12), helpstring("method GetFirendListEx")] BSTR GetFirendListEx(void);
+			[id(13), helpstring("method GetLastErrorCode")] LONG GetLastErrorCode(void);
+			[id(14), helpstring("method ConfirmContactActionBy")] LONG ConfirmContactActionBy(LONG nUserid, LONG nAction, LONG bAccepted);
+			[id(15), helpstring("method ListOnlineUser")] BSTR ListOnlineUser(void);
+			[id(16), helpstring("method GetBlockList")] BSTR GetBlockList(void);
+			[id(17), helpstring("method GetTree")] BSTR GetTree(void);
+			[id(18), helpstring("method Hungup")] LONG Hungup(BSTR strUserID);
+			[id(19), helpstring("method HangupEx")] LONG HangupEx(BSTR strUserURL);
+			[id(20), helpstring("method AddFriendEx")] LONG AddFriendEx(LONG uid, BSTR lpszText);
+			[id(21), helpstring("method Subscribe")] BSTR Subscribe(BSTR strValue);
+			[id(22), helpstring("method SendOfflineIM")] LONG SendOfflineIM(BSTR strMsg);
+			[id(23), helpstring("method ViewUserData")] BSTR ViewUserData(BSTR uid_b);
+			[id(24), helpstring("method RemoveBlock")] LONG RemoveBlock(LONG uid);
+			[id(25), helpstring("method RemoveFriend")] LONG RemoveFriend(LONG uid);
+			[id(26), helpstring("method UpdateUserData")] LONG UpdateUserData(BSTR strUserinfo);
+			[id(27), helpstring("method PPT")] LONG PPT(BSTR strUser);
+			[id(28), helpstring("method AcceptP2PFile")] LONG AcceptP2PFile(BSTR value);
+			[id(29), helpstring("method P2PAFile")] BSTR P2PAFile(BSTR v);
+			[id(30), helpstring("method ChangeStatus")] LONG ChangeStatus(LONG state, BSTR strState);
+			[id(31), helpstring("method FTOF")] LONG FTOF(BSTR uid, BSTR pws);
+			[id(32), helpstring("method WindowProc")] LONG WindowProc(LONG uid, LONG iMsg, BSTR Params);
+			[id(33), helpstring("method SheduleMeet")] LONG SheduleMeet(BSTR strV);
+      [id(34), helpstring("method EnterRoom")] LONG EnterRoom(LONG roomid, BSTR tag);
+      [id(35), helpstring("method DlgLocalVideo")] void DlgLocalVideo(void);
+      [id(36), helpstring("method DlgOption")] void DlgOption(LONG nWhichTab);
+      [id(37), helpstring("method yDestroy")] void yDestroy(void);
+      [id(38), helpstring("method IMDlgControl")] void IMDlgControl(BSTR ctrlcode);
+  };
+
+	//  Event dispatch interface for CYYSpriteX2Ctrl
+
+	[ uuid(0AB76D3A-9CAA-44CA-9C0D-B72843C14C58),
+	  helpstring("Event interface for YYSpriteX2 Control") ]
+	dispinterface _DYYSpriteX2Events
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+		[id(1), helpstring("method OnEstableshedCall")] void OnEstableshedCall(BSTR strIDs, BSTR tag);
+		[id(2), helpstring("method OnClearedCall")] void OnClearedCall(BSTR strIDs, BSTR reason, BSTR tag);
+		[id(3), helpstring("method OnIncomingCall")] void OnIncomingCall(BSTR strIDs, BSTR Caller);
+		[id(4), helpstring("method OnOutgoing")] void OnOutgoing(BSTR strIDs, BSTR Callee);
+		[id(5), helpstring("method OnAddFriend")] void OnAddFriend(BSTR strUserID, LONG code);
+		[id(6), helpstring("method OnCreatedYYScprite")] void OnCreatedYYScprite(void);
+		[id(7), helpstring("method OnNotifyContactActionBy")] void OnNotifyContactActionBy(LONG byid, LONG nAction);
+		[id(8), helpstring("method OnBuddyStatusChanged")] void OnBuddyStatusChanged(BSTR strInfoValue);
+		[id(9), helpstring("method OnHeartbeatFeedback")] void OnHeartbeatFeedback(BSTR status);
+		[id(10), helpstring("method OnHeartbeatTimeout")] void OnHeartbeatTimeout(void);
+		[id(11), helpstring("method OnSessionExpired")] void OnSessionExpired(void);
+		[id(12), helpstring("method OnLoginReplaced")] void OnLoginReplaced(BSTR addr);
+		[id(13), helpstring("method OnNotifyOfflineIM")] LONG OnNotifyOfflineIM(LONG index, LONG total, BSTR msg);
+		[id(14), helpstring("method OnMsgDownloadFile")] void OnMsgDownloadFile(BSTR strurl, LONG whichpage);
+		[id(15), helpstring("method OnMsgSendFileMessage")] void OnMsgSendFileMessage(BSTR filesendtimepercent);
+		[id(16), helpstring("method OnP2PFile")] void OnP2PFile(BSTR value);
+		[id(17), helpstring("method OnReceivingFileP2P")] void OnReceivingFileP2P(BSTR v);
+		[id(18), helpstring("method OnSendingFileP2P")] void OnSendingFileP2P(BSTR value);
+		[id(19), helpstring("method OnSETPIXELS_NOCONV")] void OnSETPIXELS_NOCONV(BSTR buffer, VARIANT x );
+		[id(20), helpstring("method OnyFTOFState")] void OnyFTOFState(LONG code, BSTR state);
+		[id(21), helpstring("method OnSetTlight")] void OnSetTlight(LONG uid, BSTR value);
+		[id(22), helpstring("method OnSETPIXELS_NOCONV_WMEx")] void OnSETPIXELS_NOCONV_WMEx(BSTR tag, VARIANT* value);
+		[id(23), helpstring("method OnSETPIXELS_NOCONV_WMEx2")] void OnSETPIXELS_NOCONV_WMEx2(BSTR tag, VARIANT value);
+		[id(24), helpstring("method OnSETPIXELS_NOCONV2")] void OnSETPIXELS_NOCONV2(BSTR v, VARIANT myVar);
+		[id(25), helpstring("method OnCallState")] void OnCallState(LONG state, BSTR Params);
+		[id(26), helpstring("method OnYYClientState")] void OnYYClientState(LONG code, BSTR Tag);
+		[id(27), helpstring("method OnNotify")] void OnNotify(LONG type, BSTR value);
+    [id(28), helpstring("method OnNotifyEx")] LONG OnNotifyEx(LONG CMD, BSTR tag);
+  };
+
+	//  Class information for CYYSpriteX2Ctrl
+
+	[ uuid(74E59815-8639-4E51-99A1-47F1A57160D9),
+	  helpstring("YYSpriteX2 Control"), control ]
+	coclass YYSpriteX2
+	{
+		[default] dispinterface _DYYSpriteX2;
+		[default, source] dispinterface _DYYSpriteX2Events;
+	};
+
+};

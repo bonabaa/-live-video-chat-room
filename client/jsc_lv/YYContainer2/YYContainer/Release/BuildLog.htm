@@ -1,0 +1,82 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: YYContainer, Configuration: Release|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\BAT000005.bat" with contents
+[
+@echo off
+breakpdb.bat
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Performing Pre-Build Event..."
+exit 1
+:VCEnd
+]
+Creating command line "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\BAT000005.bat"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\RSP000006.rsp" with contents
+[
+/O2 /I "..\czlibexe" /D "D_LOCAL_PANCEL_CONTAINER" /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "_MBCS" /FD /EHsc /MT /GS /Zc:wchar_t /Yu"stdafx.h" /Fp"Release/CCVision.pch" /Fo"Release/" /Fd"Release/vc70.pdb" /W3 /c /Wp64 /Zi /TP
+.\YYContainerDlg.cpp
+.\YYContainer.cpp
+.\SimpleTray.cpp
+.\SFVideoWnd.cpp
+.\LocalVideoDlg.cpp
+]
+Creating command line "cl.exe @d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\RSP000006.rsp /nologo"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\RSP000007.rsp" with contents
+[
+/O2 /I "..\czlibexe" /D "D_LOCAL_PANCEL_CONTAINER" /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "_MBCS" /FD /EHsc /MT /GS /Zc:wchar_t /Yc"stdafx.h" /Fp"Release/CCVision.pch" /Fo"Release/" /Fd"Release/vc70.pdb" /W3 /c /Wp64 /Zi /TP
+.\stdafx.cpp
+]
+Creating command line "cl.exe @d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\RSP000007.rsp /nologo"
+Creating command line "rc.exe /d "NDEBUG" /l 0x804 /I "Release" /fo"Release/YYContainer.res" .\YYContainer.rc"
+Creating temporary file "d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\RSP000008.rsp" with contents
+[
+/OUT:"D:\chy\projects\my\eqcores2\YYContainer2\/bin/CCVision.exe" /INCREMENTAL:NO /NOLOGO /DELAYLOAD:"OleAcc.dll" /DEBUG /PDB:"Release/YYContainer.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /MACHINE:X86  DelayImp.lib DelayImp.lib
+.\Release\LocalVideoDlg.obj
+.\Release\SFVideoWnd.obj
+.\Release\SimpleTray.obj
+.\Release\stdafx.obj
+.\Release\YYContainer.obj
+.\Release\YYContainerDlg.obj
+.\Release\YYContainer.res
+]
+Creating command line "link.exe @d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\RSP000008.rsp"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Performing Pre-Build Event...
+Compiling...
+stdafx.cpp
+Compiling...
+YYContainerDlg.cpp
+YYContainerDlg.cpp(20) : warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+YYContainerDlg.cpp(215) : warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+YYContainerDlg.cpp(261) : warning C4311: 'type cast' : pointer truncation from 'HWND' to 'unsigned int'
+YYContainerDlg.cpp(415) : warning C4806: '|' : unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+YYContainerDlg.cpp(415) : warning C4554: '|' : check operator precedence for possible error; use parentheses to clarify precedence
+YYContainerDlg.cpp(695) : warning C4244: 'initializing' : conversion from 'INT_PTR' to 'const int', possible loss of data
+YYContainer.cpp
+SimpleTray.cpp
+SFVideoWnd.cpp
+LocalVideoDlg.cpp
+LocalVideoDlg.cpp(70) : warning C4018: '>=' : signed/unsigned mismatch
+LocalVideoDlg.cpp(654) : warning C4311: 'type cast' : pointer truncation from 'HWND' to 'unsigned int'
+Generating Code...
+Compiling resources...
+Linking...
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://d:\chy\projects\my\eqcores2\YYContainer2\YYContainer\Release\BuildLog.htm"
+YYContainer - 0 error(s), 8 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

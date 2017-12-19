@@ -1,0 +1,1318 @@
+2008-08-18 01:20  rjongbloed
+
+	* [r20682] version.h:
+	  Update version number for beta v3.3.1
+
+2008-08-18 09:21  dsandras
+
+	* [r20684] src/sip/sipep.cxx:
+	  Added extra 100 Trying on INVITE to prevent delays.
+
+2008-08-18 17:30  dsandras
+
+	* [r20686] src/sip/sipcon.cxx:
+	  Fixed call hold. When we put the remote on hold, we have to be in
+	  SendOnly
+	  mode, not RecvOnly.
+
+2008-08-18 17:33  dsandras
+
+	* [r20687] opal.m4, plugins/aclocal.m4, plugins/configure:
+	  Improved build system thanks to Mr M.
+
+2008-08-19 01:56  rjongbloed
+
+	* [r20689] src/win32/opal_2005_wm.dtf, src/win32/opal_2005_wm6.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2005_wm.dtf, src/win32/opaln_2005_wm6.dtf:
+	  Fixed DTF files for "C" API function exports in Windows Mobile.
+
+2008-08-19 02:06  rjongbloed
+
+	* [r20690] samples/mobileopal/MobileOPAL.vcproj:
+	  Fixed dependency of Windows Mobile sample on OPAL DLL.
+
+2008-08-19 03:58  rjongbloed
+
+	* [r20693] ., plugins:
+	  Ignorance
+
+2008-08-19 04:01  rjongbloed
+
+	* [r20694] Makefile.in, configure, configure.ac, opal_inc.mak.in,
+	  src/java, src/java/OpalCallEndReason.java,
+	  src/java/OpalEchoCancelMode.java,
+	  src/java/OpalMediaDataType.java, src/java/OpalMediaStates.java,
+	  src/java/OpalMessage.java, src/java/OpalMessageType.java,
+	  src/java/OpalMessage_m_param.java,
+	  src/java/OpalParamCallCleared.java,
+	  src/java/OpalParamGeneral.java, src/java/OpalParamProtocol.java,
+	  src/java/OpalParamRegistration.java,
+	  src/java/OpalParamSetUpCall.java,
+	  src/java/OpalRegistrationStates.java,
+	  src/java/OpalSilenceDetectModes.java,
+	  src/java/OpalStatusCallCleared.java,
+	  src/java/OpalStatusIncomingCall.java,
+	  src/java/OpalStatusMediaStream.java,
+	  src/java/OpalStatusMessageWaiting.java,
+	  src/java/OpalStatusRegistration.java,
+	  src/java/OpalStatusUserInput.java,
+	  src/java/SWIGTYPE_p_OpalHandleStruct.java,
+	  src/java/SWIGTYPE_p_OpalMessage.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_q_const__char_p_void_int__int.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__struct_OpalMessage__int.java,
+	  src/java/SWIGTYPE_p_unsigned_int.java, src/java/example.java,
+	  src/java/exampleConstants.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c, src/java/opal.i:
+	  Added Java JNI support via swig
+
+2008-08-19 04:11  rjongbloed
+
+	* [r20695] Makefile.in, src/java/OpalCallEndReason.java,
+	  src/java/OpalEchoCancelMode.java,
+	  src/java/OpalMediaDataType.java, src/java/OpalMediaStates.java,
+	  src/java/OpalMessage.java, src/java/OpalMessageType.java,
+	  src/java/OpalMessage_m_param.java,
+	  src/java/OpalParamCallCleared.java,
+	  src/java/OpalParamGeneral.java, src/java/OpalParamProtocol.java,
+	  src/java/OpalParamRegistration.java,
+	  src/java/OpalParamSetUpCall.java,
+	  src/java/OpalRegistrationStates.java,
+	  src/java/OpalSilenceDetectModes.java,
+	  src/java/OpalStatusCallCleared.java,
+	  src/java/OpalStatusIncomingCall.java,
+	  src/java/OpalStatusMediaStream.java,
+	  src/java/OpalStatusMessageWaiting.java,
+	  src/java/OpalStatusRegistration.java,
+	  src/java/OpalStatusUserInput.java,
+	  src/java/SWIGTYPE_p_OpalHandleStruct.java,
+	  src/java/SWIGTYPE_p_OpalMessage.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_q_const__char_p_void_int__int.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__struct_OpalMessage__int.java,
+	  src/java/SWIGTYPE_p_unsigned_int.java, src/java/example.java,
+	  src/java/exampleConstants.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c:
+	  Fixed package name in Java interface
+
+2008-08-19 04:36  rjongbloed
+
+	* [r20696] configure.ac, include/opal/buildopts.h.in,
+	  src/java/java_msvc_wrapper.c, src/java/java_swig_wrapper.c,
+	  src/win32/opal_lib_2005.vcproj:
+	  Windows version of Java JNI support
+
+2008-08-19 05:49  rjongbloed
+
+	* [r20697] src/sip/handlers.cxx:
+	  Fixed REGISTER in "restore" mode (i.e. registrar is offline) not
+	  using new interfaces as they become available.
+
+2008-08-19 09:25  rjongbloed
+
+	* [r20699] include/sip/sipcon.h, include/sip/sippdu.h,
+	  src/sip/sipcon.cxx, src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Fixed issues with correct addressing of requests and responses,
+	  especially when simultaneous transactions and responses are
+	  happening through different paths due to proxies.
+
+2008-08-20 00:03  rjongbloed
+
+	* [r20702] src/sip/sipcon.cxx, src/sip/sipep.cxx:
+	  Made changes to assure all SIP requests get a 100 Trying ASAP.
+	  Required by some really brain dead behaviour of Asterisk.
+
+2008-08-20 06:26  rjongbloed
+
+	* [r20703] include/sip/sippdu.h, src/sip/sipcon.cxx,
+	  src/sip/sippdu.cxx:
+	  Moved the SDP parsing from listener thread to pool thread so can
+	  respond as quickly as possible to incoming requests.
+
+2008-08-20 07:06  rjongbloed
+
+	* [r20704] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sipep.cxx:
+	  Added ability to register to a different physical host address of
+	  registrar to what the domain of the address-of-record is.
+
+2008-08-20 23:21  rjongbloed
+
+	* [r20707] src/win32/opal_lib_2005.vcproj:
+	  Fixed being able to compile with DevStudio without having swig
+	  installed.
+
+2008-08-21 02:11  rjongbloed
+
+	* [r20708] src/sip/handlers.cxx:
+	  Rewrite of loop to cancel other legs in forked transaction to be
+	  fail safe. Somehow it used to get a null pointer due to
+	  threading.
+
+2008-08-21 03:08  dereksmithies
+
+	* [r20709] include/opal/connection.h:
+	  Improve (add more lines) to the documentation on
+	  the methods SetConnected and OnConnected. Thanks to
+	  Robert for your clarification&help here.
+
+2008-08-21 03:15  dereksmithies
+
+	* [r20710] include/iax2/callprocessor.h, include/iax2/iax2con.h,
+	  include/iax2/iax2ep.h:
+	  Tidy ups to the doxygen documentation.
+	  Put the methods in the iax2con.h file in the "same" order as in
+	  opal/connection.h
+	  Put a readwrite mutex around the token table, as this is faster..
+
+2008-08-21 03:18  dereksmithies
+
+	* [r20711] src/iax2/callprocessor.cxx, src/iax2/frame.cxx,
+	  src/iax2/iax2con.cxx, src/iax2/iax2ep.cxx,
+	  src/iax2/processor.cxx:
+	  Work on comments - make them more readable.
+	  More closely follow the Opal call phases (alerting,connected,
+	  releaseing etc)
+	  Better use the OnConnected and SetConnected methods in the
+	  Iax2Connection
+	  Reduce verbosity on some PTRACE stateemnts.
+
+2008-08-21 03:20  dereksmithies
+
+	* [r20712] src/opal/connection.cxx:
+	  Add PTRACE line for when the OnConnected and OnEstablished
+	  methods are called, to better illustrate to the logfile
+	  reader what is happening when.
+
+2008-08-21 21:27  dsandras
+
+	* [r20717] src/sip/handlers.cxx:
+	  Fixed interval too brief handling. A proxy server can in general
+	  not
+	  increase the expire time of a REGISTER, except through interval
+	  too brief.
+
+2008-08-21 21:30  dsandras
+
+	* [r20718] src/sip/handlers.cxx:
+	  Added comment to explain the change.
+
+2008-08-21 21:33  dsandras
+
+	* [r20719] src/sip/handlers.cxx:
+	  Modified logic to better match the original test.
+
+2008-08-22 01:41  csoutheren
+
+	* [r20720] src/opal/opalglobalstatics.cxx:
+	  Fix problem with plugins not enabled on Windows platform
+
+2008-08-22 06:33  rjongbloed
+
+	* [r20722] include/opal/connection.h, include/opal/patch.h,
+	  include/opal/transcoders.h, include/rtp/rtp.h, include/sip/sdp.h,
+	  src/h323/channels.cxx, src/h323/h323.cxx, src/opal/call.cxx,
+	  src/opal/mediastrm.cxx, src/opal/patch.cxx,
+	  src/opal/transcoders.cxx, src/sip/sdp.cxx, src/sip/sipcon.cxx:
+	  Removed the payload type mapping system as made completely
+	  redundant by the media format changes made in the Wolf release.
+	  The payload type is now passed via media format instance in the
+	  same way as all the media options are.
+	  
+	  Prompted by a bug where the mapping does not work when the is a
+	  "cycle of maps".
+
+2008-08-22 10:43  rjongbloed
+
+	* [r20723] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed problems with registering multiple contact fields with a
+	  registrar, or that the registrar returns multiple contact fields
+	  in the reply.
+	  
+	  Also added the correct SIP URI comparison according to RFC3261
+	  Section 19.1.4
+
+2008-08-23 10:09  ms30002000
+
+	* [r20727] opal.m4:
+	  Add function to find java.
+
+2008-08-23 12:01  dsandras
+
+	* [r20730] include/opal/call.h, src/opal/call.cxx:
+	  Converted IsNetworkConnection to a const method.
+
+2008-08-24 09:36  ms30002000
+
+	* [r20731] plugins/audio/Speex/speexcodec.cxx:
+	  Fix speex codec(s).
+
+2008-08-25 20:14  dsandras
+
+	* [r20736] src/opal/manager.cxx:
+	  Fixed problems with OpalCall::OnCleared not being called in some
+	  cases. No need
+	  to remove the call from activeCalls at this stage, it will be
+	  done by
+	  OpalCall::OnCleared.
+
+2008-08-27 04:00  rjongbloed
+
+	* [r20740] plugins/audio/iLBC/ilbccodec.c:
+	  Yet another inter-operability fix for non-compliant Asterisk.
+
+2008-08-27 04:18  rjongbloed
+
+	* [r20741] include/opal/mediatype.h, src/codec/rfc4175.cxx:
+	  Fixed being able to compile without SIP.
+
+2008-08-27 20:43  dsandras
+
+	* [r20744] src/sip/sipep.cxx:
+	  No NAT Binding refresh on unsubscribed accounts.
+
+2008-08-28 00:20  rjongbloed
+
+	* [r20745] include/codec/vidcodec.h, include/opal/mediastrm.h,
+	  include/opal/patch.h, include/opal/transcoders.h,
+	  src/opal/mediastrm.cxx, src/opal/transcoders.cxx:
+	  Changed UpdateMediaFormat() so if media formats are of a
+	  different fundamental type it does a OpalMediaFormat::Merge()
+	  rather than just returning false.
+
+2008-08-28 02:53  rjongbloed
+
+	* [r20750] ., src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Fixed race condition where on exiting application, an un-register
+	  is sent to SIP registrar and the registrar sends a 401 response
+	  to get new credentials, even though credentials were supplied
+	  (possible time out on nonce?) which opens a small window for the
+	  SIPEndPoint::ShutDown() to exit, invalidating the transport being
+	  used for the REGISTER retry with renewed credentials.
+
+2008-08-28 06:59  rjongbloed
+
+	* [r20752] ., include/sip/handlers.h, include/sip/sipep.h,
+	  include/sip/sippdu.h, samples/openphone/main.cxx,
+	  src/opal/opal_c.cxx, src/sip/handlers.cxx, src/sip/sipep.cxx,
+	  src/sip/sippdu.cxx:
+	  Enhancements to the SUBSCRIBE so can have authentication
+	  credentials, as well as more control over various parameters.
+	  Similar to the REGISTER mechanism.
+
+2008-08-28 10:32  hfriederich
+
+	* [r20754] include/h323/gkclient.h, src/h323/gkclient.cxx:
+	  Allow to do immediate full RRQs when terminal alias changed
+
+2008-08-28 14:30  rjongbloed
+
+	* [r20757] ., src/sip/sippdu.cxx:
+	  Make sure the response to a CANCEL is not handled as though it
+	  was the response to an INVITE.
+
+2008-08-28 15:44  hfriederich
+
+	* [r20759] src/h323/gkclient.cxx:
+	  do re-registration upon interface changes in GkMonitor thread
+
+2008-08-28 20:23  dsandras
+
+	* [r20760] src/sip/sippdu.cxx:
+	  Do not use the callid as local tag.
+
+2008-08-28 21:16  dsandras
+
+	* [r20761] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed compliance problems introduced by one of the last commits.
+
+2008-08-29 01:06  rjongbloed
+
+	* [r20763] ., include/opal.h, samples/mobileopal/MobileOPALppc.rc,
+	  samples/mobileopal/MobileOPALsp.rc,
+	  samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/Resourcesp.h,
+	  samples/mobileopal/resourceppc.h, src/opal/opal_c.cxx:
+	  Added message waiting to MobileOPAL.
+	  
+	  Improved call clear indication message reason code. Now complete
+	  and has the numeric value of the reason code in the returned
+	  string to aid in internationalisation and programmatic responses.
+
+2008-08-29 04:02  rjongbloed
+
+	* [r20765] include/sip/handlers.h, include/sip/sippdu.h,
+	  src/sip/handlers.cxx, src/sip/sippdu.cxx:
+	  Fixed dialog tag in SUBSCRIBE changing on every update.
+
+2008-08-29 06:44  rjongbloed
+
+	* [r20767] include/opal/manager.h, src/opal/manager.cxx:
+	  Improved the STUN server re-initialisation on network interface
+	  change. Now only invalidates it if the interface STUN was suing
+	  goes down. And if currently the client cannot gain access, will
+	  do a full re-initialise if an interface comes back up.
+
+2008-08-29 10:39  hfriederich
+
+	* [r20768] src/sip/handlers.cxx:
+	  Ensure transactions using the same transport are aborted before
+	  destroying the handler transport
+
+2008-08-31 04:28  csoutheren
+
+	* [r20783] src/opal/mediastrm.cxx:
+	  WritePacket needs to fail if no bytes are written, as this can
+	  only
+	  happen if there is an error
+
+2008-08-31 04:30  csoutheren
+
+	* [r20784] src/sip/sipcon.cxx:
+	  Fix typo
+
+2008-08-31 04:30  csoutheren
+
+	* [r20785] src/sip/sippdu.cxx:
+	  Add content types supported by OPAL to default SIP Accept header
+
+2008-08-31 05:07  rjongbloed
+
+	* [r20787] ., src/sip/handlers.cxx, src/sip/sipep.cxx:
+	  Compensated for some brain dead server that does not send NOTIFY
+	  messages for MWI in the context of the SUBSCRIBE dialog as it
+	  should. We get NOTIFY messages with incorrect call-id and random
+	  sequence numbers. Ughh!
+
+2008-08-31 06:15  rjongbloed
+
+	* [r20790] ., include/sip/handlers.h, src/sip/handlers.cxx,
+	  src/sip/sipep.cxx:
+	  Handle shutting down of REGISTER and SUBCRIBE handlers, making
+	  sure they are unsubscribed if subscribed, or all transactions are
+	  aborted if in progress, etc.
+
+2008-08-31 11:00  rjongbloed
+
+	* [r20794] include/opal/call.h:
+	  Added template function to get a connection from a call of the
+	  correct class.
+
+2008-08-31 13:07  rjongbloed
+
+	* [r20797] include/opal/call.h:
+	  Fixed previous commit
+
+2008-08-31 13:09  csoutheren
+
+	* [r20798] include/opal/mediafmt.h, include/opal/pcss.h,
+	  src/opal/mediafmt.cxx, src/opal/pcss.cxx, src/sip/sdp.cxx:
+	  Add initial support for 48khz stereo
+
+2008-09-01 01:17  rjongbloed
+
+	* [r20799] include/opal/patch.h, src/opal/mediafmt.cxx,
+	  src/opal/patch.cxx:
+	  Fixed issue with rate controller applying to RECEIVED video,
+	  should only be for transmitted video.
+
+2008-09-01 02:01  rjongbloed
+
+	* [r20800] src/opal/mediafmt.cxx, src/opal/patch.cxx:
+	  Fixed GNU warnings.
+
+2008-09-01 03:05  rjongbloed
+
+	* [r20801] include/opal/call.h:
+	  Fixed, yet again, new OpalCall::GetConnectionAs() function.
+
+2008-09-01 07:14  rjongbloed
+
+	* [r20807] .:
+	  Ignorance
+
+2008-09-01 08:20  csoutheren
+
+	* [r20808] include/opal.h, include/opal/localep.h,
+	  src/opal/localep.cxx, src/opal/opal_c.cxx:
+	  Add OpalCmdSetUserData command to "C" interface to bind a
+	  user data pointer to a call. Useful for applications using raw
+	  media
+
+2008-09-01 08:50  rjongbloed
+
+	* [r20809] src/opal/mediafmt.cxx:
+	  Changed default G.711 u/A-Law to 20ms because of brain dead
+	  Asterisk. If the packet size gets changed by an application,
+	  Asterisk interoperability is immediately broken.
+
+2008-09-02 02:18  csoutheren
+
+	* [r20813] src/sip/sdp.cxx:
+	  Set RawFMTP media option
+
+2008-09-02 05:13  rjongbloed
+
+	* [r20815] ., samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/MobileOpalDlg.h, src/sip/handlers.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed problem where an error on SIP unregister resets handler to
+	  Subscribed state again and therefore it becomes impossible to
+	  exit application if registrar is inaccessible as continually
+	  tries to unregister and cannot do so. Have to lie with the fact
+	  that if there is an error unregistering/unsubscribing then the
+	  registrar and client may get out of sync. But then that is why
+	  there are time to live values ...
+	  
+	  Added better debug logs for if get crap datagrams on SIP
+	  listener.
+	  
+	  Fixed MobileOPAL so unregister happens before UDP listeners are
+	  torn down and rebuilt. Otherwise tries to use an old, closed,
+	  bundled socket.
+	  
+	  Fixed MobileOPAL so unregister occurs if either AOR or hostname
+	  changes in dailog.
+
+2008-09-02 05:20  rjongbloed
+
+	* [r20816] src/java/OpalCallEndReason.java,
+	  src/java/OpalEchoCancelMode.java,
+	  src/java/OpalMediaDataType.java, src/java/OpalMediaStates.java,
+	  src/java/OpalMessage.java, src/java/OpalMessageType.java,
+	  src/java/OpalMessage_m_param.java,
+	  src/java/OpalParamCallCleared.java,
+	  src/java/OpalParamGeneral.java, src/java/OpalParamProtocol.java,
+	  src/java/OpalParamRegistration.java,
+	  src/java/OpalParamSetUpCall.java,
+	  src/java/OpalParamSetUserData.java,
+	  src/java/OpalRegistrationStates.java,
+	  src/java/OpalSilenceDetectModes.java,
+	  src/java/OpalStatusCallCleared.java,
+	  src/java/OpalStatusIncomingCall.java,
+	  src/java/OpalStatusMediaStream.java,
+	  src/java/OpalStatusMessageWaiting.java,
+	  src/java/OpalStatusRegistration.java,
+	  src/java/OpalStatusUserInput.java,
+	  src/java/SWIGTYPE_p_OpalHandleStruct.java,
+	  src/java/SWIGTYPE_p_OpalMessage.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_q_const__char_p_void_p_void_int__int.java,
+	  src/java/SWIGTYPE_p_f_p_q_const__struct_OpalMessage__int.java,
+	  src/java/SWIGTYPE_p_unsigned_int.java,
+	  src/java/SWIGTYPE_p_void.java, src/java/example.java,
+	  src/java/exampleConstants.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c:
+	  Regenerated Java code after modifications to "C" API upon which
+	  it is based.
+
+2008-09-02 07:02  rjongbloed
+
+	* [r20817] src/codec/g729mf.cxx:
+	  Added G.729 annexb SIP/SDP FMTP parameter.
+
+2008-09-02 07:08  rjongbloed
+
+	* [r20818] plugins/audio/VoiceAgeG729/g729codec.c:
+	  Fixed G.729 annexb SIP/SDP FMTP parameter to align with RFC3555
+
+2008-09-02 08:17  rjongbloed
+
+	* [r20819] src/opal/call.cxx:
+	  Make sure media patch thread is provided only if BOTH streams
+	  require it. If either say "no" then it is that streams
+	  responsibility.
+
+2008-09-02 09:08  rjongbloed
+
+	* [r20822] ., src/sip/handlers.cxx:
+	  Fixed issue when registering as a new name to the same registrar,
+	  the next INVITE uses the old registered user name.
+
+2008-09-03 01:14  csoutheren
+
+	* [r20825] src/sip/sdp.cxx:
+	  Add more "intelligent" handling of the hex strings used
+	  for some SDP fmtp parameters, as some vendors insert
+	  spaces instead of 0 (i.e. they use %2x instead of %02x)
+
+2008-09-03 01:59  rjongbloed
+
+	* [r20830] ., include/sip/sipep.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/openphone/openphone.wxg,
+	  samples/openphone/openphone.xrc, src/sip/sipep.cxx:
+	  Added MWI and Presence subscriptions configuration to SIp
+	  registrar dialog.
+	  
+	  Added Unsubscribe all function for SIP endpoints.
+
+2008-09-03 03:00  rjongbloed
+
+	* [r20832] ., samples/mobileopal/MobileOpalDlg.cpp,
+	  samples/mobileopal/MobileOpalDlg.h:
+	  Fixed issue with changing registration in MobileOPAL, must wait
+	  for previous unregistration to complete before proceeding with
+	  new registration.
+
+2008-09-03 05:24  rjongbloed
+
+	* [r20836] include/h323/peclient.h, src/codec/opalpluginmgr.cxx,
+	  src/h323/h323caps.cxx, src/h323/q931.cxx, src/opal/rtpconn.cxx,
+	  src/sip/sippdu.cxx:
+	  Fixed various GNU compiler warnings.
+
+2008-09-03 16:26  ms30002000
+
+	* [r20838] plugins/video/H.263-1998/Makefile.in,
+	  plugins/video/H.264/Makefile.in,
+	  plugins/video/H.264/gpl/Makefile.in,
+	  plugins/video/MPEG4-ffmpeg/Makefile.in:
+	  First shot at undefined symbols in plugins issue.
+
+2008-09-03 21:52  hfriederich
+
+	* [r20840] include/h323/gkclient.h, src/h323/gkclient.cxx:
+	  Make the creation of transports customizable
+
+2008-09-04 03:06  rjongbloed
+
+	* [r20842] ., include/sip/handlers.h, src/sip/handlers.cxx,
+	  src/sip/sipep.cxx:
+	  Fixed bug where incorrect username was provided in the "from"
+	  field of SUBSCRIBE. Requires a distinction between being
+	  unsubscribed and not subscribed yet.
+	  
+	  The above distinction also allows for the addition of garbage
+	  collection on registrations and subscriptions that can be deleted
+	  after they are unsubscribed.
+
+2008-09-04 12:21  rjongbloed
+
+	* [r20844] src/opal/transports.cxx:
+	  Fixed issue with parsing out interface name (e.g. "%ppp0") from
+	  listener address and correctly listening to bound interface when
+	  required.
+
+2008-09-04 12:22  rjongbloed
+
+	* [r20845] src/opal/manager.cxx:
+	  Added a couple more "standard" codecs to default order.
+
+2008-09-04 12:24  rjongbloed
+
+	* [r20847] include/opal/mediastrm.h, src/opal/mediastrm.cxx,
+	  src/opal/patch.cxx:
+	  Fixed infinite recursion (and thus crash) problem when using a
+	  codec that does not require a transcoder.
+
+2008-09-04 12:33  rjongbloed
+
+	* [r20848] ., include/opal.h, include/sip/handlers.h,
+	  include/sip/sipep.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, src/opal/opal_c.cxx,
+	  src/sip/handlers.cxx, src/sip/sipep.cxx:
+	  Back ported fixes in SUBSCRIBE from trunk.
+	  
+	  Added status indication callback for SUBSCRIBE operations. Also
+	  pass through to "C" API for MWI subscription/unsubscription.
+
+2008-09-04 13:10  rjongbloed
+
+	* [r20849] src/opal/transports.cxx:
+	  Fixed off by one error in previous commit, losing last digit of
+	  IP address if no :port in address.
+
+2008-09-04 16:53  ms30002000
+
+	* [r20851] configure, configure.ac, include/opal/buildopts.h.in,
+	  opal.m4, plugins/configure, plugins/configure.ac,
+	  src/opal/opalglobalstatics.cxx:
+	  Move OPAL plugin install dir from ptlib/codecs to
+	  opal-${OPAL_VERSION}/codecs
+
+2008-09-04 17:49  dsandras
+
+	* [r20852] opal.pc.in:
+	  Allow pkg-config to determine what protocols have been compiled
+	  in.
+
+2008-09-05 00:04  rjongbloed
+
+	* [r20856] src/sip/handlers.cxx:
+	  Fixed SIP register handler continuing to retry on certain classes
+	  of errors, e.g. a timeout, and only stopping completely on fatal
+	  errors.
+
+2008-09-05 00:49  rjongbloed
+
+	* [r20858] include/sip/handlers.h, src/sip/handlers.cxx,
+	  src/sip/sipep.cxx:
+	  Fixed crash where pending forked transactions on a handler are
+	  not aborted if something comes back with a definitive answer in
+	  the negative. Works for OK.
+
+2008-09-05 01:56  rjongbloed
+
+	* [r20860] samples/openphone/main.cxx, samples/openphone/main.h:
+	  Applied patch from Stefano Picerno to enabled compile of
+	  OpenPhone
+	  without H.323, though why you would want this is a puzzle.
+
+2008-09-05 04:27  rjongbloed
+
+	* [r20862] include/opal/connection.h, src/opal/call.cxx,
+	  src/opal/connection.cxx:
+	  Improved copying of party names from "network" connection to
+	  "non-network" connection. Now a call to
+	  OpalPCSSConnection::GetCalledPartyName() gets the called party
+	  name from the associated SIP/H.323 connection.
+
+2008-09-05 10:22  rjongbloed
+
+	* [r20864] include/h323/gkclient.h, include/h323/h323ep.h,
+	  include/opal/manager.h, samples/openphone/main.cxx,
+	  src/h323/gkclient.cxx, src/h323/h323ep.cxx, src/opal/manager.cxx,
+	  src/opal/opal_c.cxx, src/opal/rtpconn.cxx,
+	  src/opal/transports.cxx, src/sip/sipep.cxx:
+	  Changed the STUN client class pointer used by various UDP
+	  subsystems (RTP etc) to use the more general PNatMethod class.
+	  Allows for application customisation of the NAT method to use,
+	  e.g. TURN etc.
+	  
+	  Changed the H.323 gatekeeper code so:
+	  a) uses the bundled sockets for interface change awareness
+	  b) will not permanently fail if gk is not online at start up
+
+2008-09-05 10:59  rjongbloed
+
+	* [r20865] src/sip/sippdu.cxx:
+	  Added trace log for if SRV record is not looked up due to
+	  explicit port.
+
+2008-09-05 11:01  rjongbloed
+
+	* [r20866] src/opal/transports.cxx:
+	  Changed to no open UDP transport in constructor but wait till
+	  Connect() call so socket is opened using the local port number
+	  range configured in OpalManager.
+
+2008-09-05 11:11  dsandras
+
+	* [r20867] include/opal/manager.h:
+	  Removed extra ';'.
+
+2008-09-05 11:13  dsandras
+
+	* [r20868] src/sip/handlers.cxx:
+	  Fixed request uri in Subscribe which was reset to the original
+	  request uri.
+
+2008-09-06 05:07  rjongbloed
+
+	* [r20870] src/h323/h323.cxx:
+	  Set H.323 local capabilities earlier, before parsing the fast
+	  connect OLC list, so that it has the opportunity to add new media
+	  formats.
+
+2008-09-06 05:15  rjongbloed
+
+	* [r20871] src/opal/mediafmt.cxx:
+	  Fixed issue with media format disambiguation of RTP payload types
+	  when there are more than 31 dynamic types, would go above 127.
+	  Now works backwards from 96 for extra numbers.
+
+2008-09-06 08:00  ms30002000
+
+	* [r20873] src/java/java_msvc_wrapper.c:
+	  Update to trunk 20872.
+
+2008-09-06 10:58  dsandras
+
+	* [r20874] src/sip/handlers.cxx:
+	  Handle more cases where we should retry registering again later.
+	  Sometimes, the
+	  transport exists, but can not be used because interfaces are
+	  down. Handle that
+	  case too.
+
+2008-09-06 15:54  dsandras
+
+	* [r20877] include/sip/sippdu.h, src/sip/handlers.cxx,
+	  src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  When subscribing, do not use an existing handler if it is
+	  Unsubscribed.
+	  When receiving 481 Transaction does not exist for a SUBSCRIBE,
+	  create
+	  a new SUBSCRIBE handler. The remote could have lost the
+	  subscription
+	  for some reason. It can happen in case of suspend/resume, when
+	  resuming
+	  the transaction can have expired.
+
+2008-09-06 17:01  dsandras
+
+	* [r20878] src/sip/sippdu.cxx:
+	  Fixed sending some SIP requests to non standard ports.
+
+2008-09-07 02:44  rjongbloed
+
+	* [r20879] src/sip/handlers.cxx:
+	  Added missing lock to SIPHandler::ShutDown(), no known crash, but
+	  still needed.
+
+2008-09-07 03:44  rjongbloed
+
+	* [r20880] src/opal/mediafmt.cxx:
+	  Fixed exceeding bounds of local variable, causing crash on Linux,
+	  but strangely not Windows.
+
+2008-09-07 08:13  rjongbloed
+
+	* [r20881] src/h323/channels.cxx:
+	  Make sure H.323 Logical Channel is not marked as open of the
+	  underlying media stream failed to open.
+
+2008-09-07 13:49  dsandras
+
+	* [r20885] include/sip/sipcon.h, src/sip/sipcon.cxx,
+	  src/sip/sippdu.cxx:
+	  Use registered party name when available for referred-by header
+	  in REFER request.
+
+2008-09-07 16:19  ms30002000
+
+	* [r20888] opal_inc.mak.in:
+	  Adapt to ptlib name change.
+
+2008-09-08 02:26  rjongbloed
+
+	* [r20891] src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Make some changes to when reading garbage from SIP socket. Some
+	  servers seem to send keep-alives of 4 zero bytes. Also some
+	  malicious probing attacks should be ignored. Now we ignore these
+	  sorts of datagrams completely and only send a 400 Bad Request if
+	  there was enough there for it to plausibly be a SIP PDU.
+
+2008-09-08 05:32  rjongbloed
+
+	* [r20893] samples/openphone/main.cxx:
+	  Fixed some pseudo-leaks in OpenPhone from wxWidgets not cleaning
+	  up some "allocate once" global variables.
+
+2008-09-08 05:45  rjongbloed
+
+	* [r20894] samples/openphone/main.cxx:
+	  Fixed memory leak in OpenPhone menu manipulation.
+
+2008-09-08 05:50  csoutheren
+
+	* [r20895] src/codec/opalpluginmgr.cxx:
+	  Normalised log message
+
+2008-09-08 05:51  csoutheren
+
+	* [r20896] include/rtp/rtp.h, include/sip/sipcon.h,
+	  src/rtp/rtp.cxx, src/sip/sipcon.cxx:
+	  Clear call if RTP stack receives too many ICMP destination
+	  unreachable messages
+
+2008-09-08 06:06  rjongbloed
+
+	* [r20897] src/rtp/rtp.cxx:
+	  Fixed memory leak, 40 whole bytes per call!
+
+2008-09-09 02:13  rjongbloed
+
+	* [r20905] src/opal/mediastrm.cxx:
+	  Fixed too large buffer size set on sound card if trying to
+	  maintain minimum (e.g. for G.711) size for performance reasons.
+	  ALSA driver can't handle buffer being too big.
+
+2008-09-09 02:14  rjongbloed
+
+	* [r20906] src/sip/sippdu.cxx:
+	  Fixed incorrect trace log of bogus SIP datagrams.
+
+2008-09-09 04:30  rjongbloed
+
+	* [r20907] include/sip/sipcon.h, src/sip/sipcon.cxx:
+	  Changed SIP GetCalledPartyURL() to return the "To" field rather
+	  than the request URI.
+
+2008-09-09 16:54  dsandras
+
+	* [r20912] src/sip/sipcon.cxx:
+	  Fixed GetCalledPartyURL.
+
+2008-09-09 18:57  dsandras
+
+	* [r20913] src/sip/sipcon.cxx:
+	  Always add an SDP in INVITE requests or release the call with
+	  CapabilityExchange call end reason.
+
+2008-09-10 18:56  ms30002000
+
+	* [r20922] opal.m4, plugins/configure, plugins/configure.ac,
+	  plugins/video/H.263-1998/Makefile.in,
+	  plugins/video/H.263-ffmpeg/Makefile.in,
+	  plugins/video/H.264/gpl/x264loader_unix.cxx,
+	  plugins/video/MPEG4-ffmpeg/Makefile.in:
+	  Sync up opal.m4 and plugin dir to the autoconf branch.
+	  No impact.
+
+2008-09-11 03:50  rjongbloed
+
+	* [r20924] ., include/opal.h, include/opal/connection.h,
+	  include/sip/handlers.h, include/sip/sipep.h,
+	  samples/c_api/main.c, samples/mobileopal/MobileOpalDlg.cpp,
+	  src/opal/opal_c.cxx, src/sip/handlers.cxx, src/sip/sipep.cxx,
+	  src/sip/sippdu.cxx:
+	  Added support for "comments" in the User-Agent or Server field,
+	  free form data that maybe present.
+	  
+	  Added support for product info (via user-Agent or Server field)
+	  in non-connection entities, especially registrars.
+	  
+	  Changes to the registration status callback on endpoint to use a
+	  struct so any further added data will not cause a function
+	  signature change.
+	  
+	  Propagated product info via "C" API call backs for connections or
+	  registrations.
+
+2008-09-11 03:56  rjongbloed
+
+	* [r20925] src/java/OpalParamProtocol.java,
+	  src/java/OpalProductDescription.java,
+	  src/java/OpalStatusIncomingCall.java,
+	  src/java/OpalStatusRegistration.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c:
+	  Added support for "comments" in the User-Agent or Server field,
+	  free form data that maybe present.
+	  
+	  Added support for product info (via user-Agent or Server field)
+	  in non-connection entities, especially registrars.
+	  
+	  Changes to the registration status callback on endpoint to use a
+	  struct so any further added data will not cause a function
+	  signature change.
+	  
+	  Propagated product info via "C" API call backs for connections or
+	  registrations.
+
+2008-09-11 07:22  rjongbloed
+
+	* [r20926] src/sip/handlers.cxx:
+	  Fixed incorrect expires field if during unregistration registrar
+	  wants authentication and PDU is resent with credentials.
+
+2008-09-11 10:38  rjongbloed
+
+	* [r20928] include/sip/sipep.h, include/sip/sippdu.h,
+	  src/sip/sipcon.cxx, src/sip/sipep.cxx, src/sip/sippdu.cxx:
+	  Added mechanism for application to control the "Allow" field in
+	  outgoing PDU's.
+	  
+	  Also cleaned up call backs for application to get at messages.
+
+2008-09-11 10:45  rjongbloed
+
+	* [r20929] ., src/opal/opal_c.cxx, src/sip/sippdu.cxx:
+	  Make the User-Agent field being set from OpalProductInfo flexible
+	  enough so an application can put any string it likes in, even if
+	  it is not "to specification".
+
+2008-09-11 11:46  rjongbloed
+
+	* [r20930] include/sip/sippdu.h, src/sip/sipcon.cxx,
+	  src/sip/sippdu.cxx:
+	  Removed some redundant code.
+
+2008-09-12 05:12  rjongbloed
+
+	* [r20939] ., src/opal/manager.cxx:
+	  Sanitise default product name for SIP User-Agent rules.
+
+2008-09-12 10:05  rjongbloed
+
+	* [r20940] include/lids/lid.h, src/lids/lid.cxx,
+	  src/lids/lidep.cxx, src/opal/call.cxx:
+	  Fixed correct ring count detection on pstn line.
+	  Make sure always has A-party text in call.
+	  Fixed calls being routed to a pots ine even if it was in use.
+	  Fixed waiting for ring to go away if could not be routed.
+	  Make sure pstn remote party is set even if Caller Line ID not
+	  available.
+
+2008-09-12 17:44  ms30002000
+
+	* [r20942] include/codec/opalplugin.h, include/opal/mediatype.h,
+	  opal.m4, plugins/configure, plugins/configure.ac,
+	  plugins/video/H.261-vic/h261vic.cxx,
+	  plugins/video/H.261-vic/vic/vid_coder.h,
+	  plugins/video/H.263-ffmpeg/h263ffmpeg.cxx,
+	  plugins/video/common/trace.cxx:
+	  Many fixes for SOLARIS build of the plugins.
+	  Thanks a lot to Elaine Xiong from SUN.
+
+2008-09-14 07:57  ms30002000
+
+	* [r20946] opal.m4, plugins/configure:
+	  Make library name detection work on NetBSD too.
+	  Thanks to Jared D. McNeill.
+
+2008-09-14 10:10  ms30002000
+
+	* [r20951] plugins/video/H.261-vic/h261vic.cxx,
+	  plugins/video/H.264/shared/h264frame.cxx:
+	  Remove some printfs...
+
+2008-09-14 13:32  ms30002000
+
+	* [r20957] plugins/video/common/mpi.cxx:
+	  Fix framerate negotiation with H.263+.
+
+2008-09-15 03:47  rjongbloed
+
+	* [r20973] src/win32/opal_2003.dtf, src/win32/opal_2005.dtf,
+	  src/win32/opal_2005_wm.dtf, src/win32/opal_2005_wm6.dtf,
+	  src/win32/opald_2003.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2003.dtf, src/win32/opaln_2005.dtf,
+	  src/win32/opaln_2005_wm.dtf, src/win32/opaln_2005_wm6.dtf:
+	  Update symbols
+
+2008-09-15 08:06  rjongbloed
+
+	* [r20979] ., samples/c_api, samples/callgen,
+	  samples/opalcodecinfo, samples/simple:
+	  Ignorance
+
+2008-09-15 11:47  rjongbloed
+
+	* [r20983] version.h:
+	  Update release version number to 3.3.1
+
+2008-09-15 11:47  rjongbloed
+
+	* [r20985] version.h:
+	  Update version number for beta v3.3.2
+
+2008-09-15 12:32  rjongbloed
+
+	* [r20987] include/opal.h, src/java/OpalParamGeneral.java,
+	  src/java/OpalSilenceDetectMode.java,
+	  src/java/OpalSilenceDetectModes.java,
+	  src/java/java_swig_wrapper.c, src/opal/opal_c.cxx:
+	  Changed enum type name for consistency, pointed out by Yuriy
+	  Cherniavsky
+
+2008-09-15 16:28  hfriederich
+
+	* [r20988] include/h323/gkclient.h, include/h323/h323trans.h,
+	  src/h323/gkclient.cxx, src/h323/h323trans.cxx:
+	  Use gatekeeperRequestTimeout and gatekeeperRequestRetries when
+	  doing GK discovery
+	  Do not send GRQ twice on last interface
+	  Remove duplicate retry loop within DiscoverGatekeeper()
+
+2008-09-15 18:17  hfriederich
+
+	* [r20990] include/h323/gkclient.h:
+	  make DiscoverGatekeeper() virtual
+
+2008-09-15 19:53  hfriederich
+
+	* [r20994] include/h323/gkclient.h, src/h323/gkclient.cxx:
+	  Correctly do lightweight RRQs instead of full discovery
+	  (broken since 20864)
+	  Do full discovery if GK unregisters client
+
+2008-09-15 22:06  ms30002000
+
+	* [r20998] opal.m4, plugins/aclocal.m4, plugins/configure:
+	  Sync opal.m4 with autoconf branch.
+
+2008-09-16 07:08  rjongbloed
+
+	* [r21004] ., Makefile.in, configure, configure.ac,
+	  include/codec/echocancel.h, include/codec/g711codec.h,
+	  include/codec/opalwavfile.h, include/codec/rfc2833.h,
+	  include/codec/rfc4175.h, include/codec/silencedetect.h,
+	  include/codec/vidcodec.h, include/h224/h224.h,
+	  include/h224/h224handler.h, include/h224/h281.h,
+	  include/h224/h281handler.h, include/h224/h323h224.h,
+	  include/h224/q922.h, include/h323/channels.h,
+	  include/h323/gkclient.h, include/h323/gkserver.h,
+	  include/h323/h225ras.h, include/h323/h235auth.h,
+	  include/h323/h323.h, include/h323/h323annexg.h,
+	  include/h323/h323caps.h, include/h323/h323con.h,
+	  include/h323/h323ep.h, include/h323/h323neg.h,
+	  include/h323/h323pdu.h, include/h323/h323rtp.h,
+	  include/h323/h323trans.h, include/h323/h450pdu.h,
+	  include/h323/h501pdu.h, include/h323/peclient.h,
+	  include/h323/q931.h, include/h323/svcctrl.h,
+	  include/h323/transaddr.h, include/h460/h46018.h,
+	  include/h460/h46019.h, include/h460/h4609.h,
+	  include/h460/h460p.h, include/h460/h460pres.h,
+	  include/h460/h460tm.h, include/iax2/callprocessor.h,
+	  include/iax2/causecode.h, include/iax2/frame.h,
+	  include/iax2/iax2.h, include/iax2/iax2con.h,
+	  include/iax2/iax2ep.h, include/iax2/iax2jitter.h,
+	  include/iax2/iax2medstrm.h, include/iax2/iedata.h,
+	  include/iax2/ies.h, include/iax2/processor.h,
+	  include/iax2/receiver.h, include/iax2/regprocessor.h,
+	  include/iax2/remote.h, include/iax2/safestrings.h,
+	  include/iax2/sound.h, include/iax2/specialprocessor.h,
+	  include/iax2/transmit.h, include/lids/lid.h,
+	  include/lids/lidep.h, include/lids/lidpluginmgr.h,
+	  include/opal/audiorecord.h, include/opal/buildopts.h.in,
+	  include/opal/connection.h, include/opal/endpoint.h,
+	  include/opal/guid.h, include/opal/ivr.h, include/opal/localep.h,
+	  include/opal/mediacmd.h, include/opal/mediafmt.h,
+	  include/opal/mediastrm.h, include/opal/opalmixer.h,
+	  include/opal/opalvxml.h, include/opal/patch.h,
+	  include/opal/pcss.h, include/opal/rtpconn.h,
+	  include/opal/transcoders.h, include/opal/transports.h,
+	  include/rtp/jitter.h, include/rtp/rtp.h, include/rtp/srtp.h,
+	  include/rtp/zrtpudp.h, include/sip/handlers.h, include/sip/sdp.h,
+	  include/sip/sip.h, include/sip/sipcon.h, include/sip/sipep.h,
+	  include/sip/sippdu.h, include/t120/h323t120.h,
+	  include/t120/t120proto.h, include/t120/x224.h,
+	  include/t38/h323t38.h, opal.pc.in, opal.spec.in,
+	  opal_defs.mak.in, opal_inc.mak, opal_inc.mak.in,
+	  samples/configure, samples/configure.ac,
+	  samples/opal_samples.mak.in, samples/opalgw/main.cxx,
+	  samples/opalgw/main.h, samples/opalgw/precompile.h,
+	  samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/simple/Makefile, samples/simple/main.cxx,
+	  samples/simple/main.h, src/codec/echocancel.cxx,
+	  src/codec/g711a1_plc.cxx, src/codec/g711codec.cxx,
+	  src/codec/g7231mf.cxx, src/codec/g726mf.cxx,
+	  src/codec/g728mf.cxx, src/codec/g729mf.cxx,
+	  src/codec/gsm0610mf.cxx, src/codec/gsmamrmf.cxx,
+	  src/codec/iLBCmf.cxx, src/codec/opalpluginmgr.cxx,
+	  src/codec/silencedetect.cxx, src/codec/vidcodec.cxx,
+	  src/h224/h224.cxx, src/h224/h281.cxx, src/h224/h323h224.cxx,
+	  src/h224/q922.cxx, src/h323/gkclient.cxx, src/h323/h225ras.cxx,
+	  src/h323/h235auth1.cxx, src/h323/h323.cxx, src/h323/h323ep.cxx,
+	  src/h323/h323pdu.cxx, src/h323/transaddr.cxx, src/h460/h4601.cxx,
+	  src/h460/h46018.cxx, src/h460/h46019.cxx, src/h460/h4609.cxx,
+	  src/h460/h460p.cxx, src/h460/h460pres.cxx, src/h460/h460tm.cxx,
+	  src/iax2/callprocessor.cxx, src/iax2/frame.cxx,
+	  src/iax2/iax2con.cxx, src/iax2/iax2ep.cxx,
+	  src/iax2/iax2jitter.cxx, src/iax2/iax2medstrm.cxx,
+	  src/iax2/iedata.cxx, src/iax2/ies.cxx, src/iax2/processor.cxx,
+	  src/iax2/receiver.cxx, src/iax2/regprocessor.cxx,
+	  src/iax2/remote.cxx, src/iax2/safestrings.cxx,
+	  src/iax2/sound.cxx, src/iax2/specialprocessor.cxx,
+	  src/iax2/transmit.cxx, src/java/java_msvc_wrapper.c,
+	  src/lids/ixjunix.cxx, src/lids/lid.cxx, src/lids/lidep.cxx,
+	  src/lids/lidpluginmgr.cxx, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/opal/endpoint.cxx, src/opal/ivr.cxx,
+	  src/opal/localep.cxx, src/opal/manager.cxx,
+	  src/opal/mediafmt.cxx, src/opal/mediastrm.cxx,
+	  src/opal/mediatype.cxx, src/opal/opal_c.cxx,
+	  src/opal/opalglobalstatics.cxx, src/opal/opalmixer.cxx,
+	  src/opal/opalvxml.cxx, src/opal/patch.cxx, src/opal/pcss.cxx,
+	  src/opal/rtpconn.cxx, src/opal/transcoders.cxx,
+	  src/opal/transports.cxx, src/rtp/jitter.cxx, src/rtp/rtp.cxx,
+	  src/rtp/srtp.cxx, src/rtp/zrtpudp.cxx, src/sip/handlers.cxx,
+	  src/sip/sdp.cxx, src/sip/sipcon.cxx, src/sip/sipep.cxx,
+	  src/sip/sippdu.cxx, src/t120/t120proto.cxx, src/t120/x224.cxx,
+	  src/t38/t38mf.cxx, src/t38/t38proto.cxx:
+	  Migrated new autoconf based rewrite of build system from branch
+	  to trunk.
+	  
+	  Fantastic work by Matthias Schneider!
+
+2008-09-16 09:29  rjongbloed
+
+	* [r21005] opal_inc.mak:
+	  Added back OPAL library dependency.
+
+2008-09-16 09:32  ms30002000
+
+	* [r21007] Makefile.in:
+	  Dont link libopal.so to the debug lib when installing.
+
+2008-09-16 10:13  rjongbloed
+
+	* [r21008] include/lids/lid.h, src/lids/lid.cxx,
+	  src/lids/lidep.cxx:
+	  Added "routing" tone for LID between making VoIP call and getting
+	  Alerting back, sometimes can take a while and dead air is a
+	  little disturbing.
+
+2008-09-16 10:18  ms30002000
+
+	* [r21009] Makefile.in:
+	  Also install static lib.
+
+2008-09-16 10:19  ms30002000
+
+	* [r21010] Makefile.in:
+	  Dont create ununsed directory.
+
+2008-09-16 11:35  ms30002000
+
+	* [r21011] opal.m4, plugins/aclocal.m4, plugins/configure,
+	  plugins/configure.ac:
+	  Also check for objdump executable. Use the found one...
+
+2008-09-16 11:38  ms30002000
+
+	* [r21012] opal.m4, plugins/configure, plugins/configure.ac:
+	  Also check for ldd executable before using it.
+
+2008-09-16 12:12  rjongbloed
+
+	* [r21013] src/lids/lidep.cxx:
+	  Fixed problem with starting second audio channel for LIDs.
+
+2008-09-16 12:36  rjongbloed
+
+	* [r21014] src/opal/mediastrm.cxx, src/opal/patch.cxx,
+	  src/sip/sippdu.cxx:
+	  Changes to trace logging to help debugging
+
+2008-09-16 13:40  ms30002000
+
+	* [r21015] opal.m4, plugins/configure, plugins/configure.ac:
+	  Fix libavcodec detection in mingw cross compile.
+
+2008-09-16 14:27  ms30002000
+
+	* [r21016] Makefile.in:
+	  Fix install and uninstall of static lib.
+
+2008-09-16 15:32  ms30002000
+
+	* [r21019] Makefile.in:
+	  Fix permissions of opal.pc.
+
+2008-09-16 16:14  ms30002000
+
+	* [r21020] configure, configure.ac:
+	  Change once occurance where LIBDIR must really be libdir.
+
+2008-09-16 18:03  ms30002000
+
+	* [r21021] configure, opal.m4:
+	  Fix detection of ptlib symbols when only debug lib is in
+	  PTLIBDIR.
+
+2008-09-16 18:36  ms30002000
+
+	* [r21022] configure, configure.ac, opal.m4:
+	  Add check to see if specified ptlib is actually there.
+
+2008-09-16 19:39  ms30002000
+
+	* [r21023] Makefile.in:
+	  Fix docs and graphdocs target.
+
+2008-09-16 19:57  ms30002000
+
+	* [r21024] Makefile.in:
+	  Really fix docs this time.
+
+2008-09-16 21:25  hfriederich
+
+	* [r21025] src/h323/gkclient.cxx:
+	  Do full discovery if the interface changes, otherwise rasAddress
+	  in RRQ will be invalid
+
+2008-09-16 23:10  rjongbloed
+
+	* [r21026] src/java/example.java, src/java/exampleJNI.java,
+	  src/java/java_swig_wrapper.c, src/java/opal.i:
+	  Improved Java build, thanks Elmar from Teletronics-India!
+
+2008-09-16 23:32  csoutheren
+
+	* [r21028] include/h323/peclient.h, include/iax2/remote.h,
+	  src/codec/opalpluginmgr.cxx, src/iax2/callprocessor.cxx,
+	  src/iax2/regprocessor.cxx, src/iax2/remote.cxx,
+	  src/iax2/specialprocessor.cxx, src/lids/lidpluginmgr.cxx:
+	  Fix warnings under gcc 4.3.0
+
+2008-09-16 23:58  rjongbloed
+
+	* [r21029] src/sip/sipcon.cxx:
+	  More debug trace logs
+
+2008-09-17 05:35  rjongbloed
+
+	* [r21030] samples/codectest/main.cxx, samples/codectest/main.h:
+	  Added flags to CodecTest to see how a plug in video codec handles
+	  marker bits that are missing, or always set. A common bug in many
+	  systems.
+
+2008-09-17 05:56  csoutheren
+
+	* [r21031] samples/openphone/Makefile, samples/openphone/main.cxx,
+	  samples/openphone/main.h:
+	  Use WX Unicode extensions to allow compilation on standard Linux
+	  distros
+
+2008-09-17 06:23  rjongbloed
+
+	* [r21032] samples/openphone/main.cxx, samples/openphone/main.h:
+	  Fixed Windows build
+
+2008-09-17 07:02  csoutheren
+
+	* [r21034] samples/openphone/main.cxx:
+	  Another iteration on cross-platform development
+
+2008-09-17 07:57  rjongbloed
+
+	* [r21035] include/opal/rtpconn.h, include/rtp/rtp.h,
+	  include/rtp/srtp.h, include/rtp/zrtpudp.h,
+	  src/opal/mediatype.cxx, src/rtp/rtp.cxx, src/rtp/srtp.cxx,
+	  src/rtp/zrtpudp.cxx, src/t38/t38mf.cxx:
+	  Fixed RTP session determining it is audio mode by method other
+	  than being session ID == 1.
+
+2008-09-17 07:59  rjongbloed
+
+	* [r21036] samples/openphone/main.cxx:
+	  Fixed Windows build
+
+2008-09-17 08:15  rjongbloed
+
+	* [r21042] version.h:
+	  Update version number
+
+2008-09-17 18:57  csoutheren
+
+	* [r21043] samples/openphone/main.cxx:
+	  Hopefully get Linux and Windows working
+
+2008-09-17 19:45  ms30002000
+
+	* [r21045] plugins/audio/G726/Makefile.in,
+	  plugins/audio/GSM0610/Makefile.in,
+	  plugins/audio/IMA_ADPCM/Makefile.in,
+	  plugins/audio/LPC_10/Makefile.in,
+	  plugins/audio/Speex/Makefile.in,
+	  plugins/audio/gsm-amr/Makefile.in,
+	  plugins/audio/iLBC/Makefile.in, plugins/configure,
+	  plugins/configure.ac, plugins/video/H.261-vic/Makefile.in,
+	  plugins/video/H.263-1998/Makefile.in,
+	  plugins/video/H.263-ffmpeg/Makefile.in,
+	  plugins/video/H.264/Makefile.in,
+	  plugins/video/H.264/gpl/Makefile.in,
+	  plugins/video/MPEG4-ffmpeg/Makefile.in,
+	  plugins/video/THEORA/Makefile.in:
+	  Allow the plugins to be compiled on Solaris.
+	  Thanks to Elaine Xiong from SUN.
+
+2008-09-17 19:56  hfriederich
+
+	* [r21047] src/h323/gkclient.cxx:
+	  sane handling if an interface filter is used and an interface is
+	  added that
+	  'hides' the currently bound interface
+

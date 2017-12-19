@@ -1,0 +1,138 @@
+
+TODO List ( Distributed VServer ):
+
+分布式 vserver 实现步骤：
+
+1，数据库保存用户资料，包括 uid，password 以及其他个人资料，按照 uid 作索引，以提高存取速度；
+目前实现以 MySQL 和 LDAP 为主，最终目标是 Oracle + OID；
+
+2，用户运行状态，分为两部分：
+（1）实时状态，主要以链表形式临时存放在 vserver 内存中；
+（2）定位信息，即对应用户登录所在的服务器的 id, ip:port，在登入或者登出时更新到数据库中，
+以供定位查询使用；
+
+状态包括：
+ cookie；
+ heartbeat 时间戳；
+ 用户的内部、外部 ip:port，防火墙类型；
+ 在线状态（忙、接电话、隐身等）；
+ 终端设备属性（CPU, memory, HD, network, etc.）；
+
+以及用户的某些关键或者常用资料，包括：好友列表，黑名单，BBQUserBasicInfo；
+ 
+与分布式运算相关的步骤有：
+
+1）登入、登出、保持在线：
+
+用户尝试登入到某台服务器，该服务器可能接受登入，也可能将其 Redirect <ip:port> 到
+另一服务器；因此，服务器需要知道一份其他服务器的列表，并且定期更新工作状态，（包括
+on/off, ip:port, current users, max users）。该列表可以保存在数据库中，服务器内存
+里的可以是定期获取的映像。
+
+用户登入到某台服务器时，服务器根据用户id，从数据库读入相关资料到内存，根据资料决定
+接受或者是拒绝；如果接受，则先根据数据库中的服务器记录，通知原服务器将过时记录清除，
+同时将在数据库中更新相关记录，更新内容包括：服务器 ip:port，客户端网络类型（公网/局域网），
+外部 ip:port，登入时间戳，等。
+
+登出时，服务器更新内容为：登出时间戳。
+
+客户端定期发送 heartbeat 到它登入的服务器，以保持在线状态和 UDP 端口的活跃状态，
+服务器接收到时，将在内存中相应记录中更新：客户端外部 ip:port。
+
+2）定位：
+
+客户端在呼叫或者发送消息之前，需要确定对方是否在线以及位置（公网 ip:port），如果对方
+具备公网 ip 的话，往往可以简化操作，直接向对方发出通信请求，从而减少通讯错误发生的几率。
+此向服务器查询的操作类似于 DNS 查询，不过它提供了更多的信息。
+
+客户端发送 Locate <uid> 消息，服务器首先在内存中根据 uid 查找用户资料，如果没有找到，
+则在数据库中查找到对方最终登入的服务器，并返回给客户端：SeeAlso <ip:port>；如果找到，
+则返回相关资料，包括：uid, alias, ..., network, firewall, WAN ip:port, etc.
+
+将定位操作和后续操作分开的原因是，这样可以带来更高的可靠度和灵活性。
+
+LDAP 的结构可以组织如下：
+
+    dc=netbbq, dc=com 
+        ou=users 
+            ou=china 
+                uid=10017676
+                uid=10043939
+            ou=usa 
+            ou=singapore 
+            ou=...
+        ou=servers 
+            cn=vserver1, ip=210.22.176.197, port=4321
+            cn=vserver90, ip=210.22.176.196, port=4321
+             
+因此，对于用户来说，唯一的标识是，dn: uid=10017676, ou=china, dc=netbbq, dc=com，或者是 0 86 10017676。
+用户信息的内容主要包括：
+
+                uid=10017676 {
+					alias: liming
+					userpassword: {crypt}3x1231v76T89N
+					server: 210.22.176.197:4321
+					telephonenumber: 862153084657 ext 805
+					...
+				}
+
+SQL 数据库的结构设计也基本相似，不过以 uid 为索引，以提高查询的速度。
+
+1. vfon server 和 客户端的数据接口如下：
+
+// ----------------------- vfon server 返回给客户端的 XML 数据格式 -----------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CONFIG>
+
+<CONFIG>
+
+<SYSTEM>
+
+<VAR NAME="MAIN_URL" VALUE="HTTP://XXX"/>
+<VAR NAME="ACCOUNT_URL" VALUE="HTTP://XXX"></VAR>
+<VAR NAME="BUY_URL" VALUE="HTTP://XXX"></VAR>
+<VAR NAME="MCC_URL" VALUE=""></VAR>
+<VAR NAME="CHANGEEMAIL_URL" VALUE="HTTP://XXX"></VAR>
+
+<VAR NAME="VFON_SERVER" VALUE="ip[:port];ip:port..."></VAR>
+<VAR NAME="GATEKEEPER" VALUE="ip:port;ip:port;..."></VAR>
+<VAR NAME="SIP_SERVER" VALUE="ip:port;ip:port;..."></VAR>
+<VAR NAME="SMS_SERVER" VALUE="ip:port;ip:port;..."></VAR>
+
+<EXT>
+<!--extension XML string "SYSTEM_EXT" copied here-->
+</EXT> 
+
+</SYSTEM>
+
+<PRIVATE ID="100230">
+<VOIP TYPE="H323" ENABLE="TRUE/FALSE" SERVER="ip[:port];ip:port;..." E164="" OUTBOUND="ip:port;ip:port;..." PROPERTY="" TTL="" PWD=""/>
+<VOIP TYPE="SIP" ENABLE="TRUE/FALSE" SERVER="ip[:port];ip:port;..." E164="" OUTBOUND="ip:port;ip:port;..." PROPERTY="string[1024]" TTL="nnn"></VOIP>
+
+<EXT>
+<!--extension XML string "xmlext" copied here-->
+</EXT> 
+</PRIVATE>
+
+</CONFIG>
+
+// ----------------------- vfon server 返回给客户端的 XML 数据格式 -----------------------------
+
+以上内容由 vfon server 完成拼接，从 DB 读取的是原始数据
+
+2. vfon server 和 DB 的数据接口如下：
+
+对于 SYSTEM 部分，由 server 在启动时用以下函数读入
+
+	virtual bool ServerConfig_LoadString( const char * lpszName, char * lpszBuf, int nBufLen ) { return false; }
+
+	先读入系统配置的可用的 “SystemVariables”，返回 "MAINURL;ACCOUNTURL;BUYURL;MCCURL;CHANGEEMAILURL;..."
+	然后再根据这些字段，逐一读取
+
+对于 private 部分，则是 FullUserRecord 的一部分，调用以下函数获得
+
+	virtual bool Read( BBQUserFullRecord *pBuf ) = 0;
+
+
+

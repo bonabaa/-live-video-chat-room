@@ -1,0 +1,13 @@
+SCC = This is a Source Code Control file
+
+[bbqbase.dsp]
+SCC_Aux_Path = "\\liming-asus\vss"
+SCC_Project_Name = "$/bbq/src/bbqbase", MAAAAAAA
+
+[bbqbase.vs2005.vcproj]
+SCC_Aux_Path = "\\liming-asus\vss"
+SCC_Project_Name = "$/bbq/src/bbqbase", MAAAAAAA
+
+[bbqbase.vcproj]
+SCC_Aux_Path = "\\liming-asus\vss"
+SCC_Project_Name = "$/bbq/src/bbqbase", MAAAAAAA

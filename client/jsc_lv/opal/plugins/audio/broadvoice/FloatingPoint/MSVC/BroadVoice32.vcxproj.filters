@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a7a95021-eb1e-4247-b4ea-f08fc1ae9b25}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{43dffece-605a-4676-a60f-8fa6a7bdf568}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="General Source Files">
+      <UniqueIdentifier>{798dff89-41b1-46c6-83be-231f28e200cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General Header Files">
+      <UniqueIdentifier>{ee79ab87-5ec3-40f9-987b-076c0af88f17}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\bv32\bitpack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\bv.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\coarptch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\decoder.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\encoder.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\excdec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\excquan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\fineptch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\g192.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\gaindec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\gainquan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\levelest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\lspdec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\lspquan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\plc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\ptquan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bv32\tables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\a2lsp.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\allpole.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\allzero.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\autocor.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\cmtables.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\levdur.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\lsp2a.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\ptdec.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\stblchck.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\stblzlsp.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bvcommon\utility.c">
+      <Filter>General Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\bv32\bitpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bv32\bv32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bv32\bv32cnst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bv32\bv32externs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bv32\bv32strct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bv32\g192.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bvcommon\bvcommon.h">
+      <Filter>General Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bvcommon\typedef.h">
+      <Filter>General Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bvcommon\utility.h">
+      <Filter>General Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+2009-04-24 16:33   
+
+	*  PVideoInputDevice_DirectShowEx::GetFrameDataNoDelay,函数中把原来的return false改为return true
+
+	*   OpalVideoMediaStream::ReadData,增加代码outputDevice->SetFrameSize( width, height);

@@ -1,0 +1,1220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{72b38b29-5225-4849-a9f3-2bf325c96deb}</UniqueIdentifier>
+      <Extensions>.cxx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Opal Sources">
+      <UniqueIdentifier>{b4dd5e7b-f27d-4eb6-8cbb-906340bfe015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\H323 Sources">
+      <UniqueIdentifier>{8af7280d-4032-4496-98e1-5071e9f193f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Codec Sources">
+      <UniqueIdentifier>{aa9e98fc-669a-4ff1-83d4-a5a75ebfb8a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Codec Sources\AEC">
+      <UniqueIdentifier>{c669db64-cd9e-4bd0-8641-c3a9eafe90f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LID Sources">
+      <UniqueIdentifier>{65409e4a-ea2e-479f-997d-e4ace46c4e72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RTP Sources">
+      <UniqueIdentifier>{b06bc66a-636f-4885-a682-4c09c1ec8580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\T.120 Sources">
+      <UniqueIdentifier>{44f6315e-8e28-49da-b849-c3816b70641b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\T.38 Sources">
+      <UniqueIdentifier>{c90f4da3-7cf1-43a0-a202-f1202ad06bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SIP Sources">
+      <UniqueIdentifier>{6a490352-4ba3-4024-82ad-bd272d958b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IAX2 Sources">
+      <UniqueIdentifier>{912f4585-973c-4f03-ba84-29899aa15fcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\H.224 Sources">
+      <UniqueIdentifier>{f59f0a64-7131-4664-9794-fa95b06233a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\H.460 Sources">
+      <UniqueIdentifier>{b96a951b-7a91-4a27-b512-cb2de263a872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IM Sources">
+      <UniqueIdentifier>{4f51989e-d02f-4c73-99e9-225b47ad40c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Opal ext">
+      <UniqueIdentifier>{fba9b423-d6f5-413b-9de0-2372b11044d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5e9a56e8-72bd-4045-85e4-1096c4484e3e}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Opal Headers">
+      <UniqueIdentifier>{4d9aa1af-18c2-4c1f-ae8c-c9a8b074e8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\H323 Headers">
+      <UniqueIdentifier>{fe6b5122-befc-4ec7-b7f1-21dc11801021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Codec Headers">
+      <UniqueIdentifier>{d699d266-f0dd-4675-a3db-bb9a7f8724b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LID Headers">
+      <UniqueIdentifier>{38b2cf70-8956-4fba-a56c-d6229c61aeff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RTP Headers">
+      <UniqueIdentifier>{569478dd-00b7-4856-8231-d2388bdee29a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\T120 Headers">
+      <UniqueIdentifier>{e9fe17a8-1670-45af-bde8-0bdcc557b87c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\T.38 Headers">
+      <UniqueIdentifier>{911f9109-e540-408f-803d-74b493904424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SIP Headers">
+      <UniqueIdentifier>{11c5307a-6802-47f9-8b0c-54329449a9f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IAX2 Headers">
+      <UniqueIdentifier>{84248b0c-757b-428c-b4a9-947f5d079607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\H.224 Headers">
+      <UniqueIdentifier>{8f20ec0c-6088-4dae-bc86-8c40b23d5ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\H.460 Headers">
+      <UniqueIdentifier>{7caba734-3cd4-46de-99b0-594f2431a8a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IM Headers">
+      <UniqueIdentifier>{33d3fa99-e2e8-4c2f-86c0-ba37431352d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ASN Files">
+      <UniqueIdentifier>{ce6cface-8dc7-482d-9779-ab7dcef4d0bd}</UniqueIdentifier>
+      <Extensions>.asn</Extensions>
+    </Filter>
+    <Filter Include="ASN Files\ASN Headers">
+      <UniqueIdentifier>{609eb361-aee9-4200-a692-4c7d012c1a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ASN Files\ASN Sources">
+      <UniqueIdentifier>{a7834d58-c5d5-40f5-a562-c12bef19141b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="codec_static">
+      <UniqueIdentifier>{eaa18b22-614a-40fd-87f7-d7e6339b83f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="codec_static\iLBC">
+      <UniqueIdentifier>{a2bb56ac-ec73-456d-a405-c547a3cdcec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="codec_static\broadvoice">
+      <UniqueIdentifier>{42b608ad-6529-4d99-901d-2e9336b07d6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="codec_static\iVoice">
+      <UniqueIdentifier>{eb159502-d8a8-4714-aec9-e2099a0ec8e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="codec_static\h264">
+      <UniqueIdentifier>{6c1f29c7-c3bd-479e-a762-5b9a98e85346}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="precompile.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\call.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\connection.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\endpoint.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\guid.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\ivr.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\localep.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\manager.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\mediafmt.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\mediastrm.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\mediatype.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\opal_c.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\opalmixer.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\opalvxml.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\patch.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\pcss.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\pres_ent.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\recording.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\rtpconn.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\rtpep.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\transports.cxx">
+      <Filter>Source Files\Opal Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\channels.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\gkclient.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\gkserver.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h225ras.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h235auth.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h235auth1.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323annexg.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323caps.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323ep.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323neg.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323pdu.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323rtp.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h323trans.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h450pdu.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\h501pdu.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\peclient.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\q931.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\svcctrl.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h323\transaddr.cxx">
+      <Filter>Source Files\H323 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\echocancel.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g711.c">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g711a1_plc.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g711codec.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g7221mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g7222mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g722mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g7231mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g726mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g728mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\g729mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\gsm0610mf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\gsmamrmf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\iLBCmf.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\opalpluginmgr.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\opalwavfile.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\ratectl.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\rfc2833.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\rfc4175.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\silencedetect.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opal\transcoders.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\vidcodec.cxx">
+      <Filter>Source Files\Codec Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\fftwrap.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\filterbank.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\kiss_fft.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\kiss_fftr.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\mdf.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\preprocess.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\codec\speex\libspeex\smallft.c">
+      <Filter>Source Files\Codec Sources\AEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lids\lid.cxx">
+      <Filter>Source Files\LID Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lids\lidep.cxx">
+      <Filter>Source Files\LID Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lids\lidpluginmgr.cxx">
+      <Filter>Source Files\LID Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtp\jitter.cxx">
+      <Filter>Source Files\RTP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtp\rtp.cxx">
+      <Filter>Source Files\RTP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtp\srtp.cxx">
+      <Filter>Source Files\RTP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtp\zrtpudp.cxx">
+      <Filter>Source Files\RTP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t120\h323t120.cxx">
+      <Filter>Source Files\T.120 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t120\t120proto.cxx">
+      <Filter>Source Files\T.120 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t120\x224.cxx">
+      <Filter>Source Files\T.120 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t38\h323t38.cxx">
+      <Filter>Source Files\T.38 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t38\sipt38.cxx">
+      <Filter>Source Files\T.38 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t38\t38mf.cxx">
+      <Filter>Source Files\T.38 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\t38\t38proto.cxx">
+      <Filter>Source Files\T.38 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sip\handlers.cxx">
+      <Filter>Source Files\SIP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sip\sdp.cxx">
+      <Filter>Source Files\SIP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sip\sipcon.cxx">
+      <Filter>Source Files\SIP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sip\sipep.cxx">
+      <Filter>Source Files\SIP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sip\sippdu.cxx">
+      <Filter>Source Files\SIP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sip\sippres.cxx">
+      <Filter>Source Files\SIP Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\callprocessor.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\frame.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\iax2con.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\iax2ep.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\iax2medstrm.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\iedata.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\ies.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\processor.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\receiver.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\regprocessor.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\remote.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\safestrings.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\sound.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\specialprocessor.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\iax2\transmit.cxx">
+      <Filter>Source Files\IAX2 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h224\h224.cxx">
+      <Filter>Source Files\H.224 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h224\h281.cxx">
+      <Filter>Source Files\H.224 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h224\h323h224.cxx">
+      <Filter>Source Files\H.224 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h224\q922.cxx">
+      <Filter>Source Files\H.224 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h4601.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h46018.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h46019.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h4609.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h460p.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h460pres.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\h460\h460tm.cxx">
+      <Filter>Source Files\H.460 Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\im\im_mf.cxx">
+      <Filter>Source Files\IM Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\im\msrp.cxx">
+      <Filter>Source Files\IM Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\im\rfc4103.cxx">
+      <Filter>Source Files\IM Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\im\sipim.cxx">
+      <Filter>Source Files\IM Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\im\t140.cxx">
+      <Filter>Source Files\IM Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\gcc.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h225_1.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h225_2.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h235.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h245_1.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h245_2.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h245_3.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h248.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4501.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h45010.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h45011.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4502.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4503.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4504.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4505.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4506.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4507.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4508.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h4509.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\h501.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\mcs.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\t38.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\asn\x880.cxx">
+      <Filter>ASN Files\ASN Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\VoiceAgeG729\g729codec.c">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\H.263-ffmpeg\h263ffmpeg.cxx">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\Speex\speexcodec.cxx">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\Theora\theora_frame.cxx">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\Theora\theora_plugin_static.cxx">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\common\trace.cxx">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="YYCodec.cpp">
+      <Filter>codec_static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\anaFilter.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\constants.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\createCB.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\doCPLC.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\enhancer.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\filter.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\FrameClassify.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\gainquant.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\getCBvec.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\helpfun.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\hpInput.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\hpOutput.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\iCBConstruct.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\iCBSearch.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\iLBC_decode.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\iLBC_encode.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\LPCdecode.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\LPCencode.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\lsf.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\packing.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\StateConstructW.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\StateSearchW.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\iLBC\iLBC\syntFilter.c">
+      <Filter>codec_static\iLBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\broadvoice\broadvoice.c">
+      <Filter>codec_static\broadvoice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\audio\ivoice\iVoice.c">
+      <Filter>codec_static\iVoice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\common\dyna.cxx">
+      <Filter>codec_static\h264</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\H.264\gpl\enc-ctx.cxx">
+      <Filter>codec_static\h264</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\H.264\h264-x264.cxx">
+      <Filter>codec_static\h264</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\video\H.264\shared\h264frame.cxx">
+      <Filter>codec_static\h264</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\opal\buildopts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\call.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\connection.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\endpoint.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\guid.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\ivr.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\localep.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\manager.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\mediacmd.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\mediafmt.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\mediastrm.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\mediatype.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\opalmixer.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\opalvxml.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\patch.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\pcss.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\recording.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\rtpconn.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\rtpep.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\transports.h">
+      <Filter>Header Files\Opal Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\channels.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\gkclient.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\gkserver.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h225ras.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h235auth.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323annexg.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323caps.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323con.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323ep.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323neg.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323pdu.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323rtp.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h323trans.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h450pdu.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\h501pdu.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\peclient.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\q931.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\svcctrl.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h323\transaddr.h">
+      <Filter>Header Files\H323 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\echocancel.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\g711a1_plc.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\g711codec.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\opalplugin.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\opalpluginmgr.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\opalwavfile.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\ratectl.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\rfc2833.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\rfc4175.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\silencedetect.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\opal\transcoders.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\codec\vidcodec.h">
+      <Filter>Header Files\Codec Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\lids\lid.h">
+      <Filter>Header Files\LID Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\lids\lidep.h">
+      <Filter>Header Files\LID Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\lids\lidplugin.h">
+      <Filter>Header Files\LID Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\lids\lidpluginmgr.h">
+      <Filter>Header Files\LID Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rtp\jitter.h">
+      <Filter>Header Files\RTP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rtp\rtp.h">
+      <Filter>Header Files\RTP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rtp\srtp.h">
+      <Filter>Header Files\RTP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rtp\zrtpudp.h">
+      <Filter>Header Files\RTP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\t120\h323t120.h">
+      <Filter>Header Files\T120 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\t120\t120proto.h">
+      <Filter>Header Files\T120 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\t120\x224.h">
+      <Filter>Header Files\T120 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\t38\h323t38.h">
+      <Filter>Header Files\T.38 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\t38\sipt38.h">
+      <Filter>Header Files\T.38 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\t38\t38proto.h">
+      <Filter>Header Files\T.38 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sip\handlers.h">
+      <Filter>Header Files\SIP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sip\sdp.h">
+      <Filter>Header Files\SIP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sip\sip.h">
+      <Filter>Header Files\SIP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sip\sipcon.h">
+      <Filter>Header Files\SIP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sip\sipep.h">
+      <Filter>Header Files\SIP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sip\sippdu.h">
+      <Filter>Header Files\SIP Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\callprocessor.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\causecode.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\frame.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\iax2.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\iax2con.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\iax2ep.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\iax2medstrm.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\iedata.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\ies.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\overview.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\processor.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\receiver.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\regprocessor.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\remote.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\safestrings.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\sound.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\specialprocessor.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\transmit.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\iax2\version.h">
+      <Filter>Header Files\IAX2 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h224\h224.h">
+      <Filter>Header Files\H.224 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h224\h224handler.h">
+      <Filter>Header Files\H.224 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h224\h281.h">
+      <Filter>Header Files\H.224 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h224\h281handler.h">
+      <Filter>Header Files\H.224 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h224\h323h224.h">
+      <Filter>Header Files\H.224 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h224\q922.h">
+      <Filter>Header Files\H.224 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h460.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h4601.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h46018.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h46019.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h4609.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h460p.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h460pres.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\h460\h460tm.h">
+      <Filter>Header Files\H.460 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\im\im.h">
+      <Filter>Header Files\IM Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\im\msrp.h">
+      <Filter>Header Files\IM Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\im\rfc4103.h">
+      <Filter>Header Files\IM Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\im\sipim.h">
+      <Filter>Header Files\IM Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\im\t140.h">
+      <Filter>Header Files\IM Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\gcc.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h225.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h235.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h245.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h248.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4501.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h45010.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h45011.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4502.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4503.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4504.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4505.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4506.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4507.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4508.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h4509.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\h501.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\ldap.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\mcs.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\t38.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\asn\x880.h">
+      <Filter>ASN Files\ASN Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\Theora\theora_frame.h">
+      <Filter>codec_static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\Theora\theora_plugin.h">
+      <Filter>codec_static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\common\trace.h">
+      <Filter>codec_static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\anaFilter.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\constants.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\createCB.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\doCPLC.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\enhancer.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\filter.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\FrameClassify.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\gainquant.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\getCBvec.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\helpfun.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\hpInput.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\hpOutput.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\iCBConstruct.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\iCBSearch.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\iLBC_decode.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\iLBC_define.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\iLBC_encode.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\LPCdecode.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\LPCencode.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\lsf.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\packing.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\StateConstructW.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\StateSearchW.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\audio\iLBC\iLBC\syntFilter.h">
+      <Filter>codec_static\iLBC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\common\dyna.h">
+      <Filter>codec_static\h264</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\H.264\gpl\enc-ctx.h">
+      <Filter>codec_static\h264</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\H.264\h264-x264.h">
+      <Filter>codec_static\h264</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\H.264\shared\h264frame.h">
+      <Filter>codec_static\h264</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\video\common\rtpframe.h">
+      <Filter>codec_static\h264</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\configure.ac" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\include\opal\buildopts.h.in">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\gcc.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h225.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h235.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h245.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h248.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4501.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h45010.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h45011.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4502.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4503.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4504.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4505.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4506.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4507.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4508.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h4509.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\h501.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\ldap.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\mcs.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\t38.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\asn\x880.asn">
+      <Filter>ASN Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

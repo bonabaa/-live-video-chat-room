@@ -1,0 +1,73 @@
+2008-09-17 22:48  rjongbloed
+
+	* [r21050] version.h:
+	  Update version number for beta v2.4.1
+
+2008-09-18 07:21  rjongbloed
+
+	* [r21058] ., include/ptclib/podbc.h, include/ptclib/psockbun.h,
+	  include/ptlib/unix/ptlib/contain.h:
+	  Update bug fixes from trunk.
+
+2008-09-18 22:59  rjongbloed
+
+	* [r21069] ., include/ptlib/thread.h:
+	  Applied patch:
+	  
+	  [ 2118002 ] Fix documentation for PThread::WaitForTermination()
+	  
+	  thanks Stefano Sabatini
+
+2008-09-18 23:13  rjongbloed
+
+	* [r21070] include/ptlib/msos/ptlib_2003.dtf,
+	  include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd_2003.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2003.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf:
+	  Update symbols
+
+2008-09-19 04:20  rjongbloed
+
+	* [r21073] ., src/ptlib/msos/vidinput_directx.cxx:
+	  Fixed crash in DirectShow camera grabber
+
+2008-09-21 06:22  rjongbloed
+
+	* [r21086] make/common.mak, make/unix.mak:
+	  Tidied the multiple targets (opt/debug/optclean etc etc) so each
+	  sets
+	  appropriate variables and calls the default targets for those
+	  items.
+	  Makes it clearer and removes some strange behaviour.
+
+2008-09-21 10:50  rjongbloed
+
+	* [r21094] make/common.mak:
+	  Added optstatic and debugstatic targets as synonyms for
+	  optnoshared and
+	  debugnoshared.
+
+2008-09-21 12:41  rjongbloed
+
+	* [r21100] ., include/ptlib/svcproc.h, src/ptlib/unix/config.cxx:
+	  Fixed flushing of unix configuration file if PConfig instances
+	  are short
+	  lived and background thread does not have time to write data.
+	  
+	  Also some general code tidying.
+
+2008-09-21 21:31  dsandras
+
+	* [r21108] src/ptlib/common/vconvert.cxx:
+	  Applied patch from Luc Saillard to fix crash when converting
+	  MJPEG.
+	  Thanks!
+

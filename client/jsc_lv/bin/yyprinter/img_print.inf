@@ -1,0 +1,69 @@
+[Version]
+Signature="$Windows NT$"
+Provider=Code-Industry
+LayoutFile=ntprint.inf
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+DriverVer=05/05/2011
+
+[Manufacturer]
+
+%Corp% = ImagePrinter,NTx86,NTamd64 
+
+ 
+[ImagePrinter]
+%Model 1% = BITMAP
+
+[ImagePrinter.NTx86]
+%Model 1% = BITMAP
+
+[ImagePrinter.NTamd64]
+%Model 1% = BITMAP
+
+[ImagePrinter.NTia64]
+%Model 1% = BITMAP
+
+
+[BITMAP]
+CopyFiles=@img_print.gpd
+CopyFiles=@img_print.ini
+CopyFiles=BMP
+DataFile=img_print.gpd
+DataSection=UNIDRV_DATA
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM,UNIDRV_DATA
+
+[BMP]
+yyprint.dll
+yyprintUI.dll
+
+[SourceDisksNames]
+100 = %DISK1%,,,
+
+[SourceDisksFiles.AMD64]
+yyprint.dll=100,amd64
+yyprintUI.dll=100,amd64
+
+
+[SourceDisksFiles.X86]
+yyprint.dll= 100,i386
+yyprintUI.dll= 100,i386
+ 
+
+[SourceDisksFiles]
+img_print.gpd=100
+img_print.ini=100
+
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+
+
+[Strings]
+Corp = "Code-Industry"
+Model 1 = "ImagePrinter YY 3.0.0.4"
+
+
+
+

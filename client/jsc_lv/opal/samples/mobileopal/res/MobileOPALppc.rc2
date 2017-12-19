@@ -1,0 +1,40 @@
+//
+// MobileOPALPPC.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+/////////////////////////////////////////////////////////////////////////////
+HI_RES_AWARE CEUX {1}    // turn off the emulation layer
+            // Remove this resource to enable pixel-
+            // doubling on platforms that support it
+/////////////////////////////////////////////////////////////////////////////
+
+IDR_MAINFRAME SHMENUBAR DISCARDABLE
+BEGIN
+	IDR_MAINFRAME, 	// Submenu
+	2,		// Number of buttons
+	
+	I_IMAGENONE,	// No image in menu
+	ID_CALL_ANSWER,
+	0,		// Initially disabled
+	TBSTYLE_AUTOSIZE | TBSTYLE_BUTTON,
+	IDS_CALL,
+	0,
+	NOMENU,
+	
+	I_IMAGENONE,	// No image in menu
+	IDS_OPTIONS,
+	TBSTATE_ENABLED,
+	TBSTYLE_AUTOSIZE | TBSTYLE_DROPDOWN,
+	IDS_OPTIONS,
+	0,
+	1,
+END
+

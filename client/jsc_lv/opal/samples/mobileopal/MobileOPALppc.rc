@@ -1,0 +1,312 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resourceppc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Australia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_AUS
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resourceppc.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)\r\n"
+    "LANGUAGE 9, 3\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\MobileOPALppc.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\MobileOPAL.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MOBILEOPAL_DIALOG DIALOG  0, 0, 156, 98
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "Mobile OPAL"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Call address:",IDC_STATIC_1,7,7,58,10
+    LTEXT           "Initialisaing . . .",IDC_STATUS,0,46,155,37
+    LTEXT           "Local Address:",IDC_STATIC,7,33,51,8
+    LTEXT           "0.0.0.0",IDC_LOCAL_ADDRESS,64,33,83,7
+    COMBOBOX        IDC_ADDRESS,7,17,138,72,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP,WS_EX_CLIENTEDGE
+END
+
+IDD_OPTIONS_GENERAL DIALOG  0, 0, 160, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General Options"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Username:",IDC_STATIC,7,7,70,8
+    EDITTEXT        IDC_USERNAME,7,17,146,12,ES_AUTOHSCROLL
+    LTEXT           "Display Name:",IDC_STATIC,7,35,84,8
+    EDITTEXT        IDC_DISPLAYNAME,7,45,146,12,ES_AUTOHSCROLL
+    LTEXT           "STUN Server:",IDC_STATIC,7,62,146,8
+    EDITTEXT        IDC_STUN_SERVER,7,72,146,12,ES_AUTOHSCROLL
+    LTEXT           "Network Interface:",IDC_STATIC,9,89,143,8
+    COMBOBOX        IDC_INTERFACE_ADDRESS,7,99,146,49,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_OPTIONS_H323 DIALOG  0, 0, 160, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "H.323 Options"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "No Gatekeeper",IDC_NO_GATEKEEPER,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,7,7,76,11
+    CONTROL         "Discover Gatekeeper",IDC_DISCOVER_GATEKEEPER,"Button",BS_AUTORADIOBUTTON,7,21,88,11
+    CONTROL         "Gatekeeper Zone",IDC_GATEKEEPER_ZONE,"Button",BS_AUTORADIOBUTTON,7,35,70,11
+    CONTROL         "Gatekeeper Host",IDC_GATEKEEPER_HOST,"Button",BS_AUTORADIOBUTTON,7,49,70,11
+    EDITTEXT        IDC_GK_ID,79,34,74,12,ES_AUTOHSCROLL | WS_DISABLED | WS_GROUP
+    RTEXT           "Gatekeeper Alias:",IDC_STATIC,7,67,69,8
+    EDITTEXT        IDC_USERNAME,79,65,74,12,ES_AUTOHSCROLL
+    RTEXT           "User Name:",IDC_STATIC,11,97,41,8
+    RTEXT           "Password:",IDC_STATIC,12,115,40,8
+    EDITTEXT        IDC_AUTH_USER,55,95,90,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASSWORD,55,113,90,12,ES_PASSWORD | ES_AUTOHSCROLL
+    GROUPBOX        "Authorisation",IDC_STATIC,7,83,146,48
+    EDITTEXT        IDC_GK_HOST,79,48,74,12,ES_AUTOHSCROLL | WS_DISABLED | WS_GROUP
+END
+
+IDD_OPTIONS_SIP DIALOG  0, 0, 160, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "SIP Options"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Domain or Address of Record:",IDC_STATIC,7,7,146,8
+    EDITTEXT        IDC_REGISTRAR_ID,7,16,146,12,ES_AUTOHSCROLL
+    LTEXT           "Registrar Host Name:",IDC_STATIC,7,34,146,8
+    EDITTEXT        IDC_HOST_NAME,7,43,146,12,ES_AUTOHSCROLL
+    RTEXT           "User Name:",IDC_STATIC,10,79,42,8
+    RTEXT           "Password:",IDC_STATIC,9,97,43,8
+    RTEXT           "Realm:",IDC_STATIC,10,115,44,8
+    EDITTEXT        IDC_AUTH_USER,55,77,90,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASSWORD,55,95,90,12,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_REALM,55,113,90,12,ES_AUTOHSCROLL
+    GROUPBOX        "Authorisation",IDC_STATIC,7,64,146,67
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MOBILEOPAL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+
+    IDD_OPTIONS_GENERAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 153
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 153
+    END
+
+    IDD_OPTIONS_H323, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 153
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 153
+    END
+
+    IDD_OPTIONS_SIP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 153
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 153
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Vox Lucida"
+            VALUE "FileDescription", "Mobile OPAL VoIP Phone"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "MobileOPAL.exe"
+            VALUE "LegalCopyright", "(c) 2008 Vox Lucida.  All rights reserved."
+            VALUE "OriginalFilename", "MobileOPAL.exe"
+            VALUE "ProductName", "MobileOPAL"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    MENUITEM "Call",                        ID_CALL_ANSWER
+    POPUP "Options"
+    BEGIN
+        MENUITEM "Speakerphone",                IDM_SPEAKERPHONE
+        MENUITEM SEPARATOR
+        MENUITEM "General",                     IDM_OPTIONS_GENERAL
+        MENUITEM "H.323",                       IDM_OPTIONS_H323
+        MENUITEM "SIP",                         IDM_OPTIONS_SIP
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        IDM_EXIT
+    END
+END
+
+IDR_DIALOGS MENU 
+BEGIN
+    MENUITEM "Accept",                      IDOK
+    MENUITEM "Cancel",                      IDCANCEL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_CALL                "Call"
+    IDS_ANSWER              "Answer"
+    IDS_READY               "Ready for calls."
+    IDS_SHUTTING_DOWN       "Shutting down . . ."
+    IDS_INCOMING_CALL       "Incoming call . . ."
+    IDS_OPTIONS             "Options"
+    IDS_ASK_EXIT            "Shut down OPAL?"
+    IDS_INIT_FAIL           "Could not initialise OPAL."
+    IDS_LISTEN_FAIL         "Could not start listeners."
+    IDS_CALL_START_FAIL     "Could not start a call."
+    IDS_CALLING             "Calling . . ."
+    IDS_RINGING             "Ringing . . ."
+    IDS_HANGUP              "Hang Up"
+    IDS_ESTABLISHED         "Call established."
+    IDS_CONFIGURATION_FAIL  "Configuration of OPAL failed."
+    IDS_REGISTRATION_FAIL   "Could not start registration."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ACCEPT              "Accept"
+    IDS_CANCEL              "Cancel"
+    IDS_REGISTERED          "Registered and ready for calls."
+    IDS_REGISTERING         "Registering . . ."
+    IDS_ANSWERING           "Answering . . ."
+    IDS_HANGINGUP           "Hanging up . . ."
+    IDS_BUSY                "Incoming call while busy!"
+    IDS_UNREGISTERED        "Unregistered."
+    IDS_MESSAGE_WAITING     "%s Message Waiting for %s"
+END
+
+#endif    // English (Australia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENA)
+LANGUAGE 9, 3
+#pragma code_page(1252)
+#include "res\MobileOPALppc.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

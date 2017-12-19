@@ -1,0 +1,309 @@
+2007-11-29 05:26  rjongbloed
+
+	* [r19001] version.h:
+	  Update version number for beta v3.1.2
+
+2007-11-29 09:17  rjongbloed
+
+	* [r19007] include/asn/gcc.h, include/asn/h225.h,
+	  include/asn/h235.h, include/asn/h235_srtp.h, include/asn/h245.h,
+	  include/asn/h248.h, include/asn/h4501.h, include/asn/h45010.h,
+	  include/asn/h45011.h, include/asn/h4502.h, include/asn/h4503.h,
+	  include/asn/h4504.h, include/asn/h4505.h, include/asn/h4506.h,
+	  include/asn/h4507.h, include/asn/h4508.h, include/asn/h4509.h,
+	  include/asn/h501.h, include/asn/mcs.h, include/asn/t38.h,
+	  include/asn/x880.h, include/codec/opalpluginmgr.h,
+	  include/codec/rfc2833.h, include/codec/rfc4175.h,
+	  include/codec/silencedetect.h, include/codec/vidcodec.h,
+	  include/h224/h224.h, include/h224/h224handler.h,
+	  include/h224/h281handler.h, include/h224/h323h224.h,
+	  include/h224/q922.h, include/h323/channels.h,
+	  include/h323/gkclient.h, include/h323/gkserver.h,
+	  include/h323/h225ras.h, include/h323/h235auth.h,
+	  include/h323/h323annexg.h, include/h323/h323caps.h,
+	  include/h323/h323con.h, include/h323/h323ep.h,
+	  include/h323/h323neg.h, include/h323/h323pdu.h,
+	  include/h323/h323rtp.h, include/h323/h323trans.h,
+	  include/h323/h450pdu.h, include/h323/h4601.h,
+	  include/h323/peclient.h, include/h323/q931.h,
+	  include/h323/svcctrl.h, include/h323/transaddr.h,
+	  include/iax2/callprocessor.h, include/iax2/frame.h,
+	  include/iax2/iax2con.h, include/iax2/iax2ep.h,
+	  include/iax2/iax2jitter.h, include/iax2/iax2medstrm.h,
+	  include/iax2/ies.h, include/iax2/processor.h,
+	  include/iax2/receiver.h, include/iax2/regprocessor.h,
+	  include/iax2/remote.h, include/iax2/safestrings.h,
+	  include/iax2/specialprocessor.h, include/iax2/transmit.h,
+	  include/lids/lid.h, include/lids/lidep.h,
+	  include/lids/lidpluginmgr.h, include/opal/audiorecord.h,
+	  include/opal/call.h, include/opal/connection.h,
+	  include/opal/endpoint.h, include/opal/ivr.h,
+	  include/opal/manager.h, include/opal/mediafmt.h,
+	  include/opal/mediastrm.h, include/opal/opalmixer.h,
+	  include/opal/opalvxml.h, include/opal/patch.h,
+	  include/opal/pcss.h, include/opal/transcoders.h,
+	  include/opal/transports.h, include/rtp/jitter.h,
+	  include/rtp/rtp.h, include/rtp/srtp.h, include/rtp/zrtp.h,
+	  include/sip/handlers.h, include/sip/sdp.h, include/sip/sipcon.h,
+	  include/sip/sipep.h, include/sip/sippdu.h,
+	  include/t120/h323t120.h, include/t120/t120proto.h,
+	  include/t120/x224.h, include/t38/h323t38.h,
+	  include/t38/t38proto.h, plugins/LID/IxJ/ixj_unix.cxx,
+	  plugins/LID/IxJ/ixj_win.cpp, plugins/LID/TigerJet/tj_win.cpp,
+	  plugins/LID/USB/usb_win.cpp, plugins/LID/VPB/vpb.cpp,
+	  plugins/audio/G7231ACM/g7231acm.cxx,
+	  plugins/audio/gsm-amr/amrcodec.c,
+	  plugins/video/H.261-vic/vic/encoder-h261.h,
+	  plugins/video/H.261-vic/vic/p64.h,
+	  plugins/video/H.263-ffmpeg/h263ffmpeg.cxx,
+	  samples/callgen/main.cxx, samples/callgen/main.h,
+	  samples/jester/main.cxx, samples/jester/main.h,
+	  samples/mfc/mfcEndPoint.cpp, samples/mfc/mfcEndPoint.h,
+	  samples/opalcodecinfo/main.cxx, samples/opalcodecinfo/main.h,
+	  samples/opalgw/gkserv.cxx, samples/opalgw/main.cxx,
+	  samples/opalgw/main.h, samples/openphone/main.cxx,
+	  samples/openphone/main.h, samples/simple/main.cxx,
+	  samples/simple/main.h, src/asn/gcc.cxx, src/asn/h225_1.cxx,
+	  src/asn/h225_2.cxx, src/asn/h235.cxx, src/asn/h235_srtp.cxx,
+	  src/asn/h235_t.cxx, src/asn/h245_1.cxx, src/asn/h245_2.cxx,
+	  src/asn/h245_3.cxx, src/asn/h248.cxx, src/asn/h4501.cxx,
+	  src/asn/h45010.cxx, src/asn/h45011.cxx, src/asn/h4502.cxx,
+	  src/asn/h4503.cxx, src/asn/h4504.cxx, src/asn/h4505.cxx,
+	  src/asn/h4506.cxx, src/asn/h4507.cxx, src/asn/h4508.cxx,
+	  src/asn/h4509.cxx, src/asn/h501.cxx, src/asn/mcs.cxx,
+	  src/asn/t38.cxx, src/asn/x880.cxx, src/codec/opalpluginmgr.cxx,
+	  src/codec/opalwavfile.cxx, src/codec/rfc2833.cxx,
+	  src/codec/rfc4175.cxx, src/codec/silencedetect.cxx,
+	  src/codec/vidcodec.cxx, src/h224/h224.cxx, src/h224/h281.cxx,
+	  src/h224/h323h224.cxx, src/h224/q922.cxx, src/h323/channels.cxx,
+	  src/h323/gkclient.cxx, src/h323/gkserver.cxx,
+	  src/h323/h225ras.cxx, src/h323/h235auth.cxx,
+	  src/h323/h235auth1.cxx, src/h323/h323.cxx,
+	  src/h323/h323annexg.cxx, src/h323/h323caps.cxx,
+	  src/h323/h323ep.cxx, src/h323/h323neg.cxx, src/h323/h323pdu.cxx,
+	  src/h323/h323rtp.cxx, src/h323/h323trans.cxx,
+	  src/h323/h450pdu.cxx, src/h323/h4601.cxx, src/h323/peclient.cxx,
+	  src/h323/q931.cxx, src/h323/svcctrl.cxx, src/h323/transaddr.cxx,
+	  src/iax2/callprocessor.cxx, src/iax2/frame.cxx,
+	  src/iax2/iax2con.cxx, src/iax2/iax2ep.cxx,
+	  src/iax2/iax2jitter.cxx, src/iax2/iax2medstrm.cxx,
+	  src/iax2/ies.cxx, src/iax2/processor.cxx, src/iax2/receiver.cxx,
+	  src/iax2/regprocessor.cxx, src/iax2/remote.cxx,
+	  src/iax2/safestrings.cxx, src/iax2/specialprocessor.cxx,
+	  src/iax2/transmit.cxx, src/lids/ixjunix.cxx, src/lids/lid.cxx,
+	  src/lids/lidep.cxx, src/lids/lidpluginmgr.cxx, src/opal/call.cxx,
+	  src/opal/connection.cxx, src/opal/endpoint.cxx, src/opal/ivr.cxx,
+	  src/opal/manager.cxx, src/opal/mediafmt.cxx,
+	  src/opal/mediastrm.cxx, src/opal/opalmixer.cxx,
+	  src/opal/opalvxml.cxx, src/opal/patch.cxx, src/opal/pcss.cxx,
+	  src/opal/transcoders.cxx, src/opal/transports.cxx,
+	  src/rtp/jitter.cxx, src/rtp/rtp.cxx, src/rtp/srtp.cxx,
+	  src/rtp/zrtp.cxx, src/sip/handlers.cxx, src/sip/sdp.cxx,
+	  src/sip/sipcon.cxx, src/sip/sipep.cxx, src/sip/sippdu.cxx,
+	  src/t120/h323t120.cxx, src/t120/t120proto.cxx, src/t120/x224.cxx,
+	  src/t38/h323t38.cxx, src/t38/t38proto.cxx, version.h:
+	  Merged BOOL branch changes to trunk.
+
+2007-11-29 10:24  rjongbloed
+
+	* [r19012] src/win32/opal_2005.dtf, src/win32/opal_2005_wm.dtf,
+	  src/win32/opal_2005_wm6.dtf, src/win32/opald_2005.dtf,
+	  src/win32/opald_2005_wm.dtf, src/win32/opald_2005_wm6.dtf,
+	  src/win32/opaln_2005.dtf, src/win32/opaln_2005_wm.dtf,
+	  src/win32/opaln_2005_wm6.dtf:
+	  Updated DLL symbols.
+
+2007-11-29 10:48  rjongbloed
+
+	* [r19013] src/win32/opal_2003.dtf, src/win32/opald_2003.dtf,
+	  src/win32/opaln_2003.dtf:
+	  Updated DLL symbols
+
+2007-11-29 11:50  rjongbloed
+
+	* [r19016] version.h:
+	  Update version number
+
+2007-11-29 13:14  rjongbloed
+
+	* [r19018] include/codec/opalplugin.h, include/opal/mediafmt.h:
+	  Fixed AndMerge/OrMerge, were around the wrong way.
+
+2007-11-29 13:15  rjongbloed
+
+	* [r19019] src/sip/sipcon.cxx:
+	  Fixed error from bool branch merge to trunk.
+
+2007-11-30 00:10  rjongbloed
+
+	* [r19022] src/opal/manager.cxx:
+	  Set frame rate in opened video device from negotiated media
+	  format options.
+
+2007-11-30 06:41  rjongbloed
+
+	* [r19025] samples/openphone/main.cxx:
+	  Fixed sound going off when change volume.
+
+2007-12-02 22:55  ms30002000
+
+	* [r19027] plugins/video/H.261-vic/h261vic.cxx:
+	  Added Temporal Spatial Trade Off to H.261
+
+2007-12-03 00:51  rjongbloed
+
+	* [r19028] plugins/LID/IxJ/ixj_unix.cxx,
+	  plugins/LID/IxJ/ixj_win.cpp, plugins/LID/TigerJet/tj_win.cpp,
+	  plugins/LID/USB/usb_win.cpp, plugins/audio/G7231ACM/g7231acm.cxx,
+	  plugins/video/H.263-ffmpeg/h263ffmpeg.cxx:
+	  Fixed errors from bool branch merge to trunk.
+
+2007-12-03 01:31  rjongbloed
+
+	* [r19030] plugins/video/H.261-vic/h261vic.cxx:
+	  Fixed windows compile after previous check in.
+	  
+	  Added a safety check for valid frame resolution arguments passed
+	  in via RTP data frame header width/height.
+
+2007-12-03 08:50  rjongbloed
+
+	* [r19031] src/codec/opalpluginmgr.cxx, src/h323/h323.cxx,
+	  src/opal/mediafmt.cxx, src/opal/transcoders.cxx:
+	  Fixed various issues with getting correct starting video
+	  resolution.
+	  * Using wrong media format instance when selecting H.323 logical
+	  channel should be local caps, not endpoint caps).
+	  * Incorrectly setting tx video resolution on receiving capability
+	  which should only set rx min/max resolution.
+	  * Should always copy tx resolution, it is not a MinMerge.
+	  * Do not need to merge master entry any more as correct values
+	  are propagated through H.323 capabilities now.
+
+2007-12-04 02:32  csoutheren
+
+	* [r19036] src/opal/manager.cxx:
+	  Fix NAT detection for remotes behind firewall
+
+2007-12-04 02:33  rjongbloed
+
+	* [r19037] src/sip/sipcon.cxx, src/sip/sipep.cxx:
+	  Applied patch 1839217 - SIP: changes to setting of local party
+	  and contact address, thanks Ben Ross.
+
+2007-12-04 02:39  rjongbloed
+
+	* [r19038] src/opal/mediafmt.cxx, src/opal/transcoders.cxx:
+	  Perform OpalMediaFormat "to normalised" operation on media
+	  options before and after options merge. Moved the calls into the
+	  Merge() function itself for efficiency.
+
+2007-12-04 03:20  csoutheren
+
+	* [r19041] src/h323/h323ep.cxx:
+	  Add support for H.323 SRV records
+
+2007-12-04 23:30  rjongbloed
+
+	* [r19045] ., plugins, plugins/LID/CAPI, plugins/LID/IxJ,
+	  plugins/LID/TigerJet, plugins/LID/USB, plugins/LID/VPB,
+	  plugins/audio/EasyCodec, plugins/audio/G7231ACM,
+	  plugins/audio/G726, plugins/audio/GSM0610,
+	  plugins/audio/IMA_ADPCM, plugins/audio/LPC_10,
+	  plugins/audio/Speex, plugins/audio/VoiceAgeG729,
+	  plugins/audio/gsm-amr, plugins/audio/iLBC,
+	  plugins/video/H.261-vic, plugins/video/H.263-1998,
+	  plugins/video/H.263-ffmpeg, plugins/video/H.264,
+	  plugins/video/MPEG4-ffmpeg, plugins/video/THEORA,
+	  samples/callgen, samples/codectest, samples/jester, samples/mfc,
+	  samples/opalcodecinfo, samples/opalgw, samples/openphone,
+	  samples/playrtp, samples/simple, src/win32:
+	  Fixed ignorance property
+
+2007-12-05 00:37  rjongbloed
+
+	* [r19046] samples/opalgw/main.cxx:
+	  Fixed being able to compile without video
+
+2007-12-05 05:40  rjongbloed
+
+	* [r19047] include/opal/connection.h, include/opal/endpoint.h,
+	  include/opal/manager.h, src/opal/manager.cxx:
+	  Another fix of the RTP NAT traversal trigger. Restored code from
+	  change 19036 which really is needed, then completely rewrote and
+	  documented the code.
+
+2007-12-05 05:42  rjongbloed
+
+	* [r19048] samples/openphone/main.cxx:
+	  Fixed problem with global video frame resolution tx & rx min/max
+	  being overwritten by individual codecs saved values.
+	  
+	  Added display of NAT external address when STUN succeeds.
+
+2007-12-05 07:09  rjongbloed
+
+	* [r19049] include/codec/opalpluginmgr.h,
+	  src/codec/opalpluginmgr.cxx:
+	  Prevent millions of logs if codec can only do I-Frames.
+
+2007-12-06 03:05  rjongbloed
+
+	* [r19053] src/h323/h323caps.cxx:
+	  Tidied trace logs of capability operations, indicate if found or
+	  not.
+
+2007-12-07 07:27  shorne
+
+	* [r19060] plugins/video/H.263-ffmpeg/h263ffmpeg.cxx:
+	  added adaptive packet delay / encoding Quality. Added directive
+	  for allowing variable frame sizes in h323plus. Code can be
+	  reverted once issue resolved in Opal.
+
+2007-12-07 08:00  shorne
+
+	* [r19061] plugins/video/H.263-ffmpeg/h263ffmpeg.cxx:
+	  fixed size constraint for 720p for opal
+
+2007-12-08 05:29  csoutheren
+
+	* [r19062] src/sip/sippdu.cxx:
+	  Change SIP digest authentication algorithm name from "md5" to
+	  "MD5" to satisfy
+	  pedantic registrars such such as vbuzzer.
+	  Fixes issue reported by Ari El in the Ekiga forums, and closes
+	  OpalVoip bug 1846649
+
+2007-12-08 06:24  csoutheren
+
+	* [r19067] include/codec/rfc4175.h, src/codec/rfc4175.cxx:
+	  Updates and bug fixes thanks to Damien Deom
+
+2007-12-09 11:31  rjongbloed
+
+	* [r19069] samples/openphone/main.cxx, samples/openphone/main.h,
+	  samples/openphone/openphone.wxg, samples/openphone/openphone.xrc:
+	  Added radio buttons to options dialog for selecting NAT handling
+	  method, better than using non-blank fields.
+
+2007-12-10 04:25  rjongbloed
+
+	* [r19070] plugins/video/H.261-vic/h261vic.cxx:
+	  Fix issue with SIP video by disallowing the H.261-CIF only and
+	  H.261-QCIF only media formats. These are primarily available for
+	  brain dead H.323 clients such as Netmeeting anyway.
+
+2007-12-10 08:10  rjongbloed
+
+	* [r19071] src/opal/transcoders.cxx:
+	  Changed order of OpalMediaFormat merging so the merge from
+	  destination to source is last. What this does is assure that the
+	  selected video resolution of the destination is always used on
+	  "transmitters", which can be important if the codec (e.g. H.261)
+	  only works with discrete sizes.
+
+2007-12-10 11:33  rjongbloed
+
+	* [r19075] version.h:
+	  Update version number for release v3.1.2
+

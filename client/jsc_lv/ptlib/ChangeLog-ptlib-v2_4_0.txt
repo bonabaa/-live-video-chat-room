@@ -1,0 +1,79 @@
+2008-09-15 08:27  rjongbloed
+
+	* [r20982] :
+	  Update version number for beta v2.3.2
+
+2008-09-15 12:01  rjongbloed
+
+	* [r20986] :
+	  Applied patches:
+	  
+	  [ 2101535 ] Fix doxygen for synchthrd.h and syncpoint.h
+	  [ 2101555 ] Fix doxygen for psync.h
+	  [ 2101586 ] Fix doxy for semaphor.h
+	  
+	  Thanks Stefano Sabatini
+
+2008-09-15 17:59  ms30002000
+
+	* [r20989] :
+	  Fix legacy ptlib library detection.
+
+2008-09-15 18:37  dsandras
+
+	* [r20991] :
+	  Only display debug output in debug mode.
+
+2008-09-15 18:39  dsandras
+
+	* [r20992] :
+	  No more ptlib_debug.pc.
+
+2008-09-16 04:08  rjongbloed
+
+	* [r21002] :
+	  Fixed timer start issues:
+	  a) not protected by mutex.
+	  b) accesses variable after it has been deleted.
+	  plus small code tidy up to make timer addQueue use std::queue.
+
+2008-09-16 06:07  hfriederich
+
+	* [r21003] :
+	  Re-enable possibility to no run the interface monitor thread
+
+2008-09-16 09:32  ms30002000
+
+	* [r21006] :
+	  Dont link libpt.so to the debug lib.
+
+2008-09-16 14:30  ms30002000
+
+	* [r21017] :
+	  Removed redundant uninstall file.
+
+2008-09-16 15:30  ms30002000
+
+	* [r21018] :
+	  Fix permissions of ptlib.pc.
+
+2008-09-16 23:31  csoutheren
+
+	* [r21027] :
+	  Fix warnings under gcc 4.3.0
+
+2008-09-17 07:01  csoutheren
+
+	* [r21033] :
+	  Comment out problem-causing UNICODE definitions
+
+2008-09-17 07:59  rjongbloed
+
+	* [r21037] .:
+	  Create Wolf branch
+
+2008-09-17 08:02  rjongbloed
+
+	* [r21039] version.h:
+	  Update version number
+

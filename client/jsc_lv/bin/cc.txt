@@ -1,0 +1,6 @@
+init winmain
+  InitInstance 1 
+  InitInstance 2 
+  InitInstance 3 
+  InitInstance 4 
+  InitInstance ended 

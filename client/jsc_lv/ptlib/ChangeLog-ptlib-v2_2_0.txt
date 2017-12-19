@@ -1,0 +1,315 @@
+2008-07-25 08:34  rjongbloed
+
+	* [r20617] src/ptlib/common/pluginmgr.cxx:
+	  Include current directory in Windows Mobile plug in directory
+	  search.
+
+2008-07-10 05:55  rjongbloed
+
+	* [r20559] src/ptlib/common/osutils.cxx,
+	  src/ptlib/common/pchannel.cxx:
+	  Fixed some Windows Mobile compatibility issues with logging, no
+	  "text" mode on files, not properly cleaned up and the big one
+	  where the standard C open() function can return a negative number
+	  as a valid file handle. Have to explicitly look for os_handle ==
+	  -1 rather than os_handle < 0 for error.
+
+2008-06-23 04:14  rjongbloed
+
+	* [r20482] src/ptlib/msos/PTLib_2005.vcproj:
+	  Fixed deployment directory for MobileOPAL
+
+2008-06-19 02:36  rjongbloed
+
+	* [r20468] include/ptlib/msos/ptlib/sound_directsound.h,
+	  src/ptlib/common/pluginmgr.cxx,
+	  src/ptlib/msos/sound_directsound.cxx,
+	  src/ptlib/msos/sound_win32.cxx:
+	  Fixed issue with WindowMultimedia and DirectSound device names
+	  not being identical, which as they are the same device they
+	  should be. Making them identical means they then get the driver
+	  type prefix making it easier (possible) for a user to distinguish
+	  between them.
+	  
+	  Also cleaned up the enumeration code in DirectSound.
+
+2008-06-18 06:10  rjongbloed
+
+	* [r20464] make/unix.mak:
+	  Attempt to make SUSE packager happy making the lib name same as
+	  package
+	  name (both ptlib).
+
+2008-06-18 06:09  rjongbloed
+
+	* [r20463] src/ptclib/sockagg.cxx:
+	  Fixed namespace for find function, possible reason for some
+	  compiler issues with it.
+
+2008-06-05 06:06  rjongbloed
+
+	* [r20404] include/ptlib/ipsock.h, src/ptclib/pstun.cxx,
+	  src/ptlib/common/sockets.cxx:
+	  Due to some particularly bizarre behaviour by Windows Mobile, the
+	  gethostbyname() call was changed to use getaddrinfo().
+	  Documentation says gethostbyname() is deprecated and should not
+	  be used. It appears so as get phantom NO_DATA errors from it when
+	  the DNS name well and truly exists.
+	  
+	  Also improved some error logging.
+
+2008-05-07 00:46  rjongbloed
+
+	* [r20203] version.h:
+	  Update version number for beta v2.2.2
+
+2008-05-07 00:45  rjongbloed
+
+	* [r20201] version.h:
+	  Update release version number to 2.2.1
+
+2008-05-02 05:29  rjongbloed
+
+	* [r20155] src/ptlib/msos/PTLib_2005.vcproj:
+	  Fixed WINCE deployment directory for release version
+
+2008-04-28 23:16  rjongbloed
+
+	* [r20139] include/ptlib/notifier.h:
+	  Updated documentation, thanks Stefano Sabatini
+
+2008-04-25 06:32  rjongbloed
+
+	* [r20119] include/ptlib/msos/ptlib_2003.dtf,
+	  include/ptlib/msos/ptlibd_2003.dtf,
+	  include/ptlib/msos/ptlibn_2003.dtf, ptlib_2003.sln:
+	  Updated DLL symbols
+
+2008-04-25 06:02  rjongbloed
+
+	* [r20117] include/ptlib/msos/ptlib_2005.dtf,
+	  include/ptlib/msos/ptlib_2005_wm.dtf,
+	  include/ptlib/msos/ptlib_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibd_2005.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm.dtf,
+	  include/ptlib/msos/ptlibd_2005_wm6.dtf,
+	  include/ptlib/msos/ptlibn_2005.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm.dtf,
+	  include/ptlib/msos/ptlibn_2005_wm6.dtf:
+	  Update symbols
+
+2008-04-24 11:31  rjongbloed
+
+	* [r20104] tools/MergeSym/MergeSym.cxx:
+	  Adjustment to MergeSym so predefined named symbols (i.e. ones
+	  without a NONAME keyword) in the DTF file are not removed from
+	  the DEF file.
+
+2008-04-17 03:25  rjongbloed
+
+	* [r20001] configure, configure.ac, include/ptlib/pprocess.h,
+	  src/ptlib/unix/assert.cxx, src/ptlib/unix/svcproc.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Fixed compile without tracing. Now a configure option
+	  --disable-tracing
+	  which will disable tracing for PTLib and all libraries and
+	  applications
+	  that use it.
+
+2008-04-14 23:53  rjongbloed
+
+	* [r19991] src/ptclib/url.cxx:
+	  Fixed setting of Query vars and parameters via string, should
+	  clear out the old dictionary.
+
+2008-04-14 13:05  rjongbloed
+
+	* [r19989] src/ptclib/url.cxx:
+	  A SIP URL can, in fact, have Query parameters.
+
+2008-04-14 11:36  rjongbloed
+
+	* [r19987] src/ptclib/pstun.cxx:
+	  Fixed crash if timeout contacting STUN server.
+
+2008-04-13 10:28  rjongbloed
+
+	* [r19983] src/ptclib/pstun.cxx:
+	  Fixed STUN operating on a single interface.
+
+2008-04-09 04:14  rjongbloed
+
+	* [r19945] include/ptclib/podbc.h,
+	  include/ptlib/unix/ptlib/contain.h, src/ptclib/podbc.cxx:
+	  Fixed problem with sql.h inclusion conflicting on "Windows" style
+	  types.
+	  Better fix than the last one which might cause problems on Linux
+	  64 bit
+	  builds. Primarily included so that we can compile with wxWindows
+	  on
+	  Linux.
+
+2008-04-09 01:09  rjongbloed
+
+	* [r19942] src/ptclib/pstun.cxx:
+	  Fixed STUN issue on Linux after changed to determine the
+	  interface that
+	  the STUN server can be contacted on. Linux has a problem with
+	  even
+	  TRYING to do so on the loopback interface. Can safely ignore the
+	  loopback interface as the STUN server is unlikely to be there!
+
+2008-04-08 06:23  rjongbloed
+
+	* [r19931] include/ptclib/pnat.h, include/ptclib/pstun.h,
+	  src/ptclib/pstun.cxx:
+	  Changed STUN so can only operate on a single interface. This
+	  avoids problems on multi-homed systems where attempts are made to
+	  use STUN on an interface that the STUN server is inaccessible.
+	  
+	  Added function determine of STUN can be used for a specific local
+	  interface.
+	  
+	  Cleaned up some API names.
+
+2008-04-06 05:55  rjongbloed
+
+	* [r19923] src/ptclib/psasl.cxx:
+	  Applied patch to fix SASL usage, thanks Clemens Fischer.
+
+2008-04-01 23:49  rjongbloed
+
+	* [r19882] src/ptlib/msos/ethsock.cxx:
+	  Fixed socket get interfaces function so does not return
+	  interfaces which do not have a bound IP address, this should not
+	  be regarded as an "up" interface.
+
+2008-03-31 01:07  rjongbloed
+
+	* [r19844] include/ptlib/thread.h, src/ptlib/common/osutils.cxx,
+	  src/ptlib/msos/svcproc.cxx:
+	  Some more changes to the thread name saga, use same format of
+	  thread ID display for threads not created by PTLib. Thanks Yuriy
+	  Cherniavsky.
+
+2008-03-28 06:01  rjongbloed
+
+	* [r19834] src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch for yet another mutex issue for the thread name,
+	  this one under Linux only, thanks Tamas
+
+2008-03-28 05:52  rjongbloed
+
+	* [r19832] src/ptlib/common/osutils.cxx:
+	  Closed another mutexing issue around the thread name member
+	  variable.
+
+2008-03-27 02:53  rjongbloed
+
+	* [r19820] src/ptclib/pwavfiledev.cxx:
+	  Fixed incorrect bytes read being returned when resampling a WAV
+	  file on the fly in the WAV file sound device.
+
+2008-03-25 13:27  csoutheren
+
+	* [r19808] include/ptlib/thread.h, src/ptlib/common/osutils.cxx:
+	  Add mutex to SetThreadName to prevent crashes on Linux
+
+2008-03-25 01:41  rjongbloed
+
+	* [r19797] src/ptlib/unix/svcproc.cxx:
+	  Fixed bug about relative ini filepath for svcproc instances under
+	  Unix. Thanks Tuyan Ozipek
+
+2008-03-25 01:29  rjongbloed
+
+	* [r19793] include/ptlib/thread.h, src/ptclib/httpsvc.cxx,
+	  src/ptclib/pxml.cxx, src/ptclib/snmpserv.cxx,
+	  src/ptclib/sockagg.cxx, src/ptclib/vsdl.cxx, src/ptclib/vxml.cxx,
+	  src/ptclib/xmpp.cxx, src/ptlib/common/osutils.cxx,
+	  src/ptlib/msos/vfw.cxx:
+	  Further improvement to the thread name string. Now displays the
+	  thread ID on all threads, not requiring the caller to put a %u or
+	  %x in it's name. This allows the base code to take into account
+	  the platform to display the thread ID in a format suitable for
+	  the range of values for the platform, e.g. a decimal number for
+	  Win32 and a hex number of Linux.
+
+2008-03-20 03:13  rjongbloed
+
+	* [r19791] include/ptclib/pwavfiledev.h,
+	  src/ptclib/pwavfiledev.cxx:
+	  Fixed WAV file sound device so correctly handles reads from WAV
+	  files that do not happen to be exactly divisible by the number of
+	  frames of audio needed by a codec, eg 20ms GSM. Returned
+	  insufficient data at the end of file and the codec usually barfs.
+	  This is especially a problem when doing auto-rewind on the WAV
+	  file.
+
+2008-03-19 01:21  rjongbloed
+
+	* [r19784] include/ptclib/pwavfiledev.h,
+	  src/ptclib/pwavfiledev.cxx:
+	  Added ability to resample a WAV file on the fly if require
+	  different sample rate than that which is provided by the file.
+
+2008-03-18 23:04  rjongbloed
+
+	* [r19778] src/ptlib/common/osutils.cxx:
+	  Fixed unix compatibility in last change
+
+2008-03-18 22:55  rjongbloed
+
+	* [r19774] src/ptclib/httpsvc.cxx, src/ptclib/vsdl.cxx,
+	  src/ptlib/common/osutils.cxx, src/ptlib/msos/vfw.cxx:
+	  Changed thread name to use thread ID (in decimal) as this is more
+	  useful for linking up the thread in the debugger with the trace
+	  log lines.
+
+2008-03-18 02:58  rjongbloed
+
+	* [r19764] src/ptlib/common/osutils.cxx:
+	  Made PTLib more forgiving if someone forgets to call
+	  PreInitialise() on the PProcess so there is no argv.
+
+2008-03-17 04:06  rjongbloed
+
+	* [r19759] src/ptlib/common/osutils.cxx:
+	  Fixed Unix compatibility
+
+2008-03-17 02:55  rjongbloed
+
+	* [r19756] include/ptlib/syncthrd.h, src/ptlib/common/osutils.cxx:
+	  Attempt to fix of crash on shut down of OpalMediaPatch described
+	  by Yuriy Cherniavsky.
+
+2008-03-16 22:43  rjongbloed
+
+	* [r19754] configure, configure.ac,
+	  include/ptlib/unix/ptlib/pmachdep.h, src/ptclib/pssl.cxx,
+	  src/ptlib/unix/maccoreaudio/circular_buffer.inl,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Back port from trunk.
+	  
+	  fix compilation on Mac OS X 10.5
+	  
+	  fix Darwin OSRELEASE parsing to ensure newer OS versions always
+	  get a higher OSRELEASE value
+
+2008-03-11 09:22  rjongbloed
+
+	* [r19722] src/ptlib/common/osutils.cxx:
+	  No need to stop a timer that is already stopped
+
+2008-03-10 06:22  rjongbloed
+
+	* [r19704] src/ptlib/common/pluginmgr.cxx:
+	  Moved plug ins directory for Windows Mobile from
+	  "\Windows\Plugins" to "\Program Files\PTLib Plug Ins", as this
+	  that directory is where all user installed stuff should go.
+
+2008-03-07 07:30  rjongbloed
+
+	* [r19696] version.h:
+	  Update version number for beta v2.2.1
+

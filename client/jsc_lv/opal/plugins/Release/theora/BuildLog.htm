@@ -1,0 +1,47 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: theora Video Codec, Configuration: Release|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "d:\chy\projects\my\eqcores2\opal\plugins\Release\theora\RSP00000B.rsp" with contents
+[
+/O2 /I "../../../include" /I "..\common\\" /I ".\libtheora-1.0\include" /I ".\libogg-1.1.4\include" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "PLUGIN_CODEC_DLL_EXPORTS" /D "_WINDLL" /D "_MBCS" /FD /EHsc /MT /GR /Fo"..\..\Release\theora/" /Fd"..\..\Release\theora\mpeg4_pwplugin.pdb" /W3 /c
+\chy\projects\my\eqcores2\opal\plugins\video\common\trace.cxx
+.\theora_plugin.cxx
+.\theora_frame.cxx
+]
+Creating command line "cl.exe @d:\chy\projects\my\eqcores2\opal\plugins\Release\theora\RSP00000B.rsp /nologo"
+Creating temporary file "d:\chy\projects\my\eqcores2\opal\plugins\Release\theora\RSP00000C.rsp" with contents
+[
+/OUT:"../../Release/mpeg4_pwplugin.dll" /INCREMENTAL:NO /NOLOGO /DLL /PDB:"..\..\Release\theora\mpeg4_pwplugin.pdb" /IMPLIB:"..\..\Release\theora/mpeg4_pwplugin.lib" /MACHINE:X86 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib .\Release_SSE\libogg.lib ".\libtheora-1.0\win32\Static_Release\theora_static.lib"
+\chy\projects\my\eqcores2\opal\plugins\release\theora\theora_frame.obj
+\chy\projects\my\eqcores2\opal\plugins\release\theora\theora_plugin.obj
+\chy\projects\my\eqcores2\opal\plugins\release\theora\trace.obj
+]
+Creating command line "link.exe @d:\chy\projects\my\eqcores2\opal\plugins\Release\theora\RSP00000C.rsp"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
+trace.cxx
+theora_plugin.cxx
+theora_frame.cxx
+theora_frame.cxx(115) : warning C4018: '<=' : signed/unsigned mismatch
+theora_frame.cxx(135) : warning C4018: '<=' : signed/unsigned mismatch
+theora_frame.cxx(162) : warning C4244: 'argument' : conversion from 'uint64_t' to 'unsigned long', possible loss of data
+Generating Code...
+Linking...
+   Creating library ..\..\Release\theora/mpeg4_pwplugin.lib and object ..\..\Release\theora/mpeg4_pwplugin.exp
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://d:\chy\projects\my\eqcores2\opal\plugins\Release\theora\BuildLog.htm"
+theora Video Codec - 0 error(s), 3 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

@@ -1,0 +1,2218 @@
+2007-12-10 11:33  rjongbloed
+
+	* [r19077] :
+	  Update version number for beta v3.1.3
+
+2007-12-11 08:27  ms30002000
+
+	* [r19078] :
+	  New OpalMediaFormat negotiation for THEORA
+
+2007-12-13 04:21  rjongbloed
+
+	* [r19081] :
+	  Major upgrade to add ability to open and close channels during a
+	  call.
+	  
+	  In the process a number of other things were required or fixed:
+	  
+	  Changing OpalMediaStream to be a PSafeObject to avoid numerous
+	  problems on closing streams and patches.
+	  
+	  Correct operation of the "auto start video rx/tx" feature. Did
+	  not always work properly before, and interfered with the opening
+	  of video channels when a call was in progress.
+	  
+	  Fixed issues with asymmetric codecs, resulting in changes to make
+	  OpalTranscoder::SelectFormats to be only called once. Under some
+	  circumstances the two previous calls could give different answers
+	  resulting in much confusion.
+	  
+	  Removed separate open source channel/open sink channel functions
+	  as they are now almost identical.
+	  
+	  Placed the starting of media patch threads in a better location,
+	  was not always called correctly and a number of starts were added
+	  to SIP to compensate.
+	  
+	  Change video input/output devices creation so are not "started"
+	  immediately, now get started when media stream started. Prevents
+	  momentary flash of video output window.
+	  
+	  Fixed SDP output of video channel as "inactive" if "auto start
+	  video rx/tx" are both off. This gives remote indication that the
+	  local end is capable of video so can do a subsequent re-INVITE to
+	  start it.
+	  
+	  Made sure empty RTP frames are passed to audio codec, indication
+	  error concealment or comfort noise generation is required.
+	  
+	  Many changes in the SIP/SDP processing so is better aligned with
+	  RFC3264, still some inherent assumptions that should be removed.
+	  Woe if any endpoint ever has video before audio in the SDP!
+	  
+	  
+	  API Change alert!
+	  Functions added:
+	  OpalConnection::OpenMediaStream
+	  OpalConnection::CloseMediaStream
+	  OpalConnection::GarbageCollection
+	  OpalCall::SelectMediaFormats
+	  
+	  Functions removed:
+	  OpalConnection::OpenSourceMediaStream
+	  OpalConnection::OpenSinkMediaStream
+	  OpalConnection::RemoveMediaStreams
+	  OpalCall::PatchMediaStreams
+	  OpalCall::RemoveMediaStreams
+	  
+	  Function signatures changed:
+	  OpalConnection::RemoveMediaStream
+	  OpalCall::OpenSourceMediaStreams
+
+2007-12-13 04:51  rjongbloed
+
+	* [r19082] :
+	  Fixed GNU warning
+
+2007-12-13 18:07  ms30002000
+
+	* [r19085] :
+	  Move packet delay from codec plugins to OpalMediaStream in order
+	  to limit all streams to their target bit rate
+
+2007-12-13 23:10  rjongbloed
+
+	* [r19086] :
+	  Fixed bug 1849711 - SIP call with bad URL causes broadcasts.
+	  
+	  Also fixed return of correct reason code for when the above
+	  happens.
+
+2007-12-14 02:52  rjongbloed
+
+	* [r19089] :
+	  Fixed bug 1848280 - ~OpalManager() blocks with continues new
+	  incoming calls
+	  
+	  Prevent new calls from being created when clearing all calls.
+	  
+	  Also added function to shut down everything so can be called
+	  outside of destructor to avoid some issues with virtual functions
+	  on the manager.
+
+2007-12-14 04:33  rjongbloed
+
+	* [r19090] :
+	  Disable H.263-QCIF and H.263-CIF media formats for SIP as they
+	  cause much confusion.
+
+2007-12-14 05:28  rjongbloed
+
+	* [r19092] :
+	  Fixed inability to select H.323 Only or SIP only codecs in the
+	  codec list of the options dialog.
+
+2007-12-16 17:58  ms30002000
+
+	* [r19095] :
+	  Change some theora variables to unsigned...
+
+2007-12-16 17:58  ms30002000
+
+	* [r19096] :
+	  Remove unneccessary include
+
+2007-12-16 17:59  ms30002000
+
+	* [r19097] :
+	  First shot at new OpalMediaOption handling in H.263+
+
+2007-12-16 23:22  rjongbloed
+
+	* [r19099] :
+	  Added function to reset a PSafePtr to NULL as going "var = NULL"
+	  is ambiguous to some versions of the GCC compiler.
+
+2007-12-17 00:50  rjongbloed
+
+	* [r19101] :
+	  Added function to reset a PSafePtr to NULL as going "var = NULL"
+	  is ambiguous to some versions of the GCC compiler.
+
+2007-12-17 21:35  ms30002000
+
+	* [r19102] :
+	  fixed to_normalised_options and to_customised_options in H.263+
+
+2007-12-18 00:31  rjongbloed
+
+	* [r19103] :
+	  Fixed owner address in SDP not being set correctly when not set
+	  in constructor.
+
+2007-12-18 01:38  rjongbloed
+
+	* [r19104] :
+	  Fixed problem with SIP when get an 407 unauthorised response, was
+	  setting all codecs to "inactive" in SDP of retried INVITE.
+
+2007-12-18 02:32  rjongbloed
+
+	* [r19105] :
+	  Fixed OpenPhone info window display of STUN server.
+
+2007-12-18 02:42  rjongbloed
+
+	* [r19106] :
+	  Fixed correct RFC3264 response if we do not support video, should
+	  return an SDP m= line with port == 0.
+
+2007-12-18 05:54  rjongbloed
+
+	* [r19107] :
+	  Fixed various things to do with compiling with/without SIP/H.323.
+
+2007-12-18 22:50  ms30002000
+
+	* [r19108] :
+	  FFMPEG's H263+ encoder seems to need 8 bytes in front the
+	  input data for its SSE implemention which seems to segfault
+	  without it
+
+2007-12-19 01:35  csoutheren
+
+	* [r19109] :
+	  Fix compilation without video
+
+2007-12-19 04:55  csoutheren
+
+	* [r19110] :
+	  Prevent unexpected frame size from remote causing buffer overrun
+
+2007-12-19 06:01  csoutheren
+
+	* [r19111] :
+	  Make sure get_output_data_size includes ALL the data
+
+2007-12-19 06:02  csoutheren
+
+	* [r19112] :
+	  When calculating the default size for a decoder, include the RTP
+	  and raw data headers
+
+2007-12-19 06:47  rjongbloed
+
+	* [r19113] :
+	  make sure an encoder media format has all local host options (in
+	  master media format list) merged into the remote receive
+	  capability when creating transcoder.
+
+2007-12-19 06:47  rjongbloed
+
+	* [r19114] :
+	  Added ability for a plug-in to indicate a custom merge method for
+	  a media option.
+
+2007-12-19 07:59  ms30002000
+
+	* [r19117] :
+	  Make use of new MPI defines in H.263+ and H.261
+
+2007-12-19 08:08  csoutheren
+
+	* [r19118] :
+	  Allow plugin creation to be terminated
+
+2007-12-19 08:33  rjongbloed
+
+	* [r19121] :
+	  Updated H.261 codec to new "disable" value for MPI after
+	  discovering that SDP allows values up to 32.
+	  
+	  Also some formatting changes.
+
+2007-12-19 08:34  rjongbloed
+
+	* [r19122] :
+	  Added to normalised and to custom functions so correctly set
+	  min/max/tx frame width/height and rate.
+
+2007-12-19 08:35  rjongbloed
+
+	* [r19123] :
+	  Make sure the end of NAT binding refresh trace log in SIP
+	  endpoint is executed always.
+
+2007-12-19 10:15  rjongbloed
+
+	* [r19124] :
+	  Added retransmission of 200 OK and other INVITE terminal
+	  responses when do not receive an ACK.
+	  
+	  Also added a log message if the call is aborted due to a lack of
+	  ACK.
+
+2007-12-19 19:48  ms30002000
+
+	* [r19125] :
+	  Adapted H.263+ to change of PLUGINCODEC_MPI_DISABLED
+
+2007-12-19 22:37  rjongbloed
+
+	* [r19126] :
+	  Fixed bizarre error by GNU compiler, no idea why it thought the
+	  previous code was illegal!
+
+2007-12-20 02:58  csoutheren
+
+	* [r19129] :
+	  Fix empty From field when local hostname is not resolvable
+
+2007-12-20 04:39  rjongbloed
+
+	* [r19131] :
+	  Make sure default receive window size in H.263 is the minimum of
+	  all available sizes for a particular stream. It looks better if a
+	  window is small and gets bigger than very large and gets smaller.
+	  This is diffcult to avoid as you don't know what the actual size
+	  is until the first RTP frame arrives.
+	  
+	  Added some more logging for media format and options merging.
+
+2007-12-20 04:52  rjongbloed
+
+	* [r19132] :
+	  Fixed correct return of decoder output buffer size in ffmpeg
+	  H.263 plug in.
+
+2007-12-20 05:24  rjongbloed
+
+	* [r19133] :
+	  Added much improved GUI for selecting local interfaces. Now
+	  allows the individual listening port(s) to be set for H.323
+	  and/or SIP.
+	  
+	  Changed the audio/video devices to combo boxes so user can enter
+	  a WAV or YUV file.
+
+2007-12-20 05:54  rjongbloed
+
+	* [r19134] :
+	  Fixed ffmpeg H.263 from quantising frame sizes one too big.
+
+2007-12-20 06:15  rjongbloed
+
+	* [r19135] :
+	  Fixed rounding error in ffmpeg H.263 frame rate value.
+
+2007-12-20 11:08  rjongbloed
+
+	* [r19138] :
+	  Utilise new Try() function on PMutex (including PCriticalSection)
+	  for a more efficient opal media patch.
+
+2007-12-20 12:52  rjongbloed
+
+	* [r19141] :
+	  Fixed a number of issues with the shut down of media patches. Now
+	  utilises PSafeObject functionality to guarantee things don't get
+	  deleted too early, including the owner connection.
+
+2007-12-20 12:56  rjongbloed
+
+	* [r19142] :
+	  Fixed portability issue
+
+2007-12-20 19:53  ms30002000
+
+	* [r19143] :
+	  cosmetics and addition of (empty) new functions
+
+2007-12-20 19:54  ms30002000
+
+	* [r19144] :
+	  use of more defines
+
+2007-12-21 03:58  rjongbloed
+
+	* [r19149] :
+	  Fixed output directory of debug database file in TigerJet LID.
+
+2007-12-21 04:25  rjongbloed
+
+	* [r19150] :
+	  Fixed OpenPhone race condition that sometimes left the Answer
+	  panel displayed instead of moving to the in call panel.
+
+2007-12-21 06:14  rjongbloed
+
+	* [r19151] :
+	  Fixed yet another race condition when closing down media streams.
+
+2007-12-21 07:33  rjongbloed
+
+	* [r19152] :
+	  Made TigerJet LID plug in work with Vista.
+
+2007-12-21 07:34  rjongbloed
+
+	* [r19153] :
+	  Extra debugging for LID plug ins.
+
+2007-12-21 07:35  rjongbloed
+
+	* [r19154] :
+	  Made sure OpenPhone speaker/handset button dimmed when no pots
+	  LID.
+
+2007-12-21 16:05  ms30002000
+
+	* [r19157] :
+	  allow H.323 protocol for H.264 if H.323 test capabilities are
+	  defined
+
+2007-12-26 12:27  ms30002000
+
+	* [r19158] :
+	  H.264: Added tables for resolutions and levels
+	  Dump profile, level and constraints when sending/receiving SPS
+	  NAL units
+
+2007-12-27 08:27  ms30002000
+
+	* [r19159] :
+	  RFC 4587 recommends to assume QCIF=1 as default if this option is
+	  missing
+
+2007-12-27 09:16  ms30002000
+
+	* [r19160] :
+	  to_normalised_values for H.264
+	  pass profile and level to encoder process
+
+2007-12-27 13:43  ms30002000
+
+	* [r19161] :
+	  ProfileLevel table for MPEG4, kill some warnings
+
+2007-12-28 09:34  ms30002000
+
+	* [r19162] :
+	  fix MPI and H.263+
+
+2007-12-29 11:33  ms30002000
+
+	* [r19163] :
+	  FrameTimeOption should be MaxMerge, not MinMerge
+
+2007-12-29 21:09  ms30002000
+
+	* [r19164] :
+	  TSTO for H.264
+	  adapted keyframe interval to frames instead of seconds
+	  correctly set encoder level
+
+2007-12-31 07:43  csoutheren
+
+	* [r19168] :
+	  Fix problem when blank Content-Length received
+	  Fix problem when no Via in incoming PDU
+	  backported from NewMediaType2 branch
+
+2008-01-01 03:40  csoutheren
+
+	* [r19171] :
+	  Fix problem with adjacent SIP signalling PDUs
+	  being concatenated under some conditions
+	  Backported from NewMediaType2 branch
+
+2008-01-01 10:01  ms30002000
+
+	* [r19173] :
+	  some fixes for H.261
+	  - TSTO works again
+	  - fixed default option handling
+
+2008-01-01 16:32  ms30002000
+
+	* [r19174] :
+	  correct OPAL I frame indication
+	  allow forcing of I frames
+	  correct valid_for_protocol
+	  request I frames on decoding errors
+
+2008-01-01 16:39  ms30002000
+
+	* [r19175] :
+	  THEORA:
+	  correct OPAL I frame indication
+	  request I frames on decoding errors - however current theora
+	  cannot handle it yet
+
+2008-01-01 16:41  ms30002000
+
+	* [r19176] :
+	  H.263+:
+	  correct OPAL I frame indication
+	  allow forcing of I frames
+	  request I frames on decoding errors
+	  TSTO for H.263+
+	  fix MPI default values
+
+2008-01-01 23:02  ms30002000
+
+	* [r19177] :
+	  TSTO for MPEG 4
+	  adjust bitrate, resolution and framerate to level
+	  keyframe period is now in frames instead of seconds
+	  activate debug flags depending on trace level
+	  some cleanup
+
+2008-01-02 12:16  rjongbloed
+
+	* [r19179] :
+	  Moved initialisation of options to FMTP default values on
+	  initialisation of the media format. This allows for correct
+	  values when no FMTP attribute is presentin the SDP at all.
+
+2008-01-02 17:43  ms30002000
+
+	* [r19180] :
+	  Fix default option handling
+
+2008-01-02 17:51  ms30002000
+
+	* [r19181] :
+	  fixed last commit...
+
+2008-01-02 20:11  rjongbloed
+
+	* [r19182] :
+	  Added auto copy to ptlib_plugins directory
+
+2008-01-03 00:55  csoutheren
+
+	* [r19183] :
+	  Added initialisation of readsPerPDU to all OpalUDPTransport
+	  constructors
+	  Thanks to Stephen C Steel
+
+2008-01-03 12:14  dsandras
+
+	* [r19187] :
+	  Added guard against empty route sets.
+
+2008-01-03 12:15  dsandras
+
+	* [r19188] :
+	  Recreate a transport if it has been closed.
+
+2008-01-03 18:39  ms30002000
+
+	* [r19191] :
+	  Fixed default profile Level
+
+2008-01-04 15:30  rjongbloed
+
+	* [r19194] :
+	  Added PTLIB_CONFIGURE_OPTIONS environment variable to speed usage
+	  of Windows configure when packages are in "standard" directories.
+
+2008-01-04 16:56  rjongbloed
+
+	* [r19195] :
+	  Minor logging changes
+
+2008-01-04 16:59  rjongbloed
+
+	* [r19197] :
+	  Added DevStudio 2008 project/solution files.
+
+2008-01-05 12:01  ms30002000
+
+	* [r19198] :
+	  Enable options for MPEG4 and change plugin version checks
+
+2008-01-05 12:03  ms30002000
+
+	* [r19199] :
+	  Update MPEG4 Profile Level table
+
+2008-01-05 12:06  rjongbloed
+
+	* [r19200] :
+	  Fixed issue with local tones being played on LID when getting
+	  remote progress tones via media streams.
+
+2008-01-05 12:08  rjongbloed
+
+	* [r19201] :
+	  Improved some trace logs.
+
+2008-01-05 12:12  rjongbloed
+
+	* [r19202] :
+	  Fixed deadlock in OpenPhone when USB handset used.
+
+2008-01-05 12:57  ms30002000
+
+	* [r19203] :
+	  Fix last commit and default profile-level
+
+2008-01-06 15:37  rjongbloed
+
+	* [r19206] :
+	  Use new function on bundled sokcet channel to get interface the
+	  last packet was received from to determine the two way
+	  "connection" between hosts. Was incorrectly using the last
+	  interface a packet was SENT on.
+
+2008-01-06 20:45  rjongbloed
+
+	* [r19207] :
+	  Fixed RTP statistics not being updated in video.
+
+2008-01-06 22:18  ms30002000
+
+	* [r19208] :
+	  remove SetDynamicQuality and SetQuality
+
+2008-01-07 17:24  rjongbloed
+
+	* [r19213] :
+	  Added --disable-plugins so do not HAVE to build plugins under
+	  linux.
+	  Added samples/simple to top level make.
+
+2008-01-07 17:32  rjongbloed
+
+	* [r19215] :
+	  Added keywords SVN property
+
+2008-01-08 14:26  rjongbloed
+
+	* [r19219] :
+	  Fixed build when IVR is disabled, and if Expat is disabled.
+
+2008-01-08 14:42  rjongbloed
+
+	* [r19220] :
+	  Fixed compile broken in previous check in.
+
+2008-01-08 16:13  rjongbloed
+
+	* [r19222] :
+	  Fixed compile when fax disabled.
+
+2008-01-08 19:58  dsandras
+
+	* [r19224] :
+	  Do not build samples by default (patch from Steve Frecinaux <code
+	  istique net>.
+	  Thanks!
+
+2008-01-08 19:59  dsandras
+
+	* [r19225] :
+	  Allow PTLIBDIR to contain PTLIB's prefix, whatever it can be.
+	  Patch from Steve Frecinaux <code istique net>. Thanks!
+
+2008-01-08 20:00  dsandras
+
+	* [r19226] :
+	  Added missing ifdefs thanks to Steve Frecinaux <code istique
+	  net>.
+	  Thanks!
+
+2008-01-08 20:01  dsandras
+
+	* [r19227] :
+	  Committed regenerated configure.
+
+2008-01-09 06:50  csoutheren
+
+	* [r19229] :
+	  Unbreak Windows build by using portable operators on P_VXML and
+	  P_EXPAT symbol logic
+
+2008-01-09 06:57  csoutheren
+
+	* [r19230] :
+	  Only do hash of entity body when needed
+
+2008-01-09 17:03  rjongbloed
+
+	* [r19232] :
+	  Added RemoveDevices() as synonym for RemoveAllLines() to make
+	  call more intuitive.
+
+2008-01-09 17:29  rjongbloed
+
+	* [r19233] :
+	  Enhanced connection routing algorithm so can take in to account
+	  the source of the call, e.g. which POTS line is being used.
+
+2008-01-09 17:53  rjongbloed
+
+	* [r19234] :
+	  Added test application for Line Interface Device plug ins.
+
+2008-01-09 17:59  rjongbloed
+
+	* [r19235] :
+	  Renamed USB LID directory to more specific type of USB LID
+
+2008-01-09 18:01  rjongbloed
+
+	* [r19236] :
+	  Renamed USB LID directory to more specific type of USB LID
+
+2008-01-09 18:06  rjongbloed
+
+	* [r19237] :
+	  Renamed USB LID directory to more specific type of USB LID
+
+2008-01-09 19:53  rjongbloed
+
+	* [r19239] :
+	  More implementation of CM based USB handset.
+
+2008-01-09 19:53  rjongbloed
+
+	* [r19240] :
+	  Mores tests
+
+2008-01-10 00:51  csoutheren
+
+	* [r19241] :
+	  Applied 1867877 - Fix Authorization with qop=auth
+	  Thanks to Stephen Steel
+
+2008-01-10 00:58  csoutheren
+
+	* [r19242] :
+	  Applied 1862324 - Access violation in IAX2 EP destructor after
+	  bind error
+	  Thanks to Joachim Bauch
+
+2008-01-10 06:40  rjongbloed
+
+	* [r19244] :
+	  Hide T38 classes if T.38 disabled.
+
+2008-01-10 11:18  rjongbloed
+
+	* [r19245] :
+	  Added ability to control which listener is used in the Contact
+	  field of SIP REGISTER.
+	  
+	  Moved the parameters for SIP REGISTER to a struct so we can add
+	  with impunity in the future without adding endless parameters to
+	  functions.
+	  
+	  Fixed issue with non-connection based transactions, eg REGISTER,
+	  and multi-homed systems. In particular when authentication is
+	  involved.
+	  
+	  Some general code clean ups in the SIP handlers.
+
+2008-01-10 15:49  rjongbloed
+
+	* [r19247] :
+	  Only return device name when plugged in.
+
+2008-01-10 18:40  rjongbloed
+
+	* [r19248] :
+	  Added new USB handset HID device LID using Windows Xp and later
+	  API for Raw Input.
+
+2008-01-11 10:33  rjongbloed
+
+	* [r19249] :
+	  Fixed WinXP HID parsing of raw input to include a mask as the
+	  strings change depending on the system the same physical device
+	  is plugged in to!
+
+2008-01-11 12:39  rjongbloed
+
+	* [r19250] :
+	  Added support for another USB handset (button codes to .ini
+	  file).
+
+2008-01-11 13:27  rjongbloed
+
+	* [r19251] :
+	  Added missing incoming sip destination address being passed to
+	  routing engine.
+
+2008-01-11 13:46  rjongbloed
+
+	* [r19252] :
+	  Further enhancements to routing engine.
+	  
+	  Continuing on to next route if ep cannot actually perform call at
+	  all, and can tell quickly.
+	  
+	  Added special "label:" protocol type which will restart searching
+	  through the routing table. Allows a very primitive grouping
+	  facility.
+
+2008-01-14 10:14  rjongbloed
+
+	* [r19255] :
+	  Applied patches to fix issues with RFC4175 video, thanks Damien
+	  DEOM
+
+2008-01-14 11:44  rjongbloed
+
+	* [r19256] :
+	  Fixed recently introduced call address routing problem.
+
+2008-01-15 07:29  rjongbloed
+
+	* [r19258] :
+	  Added HID training program to determine codes to be added to .ini
+	  for reading buttons.
+	  
+	  Added codes for Claritel i750.
+
+2008-01-15 08:06  rjongbloed
+
+	* [r19259] :
+	  Display correct description text for handset.
+
+2008-01-15 08:06  rjongbloed
+
+	* [r19260] :
+	  Added trace logging for manual LID tone generation.
+
+2008-01-15 08:07  rjongbloed
+
+	* [r19261] :
+	  Use same LID startup code and message for both application
+	  initialisation and config dialog.
+
+2008-01-15 08:09  rjongbloed
+
+	* [r19262] :
+	  Apply patch for unix builds of opalgw, thanks Tuyan Özipek
+
+2008-01-15 08:21  rjongbloed
+
+	* [r19263] :
+	  Further attempts top maintain backward compatibility with new
+	  call address routing algorithm.
+
+2008-01-15 10:09  rjongbloed
+
+	* [r19265] :
+	  Fixed bit rate control to use correct media option name and added
+	  frame rate media option.
+
+2008-01-16 22:19  rjongbloed
+
+	* [r19269] :
+	  Further attempts to get new functionality and maintain backward
+	  compatibility with call address routing algorithm.
+
+2008-01-17 00:43  rjongbloed
+
+	* [r19270] :
+	  Completed editing of routes dialog in OpenPhone.
+
+2008-01-17 04:08  rjongbloed
+
+	* [r19279] :
+	  Made sure SVN properties (eol/keywords) set consistently for all
+	  source files.
+
+2008-01-17 04:34  rjongbloed
+
+	* [r19280] :
+	  Fixed 32 bit integer wraparound problem with codec test bytes and
+	  bitrate display, thanks Tuyan Özipek
+
+2008-01-17 06:18  rjongbloed
+
+	* [r19281] :
+	  Fixed extra backslashes being added each time into the OpenPhone
+	  config dialog.
+
+2008-01-18 00:51  rjongbloed
+
+	* [r19284] :
+	  Added H.245 Annex E OpalMediaOptions to MPEG4 codec.
+
+2008-01-18 04:20  csoutheren
+
+	* [r19286] :
+	  Changed OpalMediaFormatInternal members to be virtual
+
+2008-01-18 08:04  rjongbloed
+
+	* [r19288] :
+	  Fixed silly message in OpenPhone when no LID handset available.
+
+2008-01-18 08:10  rjongbloed
+
+	* [r19289] :
+	  Fixed various issues with SIP handlers, especially with REGISTER.
+	  * Fixed operation if have multiple interfaces.
+	  * Fixed refresh timer.
+	  * Changed function from OnTransactionTimeout to
+	  OnTransactionFailed as that is what it is!
+	  * Factored a lot of handler code into base class as is identical.
+
+2008-01-21 00:08  csoutheren
+
+	* [r19292] :
+	  fix typo
+
+2008-01-21 04:02  csoutheren
+
+	* [r19293] :
+	  Ensure we always have a usable data size for transportable video
+	  formats
+
+2008-01-21 09:56  rjongbloed
+
+	* [r19294] :
+	  Changed the RTP max payload size to be function based, and a
+	  member of the OpalManager, rather than a simple constant. Default
+	  was changed from Ethernet size to RFC879 recomendation of 576
+	  bytes. However the new API means that it can be changed not only
+	  globally, but on a connection by connection basis.
+
+2008-01-21 11:24  rjongbloed
+
+	* [r19295] :
+	  Added a little more debugging
+
+2008-01-21 21:32  rjongbloed
+
+	* [r19298] :
+	  Fixed typo
+
+2008-01-22 05:30  csoutheren
+
+	* [r19300] :
+	  Set default video buffer sizes to useful values
+
+2008-01-22 05:50  rjongbloed
+
+	* [r19301] :
+	  Fixed more issues with multi-homed hosts and SIP forked
+	  REGISTER/SUBSCRIBE etc.
+	  
+	  Remember interface rather than local address on SIP transaction
+	  so when retries are done they happen out the correct interface.
+	  Local address may have been STUNned.
+	  
+	  Deprecate opalTransport::EndConnect, now is SetInterface which is
+	  better name for its semantics.
+	  
+	  Added more debugging for SIP handler state changes.
+
+2008-01-22 06:02  csoutheren
+
+	* [r19302] :
+	  Updated hooks for ZRTP
+
+2008-01-22 12:48  rjongbloed
+
+	* [r19308] :
+	  Added Visual Studio 2008 build files for OPAL plug ins.
+
+2008-01-22 12:49  rjongbloed
+
+	* [r19309] :
+	  Fixed various Visual Studio 2008 warnings and errors.
+
+2008-01-22 19:13  ms30002000
+
+	* [r19310] :
+	  Fix the win32 build of H.264
+
+2008-01-22 19:13  ms30002000
+
+	* [r19311] :
+	  Commented out undefined variables in MPEG4
+
+2008-01-23 03:26  ykiryanov
+
+	* [r19317] :
+	  Ported vic project to WinCE - both WM5 and WM6
+
+2008-01-23 03:28  rjongbloed
+
+	* [r19318] :
+	  Added and improved some trace logging
+
+2008-01-23 03:30  rjongbloed
+
+	* [r19319] :
+	  Bullet proofed transport GetLastReceivedInterface so returns
+	  locally bound socket if there was no last received interface.
+
+2008-01-23 03:38  csoutheren
+
+	* [r19320] :
+	  Allow compilation on environments without BYTE defined
+
+2008-01-23 05:32  rjongbloed
+
+	* [r19322] :
+	  Fixed OpenPhone default routing table.
+
+2008-01-23 06:51  rjongbloed
+
+	* [r19324] :
+	  Fixed yet another multi-homing issue, SIP INVITEs ACK not going
+	  out the right interface.
+
+2008-01-23 23:10  rjongbloed
+
+	* [r19336] :
+	  Fixed simpleOPAL default routing table.
+
+2008-01-24 02:22  rjongbloed
+
+	* [r19339] :
+	  Yet another change for multi-homed sip register.
+
+2008-01-24 04:56  rjongbloed
+
+	* [r19341] :
+	  Removed option of not have an OpalMediaPatch, must always have
+	  one even if it has no thread and is not used, e.g. external RTP.
+
+2008-01-24 16:49  ms30002000
+
+	* [r19343] :
+	  Align keyframe config to frames, not seconds.
+
+2008-01-27 10:56  ms30002000
+
+	* [r19344] :
+	  More code sharing with other codecs,
+	  add RFC_COMPLIANT_DEFAULTS option
+
+2008-01-27 10:57  ms30002000
+
+	* [r19345] :
+	  Add RFC_COMPLIANT_DEFAULTS option
+
+2008-01-27 10:57  ms30002000
+
+	* [r19346] :
+	  Add RFC_COMPLIANT_DEFAULTS option
+
+2008-01-27 11:04  ms30002000
+
+	* [r19347] :
+	  Allow MPEG4 compilation without FFMPEG sources
+	  Clean up codecs build options
+	  Fix profile/level table in MPEG4
+	  Fix Merging of Profile/Level in MPEG4
+	  Fix I-frame detection in MPEG4
+	  Add RFC_COMPLIANT_DEFAULTS to MPEG4
+
+2008-01-27 11:43  ms30002000
+
+	* [r19348] :
+	  Respect level's max VBV buffer size.
+
+2008-01-27 17:25  ms30002000
+
+	* [r19349] :
+	  fix fixed customMerge for MPEG4
+
+2008-01-27 19:29  ms30002000
+
+	* [r19350] :
+	  customMerge for H.264
+
+2008-01-28 19:58  dsandras
+
+	* [r19352] :
+	  Added missing define.
+
+2008-01-29 13:40  csoutheren
+
+	* [r19357] :
+	  Allow video input devices to pass hints regarding I-frame
+	  creation
+
+2008-01-29 14:09  csoutheren
+
+	* [r19358] :
+	  Trigger I-frame based on hints from video input device
+
+2008-01-29 20:22  ms30002000
+
+	* [r19359] :
+	  Parse the encoded frame only once and not once per packet sent
+	  for I-Frame detection
+
+2008-01-30 08:33  csoutheren
+
+	* [r19364] :
+	  Provide a way for OpalPluginControl to be disabled
+
+2008-01-30 08:33  csoutheren
+
+	* [r19365] :
+	  Fix RFC2833 timestamps
+
+2008-01-30 11:55  rjongbloed
+
+	* [r19369] :
+	  Added missing VS2008 solution file.
+
+2008-01-30 13:13  csoutheren
+
+	* [r19370] :
+	  Remove loopholes in RFC2833 transmission state engine
+
+2008-01-30 19:01  ms30002000
+
+	* [r19372] :
+	  fix stupid typo
+
+2008-01-31 03:18  csoutheren
+
+	* [r19373] :
+	  Add ability for transcoders to disable reception of CN frames
+
+2008-01-31 05:45  csoutheren
+
+	* [r19376] :
+	  backport of opalcodecinfo fix from branch
+
+2008-01-31 05:47  csoutheren
+
+	* [r19377] :
+	  Prevent RTP packets sent to preserve timing during periods of no
+	  received
+	  traffic from being mistaken for received packets with no payload.
+	  This
+	  prevents spurious log messages after receipt of a RFC2833 packet
+	  when no
+	  audio data is being received.
+
+2008-01-31 05:51  csoutheren
+
+	* [r19379] :
+	  Added incoming H.323 route
+
+2008-02-04 06:23  csoutheren
+
+	* [r19390] :
+	  Fixed for new OPAL routing
+
+2008-02-04 10:34  rjongbloed
+
+	* [r19392] :
+	  Added ability to specify directory with a wildcard, this means
+	  when things like Expat are installed into directories list
+	  "C:\Program Files\Expat 2.01" and subsequently "C:\Program
+	  Files\Expat 2.02" it can be found using the same configure.ac
+	  line "C:\Program Files\Expat 2.*".
+	  
+	  Changed #undef replacement so honours indenting.
+	  
+	  Some general code tidying.
+
+2008-02-04 11:46  csoutheren
+
+	* [r19394] :
+	  Extra locking
+
+2008-02-05 00:52  csoutheren
+
+	* [r19395] :
+	  A better locking fix for ACK retries and timeouts
+
+2008-02-05 03:51  rjongbloed
+
+	* [r19397] :
+	  Fixed deadlock if receive an ACK at exactly the same time as
+	  retry of INVITE response occurs.
+
+2008-02-05 05:59  rjongbloed
+
+	* [r19403] :
+	  Fixed bug:
+	  [ 1867966 ] some memory leaks
+	  Reported by Richard - richardquan
+
+2008-02-07 00:38  csoutheren
+
+	* [r19413] :
+	  Add extra mutex on OpalMediaFormat to avoid issues with access
+
+2008-02-07 00:38  csoutheren
+
+	* [r19414] :
+	  Add assert to check data buffer size
+
+2008-02-07 00:40  csoutheren
+
+	* [r19415] :
+	  Ensure media patch thread is terminated before deleting
+
+2008-02-07 00:41  csoutheren
+
+	* [r19416] :
+	  Add extra mutex on OpalMediaFormat to avoid issues with access
+
+2008-02-07 00:42  csoutheren
+
+	* [r19417] :
+	  Start media streams when starting call
+
+2008-02-08 02:48  csoutheren
+
+	* [r19419] :
+	  Use thread pooling for SIP call handling
+	  Send 100 Trying as soon as possible to start of call
+
+2008-02-08 03:55  csoutheren
+
+	* [r19421] :
+	  Add sockagg.h to sipep.h
+
+2008-02-08 04:22  csoutheren
+
+	* [r19422] :
+	  Restored ability to disable RTP aggregation that was accidentally
+	  removed...
+
+2008-02-08 04:31  csoutheren
+
+	* [r19423] :
+	  Fix RTP aggregation defines with SRTP
+
+2008-02-09 02:57  rjongbloed
+
+	* [r19425] :
+	  Fixed case on OpalMediaOption name for rx packets.
+
+2008-02-09 03:23  rjongbloed
+
+	* [r19427] :
+	  After the removal (due to multithreading issues) of the
+	  PCollection caching of integer based offsets (operator[]), many
+	  PList variables in the system have become hideously inefficient.
+	  Two things were done to fix this:
+	  
+	  Convert any PList variable that could be to a PArray variable.
+	  This was quite a few as a lot do not do insertions or deletions
+	  from within the list, only append at the start.
+	  
+	  Utilise new STL-like iterators added to the PList class.
+	  
+	  Note the old operator[] is still available and will work as
+	  before, it is just not desirable to use it.
+
+2008-02-09 05:32  ykiryanov
+
+	* [r19431] :
+	  added few casts in some comparison operators to
+	  (OpalMediaFormatList::const_iterator&) so my compiler won't choke
+	  on these
+
+2008-02-10 03:20  rjongbloed
+
+	* [r19437] :
+	  Reversed previous check in on const_iterator in OpalMediaFormat
+	  as now not needed.
+
+2008-02-10 04:16  rjongbloed
+
+	* [r19438] :
+	  Changed configure exclude directory variable to be VS2008
+	  specific, thanks Yuriy Cherniavsky.
+
+2008-02-10 21:10  rjongbloed
+
+	* [r19439] :
+	  Fixed mistake in previous check in for VS2008 ignore directory in
+	  configure.
+
+2008-02-10 23:50  rjongbloed
+
+	* [r19442] :
+	  To help with cross-compiling, non standard CPLUS macro in the
+	  make has
+	  been replaced with the standard CXX macro. This is set via
+	  configure.
+
+2008-02-11 01:15  rjongbloed
+
+	* [r19444] :
+	  Fixed cross-compilation issue (random code the compiler won't
+	  compile for no apparent reason)
+
+2008-02-11 01:29  rjongbloed
+
+	* [r19445] :
+	  Removed odd dependency in libspeex
+
+2008-02-11 01:51  rjongbloed
+
+	* [r19446] :
+	  Fixed keywords
+
+2008-02-11 02:54  rjongbloed
+
+	* [r19449] :
+	  Fixed issues with LD symbol in make when cross-compiling.
+	  REmoved copy of lib.mak code that was in OPAL's Makefile, went
+	  thru it
+	  line by line and could not figure out why it was copied! Anyway,
+	  it
+	  then means bug fixes in lib.mak do not apply to OPAL which is
+	  stupid.
+
+2008-02-11 04:30  rjongbloed
+
+	* [r19453] :
+	  Fixed OpenPhone Linux build
+
+2008-02-11 23:52  ykiryanov
+
+	* [r19455] :
+	  fixed definitions for stricmp and strdup
+
+2008-02-11 23:53  ykiryanov
+
+	* [r19456] :
+	  fixed definition for stricmp
+
+2008-02-12 00:37  rjongbloed
+
+	* [r19457] :
+	  Disambiguate variable name for VS2003 compatibility.
+
+2008-02-12 00:39  rjongbloed
+
+	* [r19459] :
+	  Fixed possible crash in H.323 capability matching on OLC
+	  dataType.
+
+2008-02-12 00:47  csoutheren
+
+	* [r19462] :
+	  Ensure media patch loop does not busy wait when all sinks are
+	  closed
+	  Increase timeout waiting for media patch to end
+	  Add extra logging for sink write fails
+
+2008-02-12 00:54  csoutheren
+
+	* [r19464] :
+	  Add silence keyword
+
+2008-02-12 00:57  csoutheren
+
+	* [r19466] :
+	  Add project dependency to correct parallel builds
+
+2008-02-12 00:58  csoutheren
+
+	* [r19467] :
+	  Add ability to disable display output
+
+2008-02-12 03:01  csoutheren
+
+	* [r19469] :
+	  Move G.711 codec initialisation to somewhere not
+	  dependent on plugins but still loaded on Linux
+
+2008-02-12 04:31  csoutheren
+
+	* [r19470] :
+	  Revert change pending fix for cross-compilation problem
+
+2008-02-12 05:35  rjongbloed
+
+	* [r19471] :
+	  Fixed cross compile issue with initialisation of G.711
+	  transcoder, again!
+
+2008-02-12 05:40  rjongbloed
+
+	* [r19472] :
+	  Added codecinfo to samples build, also fixed GNU warniing.
+
+2008-02-12 06:17  csoutheren
+
+	* [r19473] :
+	  Prevent synchronous call clear syncpoint from being used
+	  after deletion if call is cleared twice
+
+2008-02-13 00:52  csoutheren
+
+	* [r19481] :
+	  Fix assert on some media option compares
+
+2008-02-13 03:59  rjongbloed
+
+	* [r19484] :
+	  Fixed bug in Windows configure where everything gets enabled.
+
+2008-02-13 04:01  rjongbloed
+
+	* [r19486] :
+	  Forgot to increment version number
+
+2008-02-13 04:07  rjongbloed
+
+	* [r19488] :
+	  Fixed locating secondary file matching, e.g. installed binary
+	  only Expat detection
+
+2008-02-13 06:05  csoutheren
+
+	* [r19491] :
+	  Do adaptive switch between modes when decoding as some
+	  endpoints don't know what they are supposed to send
+
+2008-02-13 06:14  rjongbloed
+
+	* [r19492] :
+	  Added more robustness to non-compliant endpoints that don't tell
+	  you the iLBC mode they are going to be in.
+
+2008-02-13 11:36  rjongbloed
+
+	* [r19496] :
+	  Added Windows Mobile 5 & 6 SmartPhone platforms
+
+2008-02-13 11:37  csoutheren
+
+	* [r19497] :
+	  Implement sips and (probably) h323s for secure calling
+
+2008-02-13 11:38  csoutheren
+
+	* [r19498] :
+	  Add support for secure calling
+
+2008-02-13 14:12  dsandras
+
+	* [r19500] :
+	  Fixed compilation with P_SSL undefined.
+
+2008-02-13 21:57  rjongbloed
+
+	* [r19502] :
+	  Fixed MSVC warning.
+
+2008-02-14 00:23  csoutheren
+
+	* [r19503] :
+	  Changed for new secure sip changes
+
+2008-02-14 00:56  rjongbloed
+
+	* [r19505] :
+	  Tidied some code re double include of SSL.
+
+2008-02-14 05:07  csoutheren
+
+	* [r19506] :
+	  Patches for ZRTP media using SIP
+	  Thanks to Phil Zimmermann
+
+2008-02-14 05:28  csoutheren
+
+	* [r19507] :
+	  Fix some compile and link problems with ZRTP
+
+2008-02-14 05:57  csoutheren
+
+	* [r19508] :
+	  Ensure ZRTP disabled when not available
+
+2008-02-14 06:06  csoutheren
+
+	* [r19509] :
+	  Rename zrtp.cxx/h to zrtpudp.cxx/h filename in VS 2005 project
+	  file
+	  to avoid include file namespace conflicts
+
+2008-02-14 06:19  csoutheren
+
+	* [r19510] :
+	  Fix bigu #1889443 - H.264 / PWLIBPLUGINDIR
+	  Thanks to Clemens Fischer
+
+2008-02-14 07:31  rjongbloed
+
+	* [r19511] :
+	  Added caching of local media format list in OpalConnection.
+
+2008-02-14 07:35  rjongbloed
+
+	* [r19512] :
+	  Changed to only start output video device when first video frame
+	  arrives. What this does is not display the video window until we
+	  know the exact size that it will be preventing the window from
+	  appearing one size and then immediately resizing.
+
+2008-02-14 07:41  csoutheren
+
+	* [r19513] :
+	  Add missing files for ZRTP
+	  Add external declaration needed for ZRTP (more implementation to
+	  follow)
+
+2008-02-14 07:56  rjongbloed
+
+	* [r19515] :
+	  Fixed issue with being able to modify tx codecs based on
+	  OpalMediaFormat options set in the connection. Used to us the
+	  global OpalMediaFormat value only.
+	  
+	  Fixed MinRxFrameWidthOption/MinRxFrameHeightOption merge to be a
+	  max not min.
+	  
+	  Added some extra debugging when OpalmediFormat is clamping thing
+	  list video resolution.
+
+2008-02-14 10:44  rjongbloed
+
+	* [r19518] :
+	  Fixed VS2008 build after zrtp file rename.
+
+2008-02-14 12:50  csoutheren
+
+	* [r19521] :
+	  Ensure ZRTP libs are only needed when ZRTP is enabled
+
+2008-02-15 11:37  rjongbloed
+
+	* [r19522] :
+	  Added various H.323 functions, thanks David Erhart, Richard Quan
+	  & Avistar.
+	  Alias name patterns in gatekeeper registration
+	  Support for media packetization decoding in TCS.
+	  Support for media packetization in OLC when using external RTP
+	  Inclusion of media packetization in capability matching
+	  H.245 Flow Control Command
+	  H.245 Indications
+
+2008-02-15 12:01  rjongbloed
+
+	* [r19523] :
+	  Added window "bring to front" on incoming call.
+
+2008-02-16 05:19  rjongbloed
+
+	* [r19524] :
+	  Fixed problem with endpoints with two prefixes pointing to same
+	  instance causing a double deletion and thus crash.
+
+2008-02-16 07:45  rjongbloed
+
+	* [r19526] :
+	  Added PFactory::CreateInstanceAs which uses a template to
+	  automatically cast back down from teh base type to a derived type
+	  on creation, useful for singletons.
+
+2008-02-16 11:12  csoutheren
+
+	* [r19527] :
+	  Change SIP dtmf-relay to use same translation as RFC2833ToASCII
+	  Handle SIP pause with media address of 0.0.0.0
+	  Handle ACK with To without tag
+	  Fix bad test for ACK response to failed INVITE response
+
+2008-02-17 05:03  rjongbloed
+
+	* [r19528] :
+	  Fixed VS2003 after zrtp filename rename.
+
+2008-02-18 00:12  rjongbloed
+
+	* [r19530] :
+	  Fixed endpoint attach broken in previous check in, thanks Antonio
+	  Rivera.
+
+2008-02-18 00:45  rjongbloed
+
+	* [r19531] :
+	  First cut of "C" language interface to the OPAL system.
+
+2008-02-18 04:09  rjongbloed
+
+	* [r19534] :
+	  Fixed paths in Windows Mobile SmartPhone builds so uses correct
+	  DEF file.
+
+2008-02-18 04:53  rjongbloed
+
+	* [r19535] :
+	  Changed OpalHandle to be a pointer type.
+	  Fixed typo in OpalIntialise.
+
+2008-02-18 06:01  rjongbloed
+
+	* [r19536] :
+	  Include PProcess when starting C only interface.
+
+2008-02-18 06:37  rjongbloed
+
+	* [r19537] :
+	  More ignorance
+
+2008-02-18 06:53  rjongbloed
+
+	* [r19539] :
+	  Update symbols
+
+2008-02-18 09:23  dsandras
+
+	* [r19543] :
+	  Fixed compilation on GNU/Linux.
+
+2008-02-18 09:32  dsandras
+
+	* [r19544] :
+	  More GNU/Linux compilation fixes.
+
+2008-02-18 23:39  csoutheren
+
+	* [r19547] :
+	  Added missing ZRTP files
+	  Apologies to everyone who reported these files missing
+
+2008-02-19 05:26  csoutheren
+
+	* [r19549] :
+	  Fix parsing of called number using new routing code
+
+2008-02-19 07:43  csoutheren
+
+	* [r19551] :
+	  Make sure all endpoints use same code for adding connections to
+	  endpoints
+	  Fix a few minor documentation problems and add extra docs
+
+2008-02-20 00:34  rjongbloed
+
+	* [r19552] :
+	  Fixed possible endless loop if do not have a routing table and
+	  specify a protocol type (pc/sip/h323 etc) which does not exist.
+
+2008-02-20 01:44  rjongbloed
+
+	* [r19553] :
+	  Fixed translation of SIP INFO contant type application/dtmf-relay
+	  from
+	  RFC2833 integer codes to ASCII.
+	  
+	  Also fixed a number of warnings on GNU platform.
+
+2008-02-20 05:20  csoutheren
+
+	* [r19554] :
+	  Renovated some documentation and fixed a few typos
+	  Checked and fixed startup state engines for various endpoints and
+	  connections
+	  Added extra callbacks so OpalConnection knows when media patches
+	  start/stop
+
+2008-02-20 06:54  csoutheren
+
+	* [r19555] :
+	  Add transcoder flag to indicate acceptance of payloads with zero
+	  size
+
+2008-02-20 07:17  csoutheren
+
+	* [r19556] :
+	  Ensure releasing a call after sending 200 OK for INVITE always
+	  sends BYE
+
+2008-02-20 07:26  csoutheren
+
+	* [r19557] :
+	  Add extra delay to start of playback
+
+2008-02-20 08:29  csoutheren
+
+	* [r19560] :
+	  Fix comments and ensure H323 calls use correct OnEstablished
+	  functions
+
+2008-02-20 09:07  csoutheren
+
+	* [r19561] :
+	  correctly set phase
+
+2008-02-20 11:23  csoutheren
+
+	* [r19564] :
+	  Fix warning
+
+2008-02-20 11:24  csoutheren
+
+	* [r19565] :
+	  More phase change fixes
+
+2008-02-20 22:47  rjongbloed
+
+	* [r19566] :
+	  Fixed correct construction of PProcess.
+	  Fixed correct pointer types being used for OpalHandle.
+	  Fixed queueing of messages detaching data, so not deleted.
+	  Added trace logging to debugstream if _DEBUG
+
+2008-02-20 23:26  rjongbloed
+
+	* [r19567] :
+	  Added "C" API files to VS2003 build.
+
+2008-02-21 02:25  rjongbloed
+
+	* [r19570] :
+	  Fixed OpalManager::CallCleared not being called on call clearence
+	  if call was marked for deletion.
+
+2008-02-21 02:31  rjongbloed
+
+	* [r19571] :
+	  Fixed broken treatment of h323 URL when there is no '@' present.
+	  According to RFC3508 this means it is the username/alias field,
+	  but we want to be a bit smarter and if a username without a host
+	  is useless (e.g. we don't have a gatekeeper or proxy) then we
+	  treat the username as a hostname. This is a bit more intuitive
+	  than straight RFC3508.
+	  
+	  Also fixed the above when there are multiple default transports
+	  returned by GetDefaultTransport().
+	  
+	  Finally allowed SRV record lookup to be done on the address
+	  provided by the ENUM lookup.
+
+2008-02-21 03:32  rjongbloed
+
+	* [r19573] :
+	  Changed media patch writing so if a transcoder is not capable of
+	  handling a packet (e.g. an empty one from jitter buffer), it is
+	  passed straight to the sink media stream. This assures that the
+	  loop remains synchronous to the I/O on write and that there is no
+	  missing data when writing to things like WAV files.
+
+2008-02-21 04:22  rjongbloed
+
+	* [r19574] :
+	  Added jitter buffer packet overruns to RTP close statistics.
+	  Re-added lost count of packets too late.
+	  Some formatting clean ups.
+
+2008-02-21 04:25  rjongbloed
+
+	* [r19575] :
+	  Changed debug mode to edit & continue.
+
+2008-02-21 06:16  rjongbloed
+
+	* [r19576] :
+	  Fixed race condition between garbage collection thread and the
+	  shutdown of endpoints.
+
+2008-02-21 09:32  rjongbloed
+
+	* [r19578] :
+	  Added "C" API files to VS2008 build.
+
+2008-02-22 02:57  csoutheren
+
+	* [r19579] :
+	  Fix SIP over TCP
+
+2008-02-22 06:12  csoutheren
+
+	* [r19581] :
+	  Reorganise security mode handling preparatory to ZRTP
+	  refactorisation
+
+2008-02-22 07:04  rjongbloed
+
+	* [r19582] :
+	  First cut of Windows Mobile test application.
+
+2008-02-22 09:07  rjongbloed
+
+	* [r19584] :
+	  Removed redundent files from build
+
+2008-02-22 09:21  rjongbloed
+
+	* [r19585] :
+	  removed missing "epconntest" project from VS2005 build.
+
+2008-02-22 11:46  rjongbloed
+
+	* [r19586] :
+	  VarAdded various SIP functions, thanks David Erhart, Richard Quan
+	  & Avistar.
+	  Bandwidth support in SDPBandwidth
+	  Shutdown of media (hold) if get bandwidth zero kbps.
+	  Additional error codes.
+	  Support for "application" media stream type.
+	  Support for encoding name lists instead of just payload types.
+	  Correct location of c= line after m=.
+
+2008-02-23 08:20  ms30002000
+
+	* [r19587] :
+	  Fix compilation of H.263-ffmpeg on Linux.
+	  Thanks to Carlos Hernandez.
+
+2008-02-25 04:44  rjongbloed
+
+	* [r19588] :
+	  Fixed Sip registration in "C" API and Windows Mobile demo
+	  program.
+
+2008-02-25 05:27  csoutheren
+
+	* [r19589] :
+	  Revert most recent ZRTP changes. These will need to wait until
+	  the NewMediaType2 branch is integrated
+
+2008-02-25 05:28  csoutheren
+
+	* [r19590] :
+	  Add missing "break" to remove incorrect warning message
+
+2008-02-26 04:36  csoutheren
+
+	* [r19591] :
+	  Make sure BYE is sent when call closed
+
+2008-02-26 05:14  rjongbloed
+
+	* [r19592] :
+	  Fixed build without H.323
+
+2008-02-26 07:41  rjongbloed
+
+	* [r19593] :
+	  Fixed video parsing issue, bug introduced in revision 19586 where
+	  ignores multiple m= lines in SDP.
+
+2008-02-27 00:58  rjongbloed
+
+	* [r19595] :
+	  Fixed trace log messages and tidied formatting.
+
+2008-02-27 03:34  rjongbloed
+
+	* [r19597] :
+	  Added Hold/Retrieve functions to OpalCall, passes through to
+	  connection.
+
+2008-02-27 03:35  rjongbloed
+
+	* [r19598] :
+	  Implemented Hold button for InCall panel.
+	  
+	  Added letters to DTMF buttons.
+
+2008-02-27 03:36  rjongbloed
+
+	* [r19599] :
+	  Added support for old style SIP hold, using SDP transport address
+	  of 0.0.0.0
+
+2008-02-27 03:37  rjongbloed
+
+	* [r19600] :
+	  Changed trace log message to be more meaningful.
+
+2008-02-27 04:38  rjongbloed
+
+	* [r19601] :
+	  Some fixes for call SIP hold/retrieve.
+
+2008-02-27 06:46  rjongbloed
+
+	* [r19603] :
+	  Fixed another problem with SIP on hold.
+
+2008-02-27 06:51  rjongbloed
+
+	* [r19604] :
+	  Fixed NULL pointer reference in IVR, thanks Tuyan �zipek
+
+2008-02-27 07:01  csoutheren
+
+	* [r19605] :
+	  Fix bug where Contact and From fields in outgoing SIP/TCP
+	  messages had wrong transport
+
+2008-02-27 07:02  csoutheren
+
+	* [r19606] :
+	  Fix bug where video RTP sources were not treated as synchronous
+
+2008-02-27 07:02  csoutheren
+
+	* [r19607] :
+	  Fix problem where double DTMF digits were sent
+
+2008-02-27 07:03  csoutheren
+
+	* [r19608] :
+	  Allow single stepping of packet decoding
+
+2008-02-27 12:49  rjongbloed
+
+	* [r19609] :
+	  Fixed static linkability of plug in codecs.
+
+2008-02-27 13:27  csoutheren
+
+	* [r19610] :
+	  Use doH245inSETUP to control handling of incoming
+	  parallelH245Control
+
+2008-02-27 13:28  csoutheren
+
+	* [r19611] :
+	  Add extra logging to show reason for media patch thread stop
+
+2008-02-27 13:31  csoutheren
+
+	* [r19612] :
+	  Add logging to give reason for route failure
+
+2008-02-27 14:04  csoutheren
+
+	* [r19613] :
+	  Fix problem with incoming H.323 call not invoking OnAnswerCall
+
+2008-02-27 23:21  rjongbloed
+
+	* [r19614] :
+	  Fixed character set for release version of HID LID training
+	  program.
+
+2008-02-28 01:14  rjongbloed
+
+	* [r19615] :
+	  Fixed issue with asymmetric codecs in H.323
+
+2008-02-28 03:16  rjongbloed
+
+	* [r19617] :
+	  Added Hold, retrieve and Transfer commands.
+	  Added more information in ringing and established indications.
+
+2008-02-28 06:13  csoutheren
+
+	* [r19619] :
+	  Remove debug code left in accidentally
+
+2008-02-28 07:20  rjongbloed
+
+	* [r19620] :
+	  Changed to ignore random changes of SSRC in RTP packets by
+	  default. This allows for numerous brain dead gateways etc that
+	  seem to not do "the right thing". If some application has a need
+	  to know about SSRC values then it can turn it back on.
+
+2008-02-28 08:09  rjongbloed
+
+	* [r19621] :
+	  Fixed assert on signalling thread not terminating on ending H.323
+	  call.
+
+2008-02-28 08:11  rjongbloed
+
+	* [r19622] :
+	  Stopped waiting for an End Session when H.245 channel has been
+	  closed, just a waste of time as it atent comin'!
+	  Also only mark connection as released when everything is done.
+
+2008-02-28 12:04  csoutheren
+
+	* [r19623] :
+	  Fix crash on H.323 call end when seperate H.245 channel used
+
+2008-02-29 00:56  rjongbloed
+
+	* [r19624] :
+	  Improved determination of when H.245 is available to send an OLC
+	  on, slight change to TCS "sent" semantics.
+	  
+	  Cleaned up "copy & paste" code in SetProgressed that would
+	  prevent it from being called more than once, which is perfectly
+	  legal.
+	  
+	  Prevented media streams (logical channels) from being opened if
+	  no fast connect and H.245 is not yet available.
+	  
+	  Added more trace logs.
+
+2008-02-29 01:00  rjongbloed
+
+	* [r19625] :
+	  Fixed crash if not compiled with SSL, thanks Antonio Rivera
+
+2008-02-29 03:49  rjongbloed
+
+	* [r19626] :
+	  Fixed H.323 handling getting an MSD before we send one. Would
+	  wait for an ack on a packet we never sent. Just send an ack and
+	  stop as it is all done.
+
+2008-02-29 03:56  csoutheren
+
+	* [r19627] :
+	  Move OnMediaCommand to OpalConnection to allow sending media
+	  commands
+	  Fix parsing of SIP INFO picture_fast_update
+	  Add transmission of SIP INFO picture_fast_update
+
+2008-02-29 05:10  csoutheren
+
+	* [r19628] :
+	  More cleanup of SIP VFU code
+
+2008-02-29 05:10  csoutheren
+
+	* [r19629] :
+	  Fix typos and formatting
+
+2008-02-29 06:00  csoutheren
+
+	* [r19630] :
+	  Fix sending of VFU messages
+	  Add VFU send command to OpenPhone
+
+2008-02-29 06:02  csoutheren
+
+	* [r19631] :
+	  Add VFU send command to OpenPhone
+
+2008-02-29 06:03  csoutheren
+
+	* [r19632] :
+	  Improve robustness of RFC2833 state engines
+
+2008-02-29 06:13  csoutheren
+
+	* [r19633] :
+	  Remove debugging
+
+2008-02-29 13:20  csoutheren
+
+	* [r19644] :
+	  Set host system URL managers to call OpenPhone for appropriate
+	  URLs
+
+2008-03-02 20:57  ms30002000
+
+	* [r19645] :
+	  Set the flags to 0 before setting the return values in the codec
+	  plugins' encode and decode functions.
+
+2008-03-03 01:49  rjongbloed
+
+	* [r19646] :
+	  Fixed correct generation of I-frame flags in H.263 encoder and
+	  decoder.
+
+2008-03-03 01:54  rjongbloed
+
+	* [r19647] :
+	  Added some statistics gathering.
+
+2008-03-03 02:23  rjongbloed
+
+	* [r19651] :
+	  Added PLUGIN_CODEC_IMPLEMENT_ALL macro for static linked plug in
+	  codecs.
+
+2008-03-03 02:29  rjongbloed
+
+	* [r19652] :
+	  Small code tidy up in OpenPhone
+
+2008-03-03 02:51  rjongbloed
+
+	* [r19653] :
+	  Fixed assert when exiting application and have a SIP registration
+	  active.
+
+2008-03-03 04:08  rjongbloed
+
+	* [r19654] :
+	  Fixed typo in comment
+
+2008-03-04 00:47  rjongbloed
+
+	* [r19657] :
+	  Fixed G.726 codec by Added stream packing/unpacking of 5 bit, 3
+	  bit and 2 bit codecs e.g. 40k, 24k and 16k G.276.
+	  
+	  Fixed incorrect "tx frames per packet" handling, would have
+	  ignored any setting put in by users. Note this would would also
+	  have affected G.711.
+
+2008-03-04 00:48  rjongbloed
+
+	* [r19658] :
+	  Added ability to set frames per packet in codec tester.
+	  Fixed setting of recorder buffers.
+	  
+
+2008-03-04 03:11  rjongbloed
+
+	* [r19659] :
+	  Fixed propagation of "too late" packets from jitter buffer to
+	  statistics function.
+
+2008-03-04 03:13  rjongbloed
+
+	* [r19660] :
+	  Fixed display of statistics on fast connect.
+
+2008-03-04 03:46  csoutheren
+
+	* [r19661] :
+	  Fix sending RFC2833
+
+2008-03-04 04:49  rjongbloed
+
+	* [r19662] :
+	  Removed now unused parameter in RTP jitter buffer read function.
+	  Some code tidy ups.
+
+2008-03-04 04:54  rjongbloed
+
+	* [r19663] :
+	  Prevent streamed codecs such as G.711 from having a packet size
+	  smaller than 20 milliseconds. The inefficiency of very small
+	  packets at a high frequency through the sound card means even
+	  fast machine can't keep up.
+
+2008-03-04 06:05  rjongbloed
+
+	* [r19664] :
+	  Removed now unused parameter in RTP jitter buffer read function.
+	  Some code tidy ups.
+
+2008-03-04 10:25  csoutheren
+
+	* [r19665] :
+	  Fix compilation on older versions of gcc
+
+2008-03-05 00:11  rjongbloed
+
+	* [r19666] :
+	  The \t combination is not a tab in regular expressions so removed
+	  test from routing engine backward compatibility check.
+
+2008-03-05 00:29  csoutheren
+
+	* [r19667] :
+	  Fix problem with registry changing tabs to \\t
+
+2008-03-05 00:35  csoutheren
+
+	* [r19668] :
+	  Fix problem with creating wideband codecs
+
+2008-03-05 02:03  csoutheren
+
+	* [r19669] :
+	  Fix wideband audio default data size
+
+2008-03-05 02:39  rjongbloed
+
+	* [r19670] :
+	  Fixed string options being passed to conections on both sides of
+	  call, thanks Tuyan Ozipek
+
+2008-03-05 02:48  rjongbloed
+
+	* [r19671] :
+	  Fixed documentation comments on OnEstablished() function, thanks
+	  Derek Smithies Ph.D.
+
+2008-03-05 03:19  rjongbloed
+
+	* [r19672] :
+	  Added configure item to disable AEC
+
+2008-03-05 06:03  rjongbloed
+
+	* [r19673] :
+	  Fixed more documentation comments, thanks Derek Smithies.
+
+2008-03-05 20:37  dsandras
+
+	* [r19674] :
+	  Fixed previous commit allowing to disable AEC on Linux.
+
+2008-03-06 03:41  dereksmithies
+
+	* [r19675] :
+	  Fix use of the OPAL_H450 define so the inline documenation is
+	  linked to the correct function. Add/copy documentation to
+	  OnOpenIncomingMediaChannels
+
+2008-03-07 03:18  rjongbloed
+
+	* [r19677] :
+	  Added ability to set trace log level/file in "C" API.
+
+2008-03-07 05:47  rjongbloed
+
+	* [r19678] :
+	  Allow call to answered in a PCSS endpoint via call token as well
+	  as the connection token.
+
+2008-03-07 05:51  rjongbloed
+
+	* [r19679] :
+	  Fixed "C" API incoming call routing and correct alerting
+	  indication.
+
+2008-03-07 06:09  rjongbloed
+
+	* [r19680] :
+	  Fixed being able to make the OpenPhone log area smaller. Also
+	  limit the shrinkage on the speed dials when moving sash.
+
+2008-03-07 06:10  rjongbloed
+
+	* [r19681] :
+	  Fixed GUI issues win WM demo application, especially on answering
+	  calls.
+
+2008-03-07 06:58  rjongbloed
+
+	* [r19689] .:
+	  Create branch for Barnard release candidate.
+
+2008-03-07 07:00  rjongbloed
+
+	* [r19691] version.h:
+	  Create branch for Barnard release candidate.
+
+2008-03-07 07:35  rjongbloed
+
+	* [r19697] version.h:
+	  Update release version number to 3.2.0
+
